@@ -49,7 +49,7 @@
   ],
   "volunteer": [
     {
-      "organization": "NOBCChE K-12 Initiative",
+      "organization": "WSU NOBCChE K-12 Initiative",
       "position": "Volunteer",
       "startDate": "2021-01-01",
       "endDate": "2023-12-31",
@@ -304,56 +304,5 @@
       "email": "chernyak@chem.wayne.edu"
     }
   ],
-  "certificates": [
-    {
-      "name": "Machine Learning",
-      "issuer": "Coursera",
-      "date": "2022-01-01"
-    },
-    {
-      "name": "Neural Networks & Deep Learning",
-      "issuer": "Coursera",
-      "date": "2022-01-01"
-    },
-    {
-      "name": "Improving Deep Neural Networks",
-      "issuer": "Coursera",
-      "date": "2022-01-01"
-    },
-    {
-      "name": "Introduction to Data Science in Python",
-      "issuer": "Coursera",
-      "date": "2022-01-01"
-    },
-    {
-      "name": "Applied Machine Learning in Python",
-      "issuer": "Coursera",
-      "date": "2022-01-01"
-    },
-    {
-      "name": "Python Data Structures",
-      "issuer": "Coursera",
-      "date": "2022-01-01"
-    },
-    {
-      "name": "Applied Plotting, Charting & Data Representation in Python",
-      "issuer": "Coursera",
-      "date": "2022-01-01"
-    },
-    {
-      "name": "Introduction to TensorFlow for AI, ML and Deep Learning",
-      "issuer": "Coursera",
-      "date": "2022-01-01"
-    },
-    {
-      "name": "Convolutional Neural Networks in TensorFlow",
-      "issuer": "Coursera",
-      "date": "2022-01-01"
-    },
-    {
-      "name": "Supervised Machine Learning: Regression and Classification",
-      "issuer": "Coursera",
-      "date": "2022-01-01"
-    }
-  ]
+  
 }
