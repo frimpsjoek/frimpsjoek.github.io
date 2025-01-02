@@ -1,7 +1,7 @@
 ---
 layout: page
-title: project 1
-description: with background image
+title: ML for electronic structure
+description: My postdoctoral work
 img: assets/img/12.jpg
 importance: 1
 category: work
@@ -16,8 +16,8 @@ To give your project a background in the portfolio page, just add the img tag to
 
     ---
     layout: page
-    title: project
-    description: a project with a background image
+    title: ML for electronic structure
+    description: My postdoctoral work
     img: /assets/img/12.jpg
     ---
 
