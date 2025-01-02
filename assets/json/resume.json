@@ -5,12 +5,8 @@
     "email": "gy1906@wayne.edu",
     "phone": "(313) 338-7762",
     "url": "https://www.linkedin.com/in/josephfrimpong",
-    "summary": "A PhD candidate in Physical Chemistry at Wayne State University, conducting research on electronic structure and optical properties of materials for catalysis, optoelectronics, and energy applications using computational methods and machine learning.",
+    "summary": "A Postdoctoral researcher with experience in simulating nanoscale materials of interest in energy, catalysis and device applications. I also enjoy developing computational tools for studying electronic structure and optical properties of materials leveraging  machine learning and AI.",
     "location": {
-      "address": "5101 Cass Ave",
-      "postalCode": "48202",
-      "city": "Detroit",
-      "region": "Michigan",
       "countryCode": "US"
     },
     "profiles": [
@@ -27,7 +23,7 @@
       "position": "Schaap-Rumble Research Fellow",
       "startDate": "2020-09-01",
       "endDate": "",
-      "summary": "Developed computational methods based on many-body perturbation theory and machine learning to study electronic structure and optical properties of materials. Collaborated with experimentalists on quantum dot drug delivery.",
+      "summary": "Developed computational methods/tools based on many-body perturbation theory to study electronic structure and optical properties of material interfaces",
       "highlights": [
         "Developed GW/BSE methods for large heterogeneous interfaces",
         "Implemented machine learning models for materials discovery",
@@ -53,7 +49,7 @@
       "position": "Volunteer",
       "startDate": "2021-01-01",
       "endDate": "2023-12-31",
-      "location": "Detroit Public Schools, Detroit, MI",
+      "location": "Detroit Public Schools",
       "summary": "Promoted science education and diversity in STEM fields through outreach activities."
     },
     {
@@ -284,24 +280,4 @@
       ]
     }
   ],
-  "references": [
-    {
-      "name": "Dr. Zhenfei Liu",
-      "position": "Advisor",
-      "institution": "Wayne State University",
-      "phone": "313-577-2571",
-      "email": "zfliu@wayne.edu"
-    },
-    {
-      "name": "Dr. Aaron Rury",
-      "institution": "Wayne State University",
-      "email": "arury@wayne.edu"
-    },
-    {
-      "name": "Dr. Vladimir Chernyak", 
-      "institution": "Wayne State University",
-      "phone": "313-577-2503",
-      "email": "chernyak@chem.wayne.edu"
-    }
-  ]
 }
