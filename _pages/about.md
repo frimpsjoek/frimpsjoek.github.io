@@ -1,4 +1,9 @@
 ---
+layout: about
+title: about
+permalink: /
+subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+
 profile:
   align: right
   image: prof_pic.jpg
@@ -26,4 +31,3 @@ In addition to his research, Frimpong is committed to mentoring and outreach. He
 - Computational methods (DFT, GW, BSE) to investigate electronic structure and optical properties of materials for catalysis, energy, and optoelectronic applications.
 - AI and machine learning for high-throughput materials discovery and enhanced electronic structure methods.
 - Heterogeneous interfaces and their role in the design of materials for energy-efficient devices.
-
