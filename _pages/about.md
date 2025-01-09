@@ -20,14 +20,25 @@ social: true # includes social icons at the bottom of the page
 
 ## Biography
 
-Joseph Frimpong is a postdoctoral researcher at Argonne National Laboratory, where he studies the electronic structure and optical properties of materials to advance applications in catalysis, energy, and optoelectronics. His research focuses on computational methods, including density functional theory (DFT), many-body perturbation theory (GW/BSE), and machine learning, to explore structure-property relationships in heterogeneous interfaces, quantum dots, and other nanoscale materials.
+I am postdoctoral researcher at Argonne National Laboratory, where I study the electronic structure and optical properties of materials to advance applications in catalysis, energy, and optoelectronics. My research focuses on computational methods, including density functional theory (DFT), many-body perturbation theory (GW/BSE), and machine learning, to explore structure-property relationships in heterogeneous interfaces, quantum dots, and other nanoscale materials.  I am also passionate about leveraging computational chemistry and machine learning to accelerate materials discovery and improve the efficiency of next-generation materials.
 
-Frimpong has published several peer-reviewed articles in high-impact journals such as *The Journal of Physical Chemistry Letters* and *Journal of Physics: Condensed Matter*. He has presented his work at leading conferences, including the APS March Meeting and NOBCChE National Conferences. His accomplishments have been recognized with awards like the Thomas C. Rumble Fellowship, the A. Paul and Carole C. Schaap Endowed Distinguished Graduate Award, and the Best Poster Award at the NOBCChE National Conference.
-
-In addition to his research, Frimpong is committed to mentoring and outreach. He has guided undergraduate students and participated in initiatives to promote diversity and inclusion in STEM. He is passionate about leveraging computational chemistry and machine learning to accelerate materials discovery and improve the efficiency of next-generation materials.
+In addition to my academic pursuits, I aspire to share my knowledge and experiences through blogging, shedding light on complex topics in a simplified manner.
 
 ## Research Interests
 
 - Computational methods (DFT, GW, BSE) to investigate electronic structure and optical properties of materials for catalysis, energy, and optoelectronic applications.
 - AI and machine learning for high-throughput materials discovery and enhanced electronic structure methods.
 - Heterogeneous interfaces and their role in the design of materials for energy-efficient devices.
+
+
+## Current Tools
+
+
+<img align="left" alt="Python" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-plain.svg" />
+<img align="left" alt="Git" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" />
+<img align="left" alt="Linux" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" />
+<img align="left" alt="HTML" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg" />
+<img align="left" alt="CSS" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" />
+<img align="left" alt="GitHub" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" />
+<img align="left" alt="Bash" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" />
+<br />
