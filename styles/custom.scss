@@ -3481,7 +3481,8 @@ pre, code, .sourceCode, div.sourceCode, pre.sourceCode {
   background: transparent !important;
   padding: 0;
   object-fit: contain;
-  transition: transform 0.12s ease, filter 0.12s ease;
+  transition: width 0.14s ease, height 0.14s ease, filter 0.14s ease;
+  will-change: width, height, filter;
   box-shadow: none !important;
   --icon-base-scale: 1;
 }
