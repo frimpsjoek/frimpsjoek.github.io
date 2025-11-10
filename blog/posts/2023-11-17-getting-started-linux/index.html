@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-e1e2a10d13033709472fcb4719db0d9e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-23b367c3d18c4597d70ddeebb35a2fa5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -656,6 +656,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     } else {
       enhanceAll();
     }
+  })();
+</script>
+<script>
+  // MacOS Dock-like magnification for the tools icon row
+  (function() {
+    const row = document.querySelector('.tools-row');
+    if (!row) return;
+    const icons = Array.from(row.querySelectorAll('img'));
+    if (icons.length === 0) return;
+
+    let raf = null;
+    let mouseX = 0;
+    let active = false;
+    const influence = 90; // px radius of influence
+    const maxBoost = 0.6; // max extra scale (1 + maxBoost)
+
+    function getTheme() {
+      return document.documentElement.getAttribute('data-bs-theme') || 'light';
+    }
+
+    function update() {
+      raf = null;
+      const theme = getTheme();
+      icons.forEach((img) => {
+        const rect = img.getBoundingClientRect();
+        const center = rect.left + rect.width / 2;
+        const d = Math.abs(mouseX - center);
+        let scale = 1;
+        if (active) {
+          const t = Math.max(0, 1 - (d / influence) ** 2);
+          scale = 1 + maxBoost * t; // quadratic falloff
+        }
+        img.style.transform = `scale(${scale.toFixed(3)})`;
+        // Add subtle shadow/glow based on scale
+        if (scale > 1.02) {
+          if (theme === 'dark') {
+            img.style.filter = `drop-shadow(0 8px 18px rgba(0, 160, 255, ${Math.min(0.35, (scale - 1) * 0.9).toFixed(3)}))`;
+          } else {
+            img.style.filter = `drop-shadow(0 8px 14px rgba(0, 0, 0, ${Math.min(0.22, (scale - 1) * 0.8).toFixed(3)}))`;
+          }
+        } else {
+          img.style.filter = '';
+        }
+      });
+    }
+
+    function onMove(e) {
+      mouseX = e.clientX;
+      if (!raf) raf = requestAnimationFrame(update);
+    }
+
+    function onEnter(e) {
+      active = true;
+      onMove(e);
+    }
+
+    function onLeave() {
+      active = false;
+      if (!raf) {
+        raf = requestAnimationFrame(update);
+      }
+    }
+
+    row.addEventListener('mousemove', onMove);
+    row.addEventListener('mouseenter', onEnter);
+    row.addEventListener('mouseleave', onLeave);
   })();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
