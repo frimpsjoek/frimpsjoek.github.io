@@ -72,12 +72,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-abd5cb3ff6033ea6a8cf78999d003cff.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-feff50d4bd05eb1645d832502c700d35.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -275,10 +274,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>As a computational materials scientist, Linux has become an indispensable part of my daily workflow. Whether you’re running density functional theory calculations, managing large datasets, or developing scientific software, Linux provides the power and flexibility needed for serious computational work.</p>
 <p>If you’re new to Linux or considering making the switch from Windows or macOS for your research work, this guide will help you get started with confidence.</p>
 <section id="why-linux-for-scientific-computing" class="level2">
-<h2 class="anchored" data-anchor-id="why-linux-for-scientific-computing">Why Linux for Scientific Computing?</h2>
+<h2 data-anchor-id="why-linux-for-scientific-computing">Why Linux for Scientific Computing?</h2>
 <p>Before diving into the technical details, let’s understand why Linux is so popular in the scientific computing community:</p>
 <section id="performance-and-efficiency" class="level3">
-<h3 class="anchored" data-anchor-id="performance-and-efficiency">Performance and Efficiency</h3>
+<h3 data-anchor-id="performance-and-efficiency">Performance and Efficiency</h3>
 <ul>
 <li><strong>Direct hardware access</strong>: Linux provides better control over system resources</li>
 <li><strong>Lower overhead</strong>: More of your computer’s power goes to your calculations</li>
@@ -286,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="package-management" class="level3">
-<h3 class="anchored" data-anchor-id="package-management">Package Management</h3>
+<h3 data-anchor-id="package-management">Package Management</h3>
 <ul>
 <li>Easy installation of scientific software through package managers</li>
 <li>Consistent dependency management</li>
@@ -294,7 +293,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="high-performance-computing-hpc-integration" class="level3">
-<h3 class="anchored" data-anchor-id="high-performance-computing-hpc-integration">High-Performance Computing (HPC) Integration</h3>
+<h3 data-anchor-id="high-performance-computing-hpc-integration">High-Performance Computing (HPC) Integration</h3>
 <ul>
 <li>Most supercomputers and clusters run Linux</li>
 <li>Seamless workflow from desktop to HPC systems</li>
@@ -303,10 +302,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="essential-commands-for-scientists" class="level2">
-<h2 class="anchored" data-anchor-id="essential-commands-for-scientists">Essential Commands for Scientists</h2>
+<h2 data-anchor-id="essential-commands-for-scientists">Essential Commands for Scientists</h2>
 <p>Here are the Linux commands I use most frequently in my research work:</p>
 <section id="file-and-directory-operations" class="level3">
-<h3 class="anchored" data-anchor-id="file-and-directory-operations">File and Directory Operations</h3>
+<h3 data-anchor-id="file-and-directory-operations">File and Directory Operations</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Navigate directories</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /path/to/your/research</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span>  <span class="co"># Print current directory</span></span>
@@ -319,7 +318,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> directory_name       <span class="co"># Remove directory and contents (use carefully!)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="text-processing-and-data-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="text-processing-and-data-analysis">Text Processing and Data Analysis</h3>
+<h3 data-anchor-id="text-processing-and-data-analysis">Text Processing and Data Analysis</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View file contents</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 20 data_file.txt    <span class="co"># First 20 lines</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span> <span class="at">-n</span> 10 output.log       <span class="co"># Last 10 lines</span></span>
@@ -332,7 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> data.txt <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span>     <span class="co"># Sort and count unique entries</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="process-management" class="level3">
-<h3 class="anchored" data-anchor-id="process-management">Process Management</h3>
+<h3 data-anchor-id="process-management">Process Management</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Monitor system resources</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">top</span>                         <span class="co"># Real-time process monitor</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">htop</span>                       <span class="co"># Enhanced process monitor (if installed)</span></span>
@@ -345,9 +344,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="setting-up-your-research-environment" class="level2">
-<h2 class="anchored" data-anchor-id="setting-up-your-research-environment">Setting Up Your Research Environment</h2>
+<h2 data-anchor-id="setting-up-your-research-environment">Setting Up Your Research Environment</h2>
 <section id="python-environment-management" class="level3">
-<h3 class="anchored" data-anchor-id="python-environment-management">Python Environment Management</h3>
+<h3 data-anchor-id="python-environment-management">Python Environment Management</h3>
 <p>For computational work, I highly recommend using conda to manage your Python environments:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install Miniconda (lightweight conda)</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</span>
@@ -363,7 +362,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install ase  <span class="co"># Atomic Simulation Environment</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="text-editors-for-code-and-scripts" class="level3">
-<h3 class="anchored" data-anchor-id="text-editors-for-code-and-scripts">Text Editors for Code and Scripts</h3>
+<h3 data-anchor-id="text-editors-for-code-and-scripts">Text Editors for Code and Scripts</h3>
 <p>Choose a text editor you’re comfortable with. Here are popular options:</p>
 <p><strong>Nano</strong> (beginner-friendly):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> my_script.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -373,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> my_script.py  <span class="co"># If VS Code is installed</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="version-control-with-git" class="level3">
-<h3 class="anchored" data-anchor-id="version-control-with-git">Version Control with Git</h3>
+<h3 data-anchor-id="version-control-with-git">Version Control with Git</h3>
 <p>Essential for tracking your research code:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Configure Git (one-time setup)</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Your Name"</span></span>
@@ -391,9 +390,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="workflow-tips-for-computational-research" class="level2">
-<h2 class="anchored" data-anchor-id="workflow-tips-for-computational-research">Workflow Tips for Computational Research</h2>
+<h2 data-anchor-id="workflow-tips-for-computational-research">Workflow Tips for Computational Research</h2>
 <section id="organizing-your-projects" class="level3">
-<h3 class="anchored" data-anchor-id="organizing-your-projects">Organizing Your Projects</h3>
+<h3 data-anchor-id="organizing-your-projects">Organizing Your Projects</h3>
 <p>I recommend this directory structure for research projects:</p>
 <pre><code>research_project/
 ├── data/           # Raw and processed data
@@ -404,7 +403,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 └── README.md       # Project description</code></pre>
 </section>
 <section id="running-long-calculations" class="level3">
-<h3 class="anchored" data-anchor-id="running-long-calculations">Running Long Calculations</h3>
+<h3 data-anchor-id="running-long-calculations">Running Long Calculations</h3>
 <p>For computationally intensive work:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use screen or tmux for persistent sessions</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">screen</span> <span class="at">-S</span> calculation_name</span>
@@ -415,7 +414,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Reattach later with: screen -r calculation_name</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="monitoring-system-resources" class="level3">
-<h3 class="anchored" data-anchor-id="monitoring-system-resources">Monitoring System Resources</h3>
+<h3 data-anchor-id="monitoring-system-resources">Monitoring System Resources</h3>
 <p>Keep an eye on system usage during calculations:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Monitor GPU usage (if using CUDA)</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">nvidia-smi</span></span>
@@ -431,22 +430,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="common-pitfalls-and-solutions" class="level2">
-<h2 class="anchored" data-anchor-id="common-pitfalls-and-solutions">Common Pitfalls and Solutions</h2>
+<h2 data-anchor-id="common-pitfalls-and-solutions">Common Pitfalls and Solutions</h2>
 <section id="file-permissions" class="level3">
-<h3 class="anchored" data-anchor-id="file-permissions">File Permissions</h3>
+<h3 data-anchor-id="file-permissions">File Permissions</h3>
 <p>If you get “permission denied” errors:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x script.py          <span class="co"># Make file executable</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 755 directory_name    <span class="co"># Set directory permissions</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="path-issues" class="level3">
-<h3 class="anchored" data-anchor-id="path-issues">Path Issues</h3>
+<h3 data-anchor-id="path-issues">Path Issues</h3>
 <p>Make sure your programs are in your PATH:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$PATH</span>                  <span class="co"># Check current PATH</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">$PATH</span>:/new/path <span class="co"># Add to PATH temporarily</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>For permanent changes, add the export line to your <code>~/.bashrc</code> file.</p>
 </section>
 <section id="ssh-and-remote-access" class="level3">
-<h3 class="anchored" data-anchor-id="ssh-and-remote-access">SSH and Remote Access</h3>
+<h3 data-anchor-id="ssh-and-remote-access">SSH and Remote Access</h3>
 <p>For working on remote servers:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate SSH key (one-time)</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> rsa</span>
@@ -460,7 +459,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="next-steps" class="level2">
-<h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
+<h2 data-anchor-id="next-steps">Next Steps</h2>
 <p>Once you’re comfortable with these basics, consider exploring:</p>
 <ul>
 <li><strong>Shell scripting</strong>: Automate repetitive tasks</li>
@@ -471,7 +470,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="resources-for-continued-learning" class="level2">
-<h2 class="anchored" data-anchor-id="resources-for-continued-learning">Resources for Continued Learning</h2>
+<h2 data-anchor-id="resources-for-continued-learning">Resources for Continued Learning</h2>
 <ul>
 <li><strong>The Linux Command Line</strong> by William Shotts (free online)</li>
 <li><strong>Software Carpentry</strong> workshops and materials</li>
@@ -479,7 +478,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<h2 data-anchor-id="conclusion">Conclusion</h2>
 <p>Transitioning to Linux might seem daunting at first, but the investment in learning pays dividends in computational efficiency and workflow flexibility. Start with these basics, practice regularly, and don’t hesitate to use the excellent documentation available (<code>man command_name</code> shows manual pages for any command).</p>
 <p>Remember, even experienced Linux users regularly look up commands and syntax—it’s not about memorizing everything, but about understanding the concepts and knowing how to find information when you need it.</p>
 <hr>
@@ -661,13 +660,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

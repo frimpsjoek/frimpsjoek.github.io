@@ -69,12 +69,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-0d624a69534ed36ad66280d636a9279c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ab48cc44651228e11144c157ff7419de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -250,7 +249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="installing-and-deploying" class="level1">
 <h1>Installing and Deploying</h1>
 <section id="recommended-approach" class="level2">
-<h2 class="anchored" data-anchor-id="recommended-approach">Recommended Approach</h2>
+<h2 data-anchor-id="recommended-approach">Recommended Approach</h2>
 <p>The recommended approach for using <strong>al-folio</strong> is to first create your own site using the template with as few changes as possible, and only when it is up and running customize it however you like. This way it is easier to pinpoint what causes a potential issue in case of a bug. The minimum steps required to create your own site are (<a href="assets/video/tutorial_al_folio.mp4">video tutorial here</a>):</p>
 <ol type="1">
 <li>Create a new repository using this template. For this, click on <a href="https://github.com/new?template_name=al-folio&amp;template_owner=alshedivat">Use this template -&gt; Create a new repository</a> above the file list. If you plan to upload your site to <code>&lt;your-github-username&gt;.github.io</code>, note that the name of your repository :warning: <strong>MUST BE</strong> :warning: <code>&lt;your-github-username&gt;.github.io</code> or <code>&lt;your-github-orgname&gt;.github.io</code>, as stated in the <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#types-of-github-pages-sites">GitHub pages docs</a>.</li>
@@ -264,11 +263,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Starting version <a href="https://github.com/alshedivat/al-folio/releases/tag/v0.3.5">v0.3.5</a>, <strong>al-folio</strong> will automatically re-deploy your webpage each time you push new changes to your repository! :sparkles:</p>
 </section>
 <section id="local-setup-on-windows" class="level2">
-<h2 class="anchored" data-anchor-id="local-setup-on-windows">Local setup on Windows</h2>
+<h2 data-anchor-id="local-setup-on-windows">Local setup on Windows</h2>
 <p>If you are using Windows, it is <strong>highly recommended</strong> to use <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Windows Subsystem for Linux (WSL)</a>, which is a compatibility layer for running Linux on top of Windows. You can follow <a href="https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-11-with-gui-support">these instructions</a> to install WSL and Ubuntu on your machine. You only need to go up to the step 4 of the tutorial (you don’t have to enable the optional <code>systemd</code> nor the graphical applications), and then you can follow the instructions below to install docker. You can install docker natively on Windows as well, but it has been having some issues as can be seen in <a href="https://github.com/alshedivat/al-folio/issues/1540">#1540</a>, <a href="https://github.com/alshedivat/al-folio/issues/2007">#2007</a>.</p>
 </section>
 <section id="local-setup-using-docker-recommended" class="level2">
-<h2 class="anchored" data-anchor-id="local-setup-using-docker-recommended">Local setup using Docker (Recommended)</h2>
+<h2 data-anchor-id="local-setup-using-docker-recommended">Local setup using Docker (Recommended)</h2>
 <p>Using Docker to install Jekyll and Ruby dependencies is the easiest way.</p>
 <p>You need to take the following steps to get <code>al-folio</code> up and running on your local machine:</p>
 <ul>
@@ -283,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Beta: You can also use the slimmed docker image with a size below 100MBs and exact same functionality. Just use <code>docker compose -f docker-compose-slim.yml up</code></p>
 </blockquote>
 <section id="build-your-own-docker-image" class="level3">
-<h3 class="anchored" data-anchor-id="build-your-own-docker-image">Build your own docker image</h3>
+<h3 data-anchor-id="build-your-own-docker-image">Build your own docker image</h3>
 <blockquote class="blockquote">
 <p>Note: this approach is only necessary if you would like to build an older or very custom version of al-folio.</p>
 </blockquote>
@@ -296,11 +295,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="local-setup-with-development-containers" class="level2">
-<h2 class="anchored" data-anchor-id="local-setup-with-development-containers">Local Setup with Development Containers</h2>
+<h2 data-anchor-id="local-setup-with-development-containers">Local Setup with Development Containers</h2>
 <p><code>al-folio</code> supports <a href="https://containers.dev/supporting">Development Containers</a>. For example, when you open the repository with Visual Studio Code (VSCode), it prompts you to install the necessary extension and automatically install everything necessary.</p>
 </section>
 <section id="local-setup-legacy-no-longer-supported" class="level2">
-<h2 class="anchored" data-anchor-id="local-setup-legacy-no-longer-supported">Local Setup (Legacy, no longer supported)</h2>
+<h2 data-anchor-id="local-setup-legacy-no-longer-supported">Local Setup (Legacy, no longer supported)</h2>
 <p>For a hands-on walkthrough of running al-folio locally without using Docker, check out <a href="https://george-gca.github.io/blog/2022/running-local-al-folio/">this cool blog post</a> by one of the community members!</p>
 <p>Assuming you have <a href="https://www.ruby-lang.org/en/downloads/">Ruby</a> and <a href="https://bundler.io/">Bundler</a> installed on your system (<em>hint: for ease of managing ruby gems, consider using <a href="https://github.com/rbenv/rbenv">rbenv</a></em>), and also <a href="https://www.python.org/">Python</a> and <a href="https://pypi.org/project/pip/">pip</a> (<em>hint: for ease of managing python packages, consider using a virtual environment, like <a href="https://docs.python.org/pt-br/3/library/venv.html">venv</a> or <a href="https://docs.conda.io/en/latest/">conda</a></em>).</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> bundle install</span>
@@ -310,10 +309,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To see the template running, open your browser and go to <code>http://localhost:4000</code>. You should see a copy of the theme’s <a href="https://alshedivat.github.io/al-folio/">demo website</a>. Now, feel free to customize the theme however you like. After you are done, remember to <strong>commit</strong> your final changes.</p>
 </section>
 <section id="deployment" class="level2">
-<h2 class="anchored" data-anchor-id="deployment">Deployment</h2>
+<h2 data-anchor-id="deployment">Deployment</h2>
 <p>Deploying your website to <a href="https://pages.github.com/">GitHub Pages</a> is the most popular option. Starting version <a href="https://github.com/alshedivat/al-folio/releases/tag/v0.3.5">v0.3.5</a>, <strong>al-folio</strong> will automatically re-deploy your webpage each time you push new changes to your repository <strong>main branch</strong>! :sparkles:</p>
 <section id="for-personal-and-organization-webpages" class="level3">
-<h3 class="anchored" data-anchor-id="for-personal-and-organization-webpages">For personal and organization webpages</h3>
+<h3 data-anchor-id="for-personal-and-organization-webpages">For personal and organization webpages</h3>
 <ol type="1">
 <li>The name of your repository <strong>MUST BE</strong> <code>&lt;your-github-username&gt;.github.io</code> or <code>&lt;your-github-orgname&gt;.github.io</code>.</li>
 <li>In <code>_config.yml</code>, set <code>url</code> to <code>https://&lt;your-github-username&gt;.github.io</code> and leave <code>baseurl</code> empty.</li>
@@ -323,7 +322,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="for-project-pages" class="level3">
-<h3 class="anchored" data-anchor-id="for-project-pages">For project pages</h3>
+<h3 data-anchor-id="for-project-pages">For project pages</h3>
 <ol type="1">
 <li>In <code>_config.yml</code>, set <code>url</code> to <code>https://&lt;your-github-username&gt;.github.io</code> and <code>baseurl</code> to <code>/&lt;your-repository-name&gt;/</code>.</li>
 <li>Set up automatic deployment of your webpage (see instructions below).</li>
@@ -332,7 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="enabling-automatic-deployment" class="level3">
-<h3 class="anchored" data-anchor-id="enabling-automatic-deployment">Enabling automatic deployment</h3>
+<h3 data-anchor-id="enabling-automatic-deployment">Enabling automatic deployment</h3>
 <ol type="1">
 <li>Click on <strong>Actions</strong> tab and <strong>Enable GitHub Actions</strong>; do not worry about creating any workflows as everything has already been set for you.</li>
 <li>Go to <code>Settings -&gt; Actions -&gt; General -&gt; Workflow permissions</code>, and give <code>Read and write permissions</code> to GitHub Actions</li>
@@ -343,11 +342,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If you keep your site on another branch, open <code>.github/workflows/deploy.yml</code> <strong>on the branch you keep your website on</strong> and change <code>on-&gt;push-&gt;branches</code> and <code>on-&gt;pull\_request-&gt;branches</code> to the branch you keep your website on. This will trigger the action on pulls/pushes on that branch. The action will then deploy the website on the branch it was triggered from.</p>
 </section>
 <section id="manual-deployment-to-github-pages" class="level3">
-<h3 class="anchored" data-anchor-id="manual-deployment-to-github-pages">Manual deployment to GitHub Pages</h3>
+<h3 data-anchor-id="manual-deployment-to-github-pages">Manual deployment to GitHub Pages</h3>
 <p>If you need to manually re-deploy your website to GitHub pages, go to Actions, click “Deploy” in the left sidebar, then “Run workflow.”</p>
 </section>
 <section id="deploy-on-netlify" class="level3">
-<h3 class="anchored" data-anchor-id="deploy-on-netlify">Deploy on <a href="https://www.netlify.com/">Netlify</a></h3>
+<h3 data-anchor-id="deploy-on-netlify">Deploy on <a href="https://www.netlify.com/">Netlify</a></h3>
 <ol type="1">
 <li><p><a href="https://github.com/new?template_name=al-folio&amp;template_owner=alshedivat">Use this template -&gt; Create a new repository</a>.</p></li>
 <li><p>Netlify: <strong>Add new site</strong> -&gt; <strong>Import an existing project</strong> -&gt; <strong>GitHub</strong> and give Netlify access to the repository you just created.</p></li>
@@ -387,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="deployment-to-another-hosting-server-non-github-pages" class="level3">
-<h3 class="anchored" data-anchor-id="deployment-to-another-hosting-server-non-github-pages">Deployment to another hosting server (non GitHub Pages)</h3>
+<h3 data-anchor-id="deployment-to-another-hosting-server-non-github-pages">Deployment to another hosting server (non GitHub Pages)</h3>
 <p>If you decide to not use GitHub Pages and host your page elsewhere, simply run:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> bundle exec jekyll build</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>which will (re-)generate the static webpage in the <code>_site/</code> folder. Then simply copy the contents of the <code>_site/</code> directory to your hosting server.</p>
@@ -397,7 +396,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Note:</strong> Make sure to correctly set the <code>url</code> and <code>baseurl</code> fields in <code>_config.yml</code> before building the webpage. If you are deploying your webpage to <code>your-domain.com/your-project/</code>, you must set <code>url: your-domain.com</code> and <code>baseurl: /your-project/</code>. If you are deploying directly to <code>your-domain.com</code>, leave <code>baseurl</code> blank, <strong>do not delete it</strong>.</p>
 </section>
 <section id="deployment-to-a-separate-repository-advanced-users-only" class="level3">
-<h3 class="anchored" data-anchor-id="deployment-to-a-separate-repository-advanced-users-only">Deployment to a separate repository (advanced users only)</h3>
+<h3 data-anchor-id="deployment-to-a-separate-repository-advanced-users-only">Deployment to a separate repository (advanced users only)</h3>
 <p><strong>Note:</strong> Do not try using this method unless you know what you are doing (make sure you are familiar with <a href="https://help.github.com/en/github/working-with-github-pages/about-github-pages#publishing-sources-for-github-pages-sites">publishing sources</a>). This approach allows to have the website’s source code in one repository and the deployment version in a different repository.</p>
 <p>Let’s assume that your website’s publishing source is a <code>publishing-source</code> subdirectory of a git-versioned repository cloned under <code>$HOME/repo/</code>. For a user site this could well be something like <code>$HOME/&lt;user&gt;.github.io</code>.</p>
 <p>Firstly, from the deployment repo dir, checkout the git branch hosting your publishing source.</p>
@@ -416,7 +415,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="upgrading-from-a-previous-version" class="level2">
-<h2 class="anchored" data-anchor-id="upgrading-from-a-previous-version">Upgrading from a previous version</h2>
+<h2 data-anchor-id="upgrading-from-a-previous-version">Upgrading from a previous version</h2>
 <p>If you installed <strong>al-folio</strong> as described above, you can manually update your code by following the steps below:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming the current directory is &lt;your-repo-name&gt;</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git remote add upstream https://github.com/alshedivat/al-folio.git</span>
@@ -599,13 +598,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

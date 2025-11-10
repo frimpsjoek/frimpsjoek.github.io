@@ -72,12 +72,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-abd5cb3ff6033ea6a8cf78999d003cff.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-feff50d4bd05eb1645d832502c700d35.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -322,7 +321,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="project-setup" class="level1">
 <h1>Project Setup</h1>
 <section id="initialize-your-project" class="level2">
-<h2 class="anchored" data-anchor-id="initialize-your-project">Initialize Your Project</h2>
+<h2 data-anchor-id="initialize-your-project">Initialize Your Project</h2>
 <p>First, let’s create a new directory for our Quarto website and initialize it:</p>
 <div class="details" data-summary="Show code">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create project directory</span></span>
@@ -337,7 +336,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This creates a basic website structure with: - <code>index.qmd</code> - Homepage - <code>_quarto.yml</code> - Configuration file - <code>styles/</code> - Custom styling directory - <code>posts/</code> - Blog posts directory</p>
 </section>
 <section id="project-structure" class="level2">
-<h2 class="anchored" data-anchor-id="project-structure">Project Structure</h2>
+<h2 data-anchor-id="project-structure">Project Structure</h2>
 <p>Here’s the recommended structure for an academic website:</p>
 <div class="details" data-summary="Show code">
 <pre><code>quarto-academic-site/
@@ -367,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="configuration" class="level1">
 <h1>Configuration</h1>
 <section id="site-configuration" class="level2">
-<h2 class="anchored" data-anchor-id="site-configuration">Site Configuration</h2>
+<h2 data-anchor-id="site-configuration">Site Configuration</h2>
 <p>Let’s set up the main configuration file (<code>_quarto.yml</code>):</p>
 <div class="details" data-summary="Show code">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
@@ -437,7 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>:::</p>
 </section>
 <section id="custom-styling" class="level2">
-<h2 class="anchored" data-anchor-id="custom-styling">Custom Styling</h2>
+<h2 data-anchor-id="custom-styling">Custom Styling</h2>
 <p>Create a custom SCSS file for theming:</p>
 <div class="details" data-summary="Show code">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">// styles/custom.scss</span></span>
@@ -499,7 +498,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="creating-content-pages" class="level1">
 <h1>Creating Content Pages</h1>
 <section id="homepage" class="level2">
-<h2 class="anchored" data-anchor-id="homepage">Homepage</h2>
+<h2 data-anchor-id="homepage">Homepage</h2>
 <p>Create an engaging homepage (<code>index.qmd</code>):</p>
 <div class="details" data-summary="Show code">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
@@ -595,7 +594,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>:::</p>
 </section>
 <section id="about-page" class="level2">
-<h2 class="anchored" data-anchor-id="about-page">About Page</h2>
+<h2 data-anchor-id="about-page">About Page</h2>
 <p>Create a professional about page:</p>
 <div class="details" data-summary="Show code">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
@@ -646,7 +645,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="blog-system" class="level1">
 <h1>Blog System</h1>
 <section id="creating-blog-posts" class="level2">
-<h2 class="anchored" data-anchor-id="creating-blog-posts">Creating Blog Posts</h2>
+<h2 data-anchor-id="creating-blog-posts">Creating Blog Posts</h2>
 <p>Blog posts are stored in <code>blog/posts/</code> with the following structure:</p>
 <div class="details" data-summary="Show code">
 <pre><code>blog/posts/
@@ -661,7 +660,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>:::</p>
 </section>
 <section id="sample-blog-post" class="level2">
-<h2 class="anchored" data-anchor-id="sample-blog-post">Sample Blog Post</h2>
+<h2 data-anchor-id="sample-blog-post">Sample Blog Post</h2>
 <p>Here’s a complete blog post example:</p>
 <div class="details" data-summary="Show code">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
@@ -694,7 +693,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Install Python packages for workflow management</span></span>
 <span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>pip install jupyter papermill papermill[azure] python<span class="op">-</span>dotenv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="basic-quantum-chemistry-calculation" class="level2">
-<h2 class="anchored" data-anchor-id="basic-quantum-chemistry-calculation">Basic Quantum Chemistry Calculation</h2>
+<h2 data-anchor-id="basic-quantum-chemistry-calculation">Basic Quantum Chemistry Calculation</h2>
 <p>Let’s perform a simple DFT calculation using Psi4:#| label: pyscf-calculation import numpy as np from pyscf import gto, scf, dft</p>
 </section>
 <section id="set-up-water-molecule-smaller-example" class="level1">
@@ -726,7 +725,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="visualization-with-python" class="level2">
-<h2 class="anchored" data-anchor-id="visualization-with-python">Visualization with Python</h2>
+<h2 data-anchor-id="visualization-with-python">Visualization with Python</h2>
 <p>Let’s visualize the molecular orbitals:</p>
 <p>::: {.details summary=“Show code”}#| label: molecular-orbitals #| fig-cap: HOMO and LUMO orbitals of caffeine import matplotlib.pyplot as plt from mpl_toolkits.mplot3d import Axes3D</p>
 </section>
@@ -748,7 +747,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>plt.tight_layout():::</p>
 <p>:::</p>
 <section id="workflow-automation" class="level2">
-<h2 class="anchored" data-anchor-id="workflow-automation">Workflow Automation</h2>
+<h2 data-anchor-id="workflow-automation">Workflow Automation</h2>
 <p>Create reusable functions for common tasks:</p>
 <p>::: {.details summary=“Show code”}#| label: workflow-functions def optimize_geometry(xyz_string, method=‘B3LYP’, basis=’6-31g*’): “““Optimize molecular geometry and return energy.”“” from pyscf import gto, dft</p>
 <pre><code>mol = gto.M(atom=xyz_string, basis=basis)
@@ -776,9 +775,9 @@ return {
 <p>:::</p>
 </section>
 <section id="best-practices" class="level2">
-<h2 class="anchored" data-anchor-id="best-practices">Best Practices</h2>
+<h2 data-anchor-id="best-practices">Best Practices</h2>
 <section id="version-control-everything" class="level3">
-<h3 class="anchored" data-anchor-id="version-control-everything">1. Version Control Everything</h3>
+<h3 data-anchor-id="version-control-everything">1. Version Control Everything</h3>
 <p>Always track your computational workflows:</p>
 <div class="details" data-summary="Show code">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">:::</span></span>
@@ -817,7 +816,7 @@ return {
 <p>:::</p>
 </section>
 <section id="use-environment-management" class="level3">
-<h3 class="anchored" data-anchor-id="use-environment-management">2. Use Environment Management</h3>
+<h3 data-anchor-id="use-environment-management">2. Use Environment Management</h3>
 <p>Create reproducible environments:</p>
 <div class="details" data-summary="Show code">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># environment.yml</span></span>
@@ -846,7 +845,7 @@ return {
 <p>:::</p>
 </section>
 <section id="document-your-methods" class="level3">
-<h3 class="anchored" data-anchor-id="document-your-methods">3. Document Your Methods</h3>
+<h3 data-anchor-id="document-your-methods">3. Document Your Methods</h3>
 <p>Always include detailed methodology in your posts:</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -870,7 +869,7 @@ return {
 <section id="creating-slides" class="level1">
 <h1>Creating Slides</h1>
 <section id="presentation-setup" class="level2">
-<h2 class="anchored" data-anchor-id="presentation-setup">Presentation Setup</h2>
+<h2 data-anchor-id="presentation-setup">Presentation Setup</h2>
 <p>Create engaging academic presentations by following three quick steps:</p>
 <ol type="1">
 <li>Save the slide template below as <code>slides/presentation.qmd</code>.</li>
@@ -1038,7 +1037,7 @@ return {
 <section id="deployment" class="level1">
 <h1>Deployment</h1>
 <section id="github-pages-deployment" class="level2">
-<h2 class="anchored" data-anchor-id="github-pages-deployment">GitHub Pages Deployment</h2>
+<h2 data-anchor-id="github-pages-deployment">GitHub Pages Deployment</h2>
 <p>Deploy your site automatically:</p>
 <div class="details" data-summary="Show code">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># .github/workflows/deploy.yml</span></span>
@@ -1094,7 +1093,7 @@ return {
 <p>:::</p>
 </section>
 <section id="manual-deployment" class="level2">
-<h2 class="anchored" data-anchor-id="manual-deployment">Manual Deployment</h2>
+<h2 data-anchor-id="manual-deployment">Manual Deployment</h2>
 <p>For one-time deployment:</p>
 <div class="details" data-summary="Show code">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Render site</span></span>
@@ -1110,7 +1109,7 @@ return {
 <section id="advanced-features" class="level1">
 <h1>Advanced Features</h1>
 <section id="custom-filters" class="level2">
-<h2 class="anchored" data-anchor-id="custom-filters">Custom Filters</h2>
+<h2 data-anchor-id="custom-filters">Custom Filters</h2>
 <p>Create custom filters for specialized content:</p>
 <div class="details" data-summary="Show code">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># _extensions/filters.py</span></span>
@@ -1131,7 +1130,7 @@ return {
 <p>:::</p>
 </section>
 <section id="automated-content" class="level2">
-<h2 class="anchored" data-anchor-id="automated-content">Automated Content</h2>
+<h2 data-anchor-id="automated-content">Automated Content</h2>
 <p>Generate content automatically:</p>
 <div class="details" data-summary="Show code">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># _scripts/generate-publications.py</span></span>
@@ -1837,13 +1836,6 @@ The combination of Quarto and Python provides everything you need to create a mo
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

@@ -69,12 +69,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0d624a69534ed36ad66280d636a9279c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ab48cc44651228e11144c157ff7419de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -225,15 +224,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Deployment Guide</h1>
 <p>Your new Quarto academic website is ready for deployment! Here are the steps to get it online.</p>
 <section id="quick-start" class="level2">
-<h2 class="anchored" data-anchor-id="quick-start">Quick Start</h2>
+<h2 data-anchor-id="quick-start">Quick Start</h2>
 <p>The site is currently running locally at: <strong>http://localhost:4200</strong></p>
 <p>To stop the preview server:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview <span class="at">--stop</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="deployment-options" class="level2">
-<h2 class="anchored" data-anchor-id="deployment-options">Deployment Options</h2>
+<h2 data-anchor-id="deployment-options">Deployment Options</h2>
 <section id="github-pages-recommended" class="level3">
-<h3 class="anchored" data-anchor-id="github-pages-recommended">1. GitHub Pages (Recommended)</h3>
+<h3 data-anchor-id="github-pages-recommended">1. GitHub Pages (Recommended)</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Navigate to your project directory</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="st">"Quarto website"</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -243,7 +242,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Follow the prompts to configure GitHub repository</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="netlify" class="level3">
-<h3 class="anchored" data-anchor-id="netlify">2. Netlify</h3>
+<h3 data-anchor-id="netlify">2. Netlify</h3>
 <ol type="1">
 <li>Push your project to a GitHub repository</li>
 <li>Connect Netlify to your repository</li>
@@ -253,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="vercel" class="level3">
-<h3 class="anchored" data-anchor-id="vercel">3. Vercel</h3>
+<h3 data-anchor-id="vercel">3. Vercel</h3>
 <ol type="1">
 <li>Push your project to a GitHub repository<br>
 </li>
@@ -263,7 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="manual-deployment" class="level3">
-<h3 class="anchored" data-anchor-id="manual-deployment">4. Manual Deployment</h3>
+<h3 data-anchor-id="manual-deployment">4. Manual Deployment</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build the site</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -271,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="pre-deployment-checklist" class="level2">
-<h2 class="anchored" data-anchor-id="pre-deployment-checklist">Pre-Deployment Checklist</h2>
+<h2 data-anchor-id="pre-deployment-checklist">Pre-Deployment Checklist</h2>
 <ul class="task-list">
 <li><label><input type="checkbox">Update contact information in <code>_quarto.yml</code></label></li>
 <li><label><input type="checkbox">Replace placeholder content with your actual information</label></li>
@@ -283,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="domain-configuration" class="level2">
-<h2 class="anchored" data-anchor-id="domain-configuration">Domain Configuration</h2>
+<h2 data-anchor-id="domain-configuration">Domain Configuration</h2>
 <p>If using a custom domain:</p>
 <ol type="1">
 <li><strong>GitHub Pages</strong>: Add CNAME file with your domain</li>
@@ -292,13 +291,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="sslhttps" class="level2">
-<h2 class="anchored" data-anchor-id="sslhttps">SSL/HTTPS</h2>
+<h2 data-anchor-id="sslhttps">SSL/HTTPS</h2>
 <p>All modern hosting platforms provide free SSL certificates. Ensure your site uses HTTPS for: - Better SEO rankings - Secure connections - Professional appearance</p>
 </section>
 <section id="site-maintenance" class="level2">
-<h2 class="anchored" data-anchor-id="site-maintenance">Site Maintenance</h2>
+<h2 data-anchor-id="site-maintenance">Site Maintenance</h2>
 <section id="adding-new-blog-posts" class="level3">
-<h3 class="anchored" data-anchor-id="adding-new-blog-posts">Adding New Blog Posts</h3>
+<h3 data-anchor-id="adding-new-blog-posts">Adding New Blog Posts</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create new post directory</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="st">"blog/posts/YYYY-MM-DD-post-title"</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -312,29 +311,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="ex">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="updating-publications" class="level3">
-<h3 class="anchored" data-anchor-id="updating-publications">Updating Publications</h3>
+<h3 data-anchor-id="updating-publications">Updating Publications</h3>
 <p>Add new entries to <code>_bibliography/papers.bib</code> in standard BibTeX format.</p>
 </section>
 <section id="modifying-styling" class="level3">
-<h3 class="anchored" data-anchor-id="modifying-styling">Modifying Styling</h3>
+<h3 data-anchor-id="modifying-styling">Modifying Styling</h3>
 <p>Edit <code>styles/custom.scss</code> to customize colors, fonts, and layouts.</p>
 </section>
 </section>
 <section id="performance-optimization" class="level2">
-<h2 class="anchored" data-anchor-id="performance-optimization">Performance Optimization</h2>
+<h2 data-anchor-id="performance-optimization">Performance Optimization</h2>
 <p>Your site is already optimized with: - ✅ Responsive images - ✅ Minified CSS/JS - ✅ Clean HTML structure - ✅ Fast loading times - ✅ Mobile-friendly design</p>
 </section>
 <section id="analytics-seo" class="level2">
-<h2 class="anchored" data-anchor-id="analytics-seo">Analytics &amp; SEO</h2>
+<h2 data-anchor-id="analytics-seo">Analytics &amp; SEO</h2>
 <p>Consider adding: - Google Analytics - Search Console verification - OpenGraph meta tags (already included) - XML sitemap (auto-generated)</p>
 </section>
 <section id="support" class="level2">
-<h2 class="anchored" data-anchor-id="support">Support</h2>
+<h2 data-anchor-id="support">Support</h2>
 <p>For Quarto-specific issues: - <a href="https://quarto.org/docs/">Quarto Documentation</a> - <a href="https://github.com/quarto-dev/quarto-cli/discussions">Quarto Community</a></p>
 <p>For website content questions: - Review this README.md - Check example content in blog posts - Refer to original site structure</p>
 </section>
 <section id="backup-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="backup-strategy">Backup Strategy</h2>
+<h2 data-anchor-id="backup-strategy">Backup Strategy</h2>
 <ol type="1">
 <li>Keep source code in Git repository</li>
 <li>Regular commits for content updates</li>
@@ -518,13 +517,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

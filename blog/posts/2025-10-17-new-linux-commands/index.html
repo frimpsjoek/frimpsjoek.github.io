@@ -72,12 +72,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-abd5cb3ff6033ea6a8cf78999d003cff.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-feff50d4bd05eb1645d832502c700d35.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -240,10 +239,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1><strong>Modern Alternatives to Traditional Linux Commands: The Essential Six</strong></h1>
 <p>The Linux command-line ecosystem has experienced a renaissance, with developers reimagining classic Unix utilities using modern programming languages like Rust and Go. These contemporary tools address historical limitations of their predecessors, offering enhanced performance, improved usability, and features designed for today’s development workflows—including adoption by cutting-edge AI coding assistants like VS Code, Claude Code, and GitHub Copilot.</p>
 <section id="why-these-tools-matter" class="level2">
-<h2 class="anchored" data-anchor-id="why-these-tools-matter"><strong>Why These Tools Matter</strong></h2>
+<h2 data-anchor-id="why-these-tools-matter"><strong>Why These Tools Matter</strong></h2>
 <p>Traditional Linux commands, while reliable and universally available, often suffer from unintuitive syntax, limited visual feedback, and performance bottlenecks when handling large datasets. Modern alternatives leverage parallelization, optimized algorithms, and user-centered design principles without sacrificing the power of the command line. Their performance and features have made them essential enough that major development tools now rely on them internally.</p>
 <section id="quick-reference-comparison" class="level4">
-<h4 class="anchored" data-anchor-id="quick-reference-comparison"><strong>Quick Reference Comparison</strong></h4>
+<h4 data-anchor-id="quick-reference-comparison"><strong>Quick Reference Comparison</strong></h4>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -312,9 +311,9 @@ Tip
 </section>
 </section>
 <section id="the-essential-six" class="level2">
-<h2 class="anchored" data-anchor-id="the-essential-six"><strong>The Essential Six</strong></h2>
+<h2 data-anchor-id="the-essential-six"><strong>The Essential Six</strong></h2>
 <section id="ripgrep-rg-high-performance-search" class="level3">
-<h3 class="anchored" data-anchor-id="ripgrep-rg-high-performance-search"><strong>1. ripgrep (rg): High-Performance Search</strong></h3>
+<h3 data-anchor-id="ripgrep-rg-high-performance-search"><strong>1. ripgrep (rg): High-Performance Search</strong></h3>
 <p>The <code>ripgrep</code> tool has established itself as the performance leader for text searching, particularly with large codebases. Built in Rust, it maintains speed while supporting full Unicode and can switch regex engines based on query complexity. Benchmark comparisons show ripgrep achieving 10x performance improvements in multi-threaded scenarios compared to traditional grep, with particularly strong results on compressed data.</p>
 <p>Visual Studio Code adopted ripgrep as its default search engine specifically because of its exceptional performance with large repositories. When you search across your workspace in VS Code, you’re using ripgrep under the hood. Claude Code similarly integrates ripgrep for codebase understanding and search operations, leveraging its parallel processing and gitignore-aware filtering.</p>
 <p><strong>Installation:</strong></p>
@@ -340,7 +339,7 @@ Note
 </div>
 </section>
 <section id="bat-enhanced-file-viewing" class="level3">
-<h3 class="anchored" data-anchor-id="bat-enhanced-file-viewing"><strong>2. bat: Enhanced File Viewing</strong></h3>
+<h3 data-anchor-id="bat-enhanced-file-viewing"><strong>2. bat: Enhanced File Viewing</strong></h3>
 <p>The <code>bat</code> command reimagines <code>cat</code> as a syntax-aware file viewer with Git integration. Written in Rust, it provides automatic syntax highlighting for numerous programming and markup languages, displays line numbers by default, and shows Git modifications in a left sidebar. Unlike traditional <code>cat</code>, bat includes automatic paging for large files and can detect non-printable characters.</p>
 <p><strong>Installation:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linux</span></span>
@@ -366,7 +365,7 @@ Note
 </div>
 </section>
 <section id="fd-intuitive-file-discovery" class="level3">
-<h3 class="anchored" data-anchor-id="fd-intuitive-file-discovery"><strong>3. fd: Intuitive File Discovery</strong></h3>
+<h3 data-anchor-id="fd-intuitive-file-discovery"><strong>3. fd: Intuitive File Discovery</strong></h3>
 <p>Where <code>find</code> requires complex syntax like <code>find -iname '*PATTERN*'</code>, <code>fd</code> simplifies searching to <code>fd PATTERN</code>. This Rust-based tool achieves superior performance through parallelized directory traversal and implements smart case sensitivity—defaulting to case-insensitive searches unless the pattern contains uppercase characters.</p>
 <p><strong>Installation:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linux</span></span>
@@ -378,7 +377,7 @@ Note
 <p><strong>Key Features:</strong> - Respects <code>.gitignore</code> by default - Smart case sensitivity - Colorized output for better visibility - Parallel directory traversal - Simple, intuitive regex support</p>
 </section>
 <section id="eza-modern-directory-listing" class="level3">
-<h3 class="anchored" data-anchor-id="eza-modern-directory-listing"><strong>4. eza: Modern Directory Listing</strong></h3>
+<h3 data-anchor-id="eza-modern-directory-listing"><strong>4. eza: Modern Directory Listing</strong></h3>
 <p>The <code>eza</code> tool (a maintained fork of the now-deprecated <code>exa</code>) transforms directory listing with color-coded output that distinguishes file types at a glance. Its <code>--git</code> parameter displays Git status inline (N for new, M for modified, I for ignored), integrating version control awareness directly into file browsing. The tree view capability provides hierarchical directory visualization without requiring separate commands.</p>
 <p><strong>Installation:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linux</span></span>
@@ -391,7 +390,7 @@ Note
 <p><strong>Key Features:</strong> - Git status integration showing file states - Icon support for file types - Tree view for directory hierarchies - Extended metadata display (permissions, ownership, timestamps) - Groups directories first by default</p>
 </section>
 <section id="zoxide-smarter-navigation" class="level3">
-<h3 class="anchored" data-anchor-id="zoxide-smarter-navigation"><strong>5. zoxide: Smarter Navigation</strong></h3>
+<h3 data-anchor-id="zoxide-smarter-navigation"><strong>5. zoxide: Smarter Navigation</strong></h3>
 <p>The <code>zoxide</code> tool is a blazing-fast autojumper that completely replaces the <code>cd</code> command. It remembers which directories you use most frequently, allowing you to jump to them in just a few keystrokes. Instead of typing <code>cd ~/projects/work/client/application</code>, you can simply type <code>z app</code> and zoxide intelligently navigates to the most relevant matching directory.</p>
 <p><strong>Installation:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linux</span></span>
@@ -407,7 +406,7 @@ Note
 <p><strong>Key Features:</strong> - Learns your most-visited directories automatically - Interactive selection with <code>fzf</code> integration (<code>zi</code> command) - Works with all major shells (bash, zsh, fish, PowerShell) - Orders of magnitude faster than alternatives like autojump or z.lua - Supports tab completion for enhanced usability</p>
 </section>
 <section id="delta-enhanced-git-diffs" class="level3">
-<h3 class="anchored" data-anchor-id="delta-enhanced-git-diffs"><strong>6. delta: Enhanced Git Diffs</strong></h3>
+<h3 data-anchor-id="delta-enhanced-git-diffs"><strong>6. delta: Enhanced Git Diffs</strong></h3>
 <p>The <code>delta</code> tool is a syntax-highlighting pager for git and diff output that makes code reviews more efficient and enjoyable. It provides side-by-side diffs, language syntax highlighting, within-line insertion/deletion detection, and extensive customization options. Delta transforms git’s default diff output into a readable, visually appealing format that highlights what actually changed.</p>
 <p><strong>Installation:</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linux</span></span>
@@ -426,9 +425,9 @@ Note
 </section>
 </section>
 <section id="honorable-mentions" class="level2">
-<h2 class="anchored" data-anchor-id="honorable-mentions"><strong>Honorable Mentions</strong></h2>
+<h2 data-anchor-id="honorable-mentions"><strong>Honorable Mentions</strong></h2>
 <section id="system-monitoring" class="level3">
-<h3 class="anchored" data-anchor-id="system-monitoring"><strong>System Monitoring</strong></h3>
+<h3 data-anchor-id="system-monitoring"><strong>System Monitoring</strong></h3>
 <p><strong>htop / btop</strong>: Interactive process viewers that revolutionize system monitoring with color-coded CPU and memory usage bars, per-core CPU visualization, and mouse support. Unlike <code>top</code>, which requires memorizing keyboard shortcuts, these tools provide labeled function keys for common operations.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># htop installation</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install htop      <span class="co"># Ubuntu/Debian</span></span>
@@ -443,7 +442,7 @@ Note
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cargo</span> install procs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="disk-usage-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="disk-usage-analysis"><strong>Disk Usage Analysis</strong></h3>
+<h3 data-anchor-id="disk-usage-analysis"><strong>Disk Usage Analysis</strong></h3>
 <p><strong>duf</strong>: Presents disk usage information with color-coded bars and a clear layout, replacing the traditional <code>df</code> command. The tool automatically adjusts to terminal width and can export results as JSON.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> pacman <span class="at">-S</span> duf         <span class="co"># Arch</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install duf       <span class="co"># Fedora</span></span>
@@ -458,7 +457,7 @@ Note
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install ncdu          <span class="co"># macOS</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="text-processing" class="level3">
-<h3 class="anchored" data-anchor-id="text-processing"><strong>Text Processing</strong></h3>
+<h3 data-anchor-id="text-processing"><strong>Text Processing</strong></h3>
 <p><strong>sd</strong>: An intuitive find &amp; replace command-line tool that’s 2-11x faster than <code>sed</code> with simpler syntax for replacing all occurrences. It uses the convenient regex syntax you already know from JavaScript and Python.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cargo</span> install sd</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install sd            <span class="co"># macOS</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -469,7 +468,7 @@ Note
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install jq            <span class="co"># macOS</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="development-tools" class="level3">
-<h3 class="anchored" data-anchor-id="development-tools"><strong>Development Tools</strong></h3>
+<h3 data-anchor-id="development-tools"><strong>Development Tools</strong></h3>
 <p><strong>starship</strong>: The minimal, blazing-fast, and infinitely customizable prompt for any shell, written in Rust. It provides contextual information about your current directory, git status, programming language versions, and more.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cargo</span> install starship</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install starship      <span class="co"># macOS</span></span>
@@ -483,7 +482,7 @@ Note
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cargo</span> install hyperfine</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="documentation-and-utilities" class="level3">
-<h3 class="anchored" data-anchor-id="documentation-and-utilities"><strong>Documentation and Utilities</strong></h3>
+<h3 data-anchor-id="documentation-and-utilities"><strong>Documentation and Utilities</strong></h3>
 <p><strong>tldr / tealdeer</strong>: Community-driven, simplified man pages focused on practical examples rather than comprehensive reference material. <code>tealdeer</code> is a very fast Rust implementation of tldr.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tldr (Node.js version)</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">-g</span> tldr</span>
@@ -499,10 +498,10 @@ Note
 </section>
 </section>
 <section id="complete-shell-setup" class="level2">
-<h2 class="anchored" data-anchor-id="complete-shell-setup"><strong>Complete Shell Setup</strong></h2>
+<h2 data-anchor-id="complete-shell-setup"><strong>Complete Shell Setup</strong></h2>
 <p>Here’s a comprehensive configuration to replace traditional tools with their modern equivalents. Copy these configurations to your <code>~/.bashrc</code> or <code>~/.zshrc</code> file:</p>
 <section id="phase-1-essential-tools-setup" class="level3">
-<h3 class="anchored" data-anchor-id="phase-1-essential-tools-setup"><strong>Phase 1: Essential Tools Setup</strong></h3>
+<h3 data-anchor-id="phase-1-essential-tools-setup"><strong>Phase 1: Essential Tools Setup</strong></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ESSENTIAL SIX - Core Productivity Tools</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
@@ -556,7 +555,7 @@ Note
 <span id="cb25-51"><a href="#cb25-51" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="phase-2-enhanced-tools-setup" class="level3">
-<h3 class="anchored" data-anchor-id="phase-2-enhanced-tools-setup"><strong>Phase 2: Enhanced Tools Setup</strong></h3>
+<h3 data-anchor-id="phase-2-enhanced-tools-setup"><strong>Phase 2: Enhanced Tools Setup</strong></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># HONORABLE MENTIONS - Enhanced Workflow Tools</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
@@ -599,7 +598,7 @@ Note
 <span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="phase-3-convenience-aliases" class="level3">
-<h3 class="anchored" data-anchor-id="phase-3-convenience-aliases"><strong>Phase 3: Convenience Aliases</strong></h3>
+<h3 data-anchor-id="phase-3-convenience-aliases"><strong>Phase 3: Convenience Aliases</strong></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># CONVENIENCE ALIASES - Quality of Life</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
@@ -624,7 +623,7 @@ Note
 <span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> ....=<span class="st">'cd ../../..'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="ripgrep-configuration" class="level3">
-<h3 class="anchored" data-anchor-id="ripgrep-configuration"><strong>Ripgrep Configuration</strong></h3>
+<h3 data-anchor-id="ripgrep-configuration"><strong>Ripgrep Configuration</strong></h3>
 <p>Create a ripgrep configuration file at <code>~/.ripgreprc</code> for optimal performance:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># RIPGREP CONFIGURATION (~/.ripgreprc)</span></span>
@@ -669,10 +668,10 @@ Note
 </section>
 </section>
 <section id="practical-usage-examples" class="level2">
-<h2 class="anchored" data-anchor-id="practical-usage-examples"><strong>Practical Usage Examples</strong></h2>
+<h2 data-anchor-id="practical-usage-examples"><strong>Practical Usage Examples</strong></h2>
 <p>Here are some real-world examples showing how these tools improve daily workflows:</p>
 <section id="code-search-and-navigation" class="level3">
-<h3 class="anchored" data-anchor-id="code-search-and-navigation"><strong>Code Search and Navigation</strong></h3>
+<h3 data-anchor-id="code-search-and-navigation"><strong>Code Search and Navigation</strong></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find all </span><span class="al">TODO</span><span class="co"> comments in your project</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rg</span> <span class="st">"TODO|FIXME"</span> <span class="at">--type</span><span class="op">=</span>py</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -688,7 +687,7 @@ Note
 <span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="ex">fd</span> <span class="st">'async def'</span> <span class="at">--type</span><span class="op">=</span>py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="file-management-and-inspection" class="level3">
-<h3 class="anchored" data-anchor-id="file-management-and-inspection"><strong>File Management and Inspection</strong></h3>
+<h3 data-anchor-id="file-management-and-inspection"><strong>File Management and Inspection</strong></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List files with Git status and icons</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ll</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -702,7 +701,7 @@ Note
 <span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="ex">procs</span> <span class="at">--tree</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="development-workflow" class="level3">
-<h3 class="anchored" data-anchor-id="development-workflow"><strong>Development Workflow</strong></h3>
+<h3 data-anchor-id="development-workflow"><strong>Development Workflow</strong></h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare Git changes with syntax highlighting</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -717,9 +716,9 @@ Note
 </section>
 </section>
 <section id="migration-tips" class="level2">
-<h2 class="anchored" data-anchor-id="migration-tips"><strong>Migration Tips</strong></h2>
+<h2 data-anchor-id="migration-tips"><strong>Migration Tips</strong></h2>
 <section id="gradual-adoption-strategy" class="level3">
-<h3 class="anchored" data-anchor-id="gradual-adoption-strategy"><strong>Gradual Adoption Strategy</strong></h3>
+<h3 data-anchor-id="gradual-adoption-strategy"><strong>Gradual Adoption Strategy</strong></h3>
 <ol type="1">
 <li><strong>Week 1</strong>: Install and configure the Essential Six tools</li>
 <li><strong>Week 2</strong>: Learn 2-3 new commands per tool through daily usage</li>
@@ -728,7 +727,7 @@ Note
 </ol>
 </section>
 <section id="team-adoption" class="level3">
-<h3 class="anchored" data-anchor-id="team-adoption"><strong>Team Adoption</strong></h3>
+<h3 data-anchor-id="team-adoption"><strong>Team Adoption</strong></h3>
 <ul>
 <li>Share this setup with your development team</li>
 <li>Create internal documentation for tool usage patterns</li>
@@ -737,7 +736,7 @@ Note
 </ul>
 </section>
 <section id="troubleshooting-common-issues" class="level3">
-<h3 class="anchored" data-anchor-id="troubleshooting-common-issues"><strong>Troubleshooting Common Issues</strong></h3>
+<h3 data-anchor-id="troubleshooting-common-issues"><strong>Troubleshooting Common Issues</strong></h3>
 <ul>
 <li><strong>Permission denied</strong>: Some tools may need <code>sudo</code> for system-wide installation</li>
 <li><strong>Command not found</strong>: Check if the tool is installed with <code>which toolname</code></li>
@@ -747,7 +746,7 @@ Note
 </section>
 </section>
 <section id="measuring-the-impact" class="level2">
-<h2 class="anchored" data-anchor-id="measuring-the-impact"><strong>Measuring the Impact</strong></h2>
+<h2 data-anchor-id="measuring-the-impact"><strong>Measuring the Impact</strong></h2>
 <p>Track these metrics to quantify the productivity improvements:</p>
 <ul>
 <li><strong>Search speed</strong>: Time to find code across large repositories</li>
@@ -758,18 +757,18 @@ Note
 <p>Most developers report 20-40% improvement in command-line productivity within the first month of adoption.</p>
 </section>
 <section id="why-ai-coding-tools-use-these" class="level2">
-<h2 class="anchored" data-anchor-id="why-ai-coding-tools-use-these"><strong>Why AI Coding Tools Use These</strong></h2>
+<h2 data-anchor-id="why-ai-coding-tools-use-these"><strong>Why AI Coding Tools Use These</strong></h2>
 <p>The adoption of these tools by AI coding platforms represents validation of their design and performance characteristics. When Claude Code performs agentic searches across your codebase, it relies on ripgrep’s ability to handle millions of lines efficiently while respecting gitignore rules. The Model Context Protocol (MCP) integrations in tools like Claude Code and GitHub Copilot leverage these modern utilities for file discovery, content searching, and workspace analysis.</p>
 <p>Cursor, Windsurf, and other agentic IDEs similarly incorporate these tools into their autonomous coding workflows. When these systems analyze large repositories, propose multi-file changes, or search for patterns, the performance of underlying tools directly impacts agent responsiveness. The parallelization, smart filtering, and optimized algorithms of modern CLI tools make real-time agentic coding experiences possible.</p>
 </section>
 <section id="future-of-command-line-tools" class="level2">
-<h2 class="anchored" data-anchor-id="future-of-command-line-tools"><strong>Future of Command-Line Tools</strong></h2>
+<h2 data-anchor-id="future-of-command-line-tools"><strong>Future of Command-Line Tools</strong></h2>
 <p>The emergence of these modern alternatives reflects broader trends in systems programming—the adoption of memory-safe languages like Rust, emphasis on user experience in developer tools, and recognition that traditional Unix philosophy can coexist with modern ergonomics. As these tools mature and gain adoption by professional development environments and AI coding systems, they’re establishing new expectations for command-line interfaces that balance power with usability.</p>
 <p>The fact that infrastructure like VS Code and Claude Code has standardized on tools like ripgrep signals their transition from alternatives to essentials. As AI agents become more capable and handle increasingly complex autonomous tasks, the performance ceiling of underlying tools will continue to matter. These modern CLI utilities aren’t just replacements—they’re enablers of the next generation of development workflows.</p>
 <hr>
 </section>
 <section id="essential-references" class="level2">
-<h2 class="anchored" data-anchor-id="essential-references"><strong>Essential References</strong></h2>
+<h2 data-anchor-id="essential-references"><strong>Essential References</strong></h2>
 <p><strong>For more tools and alternatives, see:</strong></p>
 <ol type="1">
 <li><a href="https://zaiste.net/posts/shell-commands-rust/">Rewritten in Rust: Modern Alternatives of Command-Line Tools</a></li>
@@ -974,13 +973,6 @@ Note
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
