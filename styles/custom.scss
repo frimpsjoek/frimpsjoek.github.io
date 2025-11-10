@@ -3492,9 +3492,9 @@ pre, code, .sourceCode, div.sourceCode, pre.sourceCode {
   --icon-base-scale: 1;
 }
 
-/* Slight magnification on hover without overlap (small scale only) */
+/* CSS hover transform removed; JS handles layout-safe zoom */
 .tools-row img:hover {
-  transform: scale(1.07);
+  transform: none;
   z-index: 2;
   background: transparent !important;
   box-shadow: none !important;
