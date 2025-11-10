@@ -1647,6 +1647,14 @@ h1::after, h2::after, h3::after {
   content: none !important;
 }
 
+// Hide any Quarto/AnchorJS heading anchor links that might inject glyphs
+a.anchorjs-link, a.anchor-link,
+h1 .anchorjs-link, h2 .anchorjs-link, h3 .anchorjs-link,
+h1 .anchor-link, h2 .anchor-link, h3 .anchor-link {
+  display: none !important;
+  content: none !important;
+}
+
 // Simple color shift on hover
 h1:hover, h2:hover, h3:hover {
   color: var(--global-hover-color);
@@ -3468,6 +3476,10 @@ pre, code, .sourceCode, div.sourceCode, pre.sourceCode {
   height: 36px;
   opacity: 0.85;
   vertical-align: middle;
+  border-radius: 0 !important; // ensure no rounding/cropping
+  background: transparent !important;
+  padding: 0;
+  object-fit: contain;
 }
 
 [data-bs-theme="dark"] .tools-row img {
