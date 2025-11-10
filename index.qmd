@@ -67,13 +67,13 @@ See the full list on the [news page](news.qmd).
   <img alt="VSCode" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" />
   <img alt="HTML" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg" />
   <img alt="CSS" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" />
-  <img alt="GitHub" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" />
+  <img class="icon-invert-dark" alt="GitHub" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" />
   <img alt="Bash" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" />
   <img class="langchain-logo" alt="LangChain" src="assets/icons/langchain.svg" style="height: 36px; width: auto;" />
   <img alt="GitHub Copilot" src="assets/icons/githubcopilot.svg" style="height: 36px; width: auto;" />
-  <img alt="Notion" src="assets/icons/notion.svg" style="height: 36px; width: auto;" />
+  <img class="icon-invert-dark" alt="Notion" src="assets/icons/notion.svg" style="height: 36px; width: auto;" />
   <!-- Cline icon pending proper asset; hiding for now -->
-  <img alt="MCP" src="assets/icons/mcp.svg" style="height: 36px; width: auto;" />
+  <img class="icon-invert-dark" alt="MCP" src="assets/icons/mcp.svg" style="height: 36px; width: auto;" />
   <img alt="Gradio" src="https://www.gradio.app/_app/immutable/assets/gradio.CHB5adID.svg" style="height: 36px; width: auto;" />
   <img alt="HuggingFace" src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" style="height: 36px; width: auto;" />
   <img alt="Blender" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" />
