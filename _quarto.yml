@@ -54,6 +54,7 @@ format:
     theme:
       - flatly
       - styles/custom.scss
+    anchor-sections: false
     toc: true
     toc-location: right
     toc-depth: 3

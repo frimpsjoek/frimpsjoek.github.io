@@ -70,6 +70,10 @@ See the full list on the [news page](news.qmd).
   <img alt="GitHub" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" />
   <img alt="Bash" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" />
   <img class="langchain-logo" alt="LangChain" src="https://python.langchain.com/img/brand/wordmark.png" style="height: 36px; width: auto;" />
+  <img alt="GitHub Copilot" src="https://cdn.simpleicons.org/github/181717" style="height: 36px; width: auto;" />
+  <img alt="Notion" src="https://cdn.simpleicons.org/notion/000000" style="height: 36px; width: auto;" />
+  <img alt="Cline" src="assets/icons/cline.svg" style="height: 36px; width: auto;" />
+  <img alt="MCP" src="assets/icons/mcp.svg" style="height: 36px; width: auto;" />
   <img alt="Gradio" src="https://www.gradio.app/_app/immutable/assets/gradio.CHB5adID.svg" style="height: 36px; width: auto;" />
   <img alt="HuggingFace" src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" style="height: 36px; width: auto;" />
   <img alt="Blender" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" />
