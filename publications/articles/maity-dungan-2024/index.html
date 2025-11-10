@@ -39,7 +39,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-1ea7637c6125de50c992a10f75e792a9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-1fee4e1c2dcb2af803b12b101832b7b0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -416,8 +416,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let raf = null;
     let mouseX = 0;
     let active = false;
-    const influence = 90; // px radius of influence
-    const maxBoost = 0.6; // max extra scale (1 + maxBoost)
+    const influence = 120; // px radius of influence (larger base icons)
+    const maxBoost = 0.55; // slightly stronger magnification
 
     function getTheme() {
       return document.documentElement.getAttribute('data-bs-theme') || 'light';
