@@ -3463,28 +3463,32 @@ pre, code, .sourceCode, div.sourceCode, pre.sourceCode {
 .tools-row {
   display: flex;
   justify-content: center;
-  gap: 24px; // increase spacing to prevent overlap
+  gap: 28px; // spacing between icons
   flex-wrap: wrap;
-  margin: 2rem auto 0; // slightly tighter top margin
-  padding-top: 1.25rem; // reduce top padding
+  margin: 2rem auto 0;
+  padding-top: 1.25rem;
   padding-bottom: 0;
-  border-top: 2px solid var(--global-divider-color); // subtle divider line
+  border-top: 2px solid var(--global-divider-color);
 }
 
 .tools-row img {
   /* default size */
   width: 56px;
   height: 56px;
-  opacity: 0.85;
+  opacity: 0.95;
   vertical-align: middle;
-  border-radius: 6px; // soften square edges without cropping
+  border-radius: 0; // remove bubble rounding
   background: transparent !important;
-  padding: 4px; // breathing room around larger icons
+  padding: 0; // remove bubble padding
   object-fit: contain;
-  transition: transform 0.12s ease, filter 0.12s ease; // snappier for dock effect
-  /* baseline scale adjustable per icon */
+  transition: none; // disable transform-based hover to prevent overlap
+  box-shadow: none !important; // prevent global image shadow
+  /* baseline scale adjustable per icon (no longer used for hover) */
   --icon-base-scale: 1;
 }
+
+/* Explicitly neutralize global img:hover rules for tools row */
+.tools-row img:hover { transform: none !important; box-shadow: none !important; background: transparent !important; }
 
 // Boost size for icons that look visually smaller inside their SVG viewboxes
 .tools-row img.icon-boost { --icon-base-scale: 1.2; }
