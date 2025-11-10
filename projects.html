@@ -39,7 +39,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-62203559d7cd71cee89d2ecf52d81911.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-336540f815ff567d405385a72ec5ec0f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -428,8 +428,8 @@ ul.task-list li input[type="checkbox"] {
     let raf = null;
     let mouseX = 0;
     let active = false;
-    const influence = 80;  // smaller radius so neighbors barely move
-    const maxBoost = 0.9;  // strong center zoom, less global motion
+    const influence = 70;  // tighter radius so neighbors barely move
+    const maxBoost = 0.45; // gentler max zoom (~1.45x at center)
 
     // capture base sizes once
     const base = new Map();
@@ -459,12 +459,12 @@ ul.task-list li input[type="checkbox"] {
         const d = Math.abs(mouseX - center);
         // smooth gaussian-like falloff with threshold to avoid "elastic" feel
         const t = Math.exp(-((d / influence) ** 2));
-        const neighborCutoff = 0.28; // below this, no growth at all
+        const neighborCutoff = 0.55; // stronger cutoff so only hovered icon grows
         const eff = active && t > neighborCutoff ? (t - neighborCutoff) / (1 - neighborCutoff) : 0;
         let scale = b.bs * (1 + maxBoost * eff);
         // clamp maximum to avoid exceeding row height (keep top/bottom fixed)
         const maxByHeight = (rowHeight - 6) / b.h;
-        const maxScale = Math.min(b.bs * 2.0, maxByHeight);
+        const maxScale = Math.min(b.bs * 1.6, maxByHeight);
         if (scale > maxScale) scale = maxScale;
         img.style.width = (b.w * scale).toFixed(2) + 'px';
         img.style.height = (b.h * scale).toFixed(2) + 'px';

@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-91c96c5f37526e62683c74b284079ba0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-2c5da11d7ec933160c97c95697097b97.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -1846,8 +1846,8 @@ The combination of Quarto and Python provides everything you need to create a mo
     let raf = null;
     let mouseX = 0;
     let active = false;
-    const influence = 80;  // smaller radius so neighbors barely move
-    const maxBoost = 0.9;  // strong center zoom, less global motion
+    const influence = 70;  // tighter radius so neighbors barely move
+    const maxBoost = 0.45; // gentler max zoom (~1.45x at center)
 
     // capture base sizes once
     const base = new Map();
@@ -1877,12 +1877,12 @@ The combination of Quarto and Python provides everything you need to create a mo
         const d = Math.abs(mouseX - center);
         // smooth gaussian-like falloff with threshold to avoid "elastic" feel
         const t = Math.exp(-((d / influence) ** 2));
-        const neighborCutoff = 0.28; // below this, no growth at all
+        const neighborCutoff = 0.55; // stronger cutoff so only hovered icon grows
         const eff = active && t > neighborCutoff ? (t - neighborCutoff) / (1 - neighborCutoff) : 0;
         let scale = b.bs * (1 + maxBoost * eff);
         // clamp maximum to avoid exceeding row height (keep top/bottom fixed)
         const maxByHeight = (rowHeight - 6) / b.h;
-        const maxScale = Math.min(b.bs * 2.0, maxByHeight);
+        const maxScale = Math.min(b.bs * 1.6, maxByHeight);
         if (scale > maxScale) scale = maxScale;
         img.style.width = (b.w * scale).toFixed(2) + 'px';
         img.style.height = (b.h * scale).toFixed(2) + 'px';
