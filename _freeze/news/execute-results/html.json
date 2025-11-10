@@ -1,0 +1,16 @@
+{
+  "hash": "f6156b14856cc859ca68a7092abedd4c",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"News & Highlights\"\ndescription: \"Updates on talks, awards, and collaborations.\"\nformat:\n  html:\n    theme:\n      - flatly\n      - styles/custom.scss\n    toc: false\n    page-layout: full\n    citations-hover: true\n    crossrefs-hover: true\n---\n\n::: {#f3c1fe62 .cell results='asis' execution_count=1}\n\n::: {.cell-output .cell-output-display}\n```{=html}\n<section class='news-timeline'>\n<div class='news-item'>\n  <div class='news-marker'></div>\n  <div class='news-content'>\n    <h3 class='news-title'>Joined Argonne National Laboratory as Postdoctoral Researcher</h3>\n    <div class='news-meta'>Sep 15, 2024 · <span class='news-location'>Lemont, IL</span></div>\n    <p class='news-summary'>Started a postdoctoral appointment in the Materials Science division to develop ML-assisted GW/BSE workflows for heterogeneous materials.</p>\n  </div>\n</div>\n\n<div class='news-item'>\n  <div class='news-marker'></div>\n  <div class='news-content'>\n    <h3 class='news-title'>Defended Ph.D. in Chemistry at Wayne State University</h3>\n    <div class='news-meta'>Aug 30, 2024 · <span class='news-location'>Detroit, MI</span></div>\n    <p class='news-summary'>Successfully defended my dissertation on many-body approaches for quantum dots and covalent interfaces.</p>\n  </div>\n</div>\n\n<div class='news-item'>\n  <div class='news-marker'></div>\n  <div class='news-content'>\n    <h3 class='news-title'>Led Chemistry Meets Computers Summer Bootcamp</h3>\n    <div class='news-meta'>Jul 01, 2023 · <span class='news-location'>Wayne State University</span></div>\n    <p class='news-summary'>Designed and taught a three-week intensive introducing Python and ASE to chemistry students, mentoring project teams through materials workflows.</p>\n  </div>\n</div>\n</section>\n```\n:::\n:::\n\n\n",
+    "supporting": [
+      "news_files"
+    ],
+    "filters": [],
+    "includes": {
+      "include-in-header": [
+        "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js\" integrity=\"sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==\" crossorigin=\"anonymous\"></script>\n<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js\" integrity=\"sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==\" crossorigin=\"anonymous\" data-relocate-top=\"true\"></script>\n<script type=\"application/javascript\">define('jquery', [],function() {return window.jQuery;})</script>\n"
+      ]
+    }
+  }
+}

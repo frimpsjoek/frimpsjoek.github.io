@@ -1,0 +1,33 @@
+---
+title: "Method Development & HPC Tooling"
+description: "Workflow automation, MPI-enabled screening, and reproducible infrastructure for many-body calculations."
+format:
+  html:
+    toc: true
+    page-layout: article
+---
+
+::: {.project-overview-meta}
+- **Timeline:** Ongoing
+- **Role:** Developer & Maintainer
+- **Collaborators:** WEST, BerkeleyGW, and community tooling teams
+:::
+
+## Motivation
+
+Leadership-class simulations demand reproducible pipelines, data hygiene, and responsive visualization. I build tooling that bridges traditional electronic-structure packages with modern workflow engines so that large-scale screening stays transparent and repeatable.
+
+## Core Contributions
+
+- MPI-aware task orchestration for WEST/BerkeleyGW calculations on Polaris, Perlmutter, and Frontier.
+- Automated provenance capture and lightweight dashboards for monitoring calculation health.
+- PyTorch-based surrogate models that plug into existing workflows to pre-screen candidate structures.
+
+## Resources
+
+- Source and notebooks on [GitHub](https://github.com/frimpsjoek)
+- Internal documentation (available to collaborators upon request)
+
+## Roadmap
+
+Current tasks include integrating ML surrogates directly into WEST's scheduling layer and publishing a reusable cookiecutter for multi-fidelity excited-state screening.

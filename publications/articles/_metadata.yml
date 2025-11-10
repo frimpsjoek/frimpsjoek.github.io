@@ -1,0 +1,8 @@
+format:
+  html:
+    toc: false
+    page-layout: full
+    title-block-style: none
+    title-block: false
+image: /assets/img/publications/featured.png
+body-class: publication-article

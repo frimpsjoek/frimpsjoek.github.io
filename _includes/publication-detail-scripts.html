@@ -1,0 +1,35 @@
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('[data-copy-target]');
+  if (!buttons.length || !navigator.clipboard) {
+    return;
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const targetId = button.getAttribute('data-copy-target');
+      const codeElement = targetId ? document.getElementById(targetId) : null;
+      if (!codeElement) {
+        return;
+      }
+
+      const originalText = button.textContent;
+      const codeText = codeElement.innerText.trim();
+
+      navigator.clipboard.writeText(codeText).then(() => {
+        button.classList.add('copied');
+        button.textContent = 'Copied!';
+        setTimeout(() => {
+          button.classList.remove('copied');
+          button.textContent = originalText;
+        }, 2000);
+      }).catch(() => {
+        button.textContent = 'Copy failed';
+        setTimeout(() => {
+          button.textContent = originalText;
+        }, 2000);
+      });
+    });
+  });
+});
+</script>

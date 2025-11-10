@@ -1,0 +1,65 @@
+---
+title: "Comparative Study of Covalent and van Der Waals CdS Quantum Dot Assemblies from Many-Body Perturbation Theory"
+author: "Sandip Aryal, Joseph Frimpong, Zhen-Fei Liu"
+journ: "J. Phys. Chem. Lett."
+publication: "J. Phys. Chem. Lett."
+issue: "13, 43"
+page: "10153–10161"
+year: "2022"
+pub_number: "94"
+url_source: "https://doi.org/10.1021/acs.jpclett.2c02856"
+url_preprint: "AFL22.pdf"
+image: /assets/img/publications/featured.webp
+image_caption: ""
+categories:
+  - 2022
+---
+
+```{=html}
+<figure class="float-end ms-3 mb-3" style="max-width: 200px; margin-top: -0.35rem;">
+  <picture>
+    <source srcset="{{< meta image >}}" type="image/webp">
+    <img src="/assets/img/publications/featured.png" alt="{{< meta title >}}" class="img-fluid rounded" loading="lazy">
+  </picture>
+</figure>
+```
+
+**Journal:** {{< meta journ >}} ({{< meta year >}}) · {{< meta issue >}} · pp. {{< meta page >}} · Publication #{{< meta pub_number >}}
+
+::: {.publication-content}
+## Abstract
+
+Quantum dot (QD) assemblies are nanostructured networks made from aggregates of QDs and feature improved charge and energy transfer efficiencies compared to discrete QDs. Using first-principles many-body perturbation theory, we systematically compare the electronic and optical properties of two types of CdS QD assemblies that have been experimentally investigated: (i) QD gels, where individual QDs are covalently connected via di- or polysulfide bonds, and (ii) QD nanocrystals, where individual QDs are bound via van der Waals interactions. Our work illustrates how the electronic and optical properties evolve when discrete QDs are assembled into 1D, 2D, and 3D gels and nanocrystals, as well as how the one-body and many-body interactions in these systems impact the trends as the dimensionality of the assembly increases. Furthermore, our work reveals the crucial role of the di- or polysulfide covalent bonds in the localization of the excitons, which highlights the difference between QD gels and QD nanocrystals.
+
+## Resources
+
+- [Journal article](https://doi.org/10.1021/acs.jpclett.2c02856){target="_blank" rel="noopener"}
+- [Preprint (PDF)](AFL22.pdf){target="_blank" rel="noopener"}
+
+## Citation
+
+<div class="bibtex-card">
+<button class="btn btn-sm btn-outline-secondary bibtex-copy" type="button" data-copy-target="bibtex-aryal-frimpong-liu-2022">Copy BibTeX</button>
+
+```{#bibtex-aryal-frimpong-liu-2022 .language-bibtex}
+@article{AFL22,
+  title = {Comparative {{Study}} of {{Covalent}} and van Der {{Waals CdS Quantum Dot Assemblies}} from {{Many-Body Perturbation Theory}}},
+  author = {Aryal, Sandip and Frimpong, Joseph and Liu, Zhen-Fei},
+  year = {2022},
+  month = nov,
+  journal = {J. Phys. Chem. Lett.},
+  volume = {13},
+  number = {43},
+  pages = {10153--10161},
+  issn = {1948-7185, 1948-7185},
+  doi = {10.1021/acs.jpclett.2c02856},
+  urldate = {2023-11-14},
+  langid = {english},
+  abstract = {Quantum dot (QD) assemblies are nanostructured networks made from aggregates of QDs and feature improved charge and energy transfer efficiencies compared to discrete QDs. Using first-principles many-body perturbation theory, we systematically compare the electronic and optical properties of two types of CdS QD assemblies that have been experimentally investigated: (i) QD gels, where individual QDs are covalently connected via di- or polysulfide bonds, and (ii) QD nanocrystals, where individual QDs are bound via van der Waals interactions. Our work illustrates how the electronic and optical properties evolve when discrete QDs are assembled into 1D, 2D, and 3D gels and nanocrystals, as well as how the one-body and many-body interactions in these systems impact the trends as the dimensionality of the assembly increases. Furthermore, our work reveals the crucial role of the di- or polysulfide covalent bonds in the localization of the excitons, which highlights the difference between QD gels and QD nanocrystals.},
+  file = {/home/frimpsjoe/Zotero/zotero-files-db/The Journal of Physical Chemistry Letters/2022/AFL22.pdf}
+}
+```
+</div>
+:::
+
+{{< include ../../../_includes/publication-detail-scripts.html >}}

@@ -1,0 +1,59 @@
+---
+title: "Electrochemical Hydrogen Isotope Exchange of Amines Controlled by Alternating Current Frequency"
+author: "Nibedita Behera, Disni Gunasekera, Jyoti P. Mahajan, Joseph Frimpong, Zhen-Fei Liu, Long Luo"
+journ: "Faraday Discuss."
+issue: "247"
+page: "45–58"
+year: "2023"
+pub_number: "91"
+url_source: "https://doi.org/10.1039/D3FD00044C"
+image: /assets/img/publications/featured.webp
+image_caption: ""
+categories:
+  - 2023
+---
+
+```{=html}
+<figure class="float-end ms-3 mb-3" style="max-width: 250px; margin-top: -0.35rem;">
+  <picture>
+    <source srcset="{{< meta image >}}" type="image/webp">
+    <img src="/assets/img/publications/featured.png" alt="{{< meta title >}}" class="img-fluid rounded" loading="lazy">
+  </picture>
+</figure>
+```
+
+**Journal:** {{< meta journ >}} ({{< meta year >}}) · {{< meta issue >}} · pp. {{< meta page >}} · Publication #{{< meta pub_number >}}
+
+::: {.publication-content}
+## Abstract
+
+Here, we report an electrochemical protocol for hydrogen isotope exchange (HIE) at α-C(sp3)–H amine sites. Tetrahydroisoquinoline and pyrrolidine are selected as two model substrates because of their different proton transfer (PT) and hydrogen atom transfer (HAT) kinetics at the α-C(sp3)–H amine sites, which are utilized to control the HIE reaction outcome at different applied alternating current (AC) frequencies. We found the highest deuterium incorporation for tetrahydroisoquinolines at 0 Hz (i.e., under direct current (DC) electrolysis conditions) and pyrrolidines at 0.5 Hz. Analysis of the product distribution and D isotope incorporation at different frequencies reveals that the HIE of tetrahydroisoquinolines is limited by its slow HAT, whereas the HIE of pyrrolidines is limited by the overoxidation of its α-amino radical intermediates. The AC-frequency-dependent HIE of amines can be potentially used to achieve selective labeling of α-amine sites in one drug molecule, which will significantly impact the pharmaceutical industry.
+
+## Resources
+
+- [Journal article](https://doi.org/10.1039/D3FD00044C){target="_blank" rel="noopener"}
+
+## Citation
+
+<div class="bibtex-card">
+<button class="btn btn-sm btn-outline-secondary bibtex-copy" type="button" data-copy-target="bibtex-behera-gunasekera-2023">Copy BibTeX</button>
+
+```{#bibtex-behera-gunasekera-2023 .language-bibtex}
+@article{D3FD00044C,
+author ="Behera, Nibedita and Gunasekera, Disni and Mahajan, Jyoti P. and Frimpong, Joseph and Liu, Zhen-Fei and Luo, Long",
+title  ="Electrochemical hydrogen isotope exchange of amines controlled by alternating current frequency",
+journal  ="Faraday Discuss.",
+year  ="2023",
+volume  ="247",
+issue  ="0",
+pages  ="45-58",
+publisher  ="The Royal Society of Chemistry",
+doi  ="10.1039/D3FD00044C",
+url  ="http://dx.doi.org/10.1039/D3FD00044C",
+abstract  ="Here{,} we report an electrochemical protocol for hydrogen isotope exchange (HIE) at α-C(sp3)–H amine sites. Tetrahydroisoquinoline and pyrrolidine are selected as two model substrates because of their different proton transfer (PT) and hydrogen atom transfer (HAT) kinetics at the α-C(sp3)–H amine sites{,} which are utilized to control the HIE reaction outcome at different applied alternating current (AC) frequencies. We found the highest deuterium incorporation for tetrahydroisoquinolines at 0 Hz (i.e.{,} under direct current (DC) electrolysis conditions) and pyrrolidines at 0.5 Hz. Analysis of the product distribution and D isotope incorporation at different frequencies reveals that the HIE of tetrahydroisoquinolines is limited by its slow HAT{,} whereas the HIE of pyrrolidines is limited by the overoxidation of its α-amino radical intermediates. The AC-frequency-dependent HIE of amines can be potentially used to achieve selective labeling of α-amine sites in one drug molecule{,} which will significantly impact the pharmaceutical industry."
+}
+```
+</div>
+:::
+
+{{< include ../../../_includes/publication-detail-scripts.html >}}

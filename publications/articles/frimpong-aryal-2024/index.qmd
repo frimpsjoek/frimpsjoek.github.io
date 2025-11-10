@@ -1,0 +1,58 @@
+---
+title: "Understanding Ligand Exchange and Surface Passivation in CdS Quantum Dots from First Principles"
+author: "Joseph Frimpong, Sandip Aryal, Tejas Karun, Zhen-Fei Liu"
+journ: "Chemistry of Materials"
+issue: "36, 23"
+page: "11519–11528"
+year: "2024"
+pub_number: "89"
+url_source: "https://doi.org/10.1021/acs.chemmater.4c02232"
+image: /assets/img/publications/featured.webp
+image_caption: ""
+categories:
+  - 2024
+---
+
+```{=html}
+<figure class="float-end ms-3 mb-3" style="max-width: 200px; margin-top: -0.35rem;">
+  <picture>
+    <source srcset="{{< meta image >}}" type="image/webp">
+    <img src="/assets/img/publications/featured.png" alt="{{< meta title >}}" class="img-fluid rounded" loading="lazy">
+  </picture>
+</figure>
+```
+
+**Journal:** {{< meta journ >}} ({{< meta year >}}) · {{< meta issue >}} · pp. {{< meta page >}} · Publication #{{< meta pub_number >}}
+
+::: {.publication-content}
+## Abstract
+
+Quantum dots (QDs) are semiconductor nanoparticles with unique optical and electronic properties that make them valuable for various applications including solar cells, LEDs, and biological imaging. The surface chemistry of QDs plays a crucial role in determining their properties and stability. In this work, we use first-principles density functional theory calculations to investigate ligand exchange processes and surface passivation mechanisms in CdS quantum dots. We examine how different ligands interact with CdS surfaces and how these interactions affect the electronic structure and optical properties of the QDs. Our calculations provide insights into the binding energies, electronic structure changes, and passivation effects of various ligand molecules on CdS QD surfaces.
+
+## Resources
+
+- [Journal article](https://doi.org/10.1021/acs.chemmater.4c02232){target="_blank" rel="noopener"}
+
+## Citation
+
+<div class="bibtex-card">
+<button class="btn btn-sm btn-outline-secondary bibtex-copy" type="button" data-copy-target="bibtex-frimpong-aryal-2024">Copy BibTeX</button>
+
+```{#bibtex-frimpong-aryal-2024 .language-bibtex}
+@article{doi:10.1021/acs.chemmater.4c02232,
+author = {Frimpong, Joseph and Aryal, Sandip and Karun, Tejas and Liu, Zhen-Fei},
+title = {Understanding Ligand Exchange and Surface Passivation in CdS Quantum Dots from First Principles},
+journal = {Chemistry of Materials},
+volume = {36},
+number = {23},
+pages = {11519-11528},
+year = {2024},
+doi = {10.1021/acs.chemmater.4c02232},
+URL = { https://doi.org/10.1021/acs.chemmater.4c02232},
+eprint = { https://doi.org/10.1021/acs.chemmater.4c02232}
+}
+```
+</div>
+:::
+
+{{< include ../../../_includes/publication-detail-scripts.html >}}

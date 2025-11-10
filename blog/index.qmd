@@ -1,0 +1,23 @@
+---
+title: "Blog"
+subtitle: "Reflections on academic life, computational science, and research"
+page-layout: full
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: false
+  sort-ui: true
+  filter-ui: true
+  image-height: 180px
+  fields: [image, date, title, reading-time, description]
+  feed:
+    title: "Joseph Frimpong's Blog"
+    description: "Thoughts on academic life, computational materials science, and research"
+    categories: [academia, tutorial, research]
+---
+
+
+Welcome to my blog where I share thoughts on academic life, computational materials science, and the journey of being a postdoctoral researcher.
+
+

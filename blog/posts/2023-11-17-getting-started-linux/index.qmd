@@ -1,0 +1,245 @@
+---
+title: "Getting Started with Linux"
+description: "A practical guide for researchers transitioning to Linux for computational work, covering essential commands and workflow setup."
+author: "Joseph Frimpong"
+date: "2023-11-17"
+categories: [linux, computational-science, tutorial]
+image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&h=400&fit=crop"
+draft: false
+---
+
+As a computational materials scientist, Linux has become an indispensable part of my daily workflow. Whether you're running density functional theory calculations, managing large datasets, or developing scientific software, Linux provides the power and flexibility needed for serious computational work.
+
+If you're new to Linux or considering making the switch from Windows or macOS for your research work, this guide will help you get started with confidence.
+
+## Why Linux for Scientific Computing?
+
+Before diving into the technical details, let's understand why Linux is so popular in the scientific computing community:
+
+### Performance and Efficiency
+- **Direct hardware access**: Linux provides better control over system resources
+- **Lower overhead**: More of your computer's power goes to your calculations
+- **Stability**: Long-running computations benefit from Linux's reliability
+
+### Package Management
+- Easy installation of scientific software through package managers
+- Consistent dependency management
+- Access to cutting-edge research tools
+
+### High-Performance Computing (HPC) Integration
+- Most supercomputers and clusters run Linux
+- Seamless workflow from desktop to HPC systems
+- Better job scheduling and resource management tools
+
+## Essential Commands for Scientists
+
+Here are the Linux commands I use most frequently in my research work:
+
+### File and Directory Operations
+
+```bash
+# Navigate directories
+cd /path/to/your/research
+pwd  # Print current directory
+ls -la  # List files with details
+
+# File operations
+cp source_file destination  # Copy files
+mv old_name new_name        # Move/rename files
+mkdir new_directory         # Create directory
+rm -rf directory_name       # Remove directory and contents (use carefully!)
+```
+
+### Text Processing and Data Analysis
+
+```bash
+# View file contents
+head -n 20 data_file.txt    # First 20 lines
+tail -n 10 output.log       # Last 10 lines
+grep "ERROR" calculation.log # Search for patterns
+
+# Count lines, words, characters
+wc -l data_file.txt
+
+# Sort and process data
+sort data.txt | uniq -c     # Sort and count unique entries
+```
+
+### Process Management
+
+```bash
+# Monitor system resources
+top                         # Real-time process monitor
+htop                       # Enhanced process monitor (if installed)
+ps aux | grep python       # Find Python processes
+
+# Job control
+nohup python script.py &   # Run command in background
+jobs                       # List active jobs
+kill PID                   # Terminate process by ID
+```
+
+## Setting Up Your Research Environment
+
+### Python Environment Management
+
+For computational work, I highly recommend using conda to manage your Python environments:
+
+```bash
+# Install Miniconda (lightweight conda)
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+
+# Create environment for your research
+conda create -n computational-chem python=3.9
+conda activate computational-chem
+
+# Install essential scientific packages
+conda install numpy scipy matplotlib pandas
+conda install jupyter notebook
+pip install ase  # Atomic Simulation Environment
+```
+
+### Text Editors for Code and Scripts
+
+Choose a text editor you're comfortable with. Here are popular options:
+
+**Nano** (beginner-friendly):
+```bash
+nano my_script.py
+```
+
+**Vim** (powerful but steeper learning curve):
+```bash
+vim my_script.py  # Press 'i' to insert, 'Esc' then ':wq' to save and quit
+```
+
+**VS Code** (graphical, if you prefer):
+```bash
+code my_script.py  # If VS Code is installed
+```
+
+### Version Control with Git
+
+Essential for tracking your research code:
+
+```bash
+# Configure Git (one-time setup)
+git config --global user.name "Your Name"
+git config --global user.email "your.email@institution.edu"
+
+# Initialize a repository for your project
+cd my_research_project
+git init
+git add .
+git commit -m "Initial commit"
+
+# Connect to GitHub/GitLab
+git remote add origin https://github.com/username/project.git
+git push -u origin main
+```
+
+## Workflow Tips for Computational Research
+
+### Organizing Your Projects
+
+I recommend this directory structure for research projects:
+
+```
+research_project/
+├── data/           # Raw and processed data
+├── scripts/        # Analysis and processing scripts
+├── notebooks/      # Jupyter notebooks
+├── results/        # Output files and figures
+├── docs/           # Documentation and notes
+└── README.md       # Project description
+```
+
+### Running Long Calculations
+
+For computationally intensive work:
+
+```bash
+# Use screen or tmux for persistent sessions
+screen -S calculation_name
+# Your long-running command here
+python expensive_calculation.py
+
+# Detach with Ctrl+A then D
+# Reattach later with: screen -r calculation_name
+```
+
+### Monitoring System Resources
+
+Keep an eye on system usage during calculations:
+
+```bash
+# Monitor GPU usage (if using CUDA)
+nvidia-smi
+
+# Check disk space
+df -h
+
+# Monitor memory usage
+free -h
+
+# Watch file changes in real-time
+tail -f output.log
+```
+
+## Common Pitfalls and Solutions
+
+### File Permissions
+If you get "permission denied" errors:
+```bash
+chmod +x script.py          # Make file executable
+chmod 755 directory_name    # Set directory permissions
+```
+
+### Path Issues
+Make sure your programs are in your PATH:
+```bash
+echo $PATH                  # Check current PATH
+export PATH=$PATH:/new/path # Add to PATH temporarily
+```
+
+For permanent changes, add the export line to your `~/.bashrc` file.
+
+### SSH and Remote Access
+For working on remote servers:
+```bash
+# Generate SSH key (one-time)
+ssh-keygen -t rsa
+
+# Connect to remote server
+ssh username@server.institution.edu
+
+# Copy files to/from remote server
+scp local_file.txt username@server:/remote/path/
+rsync -av local_directory/ username@server:/remote/directory/
+```
+
+## Next Steps
+
+Once you're comfortable with these basics, consider exploring:
+
+- **Shell scripting**: Automate repetitive tasks
+- **Docker containers**: Reproducible computational environments  
+- **Job schedulers**: SLURM for HPC systems
+- **Advanced text processing**: awk, sed for data manipulation
+
+## Resources for Continued Learning
+
+- **The Linux Command Line** by William Shotts (free online)
+- **Software Carpentry** workshops and materials
+- **Linux Academy** or **Linux Professional Institute** for structured learning
+
+## Conclusion
+
+Transitioning to Linux might seem daunting at first, but the investment in learning pays dividends in computational efficiency and workflow flexibility. Start with these basics, practice regularly, and don't hesitate to use the excellent documentation available (`man command_name` shows manual pages for any command).
+
+Remember, even experienced Linux users regularly look up commands and syntax—it's not about memorizing everything, but about understanding the concepts and knowing how to find information when you need it.
+
+---
+
+*Have questions about getting started with Linux for research? Feel free to reach out—I'm happy to help fellow researchers navigate this transition!*

@@ -1,0 +1,52 @@
+name: Quarto Publish
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "**/*.qmd"
+      - "_quarto.yml"
+      - "**/*.scss"
+      - "**/*.css"
+      - "**/*.yml"
+      - "**/*.md"
+      - "**/*.bib"
+      - "**/*.ejs"
+      - "**/*.js"
+      - "**/*.png"
+      - "**/*.jpg"
+      - "**/*.svg"
+      - "**/*.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Pre-render (home sections)
+        run: |
+          python _data/generate_home_sections.py
+
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Publish to GitHub Pages (gh-pages)
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

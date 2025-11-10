@@ -1,0 +1,39 @@
+---
+title: "Teaching & Mentoring"
+format:
+  html:
+    theme:
+      - flatly
+      - styles/custom.scss
+    toc: false
+    page-layout: full
+    citations-hover: true
+    crossrefs-hover: true
+---
+
+## Teaching Snapshot
+
+- **Teaching interests:** electronic-structure theory (DFT → GW/BSE), computational chemistry, scientific programming for materials scientists, and reproducible HPC workflows.  
+- **Mentoring focus:** inclusive, project-based research experiences that pair modern software practices with rigorous physical insight.  
+- **Formats delivered:** graduate mini-courses, bootcamps, invited tutorials, and K–12 outreach workshops.
+
+## University Instruction & Mentorship
+
+- **Chemistry Meets Computers (Wayne State University, 2021–2023)** — Designed and taught a three-week intensive introducing Python, NumPy, and ASE for chemistry majors; mentored >40 students who carried projects into research groups.  
+- **Graduate lab mentor (2019–2024)** — Supervised undergraduate and master’s researchers on GW/BSE workflows, resulting in co-authored publications and conference posters.  
+- **Argonne postdoctoral mentoring (2024–present)** — Onboard new users to NST Division computing stack; run weekly code clinics on automation and data management.
+
+## Outreach & Community Engagement
+
+- **NOBCChE Detroit STEM outreach (2021–2023)** — Led hands-on demonstrations for K–12 classrooms, emphasizing computational chemistry careers for underrepresented students.  
+- **STEM camp facilitator (2019–2023)** — Developed project modules linking quantum dots, coding, and sustainability for summer programs.  
+- **Science communication** — Author of “Reflections of a young academic”, a blog translating computational materials research for broad audiences.
+
+## Professional Service
+
+- NOBCChE National Conference Planning Committee (2022–present) — design technical programming and mentoring sessions.  
+- Social Media Coordinator & Secretary, NOBCChE @ Wayne State (2021–2023) — organized events and communication channels supporting graduate student development.
+
+## Contact
+
+Interested in classroom collaborations, guest lectures, or workshop development?  [Email me](mailto:frimpsjoe@anl.gov) and we can design a session tailored to your audience.

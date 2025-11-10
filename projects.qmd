@@ -1,0 +1,125 @@
+---
+title: "Research Projects"
+description: "Selected research projects spanning electronic structure theory, machine learning, and catalysis collaborations."
+params:
+  columns: 2
+
+format:
+  html:
+    theme:
+      - flatly
+      - styles/custom.scss
+    toc: false
+    page-layout: full
+    citations-hover: true
+    crossrefs-hover: true
+---
+
+```{python}
+#| results: asis
+#| echo: false
+from pathlib import Path
+import html
+import json
+from IPython.display import HTML, display
+
+projects_path = Path("_data/projects.yml")
+projects_text = projects_path.read_text()
+
+try:
+    import yaml  # type: ignore[import-not-found]
+except ModuleNotFoundError:
+    yaml = None
+
+if yaml is not None:
+    projects = yaml.safe_load(projects_text)
+else:
+    projects = json.loads(projects_text)
+
+fallback_image = "/assets/img/publications/featured.webp"
+
+total_projects = len(projects)
+show_icon_strip = total_projects >= 6
+
+icon_items = []
+if show_icon_strip:
+    for project in projects:
+        title = html.escape(project.get("title", "")) or "Project"
+        slug = project.get("slug") or title.lower().replace(" ", "-")
+        anchor = html.escape(slug, quote=True)
+        icon_class = html.escape(project.get("icon", "fa-solid fa-diagram-project"))
+        icon_items.append(
+            f"<a class='project-icon-item' href='#{anchor}' aria-label='{title}'>"
+            f"<span class='project-icon-symbol'><i class='{icon_class}' aria-hidden='true'></i></span>"
+            "</a>"
+        )
+
+rows = []
+if icon_items:
+    rows.append("<div class='project-icon-strip'>" + "".join(icon_items) + "</div>")
+
+rows.append("<div class='project-grid'>")
+
+for project in projects:
+    title = html.escape(project.get("title", "Untitled Project"))
+    summary = html.escape(project.get("summary", ""))
+    timeline = project.get("timeline")
+    org = project.get("org")
+    role = project.get("role")
+    meta_chips = []
+    if timeline:
+        meta_chips.append(f"<span class='project-meta-chip'>{html.escape(timeline)}</span>")
+    if org:
+        meta_chips.append(f"<span class='project-meta-chip'>{html.escape(org)}</span>")
+    if role:
+        meta_chips.append(f"<span class='project-meta-chip'>{html.escape(role)}</span>")
+    meta_html = f"<div class='project-meta'>{''.join(meta_chips)}</div>" if meta_chips else ""
+
+    tags = project.get("tags") or []
+    tags_html = ""
+    if tags:
+        tag_spans = "".join(
+            f"<span class='project-tag'>{html.escape(tag)}</span>" for tag in tags
+        )
+        tags_html = f"<div class='project-tags'>{tag_spans}</div>"
+
+    image_src = html.escape(project.get("image") or fallback_image, quote=True)
+    icon_class = html.escape(project.get("icon", "fa-solid fa-diagram-project"))
+    icon_html = f"<span class='project-card-icon'><i class='{icon_class}' aria-hidden='true'></i></span>"
+
+    page_target = project.get("page")
+    slug = project.get("slug") or project.get("title", "project").lower().replace(" ", "-")
+    card_id = html.escape(slug, quote=True)
+
+    title_link_start = title_link_end = ""
+    image_link_start = image_link_end = ""
+    if page_target:
+        safe_page = html.escape(page_target, quote=True)
+        title_link_start = f"<a href='{safe_page}'>"
+        title_link_end = "</a>"
+        image_link_start = f"<a href='{safe_page}' class='project-thumb-link'>"
+        image_link_end = "</a>"
+
+    rows.append(
+        f"""
+<article class='project-card' id='{card_id}'>
+  <div class='project-thumb'>
+    {image_link_start}<img src='{image_src}' alt='{title} thumbnail'>{image_link_end}
+  </div>
+  <div class='project-body'>
+    <header class='project-header'>
+      {icon_html}
+      <div class='project-title'>{title_link_start}{title}{title_link_end}</div>
+    </header>
+    {meta_html}
+    <p class='project-summary'>{summary}</p>
+    {tags_html}
+  </div>
+</article>
+"""
+    )
+
+rows.append("</div>")
+
+display(HTML("".join(rows)))
+```

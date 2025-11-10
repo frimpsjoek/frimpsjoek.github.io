@@ -1,0 +1,58 @@
+<div class="list quarto-listing-default">
+    <% for (const item of items) { %>
+
+    <div class="quarto-post image-right" <%= metadataAttrs(item) %> >
+    <div class="thumbnail">
+        <p>
+            <% if (item.image) { %>
+            <img alt="<%= item.title %>" src="<%= item.image %>" class="thumbnail-image">
+            <% } else { %>
+            <img alt="<%= item.title %>" src="/assets/img/publications/featured.png" class="thumbnail-image">
+            <% } %>
+        </p>
+    </div>
+    <div class="body">
+        <div class="no-anchor listing-pub-title listing-title"><%= item.title %></div>
+
+        <div class="listing-pub-author listing-author">
+            <%= item.author %><br>
+        </div>
+
+        <div class="metadata-value listing-pub-journal listing-publication">
+            <% if (item.journ || item.publication) { %>
+                <i><%= item.journ || item.publication %></i><% if (item.issue) { %>, <b><%= item.issue %></b><% } %><% if (item.page) { %>, <%= item.page %><% } %><% if (item.year) { %> (<%= item.year %>)<% } %><br>
+            <% } %>
+        </div>
+    </div>
+        <div class="metadata">
+            <!-- <a href="<%- item.path %>"> -->
+                <div class="listing-pub-number">
+                    <%= item.pub_number %><br>
+                </div>
+
+            <!-- </a> -->
+            <% if (item.url_source) { %>
+            <div class="listing-pub-url">
+
+                    <a href="<%- item.url_source %>">
+                    <p style="color:#8250E6;">journal URL <i class="bi bi-box-arrow-up-right"></i></p>
+                    </a>
+                </div>
+                    <% } %>
+
+            <% if (item.url_preprint) { %>
+            <div class="listing-pub-url">
+
+                    <a href="<%- item.url_preprint %>">
+                    <p style="color:#8250E6;">preprint URL <i class="bi bi-box-arrow-up-right"></i></p>
+                    </a>
+                </div>
+                    <% } %>
+
+
+
+        </div>
+    </div>
+
+    <% } %>
+    </div>

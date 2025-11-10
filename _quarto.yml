@@ -1,0 +1,74 @@
+project:
+  type: website
+  output-dir: _site
+  pre-render:
+    - python _data/generate_home_sections.py
+
+website:
+  title: "Joseph Frimpong"
+  description: "Postdoctoral researcher at Argonne National Laboratory studying electronic structure and optical properties of materials"
+  site-url: "https://frimpsjoek.github.io"
+  repo-url: "https://github.com/frimpsjoek/frimpsjoek.github.io"
+  
+  navbar:
+    pinned: true
+    title: '<span class="brand-first">Joseph</span> <span class="brand-last">Frimpong</span>'
+    logo-alt: "Joseph Frimpong"
+    # Theme-aware colors handled by CSS custom properties
+    search: true
+    right:
+      - text: "about"
+        href: index.qmd
+      #- text: "projects"
+      #  href: projects.qmd
+      - text: "cv"
+        href: cv.qmd
+      - text: "publications"
+        href: publications.qmd
+      - text: "blog"
+        href: blog/index.qmd
+      - text: "more"
+        menu:
+          - text: "news"
+            href: news.qmd
+          - text: "teaching"
+            href: teaching.qmd
+      - icon: github
+        href: https://github.com/frimpsjoek
+        aria-label: GitHub
+      - icon: twitter
+        href: https://twitter.com/frimpsjoek
+        aria-label: Twitter
+      - icon: linkedin
+        href: https://linkedin.com/in/josephfrimpong
+        aria-label: LinkedIn
+
+  sidebar:
+    - title: "Blog"
+      contents:
+        - blog/index.qmd
+        - blog/posts/*.qmd
+
+format:
+  html:
+    theme:
+      - flatly
+      - styles/custom.scss
+    toc: true
+    toc-location: right
+    toc-depth: 3
+    smooth-scroll: true
+    page-layout: article
+    grid:
+      sidebar-width: 0px
+      body-width: 900px
+      margin-width: 250px
+      gutter-width: 1.5rem
+    html-math-method: mathjax
+    include-after-body: _includes/after-body.html
+
+execute:
+  freeze: auto
+
+bibliography: _bibliography/papers.bib
+csl: apa.csl

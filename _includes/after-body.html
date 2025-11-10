@@ -1,0 +1,168 @@
+<div id="scroll-progress" class="scroll-progress"></div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script src="/assets/js/theme-toggle.js"></script>
+
+<style>
+/* CRITICAL FIX: Callout text colors - override everything */
+/* Light mode */
+.callout *,
+.callout .callout-title-container,
+.callout .callout-header,
+.callout .callout-body,
+.callout p,
+.callout div,
+.callout span,
+.callout strong,
+.callout em {
+  color: #000000 !important;
+}
+
+/* Dark mode */
+[data-bs-theme="dark"] .callout *,
+[data-bs-theme="dark"] .callout .callout-title-container,
+[data-bs-theme="dark"] .callout .callout-header,
+[data-bs-theme="dark"] .callout .callout-body,
+[data-bs-theme="dark"] .callout p,
+[data-bs-theme="dark"] .callout div,
+[data-bs-theme="dark"] .callout span,
+[data-bs-theme="dark"] .callout strong,
+[data-bs-theme="dark"] .callout em {
+  color: #ffffff !important;
+}
+</style>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <span id="copyright-year"></span> Joseph Frimpong · Built with <a href="https://quarto.org" target="_blank" rel="noopener">Quarto</a> · Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    const el = document.getElementById('copyright-year');
+    if (el) {
+      el.textContent = `© ${new Date().getFullYear()}`;
+    }
+  })();
+</script>
+<script>
+  (function() {
+    const bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    const update = () => {
+      const doc = document.documentElement;
+      const body = document.body;
+      const scrollTop = doc.scrollTop || body.scrollTop;
+      const height = doc.scrollHeight - doc.clientHeight;
+      const progress = height > 0 ? (scrollTop / height) * 100 : 0;
+      bar.style.width = progress + '%';
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('load', update);
+  })();
+</script>
+<script>
+  (function() {
+    const body = document.body;
+    if (!body) return;
+
+    const MIN_LINES = 10;
+
+    const enhanceBlock = (container, codeEl) => {
+      if (!container || !codeEl) return;
+      if (container.dataset.codeEnhanced === 'true') return;
+      if (container.closest('details.code-block-collapsible')) return;
+
+      const text = codeEl.textContent.replace(/\s+$/, '');
+      const lines = text ? text.split(/\r?\n/).length : 0;
+      if (lines <= MIN_LINES) {
+        container.dataset.codeEnhanced = 'true';
+        return;
+      }
+
+      const parent = container.parentElement;
+      if (!parent) return;
+
+      const details = document.createElement('details');
+      details.className = 'code-block-collapsible';
+
+      const summary = document.createElement('summary');
+      summary.className = 'code-block-summary';
+
+      const summaryText = document.createElement('span');
+      summaryText.className = 'code-block-summary-text';
+      summaryText.textContent = `Show code (${lines} lines)`;
+
+      const copyBtn = document.createElement('button');
+      copyBtn.type = 'button';
+      copyBtn.className = 'code-copy-btn';
+      copyBtn.textContent = 'Copy';
+
+      summary.appendChild(summaryText);
+      summary.appendChild(copyBtn);
+      details.appendChild(summary);
+
+      const bodyWrapper = document.createElement('div');
+      bodyWrapper.className = 'code-collapse-body';
+
+      parent.insertBefore(details, container);
+      bodyWrapper.appendChild(container);
+      details.appendChild(bodyWrapper);
+
+      details.addEventListener('toggle', () => {
+        if (details.open) {
+          summaryText.textContent = `Hide code (${lines} lines)`;
+          details.classList.add('open');
+        } else {
+          summaryText.textContent = `Show code (${lines} lines)`;
+          details.classList.remove('open');
+        }
+      });
+
+      copyBtn.addEventListener('click', (event) => {
+        event.stopPropagation();
+        if (!navigator.clipboard) {
+          copyBtn.textContent = 'Not supported';
+          setTimeout(() => { copyBtn.textContent = 'Copy'; }, 1800);
+          return;
+        }
+        navigator.clipboard.writeText(codeEl.textContent).then(() => {
+          copyBtn.textContent = 'Copied!';
+          copyBtn.classList.add('copied');
+          setTimeout(() => {
+            copyBtn.textContent = 'Copy';
+            copyBtn.classList.remove('copied');
+          }, 1800);
+        }).catch(() => {
+          copyBtn.textContent = 'Retry';
+          copyBtn.classList.add('error');
+          setTimeout(() => {
+            copyBtn.textContent = 'Copy';
+            copyBtn.classList.remove('error');
+          }, 1800);
+        });
+      });
+
+      container.dataset.codeEnhanced = 'true';
+    };
+
+    const enhanceAll = () => {
+      document.querySelectorAll('div.sourceCode').forEach((container) => {
+        const codeEl = container.querySelector('code');
+        enhanceBlock(container, codeEl);
+      });
+
+      document.querySelectorAll('pre').forEach((pre) => {
+        if (pre.closest('div.sourceCode')) return;
+        const codeEl = pre.querySelector('code') || pre;
+        enhanceBlock(pre, codeEl);
+      });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', enhanceAll);
+    } else {
+      enhanceAll();
+    }
+  })();
+</script>

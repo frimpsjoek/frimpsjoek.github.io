@@ -1,0 +1,33 @@
+---
+title: "Isotopic Labeling & Catalysis"
+description: "Mechanistic modeling of hydrogen isotope exchange and photocatalytic functionalization using quantum dots."
+format:
+  html:
+    toc: true
+    page-layout: article
+---
+
+::: {.project-overview-meta}
+- **Timeline:** 2022 – 2024
+- **Role:** Computational Collaborator
+- **Collaborators:** Luo Lab and industrial partners
+:::
+
+## Project Scope
+
+We coupled density functional theory, GW corrections, and kinetic modeling to rationalize hydrogen isotope exchange in complex pharmaceutical intermediates. The work guided the design of photocatalytic quantum dot platforms capable of delivering late-stage deuteration and tritiation with high selectivity.
+
+## What We Delivered
+
+- Energy landscapes for proton-coupled electron transfer steps governing catalytic turnover.
+- Design rules that linked surface terminations and sacrificial agents to quantum yield and isotope enrichment.
+- Support for synthetic campaigns, informing reaction windows and ligand choices.
+
+## Publications & Talks
+
+- [Journal of the American Chemical Society (2024)](https://doi.org/10.1021/jacs.4c13857)
+- [Faraday Discussions (2023)](https://doi.org/10.1039/D3FD00044C)
+
+## Outlook
+
+Ongoing collaborations aim to merge kinetic Monte Carlo models with operando spectroscopies to understand active-site evolution during extended catalysis runs.

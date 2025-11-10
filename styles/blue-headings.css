@@ -1,0 +1,158 @@
+/* Clean Headings Theme for Modern CLI Tools Blog */
+
+/* Main headings - H1 */
+h1 {
+    color: #0073e6 !important;
+    font-weight: 300 !important;
+    font-size: 2.5rem !important;
+    margin-bottom: 1.5rem !important;
+    margin-top: 2rem !important;
+    line-height: 1.2 !important;
+}
+
+/* Section headings - H2 */
+h2 {
+    color: #0760ba !important;
+    font-weight: 400 !important;
+    font-size: 1.8rem !important;
+    margin-top: 2.5rem !important;
+    margin-bottom: 1rem !important;
+    line-height: 1.3 !important;
+    border-bottom: 1px solid #ecf0f1 !important;
+    padding-bottom: 0.5rem !important;
+}
+
+/* Subsection headings - H3 */
+h3 {
+    color: #0062c5 !important;
+    font-weight: 500 !important;
+    font-size: 1.4rem !important;
+    margin-top: 2rem !important;
+    margin-bottom: 0.75rem !important;
+    line-height: 1.4 !important;
+}
+
+/* H4 headings for subsections */
+h4 {
+    color: #34495e !important;
+    font-weight: 500 !important;
+    font-size: 1.2rem !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.4 !important;
+}
+
+/* Image containers with spacing */
+.image-container {
+    margin: 2em 0 !important;
+    padding: 1em !important;
+    background: #f8fafc !important;
+    border-radius: 8px !important;
+    border: 1px solid #e2e8f0 !important;
+    text-align: center !important;
+}
+
+.image-container img {
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 6px !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.image-caption {
+    font-size: 0.9em !important;
+    color: #64748b !important;
+    margin-top: 0.5em !important;
+    font-style: italic !important;
+}
+
+/* Callout boxes with blue accents */
+.callout-tip {
+    border-left: 4px solid #2563eb !important; /* Blue-600 */
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%) !important;
+}
+
+.callout-note {
+    border-left: 4px solid #3b82f6 !important; /* Blue-500 */
+    background: linear-gradient(135deg, #f0f9ff 0%, #bae6fd 50%) !important;
+}
+
+/* Table styling with blue theme */
+table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin: 1.5em 0 !important;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1) !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
+
+th {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important; /* Blue gradient */
+    color: white !important;
+    padding: 1em !important;
+    text-align: left !important;
+    font-weight: 600 !important;
+}
+
+td {
+    padding: 0.75em 1em !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+
+tr:nth-child(even) {
+    background: #f8fafc !important;
+}
+
+tr:nth-child(odd) {
+    background: #ffffff !important;
+}
+
+tr:hover {
+    background: #eff6ff !important;
+}
+
+/* Code blocks with blue accent */
+pre {
+    border-left: 4px solid #2563eb !important; /* Blue-600 */
+    background: #f8fafc !important;
+}
+
+/* Links in blue theme */
+a {
+    color: #2563eb !important; /* Blue-600 */
+    text-decoration: none !important;
+    border-bottom: 1px solid transparent !important;
+    transition: all 0.2s ease !important;
+}
+
+a:hover {
+    color: #1d4ed8 !important; /* Blue-700 */
+    border-bottom: 1px solid #1d4ed8 !important;
+    background: #eff6ff !important;
+    padding: 0 0.25em !important;
+    border-radius: 2px !important;
+}
+
+/* Responsive design for images */
+@media (max-width: 768px) {
+    .image-container {
+        margin: 1em 0 !important;
+        padding: 0.5em !important;
+    }
+
+    h1 {
+        font-size: 1.5em !important;
+        padding: 0.75em !important;
+    }
+
+    h2 {
+        font-size: 1.3em !important;
+        padding: 0.5em 0.75em !important;
+    }
+
+    h3 {
+        font-size: 1.1em !important;
+        padding: 0.4em 0.6em !important;
+    }
+}

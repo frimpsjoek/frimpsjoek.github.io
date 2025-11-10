@@ -1,0 +1,65 @@
+[
+  {
+    "title": "AI/ML for Electronic Structure",
+    "slug": "ai-ml-electronic-structure",
+    "timeline": "2024 – present",
+    "org": "Argonne National Laboratory",
+    "summary": "Generative and surrogate models to accelerate GW/BSE workflows, including latent representations for screened Coulomb interactions and uncertainty-aware property prediction.",
+    "role": "Postdoctoral Researcher",
+    "tags": ["GW/BSE", "Machine Learning", "HPC"],
+    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=500&h=500&fit=crop&auto=format&q=80",
+    "icon": "fa-solid fa-brain",
+    "page": "projects/ai-ml-electronic-structure.qmd",
+    "links": [
+      {"label": "Overview", "url": "https://www.anl.gov/profile/joseph-frimpong"},
+      {"label": "GitHub", "url": "https://github.com/frimpsjoek"}
+    ]
+  },
+  {
+    "title": "Quantum Dots & Interfaces",
+    "slug": "quantum-dots-interfaces",
+    "timeline": "2019 – 2024",
+    "org": "Wayne State University",
+    "summary": "Many-body perturbation theory for colloidal nanocrystals and molecule/metal interfaces; ligand exchange thermodynamics, optical transitions, and environment-induced screening.",
+    "role": "PhD Researcher",
+    "tags": ["Quantum Dots", "Interfaces", "GW"],
+    "image": "https://images.unsplash.com/photo-1628618411042-2fb2155a5296?w=500&h=500&fit=crop&auto=format&q=80",
+    "icon": "fa-solid fa-atom",
+    "page": "projects/quantum-dots-interfaces.qmd",
+    "links": [
+      {"label": "J. Phys. Chem. Lett. 2024", "url": "https://doi.org/10.1021/acs.jpclett.3c03470"},
+      {"label": "Chem. Mater. 2024", "url": "https://doi.org/10.1021/acs.chemmater.4c02232"}
+    ]
+  },
+  {
+    "title": "Isotopic Labeling & Catalysis",
+    "slug": "isotopic-labeling-catalysis",
+    "timeline": "2022 – 2024",
+    "org": "Collaborations with Luo Lab & Partners",
+    "summary": "Photocatalytic and electrochemical hydrogen isotope exchange using quantum dots; mechanistic modeling of proton-coupled electron transfer in complex pharmaceuticals.",
+    "role": "Computational Collaborator",
+    "tags": ["Isotope Labeling", "Photocatalysis", "Electrochemistry"],
+    "image": "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=500&h=500&fit=crop&auto=format&q=80",
+    "icon": "fa-solid fa-flask",
+    "page": "projects/isotopic-labeling-catalysis.qmd",
+    "links": [
+      {"label": "JACS 2024", "url": "https://doi.org/10.1021/jacs.4c13857"},
+      {"label": "Faraday Discuss. 2023", "url": "https://doi.org/10.1039/D3FD00044C"}
+    ]
+  },
+  {
+    "title": "Method Development & HPC Tooling",
+    "slug": "method-development-hpc",
+    "timeline": "Ongoing",
+    "org": "Collaborative Software Projects",
+    "summary": "Workflow automation, MPI-enabled screening, and reproducible data management for exascale systems; contributions to WEST/BerkeleyGW utilities and PyTorch-driven surrogates.",
+    "role": "Developer & Maintainer",
+    "tags": ["Software", "Automation", "MPI"],
+    "image": null,
+    "icon": "fa-solid fa-code",
+    "page": "projects/method-development-hpc.qmd",
+    "links": [
+      {"label": "GitHub", "url": "https://github.com/frimpsjoek"}
+    ]
+  }
+]

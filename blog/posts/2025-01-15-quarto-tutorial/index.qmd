@@ -1,0 +1,1478 @@
+---
+title: "Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python"
+subtitle: "A comprehensive guide to creating modern academic websites and presentations"
+description: "Learn how to create beautiful websites, blogs, and presentations using Quarto with Python. This comprehensive tutorial covers setup, customization, and deployment to GitHub Pages."
+author: "Joseph Frimpong"
+date: "2025-01-15"
+categories: [tutorial, quarto, python, website]
+image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop"
+draft: false
+format:
+  html:
+    code-fold: false
+    code-tools: false
+    toc: true
+    toc-depth: 3
+execute:
+  echo: true
+  engine: python
+  kernel: python3
+---
+
+# Introduction
+
+Quarto is a powerful open-source publishing system that allows you to create beautiful websites, blogs, presentations, and documents using a single consistent workflow. In this comprehensive tutorial, we'll learn how to:
+
+- Set up a complete Quarto website with blog functionality
+- Create engaging blog posts with Python code and visualizations
+- Build stunning presentation slides
+- Customize themes and styling
+- Deploy your site to GitHub Pages
+
+By the end of this tutorial, you'll have all the tools needed to create a professional academic website with an integrated blog and presentation capabilities.
+
+# Prerequisites
+
+Before we begin, ensure you have the following installed:
+
+- Python 3.8 or higher
+- Quarto CLI (install from [quarto.org](https://quarto.org))
+- Git (for version control and deployment)
+- A code editor (VS Code recommended)
+
+Let's start by creating a new Quarto project structure.
+
+# Project Setup
+
+## Initialize Your Project
+
+First, let's create a new directory for our Quarto website and initialize it:
+
+::: {.details summary="Show code"}
+
+```bash
+# Create project directory
+mkdir quarto-academic-site
+cd quarto-academic-site
+
+# Initialize with Quarto
+quarto create project website
+```
+:::
+
+:::
+
+:::
+
+
+This creates a basic website structure with:
+- `index.qmd` - Homepage
+- `_quarto.yml` - Configuration file
+- `styles/` - Custom styling directory
+- `posts/` - Blog posts directory
+
+## Project Structure
+
+Here's the recommended structure for an academic website:
+
+::: {.details summary="Show code"}
+
+```
+quarto-academic-site/
+├── index.qmd                 # Homepage
+├── about.qmd                 # About page
+├── research.qmd              # Research page
+├── publications.qmd          # Publications page
+├── blog/
+│   └── index.qmd            # Blog listing page
+│   └── posts/
+│       └── 2024-01-01-first-post/
+│           └── index.qmd    # Individual blog post
+├── slides/
+│   └── presentation.qmd     # Presentation slides
+├── _quarto.yml              # Site configuration
+├── _bibliography/
+│   └── references.bib       # Publication references
+├── styles/
+│   └── custom.scss          # Custom styling
+└── assets/
+    └── img/                 # Images and figures
+```
+:::
+
+:::
+
+:::
+
+
+# Configuration
+
+## Site Configuration
+
+Let's set up the main configuration file (`_quarto.yml`):
+
+::: {.details summary="Show code"}
+
+````yaml
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Dr. Jane Smith"
+  description: "Assistant Professor of Computational Chemistry"
+  site-url: "https://yourusername.github.io"
+  repo-url: "https://github.com/yourusername/yourusername.github.io"
+
+  navbar:
+    background: primary
+    search: true
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "About"
+        href: about.qmd
+      - text: "Research"
+        href: research.qmd
+      - text: "Publications"
+        href: publications.qmd
+      - text: "Blog"
+        href: blog/
+      - text: "CV"
+        href: cv.qmd
+    right:
+      - icon: github
+        href: https://github.com/yourusername
+      - icon: linkedin
+        href: https://linkedin.com/in/yourusername
+      - icon: envelope
+        href: "mailto:your.email@university.edu"
+
+  page-footer:
+    left: "© 2024 Jane Smith, Built with [Quarto](https://quarto.org)"
+    center: "Hosted on [GitHub Pages](https://pages.github.com)"
+    right:
+      - icon: github
+        href: https://github.com/yourusername
+      - icon: linkedin
+        href: https://linkedin.com/in/yourusername
+
+format:
+  html:
+    theme:
+      - flatly
+      - styles/custom.scss
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    code-overflow: wrap
+    citations-hover: true
+    footnotes-hover: true
+    highlight-style: github
+    css: styles/styles.css
+    include-in-header: assets/html/head.html
+    include-after-body: assets/html/after-body.html
+
+execute:
+  echo: fenced
+  freeze: auto
+````
+:::
+
+:::
+
+:::
+
+
+## Custom Styling
+
+Create a custom SCSS file for theming:
+
+::: {.details summary="Show code"}
+
+```scss
+// styles/custom.scss
+/* Custom Academic Theme */
+:root {
+  --bs-primary: #2c5aa0;
+  --bs-secondary: #6c757d;
+  --accent-color: #e74c3c;
+}
+
+/* Navigation enhancements */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+/* Content styling */
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Publication styling */
+.publication-card {
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+}
+
+/* Code block enhancements */
+pre.sourceCode {
+  border-radius: 0.5rem;
+  border: 1px solid var(--bs-border-color);
+}
+
+code {
+  background-color: var(--bs-gray-100);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+}
+```
+:::
+
+:::
+
+:::
+
+
+# Creating Content Pages
+
+## Homepage
+
+Create an engaging homepage (`index.qmd`):
+
+::: {.details summary="Show code"}
+
+```markdown
+---
+title: "Dr. Jane Smith"
+subtitle: "Computational Chemist & Assistant Professor"
+page-layout: full
+format:
+  html:
+    toc: false
+---
+
+::: {.hero-section}
+::: {.content-container}
+::: {.hero-content}
+::: {.hero-text}
+# Welcome to My Research
+
+I'm a computational chemist developing new methods for understanding chemical reactivity and molecular dynamics. My research combines quantum chemistry, machine learning, and statistical mechanics to tackle challenging problems in catalysis and drug discovery.
+
+:::
+
+::: {.hero-image}
+![](images/hero-research.png){width="400px"}
+:::
+
+::: {.content-container}
+::: {.stats-grid}
+::: {.stat-item}
+::: {.stat-number}
+50+
+:::
+
+::: {.stat-label}
+Publications
+:::
+
+::: {.stat-item}
+::: {.stat-number}
+$2.1M
+:::
+
+::: {.stat-label}
+Research Funding
+:::
+
+::: {.stat-item}
+::: {.stat-number}
+15
+:::
+
+::: {.stat-label}
+PhD Students
+:::
+
+## Featured Research
+
+::: {.research-highlight}
+::: {.research-image}
+![](images/recent-paper.png){width="200px"}
+:::
+
+::: {.research-content}
+### Recent Publication
+
+**Machine Learning Potentials for Reactive Chemistry**
+
+We developed a new neural network potential that achieves DFT accuracy with molecular mechanics speed, enabling reactive dynamics simulations of large systems.
+
+[Read Paper](publications/smith-ml-potentials-2024.qmd) • [View Code](https://github.com/jsmith/ml-potentials)
+:::
+
+## Latest Blog Posts
+
+::: {.blog-preview}
+::: {.posts-grid}
+::: {.post-card}
+### Getting Started with Computational Chemistry
+
+A beginner's guide to setting up computational chemistry workflows with Python and modern quantum chemistry codes.
+
+[Read More](blog/2024-01-01-computational-chemistry-guide/)
+:::
+
+::: {.post-card}
+### Publishing Reproducible Research
+
+Best practices for creating reproducible scientific publications with modern tools.
+
+[Read More](blog/2024-01-15-reproducible-research/)
+:::
+```
+:::
+
+:::
+
+:::
+
+
+## About Page
+
+Create a professional about page:
+
+::: {.details summary="Show code"}
+
+```markdown
+---
+title: "About"
+format:
+  html:
+    toc: false
+---
+
+::: {.content-container}
+::: {.about-hero}
+::: {.profile-section}
+::: {.profile-image}
+![](images/profile-photo.jpg){width="300px"}
+:::
+
+::: {.profile-content}
+# About Me
+
+**Assistant Professor of Chemistry**  
+University of Academic Excellence
+
+I am a computational chemist passionate about developing new theoretical methods and computational tools to understand chemical reactivity, molecular dynamics, and materials properties. My research group works at the interface of quantum chemistry, statistical mechanics, and machine learning.
+
+## Research Interests
+
+- **Quantum Chemistry**: Developing new electronic structure methods
+- **Machine Learning**: Neural network potentials for reactive chemistry
+- **Molecular Dynamics**: Enhanced sampling methods for rare events
+- **Materials Science**: Computational design of functional materials
+
+## Education
+
+- **PhD, Theoretical Chemistry** - MIT (2018)
+- **BS, Chemistry** - Caltech (2013)
+
+## Awards & Honors
+
+- NSF CAREER Award (2023)
+- ACS COMP Young Investigator Award (2022)
+- Sloan Research Fellowship (2021)
+:::
+```
+:::
+
+:::
+
+:::
+
+
+# Blog System
+
+## Creating Blog Posts
+
+Blog posts are stored in `blog/posts/` with the following structure:
+
+::: {.details summary="Show code"}
+
+```
+blog/posts/
+├── 2024-01-01-post-title/
+│   ├── index.qmd
+│   └── images/
+│       └── figure1.png
+└── 2024-01-15-another-post/
+    └── index.qmd
+```
+:::
+
+:::
+
+:::
+
+
+## Sample Blog Post
+
+Here's a complete blog post example:
+
+::: {.details summary="Show code"}
+
+```markdown
+---
+title: "Getting Started with Computational Chemistry Workflows"
+subtitle: "A practical guide for beginners"
+author: "Dr. Jane Smith"
+date: "2024-01-01"
+categories: [computational-chemistry, tutorial, python]
+image: featured-workflow.png
+---
+
+# Introduction
+
+Computational chemistry has become an essential tool in modern chemical research. This guide will walk you through setting up efficient computational workflows using Python and popular quantum chemistry packages.
+
+## Setting Up Your Environment
+
+First, let's create a Python environment with all necessary packages:
+
+````python
+#| label: setup-environment
+#| eval: false
+# Create conda environment
+conda create -n comp-chem python=3.9 -y
+conda activate comp-chem
+
+# Install computational chemistry packages
+conda install -c conda-forge rdkit openbabel pyscf xtb -y
+
+# Install Python packages for workflow management
+pip install jupyter papermill papermill[azure] python-dotenv
+````
+
+## Basic Quantum Chemistry Calculation
+
+Let's perform a simple DFT calculation using Psi4:#| label: pyscf-calculation
+import numpy as np
+from pyscf import gto, scf, dft
+
+# Set up water molecule (smaller example)
+mol = gto.M(atom="""
+O  0.000000  0.000000  0.000000
+H  0.757000  0.587000  0.000000
+H -0.757000  0.587000  0.000000
+""", basis='6-31g*')
+
+# Run DFT calculation
+mf = dft.RKS(mol)
+mf.xc = 'b3lyp'
+energy = mf.kernel()
+
+# Get orbital energies
+homo_energy = mf.mo_energy[mol.nelectron//2 - 1]
+lumo_energy = mf.mo_energy[mol.nelectron//2]
+
+print(f"Total energy: {energy:.6f} Hartree")
+print(f"HOMO energy: {homo_energy:.3f} Hartree")
+print(f"LUMO energy: {lumo_energy:.3f} Hartree")
+print(f"HOMO-LUMO gap: {lumo_energy - homo_energy:.3f} Hartree"):::
+
+:::
+
+
+::: {.callout-note}
+## Performance Tips
+
+For larger molecules, consider using smaller basis sets for initial geometry optimizations and increase basis set size for final energy calculations.
+:::
+
+## Visualization with Python
+
+Let's visualize the molecular orbitals:
+
+::: {.details summary="Show code"}#| label: molecular-orbitals
+#| fig-cap: HOMO and LUMO orbitals of caffeine
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# This would typically use a proper orbital visualization library
+# For demonstration, we'll create a simple 3D scatter plot
+
+fig = plt.figure(figsize=(12, 5))
+
+# HOMO
+ax1 = fig.add_subplot(121, projection='3d')
+# Orbital visualization code would go here
+ax1.set_title('HOMO')
+
+# LUMO
+ax2 = fig.add_subplot(122, projection='3d')
+# Orbital visualization code would go here
+ax2.set_title('LUMO')
+
+plt.tight_layout():::
+
+:::
+
+
+## Workflow Automation
+
+Create reusable functions for common tasks:
+
+::: {.details summary="Show code"}#| label: workflow-functions
+def optimize_geometry(xyz_string, method='B3LYP', basis='6-31g*'):
+    """Optimize molecular geometry and return energy."""
+    from pyscf import gto, dft
+
+    mol = gto.M(atom=xyz_string, basis=basis)
+    mf = dft.RKS(mol)
+    mf.xc = method.lower()
+    energy = mf.kernel()
+
+    return energy, mol.atom_coords().tolist()
+
+def calculate_properties(xyz_string):
+    """Calculate molecular properties."""
+    from pyscf import gto, dft
+
+    mol = gto.M(atom=xyz_string, basis='6-31g*')
+    mf = dft.RKS(mol)
+    mf.xc = 'b3lyp'
+    energy = mf.kernel()
+
+    # Get orbital energies
+    homo_energy = mf.mo_energy[mol.nelectron//2 - 1]
+    lumo_energy = mf.mo_energy[mol.nelectron//2]
+
+    return {
+        'energy': energy,
+        'homo_energy': homo_energy,
+        'lumo_energy': lumo_energy,
+        'homo_lumo_gap': lumo_energy - homo_energy
+    }:::
+
+:::
+
+
+## Best Practices
+
+### 1. Version Control Everything
+
+Always track your computational workflows:
+
+::: {.details summary="Show code"}
+
+```bash
+:::
+
+# Initialize git repository
+git init
+
+# Create .gitignore for Python projects
+echo "__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.coverage.*
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.conda/
+.coverage
+coverage.xml
+*.cover
+.hypothesis
+.pytest_cache/
+" > .gitignore
+
+::: {.details summary="Show code"}
+
+```
+:::
+
+:::
+
+:::
+
+
+### 2. Use Environment Management
+
+Create reproducible environments:
+
+::: {.details summary="Show code"}
+
+```yaml
+# environment.yml
+name: computational-chemistry
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pyscf
+  - rdkit
+  - openbabel
+  - jupyter
+  - matplotlib
+  - seaborn
+  - pandas
+  - numpy
+  - scipy
+  - pip
+  - pip:
+    - py3dmol
+    - nglview
+    - plotly
+```
+:::
+
+:::
+
+:::
+
+:::
+
+
+### 3. Document Your Methods
+
+Always include detailed methodology in your posts:
+
+::: {.callout-important}
+## Computational Details
+
+**Level of Theory:** B3LYP/6-311+G**  
+**Basis Set:** 6-311+G** for heavy atoms, 6-31G* for hydrogens  
+**Solvent Model:** SMD with water  
+**Convergence Criteria:** Default Psi4 tight criteria
+:::
+
+# Creating Slides
+
+## Presentation Setup
+
+Create engaging academic presentations by following three quick steps:
+
+1. Save the slide template below as `slides/presentation.qmd`.
+2. Render it with `quarto render slides/presentation.qmd` to produce `slides/presentation.html`.
+3. Embed the rendered HTML so readers can page through the deck inline.
+
+::: {.ratio ratio-16x9 .slides-preview}
+<iframe src="slides/presentation.html" title="Machine Learning in Chemistry slides" loading="lazy" allowfullscreen class="w-100 border-0 rounded"></iframe>
+:::
+
+::: {.details summary="Show slide source"}
+````markdown
+---
+title: "Machine Learning in Chemistry"
+subtitle: "Recent Advances and Applications"
+author: "Dr. Jane Smith"
+institute: "University of Academic Excellence"
+date: "2024-01-15"
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    transition: slide
+    background-transition: fade
+    slide-number: true
+    show-slide-number: speaker
+    preview-links: true
+    footer: "ML in Chemistry - Jane Smith"
+---
+
+# Introduction
+
+::: {.r-fit-text}
+Machine Learning is **revolutionizing** computational chemistry
+:::
+
+## Overview
+
+::: {.columns}
+::: {.column width="60%"}
+- **Neural Network Potentials**
+- **Property Prediction**
+- **Reaction Discovery**
+- **Materials Design**
+:::
+
+::: {.column width="40%"}
+![](images/ml-chemistry-overview.png)
+:::
+:::
+
+# Neural Network Potentials
+
+## Traditional vs ML Potentials
+
+| Aspect | Traditional DFT | ML Potentials |
+|--------|----------------|---------------|
+| Accuracy | High | Near-DFT |
+| Speed | Slow | Fast |
+| Scaling | Poor | Excellent |
+
+::: {.fragment}
+**Key Insight:** ML potentials achieve DFT accuracy with MM speed
+:::
+
+## Performance Comparison
+
+```{python}
+#| label: performance-plot
+#| fig-cap: "Speed vs Accuracy comparison"
+import matplotlib.pyplot as plt
+import numpy as np
+
+methods = ['DFT', 'MP2', 'CCSD(T)', 'ANI-2x', 'Our Method']
+accuracy = [0.95, 0.85, 1.0, 0.92, 0.94]
+speed = [1, 5, 0.1, 1000, 800]
+
+fig, ax = plt.subplots(figsize=(10, 6))
+scatter = ax.scatter(speed, accuracy, s=[m*50 for m in [1, 0.8, 0.6, 1.2, 1.1]],
+                     c=['red', 'blue', 'green', 'orange', 'purple'],
+                     alpha=0.7)
+
+for i, method in enumerate(methods):
+    ax.annotate(method, (speed[i], accuracy[i]),
+                xytext=(5, 5), textcoords='offset points')
+
+ax.set_xlabel('Relative Speed')
+ax.set_ylabel('Accuracy (vs CCSD(T))')
+ax.set_title('Computational Method Performance')
+ax.set_xscale('log')
+ax.grid(True, alpha=0.3)
+```
+
+## Advanced Features
+
+### Interactive Elements
+
+Add interactive elements to your slides:
+
+```markdown
+::: {.fragment}
+```{python}
+#| echo: false
+#| fig-cap: "Interactive 3D molecule visualization"
+import py3Dmol
+
+caffeine_xyz = """
+C  0.000000  0.000000  0.000000
+C  1.234000  0.000000  0.000000
+C  2.468000  0.000000  0.000000
+N  3.702000  0.000000  0.000000
+C  4.936000  0.000000  0.000000
+N  6.170000  0.000000  0.000000
+C  7.404000  0.000000  0.000000
+N  8.638000  0.000000  0.000000
+C  9.872000  0.000000  0.000000
+C  11.106000  0.000000  0.000000
+"""
+
+view = py3Dmol.view(width=600, height=400)
+view.addModel(caffeine_xyz, 'xyz')
+view.setStyle({'stick': {}})
+view.zoomTo()
+view.show()
+```
+:::
+```
+````
+:::
+
+# Deployment
+
+## GitHub Pages Deployment
+
+Deploy your site automatically:
+
+::: {.details summary="Show code"}
+```yaml
+# .github/workflows/deploy.yml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render Site
+        run: quarto render
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '_site'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+```
+:::
+
+:::
+
+:::
+
+
+## Manual Deployment
+
+For one-time deployment:
+
+::: {.details summary="Show code"}
+
+```bash
+# Render site
+quarto render
+
+# Deploy to GitHub Pages
+quarto publish gh-pages
+```
+:::
+
+:::
+
+:::
+
+
+# Advanced Features
+
+## Custom Filters
+
+Create custom filters for specialized content:
+
+::: {.details summary="Show code"}
+
+```python
+# _extensions/filters.py
+import re
+from typing import Dict, Any
+
+def chemistry_callout(doc):
+    """Convert chemistry callouts to styled divs."""
+    # Custom filter logic here
+    return doc
+
+def publication_cards(doc):
+    """Convert publication metadata to styled cards."""
+    # Custom filter logic here
+    return doc
+```
+:::
+
+:::
+
+:::
+
+
+## Automated Content
+
+Generate content automatically:
+
+::: {.details summary="Show code"}
+
+```python
+# _scripts/generate-publications.py
+import bibtexparser
+import pandas as pd
+
+def generate_publication_pages():
+    """Generate publication pages from BibTeX."""
+
+    # Load bibliography
+    with open('_bibliography/publications.bib') as bibtex_file:
+        bib_database = bibtexparser.load(bibtex_file)
+
+    # Generate pages for each publication
+    for entry in bib_database.entries:
+        generate_single_publication(entry)
+
+def generate_single_publication(entry):
+    """Generate a single publication page."""
+
+    # Create markdown content
+    content = f"""---
+title: "{entry['title'].replace('{', '').replace('}', '')}"
+subtitle: "{entry.get('journal', '')}"
+date: "{entry.get('year', '')}"
+categories: {parse_keywords(entry.get('keywords', ''))}
+---
+
+# Publication Details
+
+**Authors:** {format_authors(entry.get('author', ''))}
+
+**Journal:** {entry.get('journal', '')}
+
+**Year:** {entry.get('year', '')}
+
+## Abstract
+
+{entry.get('abstract', 'No abstract available.')}
+
+## Citation
+
+```bibtex
+{format_bibtex_entry(entry)}
+```
+:::
+
+:::
+
+:::
+
+
+"""
+
+    # Write to file
+    filename = f"publications/{entry['ID']}.qmd"
+    with open(filename, 'w') as f:
+        f.write(content)
+
+::: {.details summary="Show code"}
+
+```
+
+# Conclusion
+
+Quarto provides a powerful, flexible platform for academic publishing. With its Python integration, you can create dynamic, reproducible content that combines narrative, code, and visualizations seamlessly.
+
+## Key Takeaways
+
+1. **Unified Workflow**: Use the same tools for websites, blogs, and slides
+2. **Python Integration**: Leverage Python's scientific ecosystem
+3. **Reproducible Research**: Embed computations directly in your content
+4. **Beautiful Output**: Professional themes and customization options
+5. **Easy Deployment**: Simple GitHub Pages integration
+
+## Next Steps
+
+1. Start with a simple website structure
+2. Add your first blog post with Python code
+3. Create your first presentation
+4. Customize the styling to match your preferences
+5. Deploy to GitHub Pages
+
+The combination of Quarto and Python provides everything you need to create a modern, professional academic web presence that showcases your research effectively.
+
+::: {.callout-tip}
+## Getting Help
+
+- [Quarto Documentation](https://quarto.org/docs)
+- [Quarto Gallery](https://quarto.org/docs/gallery)
+- [GitHub Issues](https://github.com/quarto-dev/quarto-cli/issues)
+- [Community Forum](https://github.com/quarto-dev/quarto-cli/discussions)
+:::
+```
+:::
+
+:::
+
+:::
+
+
+# Creating the Blog Post
+
+Now let's create the actual blog post file and its directory structure:
+
+::: {.details summary="Show code"}
+
+```bash
+# Create blog post directory
+mkdir -p blog/posts/2025-01-15-quarto-tutorial
+
+# Create the main blog post file
+cat > blog/posts/2025-01-15-quarto-tutorial/index.qmd << 'EOF'
+---
+title: "Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python"
+subtitle: "A comprehensive guide to creating modern academic websites and presentations"
+author: "Joseph Frimpong"
+date: "2025-01-15"
+categories: [tutorial, quarto, python, website, blog, slides]
+image: /assets/img/blog/quarto-tutorial.png
+draft: false
+format:
+  html:
+    code-fold: true
+    code-tools: true
+execute:
+  echo: true
+  engine: python
+  kernel: python3
+---
+
+# Introduction
+
+In this comprehensive tutorial, we'll learn how to use Quarto to build a complete academic website with blog functionality and presentation capabilities, all powered by Python.
+
+## What We'll Build
+
+By the end of this tutorial, you'll have:
+
+- ✅ A complete academic website with multiple pages
+- ✅ A fully functional blog with categorized posts
+- ✅ Beautiful presentation slides
+- ✅ Python integration for data analysis and visualization
+- ✅ Custom styling and theming
+- ✅ GitHub Pages deployment
+
+# Project Setup
+
+## Installation and Setup
+
+First, let's ensure you have all the necessary tools installed:
+
+\`\`\`bash
+# Install Quarto
+curl -LO https://github.com/quarto-dev/quarto-cli/releases/download/v1.4.554/quarto-1.4.554-linux-amd64.deb
+sudo dpkg -i quarto-1.4.554-linux-amd64.deb
+
+# Verify installation
+quarto check
+\`\`\`
+
+## Project Structure
+
+Create a well-organized project structure:
+
+\`\`\`bash
+# Create project directories
+mkdir -p _bibliography assets/img styles blog/posts slides
+touch _quarto.yml styles/custom.scss
+\`\`\`
+
+## Configuration File
+
+Create the main configuration file (\`_quarto.yml\`):
+
+\`\`\`yaml
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Your Academic Website"
+  description: "Research, publications, and blog"
+  site-url: "https://yourusername.github.io"
+
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "About"
+        href: about.qmd
+      - text: "Research"
+        href: research.qmd
+      - text: "Publications"
+        href: publications.qmd
+      - text: "Blog"
+        href: blog/
+    right:
+      - icon: github
+        href: https://github.com/yourusername
+      - icon: envelope
+        href: "mailto:your.email@university.edu"
+
+format:
+  html:
+    theme: [flatly, styles/custom.scss]
+    toc: true
+    code-copy: true
+    highlight-style: github
+\`\`\`
+
+# Creating Content
+
+## Homepage with Hero Section
+
+Create an engaging homepage (\`index.qmd\`):
+
+\`\`\`markdown
+---
+title: "Dr. Your Name"
+subtitle: "Your Position & Department"
+page-layout: full
+---
+
+::: {.hero-section}
+::: {.hero-content}
+# Welcome to My Research
+
+Brief description of your research interests and expertise.
+
+[View Research](research.qmd) • [Read Blog](blog/)
+:::
+
+::: {.hero-stats}
+::: {.stat}
+**50+** Publications
+:::
+
+::: {.stat}
+**$2M+** Funding
+:::
+
+::: {.stat}
+**PhD Advisor**
+:::
+
+## Featured Work
+
+::: {.featured-research}
+Recent work on computational methods for chemical reactivity...
+:::
+\`\`\`
+
+## Blog Posts
+
+Create engaging blog posts with Python code:
+
+\`\`\`markdown
+---
+title: "Python for Computational Chemistry"
+author: "Dr. Your Name"
+date: "2025-01-15"
+categories: [python, computational-chemistry]
+---
+
+# Getting Started
+
+Let's explore computational chemistry with Python:
+
+\`\`\`python
+#| label: chemistry-calculation
+import psi4
+import numpy as np
+
+# Water molecule optimization
+h2o = psi4.geometry("""
+O
+H 1 0.96
+H 1 0.96 2 104.5
+""")
+
+# DFT calculation
+energy, wfn = psi4.energy('B3LYP/6-31G*', molecule=h2o)
+print(f"Water energy: {energy:.6f} Hartree")
+\`\`\`
+
+::: {.callout-note}
+## Key Results
+
+The calculation shows excellent agreement with experimental values.
+:::
+\`\`\`
+
+## Presentation Slides
+
+Create beautiful slides for conferences:
+
+\`\`\`markdown
+---
+title: "Research Presentation"
+format: revealjs
+---
+
+# Introduction
+
+::: {.r-fit-text}
+Main Research Topic
+:::
+
+## Methods
+
+::: {.columns}
+::: {.column width="60%"}
+- Method 1: Description
+- Method 2: Description
+- Method 3: Description
+:::
+
+::: {.column width="40%"}
+![](images/method-diagram.png)
+:::
+
+## Results
+
+\`\`\`python
+#| echo: true
+#| fig-cap: "Key Results Visualization"
+import matplotlib.pyplot as plt
+
+# Your visualization code here
+plt.plot(data_x, data_y)
+plt.show()
+\`\`\`
+\`\`\`
+
+# Styling and Theming
+
+## Custom CSS
+
+Create beautiful styling with SCSS:
+
+\`\`\`scss
+// styles/custom.scss
+:root {
+  --primary-color: #2c5aa0;
+  --secondary-color: #6c757d;
+  --accent-color: #e74c3c;
+}
+
+.navbar {
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+\`\`\`
+
+## Color Schemes
+
+Choose appropriate color schemes for your field:
+
+\`\`\`scss
+// For Chemistry
+--primary-color: #2c5aa0;  // Blue
+--accent-color: #e74c3c;   // Red
+
+// For Physics
+--primary-color: #8e44ad;  // Purple
+--accent-color: #f39c12;   // Orange
+
+// For Biology
+--primary-color: #27ae60;  // Green
+--accent-color: #e67e22;   // Orange
+\`\`\`
+
+# Deployment
+
+## GitHub Pages Setup
+
+1. Create a GitHub repository named \`yourusername.github.io\`
+2. Push your Quarto site to the repository
+3. Enable GitHub Pages in repository settings
+
+\`\`\`bash
+# Initialize git
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/yourusername/yourusername.github.io.git
+git push -u origin main
+\`\`\`
+
+## Automated Deployment
+
+Set up GitHub Actions for automatic deployment:
+
+\`\`\`yaml
+# .github/workflows/deploy.yml
+name: Deploy Quarto Site
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: quarto-dev/quarto-actions/setup@v2
+      - run: quarto render
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: \${{ secrets.GITHUB_TOKEN }}
+          publish_dir: _site
+\`\`\`
+
+# Advanced Features
+
+## Interactive Elements
+
+Add interactive visualizations:
+
+\`\`\`python
+#| label: interactive-plot
+#| fig-cap: "Interactive scatter plot"
+import plotly.express as px
+import pandas as pd
+
+# Sample data
+df = pd.DataFrame({
+    'x': np.random.randn(100),
+    'y': np.random.randn(100),
+    'category': np.random.choice(['A', 'B', 'C'], 100)
+})
+
+fig = px.scatter(df, x='x', y='y', color='category',
+                 title='Interactive Scatter Plot')
+fig.show()
+\`\`\`
+
+## Custom Shortcodes
+
+Create reusable components:
+
+\`\`\`markdown
+::: {.publication-card}
+**Paper Title**  
+*Journal Name* (2024)
+
+[View Paper](link) • [Download PDF](pdf-link)
+:::
+\`\`\`
+
+## Bibliography Integration
+
+Set up automatic bibliography management:
+
+\`\`\`yaml
+# _quarto.yml
+format:
+  html:
+    cite-method: biblatex
+    bibliography: _bibliography/references.bib
+\`\`\`
+
+# Best Practices
+
+## Content Organization
+
+1. **Consistent Naming**: Use descriptive filenames
+2. **Regular Updates**: Keep content current
+3. **SEO Optimization**: Use meaningful titles and descriptions
+4. **Performance**: Optimize images and code
+
+## Code Quality
+
+1. **Reproducible Examples**: Ensure code runs without errors
+2. **Clear Comments**: Explain complex code sections
+3. **Error Handling**: Include proper error handling in examples
+4. **Performance**: Optimize computational examples
+
+## Accessibility
+
+1. **Alt Text**: Provide alt text for all images
+2. **Color Contrast**: Ensure sufficient color contrast
+3. **Screen Readers**: Use proper heading hierarchy
+4. **Keyboard Navigation**: Ensure all interactive elements are accessible
+
+# Conclusion
+
+Quarto provides an excellent platform for academic publishing, combining the power of Python with beautiful, responsive web design. With the workflow outlined in this tutorial, you can create a professional academic website that effectively showcases your research and engages with your audience.
+
+## Key Benefits
+
+- **Unified Workflow**: Same tools for websites, blogs, and slides
+- **Python Integration**: Full scientific Python ecosystem support
+- **Beautiful Output**: Professional themes and customization
+- **Easy Deployment**: Simple GitHub Pages integration
+- **Reproducible Research**: Embed computations directly in content
+
+## Next Steps
+
+1. Start with the basic website structure
+2. Add your research content and publications
+3. Create your first blog post with Python code
+4. Build presentation slides for your next talk
+5. Customize the styling to match your preferences
+6. Deploy to GitHub Pages
+
+The combination of Quarto and Python provides everything needed for modern academic web publishing.
+
+::: {.callout-tip}
+## Additional Resources
+
+- [Quarto Documentation](https://quarto.org/docs)
+- [Quarto Gallery](https://quarto.org/docs/gallery)
+- [Python Scientific Computing](https://scipy.org)
+- [Matplotlib Documentation](https://matplotlib.org)
+- [GitHub Pages Guide](https://pages.github.com)
+:::
+EOF
+```
+:::
+
+:::
+
+:::
+
+
+# Summary
+
+I've created a comprehensive Quarto tutorial blog post that covers:
+
+1. **Complete Setup Guide**: From installation to project structure
+2. **Website Creation**: Homepage, about page, and content pages
+3. **Blog System**: How to create and manage blog posts with Python
+4. **Slides/Presentations**: Creating academic presentations
+5. **Python Integration**: Code examples and visualizations
+6. **Styling and Theming**: Custom CSS/SCSS for academic sites
+7. **Deployment**: GitHub Pages and automation
+8. **Advanced Features**: Interactive elements, bibliography management
+9. **Best Practices**: Content organization, accessibility, and performance
+
+The tutorial includes practical code examples, configuration files, and step-by-step instructions that readers can follow to create their own academic websites with Quarto and Python.

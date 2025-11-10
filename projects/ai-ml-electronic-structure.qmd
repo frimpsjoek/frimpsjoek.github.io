@@ -1,0 +1,33 @@
+---
+title: "AI/ML for Electronic Structure"
+description: "Generative and surrogate models that accelerate GW/BSE workflows across heterogeneous materials platforms."
+format:
+  html:
+    toc: true
+    page-layout: article
+---
+
+::: {.project-overview-meta}
+- **Timeline:** 2024 – present
+- **Role:** Postdoctoral Researcher
+- **Affiliation:** Argonne National Laboratory (NST Division)
+:::
+
+## Quick Summary
+
+Generative and surrogate models shorten the feedback loop between expensive many-body perturbation theory and design-ready predictions. I am combining reduced-order models for the screened Coulomb interaction with machine-learned mappings that predict quasiparticle corrections, excitonic responses, and dielectric screening for complex interfaces.
+
+## Current Focus Areas
+
+- Latent-space surrogates that approximate GW/BSE excitation energies across large chemical subspaces.
+- Uncertainty-aware models that flag regions requiring direct many-body calculation.
+- Workflows that couple PyTorch-accelerated inference with WEST/BerkeleyGW on leadership-class systems.
+
+## Selected Outputs
+
+- [Project overview](https://www.anl.gov/profile/joseph-frimpong)
+- Active tooling and notebooks on [GitHub](https://github.com/frimpsjoek)
+
+## Next Steps
+
+I am integrating data-assimilation pipelines that combine experimental photoluminescence spectra with theoretical priors, and extending the surrogate models to handle strongly anisotropic interfaces.

@@ -1,0 +1,69 @@
+---
+title: "Curriculum Vitae"
+format:
+  html:
+    theme: 
+      - flatly
+      - styles/custom.scss
+    toc: false
+    toc-location: left
+    page-layout: full
+    citations-hover: true
+    crossrefs-hover: true
+---
+
+::: {.cv-header}
+[**Download CV (PDF)**](assets/pdf/frimpong-joseph-cv-resume.pdf){.btn .btn-outline-primary .btn-sm target="_blank"}
+
+# Joseph Frimpong
+Postdoctoral Researcher · Argonne National Laboratory  
+Email: frimpsjoe@wayne.edu · GitHub: [frimpsjoek](https://github.com/frimpsjoek){target="_blank"} · LinkedIn: [frimpsjoek](https://linkedin.com/in/frimpsjoek){target="_blank"}
+:::
+
+::: {.cv-summary}
+Computational chemist applying many-body electronic-structure theory, machine learning, and high-performance workflows to accelerate quantum materials discovery and catalytic interface design.
+:::
+
+## Appointments
+
+- **Postdoctoral Researcher**, Argonne National Laboratory — 2024 – present  
+  ML-enhanced GW/BSE workflows and exascale automation within the NST Division.
+- **Graduate Research Assistant**, Wayne State University — 2019 – 2024  
+  Quantum dot interfaces, dielectric embedding, and ligand chemistry (Advisor: Prof. Zhen-Fei Liu).
+
+## Education
+
+- **Ph.D., Chemistry**, Wayne State University (2019 – 2024)   
+  Physical chemistry focus with specialization in many-body perturbation theory and scientific software development.
+- **B.S., Chemistry (Honors)**, Kwame Nkrumah University of Science & Technology (2017)
+
+## Selected Publications
+
+- J. Frimpong & Z.-F. Liu, *J. Phys. Chem. Lett.* **15** (2024) 2133–2141 — Generalized substrate-screening GW for covalent interfaces.
+- J. Frimpong *et al.*, *Chem. Mater.* **36** (2024) 11519–11528 — Ligand exchange and passivation in CdS quantum dots.
+- R. Maity *et al.*, *J. Am. Chem. Soc.* **146** (2024) 34141–34151 — Dual-pathway hydrogen isotope labeling via CdS quantum dots.
+
+Full bibliography available on the Publications page.
+
+## Technical Profile
+
+- **Methods:** DFT, GW/BSE, dielectric embedding, excitonic analysis.  
+- **Software:** Quantum ESPRESSO, BerkeleyGW, WEST, PyTorch, ASE, FireWorks.  
+- **Programming & DevOps:** Python, Bash, FORTRAN utilities, MPI, Git/GitHub, Slurm-based HPC.
+
+## Leadership & Outreach (selected)
+
+- NOBCChE Conference Planning Committee (2022 – present) — develop programming supporting URM scientists.  
+- Social Media Coordinator & Secretary, NOBCChE @ Wayne State (2021 – 2023) — managed communications and events.  
+- “Chemistry Meets Computers” facilitator (2021–2023) — created coding bootcamps linking programming with chemistry.  
+- Detroit STEM outreach (2021–2023) — hands-on demonstrations and mentoring for K-12 and community audiences.
+
+## Reviewer Service
+
+Referee for *J. Phys.: Condens. Matter*, *Phys. Rev. B*, *Phys. Rev. Lett.*, and *Physica Scripta*.
+
+<!-- ## Professional Interests
+
+Developing electronic-structure and scientific programming curricula, inclusive mentoring models, and reproducible open-source workflows for large-scale simulations. -->
+
+For collaboration inquiries or an updated CV, contact me via [email](mailto:frimpsjoe@wayne.edu) or LinkedIn.

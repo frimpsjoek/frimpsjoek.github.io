@@ -1,0 +1,76 @@
+---
+title: "Joseph Frimpong"
+format:
+  html:
+    toc: false
+    page-layout: full
+    citations-hover: true
+    crossrefs-hover: true
+---
+
+```{=html}
+<style>
+  .navbar-brand {
+    display: none !important;
+  }
+</style>
+```
+
+<div class="home-header">
+  <p class="home-affiliation">NST, Argonne National Laboratory</p>
+</div>
+
+::: {.bio-container}
+
+::: {.profile-image}
+![](assets/img/prof_pic.jpg)
+:::
+
+::: {.bio-text}
+I am postdoctoral researcher at Argonne National Laboratory, where I study the electronic structure and optical properties of materials to advance applications in catalysis, energy, and optoelectronics. My research focuses on computational methods, including density functional theory (DFT), many-body perturbation theory (GW/BSE), and machine learning, to explore structure-property relationships in heterogeneous interfaces, quantum dots, and other nanoscale materials. I am also passionate about leveraging computational chemistry and machine learning to accelerate materials discovery and improve the efficiency of next-generation materials.
+
+In addition to my academic pursuits, I aspire to share my knowledge and experiences through blogging, shedding light on complex topics in a simplified manner.
+
+I am currently working on a [**blog**](blog/index.qmd) to share insights and insights on academic life and computational materials science.
+:::
+:::
+
+## Research Interests
+
+- Many-body electronic-structure (GW/BSE) and dielectric embedding for complex interfaces.  
+- Machine learning models that accelerate excited-state calculations and screening workflows.  
+- Quantum dots, nanoscale interfaces, and catalysis-directed materials design.
+
+## Latest Posts
+
+{{< include _data/home-latest-posts.md >}}
+
+## News
+
+{{< include _data/home-news.md >}}
+
+See the full list on the [news page](news.qmd).
+
+## Connect
+
+::: {.social-links}
+<a href="https://linkedin.com/in/josephfrimpong" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+<a href="https://youtube.com/@frimpsjoe" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+<a href="mailto:frimpsjoe@wayne.edu" aria-label="Email"><i class="far fa-envelope"></i></a>
+:::
+
+<div class="tools-row">
+  <img alt="Python" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-plain.svg" />
+  <img alt="Git" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" />
+  <img alt="Linux" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" />
+  <img alt="Docker" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" />
+  <img alt="VSCode" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" />
+  <img alt="HTML" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg" />
+  <img alt="CSS" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" />
+  <img alt="GitHub" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" />
+  <img alt="Bash" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" />
+  <img alt="LangGraph" src="https://python.langchain.com/img/brand/wordmark.png" style="height: 36px; width: auto;" />
+  <img alt="Gradio" src="https://www.gradio.app/_app/immutable/assets/gradio.CHB5adID.svg" style="height: 36px; width: auto;" />
+  <img alt="HuggingFace" src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" style="height: 36px; width: auto;" />
+  <img alt="Blender" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" />
+</div>

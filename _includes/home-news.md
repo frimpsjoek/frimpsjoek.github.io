@@ -1,0 +1,3 @@
+- **Sep 15, 2024** – Joined Argonne National Laboratory as Postdoctoral Researcher — Started a postdoctoral appointment in the Materials Science division to develop ML-assisted GW/BSE workflows for heterogeneous materials.
+- **Aug 30, 2024** – Defended Ph.D. in Chemistry at Wayne State University — Successfully defended my dissertation on many-body approaches for quantum dots and covalent interfaces.
+- **Jul 01, 2023** – Led Chemistry Meets Computers Summer Bootcamp — Designed and taught a three-week intensive introducing Python and ASE to chemistry students, mentoring project teams through materials workflows.

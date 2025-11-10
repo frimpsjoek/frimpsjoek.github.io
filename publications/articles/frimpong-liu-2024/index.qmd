@@ -1,0 +1,61 @@
+---
+title: "Generalized Substrate Screening GW for Covalently Bonded Interfaces"
+author: "Joseph Frimpong, Zhen-Fei Liu"
+journ: "J. Phys. Chem. Lett."
+publication: "J. Phys. Chem. Lett."
+issue: "15, 8"
+page: "2133–2141"
+year: "2024"
+pub_number: "92"
+url_source: "https://doi.org/10.1021/acs.jpclett.3c03470"
+image: /assets/img/publications/featured.webp
+image_caption: ""
+categories:
+  - 2024
+---
+
+```{=html}
+<figure class="float-end ms-3 mb-3" style="max-width: 200px; margin-top: -0.35rem;">
+  <picture>
+    <source srcset="{{< meta image >}}" type="image/webp">
+    <img src="/assets/img/publications/featured.png" alt="{{< meta title >}}" class="img-fluid rounded" loading="lazy">
+  </picture>
+</figure>
+```
+
+**Journal:** {{< meta journ >}} ({{< meta year >}}) · {{< meta issue >}} · pp. {{< meta page >}} · Publication #{{< meta pub_number >}}
+
+::: {.publication-content}
+## Abstract
+
+An accurate description of the interfacial quasiparticle electronic structure is key to the design of heterogeneous materials. While the first-principles GW approach is state-of-the-art, the computational cost is high for large interface systems. This has led to the substrate screening GW approach for weakly coupled interfaces, which breaks down for covalently bonded interfaces. In this work, we present the generalized substrate screening GW approach, based on the following two considerations: (i) the contribution of the interfacial covalent bond to the polarizability can be efficiently calculated with a low energy cutoff; (ii) the contribution of the deprotonated adsorbate to the interface polarizability can be well approximated by that of the protonated molecule. Our approach is exemplified using interfaces formed between benzene-1,4-dithiol (BDT) and Au(111), which feature the widely used Au–S bonds in experiments. Our work provides a robust and simple scheme for accurate and efficient GW calculations of covalently bonded interfaces.
+
+## Resources
+
+- [Journal article](https://doi.org/10.1021/acs.jpclett.3c03470){target="_blank" rel="noopener"}
+
+## Citation
+
+<div class="bibtex-card">
+<button class="btn btn-sm btn-outline-secondary bibtex-copy" type="button" data-copy-target="bibtex-frimpong-liu-2024">Copy BibTeX</button>
+
+```{#bibtex-frimpong-liu-2024 .language-bibtex}
+@article{FL24,
+  title = {Generalized {{Substrate Screening GW}} for {{Covalently Bonded Interfaces}}},
+  author = {Frimpong, Joseph and Liu, Zhen-Fei},
+  year = {2024},
+  month = feb,
+  journal = {J. Phys. Chem. Lett.},
+  volume = {15},
+  number = {8},
+  pages = {2133--2141},
+  publisher = {American Chemical Society},
+  doi = {10.1021/acs.jpclett.3c03470},
+  urldate = {2024-04-19},
+  abstract = {An accurate description of the interfacial quasiparticle electronic structure is key to the design of heterogeneous materials. While the first-principles GW approach is state-of-the-art, the computational cost is high for large interface systems. This has led to the substrate screening GW approach for weakly coupled interfaces, which breaks down for covalently bonded interfaces. In this work, we present the generalized substrate screening GW approach, based on the following two considerations: (i) the contribution of the interfacial covalent bond to the polarizability can be efficiently calculated with a low energy cutoff; (ii) the contribution of the deprotonated adsorbate to the interface polarizability can be well approximated by that of the protonated molecule. Our approach is exemplified using interfaces formed between benzene-1,4-dithiol (BDT) and Au(111), which feature the widely used Au--S bonds in experiments. Our work provides a robust and simple scheme for accurate and efficient GW calculations of covalently bonded interfaces.}
+}
+```
+</div>
+:::
+
+{{< include ../../../_includes/publication-detail-scripts.html >}}

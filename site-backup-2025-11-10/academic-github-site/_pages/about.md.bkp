@@ -1,0 +1,36 @@
+---
+layout: about
+title: about
+permalink: /
+subtitle: <a href='#'>Academic Researcher</a>. 
+
+profile:
+  align: right
+  image: prof_pic.jpg
+  image_circular: false # crops the image to make it circular
+  more_info: >
+    <p>Room 326</p>
+    <p> 42 W Warren</p>
+    <p>Detroit, MI 48201</p>
+
+news: false # includes a list of news items
+selected_papers: false # includes a list of papers marked as "selected={true}"
+social: true # includes social icons at the bottom of the page
+---
+
+
+
+
+## Biography
+
+Joseph Frimpong is a PhD candidate in Physical Chemistry at Wayne State University, where he conducts research on electronic structure and optical properties of materials for catalysis, optoelectronics, and energy applications. His work involves developing computational methods based on many-body perturbation theory and machine learning to understand and predict structure-property relationships in quantum dots, covalent organic frameworks, and organic-metal interfaces.
+
+Frimpong has published several peer-reviewed articles in prestigious journals like The Journal of Physical Chemistry Letters and Journal of Physics: Condensed Matter. He has presented his research at numerous conferences, including the APS March Meeting and NOBCChE National Conferences. His work has been recognized with awards such as the Thomas C. Rumble Fellowship, A. Paul and Carole C. Schaap Endowed Distinguished Graduate Award, and the Best Poster Award at the NOBCChE National Conference.
+
+In addition to his research, Frimpong has served as a graduate teaching assistant, mentoring undergraduate students and leading discussion sessions for general chemistry courses. He has also volunteered for various outreach initiatives, promoting science education and diversity in STEM fields.
+
+## Research Interests
+
+- Electronic structure and optical properties of materials towards the rational design of materials and interfaces for catalysis and optoelectronic, and energy-related applications.[1]
+- AI & ML models for high-throughput chemical/materials synthesis and discovery.
+

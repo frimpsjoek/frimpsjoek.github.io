@@ -1,0 +1,19 @@
+title-block-banner: true
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    code-summary: "Show code"
+    code-overflow: scroll
+    code-copy: true
+    code-line-numbers: false
+    code-tools: true
+    highlight-style:
+      light: github
+      dark: monokai
+    toc-location: right
+    page-layout: article
+    lightbox: true
+    fig-cap-location: bottom
+    fig-align: center

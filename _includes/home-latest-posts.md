@@ -1,0 +1,2 @@
+- **Nov 17, 2023** – [Getting Started with Linux](blog/posts/2023-11-17-getting-started-linux/)
+- **Oct 12, 2023** – [Why Graduate School is for You](blog/posts/2023-10-12-why-graduate-school/)

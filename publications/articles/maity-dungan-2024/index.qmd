@@ -1,0 +1,58 @@
+---
+title: "Hydrogen Isotope Labeling of Pharmaceuticals Via Dual Hydrogen Isotope Exchange Pathways Using CdS Quantum Dot Photocatalyst"
+author: "Rajendra Maity, Otto Dungan, Frédéric A. Perras, Jingwei Li, Daohua Liu, Sumei Ren, Dan Lehnherr, Zheng Huang, Eric M. Phillips, Moses Adeyemo, Joseph Frimpong, Timothy Quainoo, Zhen-Fei Liu, Long Luo"
+journ: "Journal of the American Chemical Society"
+issue: "146, 49"
+page: "34141–34151"
+year: "2024"
+pub_number: "90"
+url_source: "https://doi.org/10.1021/jacs.4c13857"
+image: /assets/img/publications/featured.webp
+image_caption: ""
+categories:
+  - 2024
+---
+
+```{=html}
+<figure class="float-end ms-3 mb-3" style="max-width: 200px; margin-top: -0.35rem;">
+  <picture>
+    <source srcset="{{< meta image >}}" type="image/webp">
+    <img src="/assets/img/publications/featured.png" alt="{{< meta title >}}" class="img-fluid rounded" loading="lazy">
+  </picture>
+</figure>
+```
+
+**Journal:** {{< meta journ >}} ({{< meta year >}}) · {{< meta issue >}} · pp. {{< meta page >}} · Publication #{{< meta pub_number >}}
+
+::: {.publication-content}
+## Abstract
+
+Pharmaceutical synthesis often requires hydrogen isotope labeling for drug development and mechanistic studies. Traditional methods suffer from limitations in scope and selectivity. Here, we present a photocatalytic hydrogen isotope exchange (HIE) method using CdS quantum dots that operates via dual pathways: direct HAT from the CdS quantum dot surface and photogenerated hole-mediated oxidation. This dual mechanism enables broad applicability to various pharmaceutical compounds, including complex drug molecules like celecoxib, roflumilast, and mavoglurant. The method shows excellent deuterium incorporation with high precision and minimal byproduct formation. Our work demonstrates the potential of quantum dot photocatalysis for pharmaceutical isotope labeling applications.
+
+## Resources
+
+- [Journal article](https://doi.org/10.1021/jacs.4c13857){target="_blank" rel="noopener"}
+
+## Citation
+
+<div class="bibtex-card">
+<button class="btn btn-sm btn-outline-secondary bibtex-copy" type="button" data-copy-target="bibtex-maity-dungan-2024">Copy BibTeX</button>
+
+```{#bibtex-maity-dungan-2024 .language-bibtex}
+@article{JACS-Rajendra,
+author = {Maity, Rajendra and Dungan, Otto and Perras, Frédéric A. and Li, Jingwei and Liu, Daohua and Ren, Sumei and Lehnherr, Dan and Huang, Zheng and Phillips, Eric M. and Adeyemo, Moses and Frimpong, Joseph and Quainoo, Timothy and Liu, Zhen-Fei and Luo, Long},
+title = {Hydrogen Isotope Labeling of Pharmaceuticals Via Dual Hydrogen Isotope Exchange Pathways Using CdS Quantum Dot Photocatalyst},
+journal = {Journal of the American Chemical Society},
+volume = {146},
+number = {49},
+pages = {34141-34151},
+year = {2024},
+doi = {10.1021/jacs.4c13857},
+    note ={PMID: 39579128},
+URL = { https://doi.org/10.1021/jacs.4c13857},
+eprint = { https://doi.org/10.1021/jacs.4c13857} }
+```
+</div>
+:::
+
+{{< include ../../../_includes/publication-detail-scripts.html >}}

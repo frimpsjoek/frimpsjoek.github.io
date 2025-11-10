@@ -1,0 +1,309 @@
+---
+title: "Publications"
+page-layout: full
+execute:
+  echo: false
+  warning: false
+  message: false
+format:
+  html:
+    toc: false
+    toc-location: right
+    citations-hover: true
+    crossrefs-hover: true
+---
+
+```{=html}
+<style>
+  body .btn-primary {
+    color: #fff !important;
+  }
+</style>
+```
+
+```{=html}
+<div class="pub-search mb-4">
+  <label class="form-label" for="pub-search-input">Search publications</label>
+  <div class="d-flex flex-column flex-md-row align-items-md-center gap-2">
+    <input type="search" class="form-control form-control-lg" id="pub-search-input" placeholder="Filter by title, author, or venue" autocomplete="off" aria-describedby="pub-search-help">
+    <button id="pub-search-clear" type="button" class="btn btn-outline-secondary d-none">Clear</button>
+  </div>
+  <small id="pub-search-help" class="text-muted">Start typing to filter the list instantly.</small>
+</div>
+```
+
+```{python}
+#| results: asis
+from pathlib import Path
+import itertools
+import hashlib
+import html
+import json
+from IPython.display import HTML, display
+
+data_path = Path("_data/pubs.yml")
+data_text = data_path.read_text()
+
+try:
+    import yaml  # type: ignore[import-not-found]
+except ModuleNotFoundError:
+    yaml = None
+
+if yaml is not None:
+    pubs = yaml.safe_load(data_text)
+else:
+    try:
+        pubs = json.loads(data_text)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError("Install PyYAML (pip install pyyaml) or keep _data/pubs.yml in JSON syntax.") from exc
+
+def ensure_list(value):
+    if isinstance(value, list):
+        return value
+    if isinstance(value, str):
+        return [part.strip() for part in value.split(",") if part.strip()]
+    return []
+
+def btn(url, label, variant="outline-dark"):
+    raw_url = url or ""
+    safe_url = html.escape(raw_url, quote=True)
+    safe_label = html.escape(label)
+    classes = f'btn btn-sm btn-{variant} me-2'
+    is_external = raw_url.startswith("http")
+    if raw_url.lower().endswith(".pdf"):
+        is_external = True
+    target_attr = ' target="_blank" rel="noopener"' if is_external else ""
+    return f'<a class="{classes}" href="{safe_url}"{target_attr}>{safe_label}</a>'
+
+def buttons(pub):
+    return ""
+
+pubs_sorted = sorted(
+    pubs,
+    key=lambda item: (-int(item.get("year", 0)), item.get("title", "")),
+)
+
+html_parts = []
+pub_index = 0
+for year, group in itertools.groupby(pubs_sorted, key=lambda p: int(p.get("year", 0))):
+    html_parts.append(f'<section class="year-chunk"><div class="year-label">{year}</div>')
+    for pub in group:
+        title = html.escape(pub.get("title", "Untitled"))
+        detail_url = pub.get("detail")
+        if detail_url:
+            safe_detail = html.escape(detail_url, quote=True)
+            title_markup = f'<a class="pub-title-link" href="{safe_detail}">{title}</a>'
+        else:
+            title_markup = title
+        authors_list = ensure_list(pub.get("authors", []))
+        authors_block = ""
+        if authors_list:
+            authors_block = f'<div class="text-muted small mt-1">{html.escape(", ".join(authors_list))}</div>'
+        venue = pub.get("venue", "")
+        venue_block = f'<div class="text-muted small">{html.escape(venue)}</div>' if venue else ""
+        thumb = html.escape(pub.get("thumb") or "/assets/img/publications/featured.webp", quote=True)
+        abstract_text = html.escape(pub.get("abstract", "(abstract unavailable)"))
+        target_id = "abs-" + hashlib.md5(pub.get("title", str(year)).encode()).hexdigest()[:8]
+        links = buttons(pub)
+        badge_label = pub.get("journal_abbrev")
+        if badge_label:
+            badge_html = f'<span class="pub-badge">{html.escape(str(badge_label))}</span>'
+            badge_block = f'<div class="pub-badge-wrap">{badge_html}</div>'
+        else:
+            badge_block = ""
+
+        hidden_class = " pub-hidden" if pub_index >= 4 else ""
+        html_parts.append(
+            f"""
+<div class="pub mb-5{hidden_class}">
+  <div class="pub-image"><img src="{thumb}" class="thumb rounded" alt="{title}"></div>
+  <div class="pub-body">
+    {badge_block}
+    <div class="pub-title fw-semibold h5 mb-0">{title_markup}</div>
+    {authors_block}
+    {venue_block}
+    <div class="pub-actions">
+      {links}
+      <button class="btn btn-sm btn-light" data-bs-toggle="collapse" data-bs-target="#{target_id}" aria-expanded="false" aria-controls="{target_id}">ABSTRACT</button>
+    </div>
+    <div id="{target_id}" class="collapse mt-3">
+      <div class="card card-body small">{abstract_text}</div>
+    </div>
+  </div>
+</div>
+"""
+        )
+        pub_index += 1
+    html_parts.append("</section>")
+
+html_parts.append('<div class="text-center mt-4"><button id="show-more-pubs" class="btn btn-primary">Show More Publications</button></div>')
+display(HTML("".join(html_parts)))
+```
+
+```{=html}
+<div id="pub-search-empty" class="alert alert-info d-none" role="status">
+  No publications match your search yet. Try a different keyword.
+</div>
+```
+
+```{=html}
+<script>
+(function() {
+  const input = document.getElementById('pub-search-input');
+  if (!input) {
+    return;
+  }
+  const clearBtn = document.getElementById('pub-search-clear');
+  const emptyState = document.getElementById('pub-search-empty');
+  const sections = Array.from(document.querySelectorAll('.year-chunk'));
+  const pubs = Array.from(document.querySelectorAll('.pub'));
+
+  function update() {
+    const query = input.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    pubs.forEach((card) => {
+      const text = card.textContent.toLowerCase();
+      const match = !query || text.includes(query);
+      card.classList.toggle('d-none', !match);
+      if (match) {
+        visibleCount += 1;
+      }
+    });
+
+    sections.forEach((section) => {
+      const hasVisible = section.querySelector('.pub:not(.d-none)');
+      section.classList.toggle('d-none', query && !hasVisible);
+    });
+
+    if (clearBtn) {
+      clearBtn.classList.toggle('d-none', query.length === 0);
+    }
+
+    if (emptyState) {
+      emptyState.classList.toggle('d-none', visibleCount > 0);
+    }
+  }
+
+  input.addEventListener('input', update, { passive: true });
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      input.value = '';
+      input.focus();
+      update();
+    });
+  }
+
+  update();
+})();
+
+// Show More Publications functionality
+(function() {
+  const showMorePubs = document.getElementById('show-more-pubs');
+  if (showMorePubs) {
+    showMorePubs.addEventListener('click', function() {
+      const hiddenPubs = document.querySelectorAll('.pub-hidden');
+      hiddenPubs.forEach(pub => pub.classList.remove('pub-hidden'));
+      showMorePubs.style.display = 'none';
+    });
+  }
+
+  const showMoreTalks = document.getElementById('show-more-talks');
+  if (showMoreTalks) {
+    showMoreTalks.addEventListener('click', function() {
+      const hiddenTalks = document.querySelectorAll('.talk-hidden');
+      hiddenTalks.forEach(talk => talk.classList.remove('talk-hidden'));
+      showMoreTalks.style.display = 'none';
+    });
+  }
+})();
+</script>
+```
+
+## Technical Talks & Presentations
+
+```{python}
+#| results: asis
+from pathlib import Path
+import html
+import json
+import re
+from IPython.display import HTML, display
+
+talks_path = Path("_data/talks.yml")
+talks_data = talks_path.read_text()
+
+try:
+    import yaml  # type: ignore[import-not-found]
+except ModuleNotFoundError:
+    yaml = None
+
+if yaml is not None:
+    talks = yaml.safe_load(talks_data)
+else:
+    talks = json.loads(talks_data)
+
+def talk_year(entry):
+    date_text = str(entry.get("date", ""))
+    match = re.search(r"(20\d{2}|19\d{2})", date_text)
+    if match:
+        return int(match.group(0))
+    return 0
+
+def talk_buttons(entry):
+    resources = [("slides", "SLIDES"), ("poster", "POSTER"), ("video", "VIDEO")]
+    buttons = []
+    for key, label in resources:
+        url = entry.get(key)
+        if url:
+            safe_url = html.escape(url, quote=True)
+            safe_label = html.escape(label)
+            buttons.append(
+                f'<a class="btn btn-sm btn-outline-dark me-2" href="{safe_url}" target="_blank" rel="noopener">{safe_label}</a>'
+            )
+    return " ".join(buttons)
+
+
+talks_sorted = sorted(
+    talks,
+    key=lambda t: (-talk_year(t), t.get("event", ""), t.get("title", "")),
+)
+
+rows = ["<div class='talk-list'>"]
+talk_index = 0
+for talk in talks_sorted:
+    title = html.escape(talk.get("title", "Untitled"))
+    authors = talk.get("authors", [])
+    authors_html = ""
+    if authors:
+        authors_html = f"<div class='text-muted small mt-1'>{html.escape(', '.join(authors))}</div>"
+    info_bits = " · ".join(filter(None, [talk.get("event", ""), talk.get("date", ""), talk.get("location", "")]))
+    info_html = f"<div class='text-muted small'>{html.escape(info_bits)}</div>" if info_bits else ""
+    type_label = talk.get("type")
+    badge_html = f"<span class='pub-badge'>{html.escape(type_label)}</span>" if type_label else ""
+    badge_block = f"<div class='pub-badge-wrap'>{badge_html}</div>" if badge_html else ""
+    thumb_src = html.escape(talk.get("thumb") or "/assets/img/publications/featured.webp", quote=True)
+    resources_html = talk_buttons(talk)
+    actions_html = f"<div class='pub-actions'>{resources_html}</div>" if resources_html else ""
+
+    hidden_class = " talk-hidden" if talk_index >= 4 else ""
+    rows.append(
+        f"""
+<div class='pub talk-card mb-5{hidden_class}'>
+  <div class='pub-image'><img src='{thumb_src}' class='thumb rounded' alt='{title}'></div>
+  <div class='pub-body'>
+    {badge_block}
+    <div class='pub-title fw-semibold h5 mb-0'>{title}</div>
+    {authors_html}
+    {info_html}
+    {actions_html}
+  </div>
+</div>
+"""
+    )
+    talk_index += 1
+rows.append("</div>")
+rows.append('<div class="text-center mt-4"><button id="show-more-talks" class="btn btn-primary">Show More Talks</button></div>')
+display(HTML("".join(rows)))
+```

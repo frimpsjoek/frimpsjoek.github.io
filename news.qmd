@@ -1,0 +1,81 @@
+---
+title: "News & Highlights"
+description: "Updates on talks, awards, and collaborations."
+format:
+  html:
+    theme:
+      - flatly
+      - styles/custom.scss
+    toc: false
+    page-layout: full
+    citations-hover: true
+    crossrefs-hover: true
+---
+
+```{python}
+#| echo: false
+#| results: asis
+from pathlib import Path
+import html
+import json
+from datetime import datetime
+from IPython.display import HTML, display
+
+news_path = Path("_data/news.yml")
+news_text = news_path.read_text()
+
+try:
+    import yaml  # type: ignore[import-not-found]
+except ModuleNotFoundError:
+    yaml = None
+
+if yaml is not None:
+    entries = yaml.safe_load(news_text)
+else:
+    entries = json.loads(news_text)
+
+items = []
+for entry in entries or []:
+    date_str = entry.get("date", "")
+    try:
+        dt = datetime.strptime(date_str, "%Y-%m-%d")
+    except ValueError:
+        dt = datetime.min
+    items.append((dt, entry))
+
+items.sort(reverse=True)
+
+rows = ["<section class='news-timeline'>"]
+for dt, entry in items:
+    title = html.escape(entry.get("title", "Untitled highlight"))
+    summary = html.escape(entry.get("summary", ""))
+    location = entry.get("location")
+    link = entry.get("link")
+    date_label = dt.strftime("%b %d, %Y") if dt != datetime.min else ""
+    location_html = f"<span class='news-location'>{html.escape(location)}</span>" if location else ""
+    meta = " · ".join(bit for bit in [date_label, location_html] if bit)
+    meta_html = f"<div class='news-meta'>{meta}</div>" if meta else ""
+    if link:
+        safe_link = html.escape(link, quote=True)
+        title_html = f"<a href='{safe_link}' target='_blank' rel='noopener'>{title}</a>"
+    else:
+        title_html = title
+    rows.append(
+        f"""
+<div class='news-item'>
+  <div class='news-marker'></div>
+  <div class='news-content'>
+    <h3 class='news-title'>{title_html}</h3>
+    {meta_html}
+    <p class='news-summary'>{summary}</p>
+  </div>
+</div>
+"""
+    )
+rows.append("</section>")
+
+if not items:
+    rows = ["<p>No news to share yet. Check back soon!</p>"]
+
+display(HTML("".join(rows)))
+```
