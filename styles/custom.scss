@@ -3499,12 +3499,8 @@ pre, code, .sourceCode, div.sourceCode, pre.sourceCode {
 
 /* Improve LangChain wordmark contrast on light theme (white-on-transparent asset) */
 /* Invert LangChain wordmark on non-dark themes for contrast */
-html:not([data-bs-theme="dark"]) .tools-row img.langchain-logo {
-  filter: invert(1) hue-rotate(180deg);
-}
-
-/* Keep it crisp on dark theme without inversion */
-[data-bs-theme="dark"] .tools-row img.langchain-logo { filter: none; }
+/* LangChain: now using local SVG; no filter */
+.tools-row img.langchain-logo { filter: none !important; }
 
 
 
