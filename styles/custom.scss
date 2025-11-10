@@ -3474,10 +3474,22 @@ pre, code, .sourceCode, div.sourceCode, pre.sourceCode {
   width: 36px;
   height: 36px;
   opacity: 0.85;
+  vertical-align: middle;
 }
 
 [data-bs-theme="dark"] .tools-row img {
   opacity: 1;
+}
+
+/* Improve LangChain wordmark contrast on light theme (white-on-transparent asset) */
+[data-bs-theme="light"] .tools-row img.langchain-logo {
+  /* invert white to near-black to ensure readability on light bg */
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Keep it crisp on dark theme without inversion */
+[data-bs-theme="dark"] .tools-row img.langchain-logo {
+  filter: none;
 }
 
 

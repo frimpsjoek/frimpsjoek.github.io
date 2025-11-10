@@ -69,7 +69,7 @@ See the full list on the [news page](news.qmd).
   <img alt="CSS" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" />
   <img alt="GitHub" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" />
   <img alt="Bash" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" />
-  <img alt="LangGraph" src="https://python.langchain.com/img/brand/wordmark.png" style="height: 36px; width: auto;" />
+  <img class="langchain-logo" alt="LangChain" src="https://python.langchain.com/img/brand/wordmark.png" style="height: 36px; width: auto;" />
   <img alt="Gradio" src="https://www.gradio.app/_app/immutable/assets/gradio.CHB5adID.svg" style="height: 36px; width: auto;" />
   <img alt="HuggingFace" src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" style="height: 36px; width: auto;" />
   <img alt="Blender" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" />
