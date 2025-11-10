@@ -1604,59 +1604,20 @@ body:not([class*="blog"]):not([class*="cv"]) .content-section:nth-child(4) { ani
     }
   }
 
-// Smooth heading animations with hover icons (disabled on blog and CV)
-body:not([class*="blog"]):not([class*="cv"]) h1,
-body:not([class*="blog"]):not([class*="cv"]) h2,
-body:not([class*="blog"]):not([class*="cv"]) h3 {
-  transition: color 0.3s ease;
-  position: relative;
-  cursor: pointer;
-
-  &::after {
-    content: "¶";
-    position: absolute;
-    left: -1.5rem;
-    opacity: 0;
-    transition: all 0.3s ease;
-    color: var(--global-theme-color);
-    font-size: 0.8em;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  &:hover {
-    color: var(--global-hover-color);
-
-    &::after {
-      opacity: 1;
-      left: -1.2rem;
-    }
-  }
+// Headings: clean hover without injected symbols
+h1, h2, h3 {
+  transition: color 0.2s ease;
+  cursor: text;
 }
 
-// Serif font headings get special pilcrow icons (disabled on blog and CV)
-body:not([class*="blog"]):not([class*="cv"]) h1,
-body:not([class*="blog"]):not([class*="cv"]) h2,
-body:not([class*="blog"]):not([class*="cv"]) h3 {
-  font-family: $font-family-serif !important;
-
-  &::after {
-    content: "§";
-    font-family: "Georgia", serif;
-    font-weight: bold;
-  }
+// Ensure no pseudo-element icons are injected on headings
+h1::after, h2::after, h3::after {
+  content: none !important;
 }
 
-// Disable heading animations on blog and CV pages
-body[class*="blog"] h1,
-body[class*="blog"] h2,
-body[class*="blog"] h3,
-body[class*="cv"] h1,
-body[class*="cv"] h2,
-body[class*="cv"] h3 {
-  &::after {
-    display: none !important;
-  }
+// Simple color shift on hover
+h1:hover, h2:hover, h3:hover {
+  color: var(--global-hover-color);
 }
 
 // Gentle image hover effects
