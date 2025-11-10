@@ -73,7 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ec4ee4cbf63ef85cdf01764f2e70af83.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-62203559d7cd71cee89d2ecf52d81911.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -608,8 +608,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     let raf = null;
     let mouseX = 0;
     let active = false;
-    const influence = 110; // px radius of influence
-    const maxBoost = 1.0;  // up to +100% (2x) size at center
+    const influence = 80;  // smaller radius so neighbors barely move
+    const maxBoost = 0.9;  // strong center zoom, less global motion
 
     // capture base sizes once
     const base = new Map();
@@ -629,17 +629,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
     function update() {
       raf = null;
+      const rowRect = row.getBoundingClientRect();
+      const rowHeight = rowRect.height || 110;
       icons.forEach((img) => {
         const b = base.get(img);
         if (!b) return;
         const rect = img.getBoundingClientRect();
         const center = rect.left + rect.width / 2;
         const d = Math.abs(mouseX - center);
-        // smooth gaussian-like falloff
+        // smooth gaussian-like falloff with threshold to avoid "elastic" feel
         const t = Math.exp(-((d / influence) ** 2));
-        let scale = b.bs * (1 + maxBoost * (active ? t : 0));
-        // clamp maximum to avoid excessive jump
-        const maxScale = b.bs * 2.0;
+        const neighborCutoff = 0.28; // below this, no growth at all
+        const eff = active && t > neighborCutoff ? (t - neighborCutoff) / (1 - neighborCutoff) : 0;
+        let scale = b.bs * (1 + maxBoost * eff);
+        // clamp maximum to avoid exceeding row height (keep top/bottom fixed)
+        const maxByHeight = (rowHeight - 6) / b.h;
+        const maxScale = Math.min(b.bs * 2.0, maxByHeight);
         if (scale > maxScale) scale = maxScale;
         img.style.width = (b.w * scale).toFixed(2) + 'px';
         img.style.height = (b.h * scale).toFixed(2) + 'px';
@@ -663,6 +668,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           img.style.zIndex = '1';
         }
       });
+      // keep container height steady (CSS min-height handles this)
     }
 
     row.addEventListener('mousemove', onMove);
