@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-2d14dcdcb3c5be5351c824dc61fa3829.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-d1525e9a3109de56f46dfa6f9c85eb8e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -972,6 +972,85 @@ Note
   })();
 </script>
 <!-- Dock magnification disabled to avoid overlap/fusion of icons -->
+<script>
+  // Layout-safe dock magnification for tools icons
+  (function() {
+    const row = document.querySelector('.tools-row');
+    if (!row) return;
+    const icons = Array.from(row.querySelectorAll('img'));
+    if (!icons.length) return;
+
+    let raf = null;
+    let mouseX = 0;
+    let active = false;
+    const influence = 110; // px radius of influence
+    const maxBoost = 1.0;  // up to +100% (2x) size at center
+
+    // capture base sizes once
+    const base = new Map();
+    function captureBase() {
+      icons.forEach((img) => {
+        const cs = getComputedStyle(img);
+        const w = parseFloat(cs.width) || 45;
+        const h = parseFloat(cs.height) || 45;
+        const bs = parseFloat(cs.getPropertyValue('--icon-base-scale')) || 1;
+        base.set(img, { w, h, bs });
+        // reset inline sizes
+        img.style.width = w + 'px';
+        img.style.height = h + 'px';
+      });
+    }
+    captureBase();
+
+    function update() {
+      raf = null;
+      icons.forEach((img) => {
+        const b = base.get(img);
+        if (!b) return;
+        const rect = img.getBoundingClientRect();
+        const center = rect.left + rect.width / 2;
+        const d = Math.abs(mouseX - center);
+        // smooth gaussian-like falloff
+        const t = Math.exp(-((d / influence) ** 2));
+        let scale = b.bs * (1 + maxBoost * (active ? t : 0));
+        // clamp maximum to avoid excessive jump
+        const maxScale = b.bs * 2.0;
+        if (scale > maxScale) scale = maxScale;
+        img.style.width = (b.w * scale).toFixed(2) + 'px';
+        img.style.height = (b.h * scale).toFixed(2) + 'px';
+        img.style.zIndex = String(Math.round(scale * 100));
+      });
+    }
+
+    function onMove(e) {
+      mouseX = e.clientX;
+      if (!raf) raf = requestAnimationFrame(update);
+    }
+    function onEnter(e) { active = true; onMove(e); }
+    function onLeave() {
+      active = false;
+      // reset sizes to base
+      icons.forEach((img) => {
+        const b = base.get(img);
+        if (b) {
+          img.style.width = b.w + 'px';
+          img.style.height = b.h + 'px';
+          img.style.zIndex = '1';
+        }
+      });
+    }
+
+    row.addEventListener('mousemove', onMove);
+    row.addEventListener('mouseenter', onEnter);
+    row.addEventListener('mouseleave', onLeave);
+
+    // Recompute base sizes on resize (e.g., responsive breakpoints)
+    window.addEventListener('resize', () => {
+      captureBase();
+      update();
+    });
+  })();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const isCodeAnnotation = (el) => {
