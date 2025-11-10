@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-9f038478b61843d58e5753698c209419.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-ade674b96be95e513ab10026d80485ad.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -971,77 +971,7 @@ Note
     }
   })();
 </script>
-<script>
-  // MacOS Dock-like magnification for the tools icon row
-  (function() {
-    const row = document.querySelector('.tools-row');
-    if (!row) return;
-    const icons = Array.from(row.querySelectorAll('img'));
-    if (icons.length === 0) return;
-
-    let raf = null;
-    let mouseX = 0;
-    let active = false;
-    const influence = 120; // px radius of influence (larger base icons)
-    const maxBoost = 0.55; // slightly stronger magnification
-
-    function getTheme() {
-      return document.documentElement.getAttribute('data-bs-theme') || 'light';
-    }
-
-    function update() {
-      raf = null;
-      const theme = getTheme();
-      icons.forEach((img) => {
-        const rect = img.getBoundingClientRect();
-        const center = rect.left + rect.width / 2;
-        const d = Math.abs(mouseX - center);
-        // read per-icon base scale from CSS variable
-        const cs = getComputedStyle(img);
-        const baseVar = cs.getPropertyValue('--icon-base-scale').trim();
-        let baseScale = parseFloat(baseVar);
-        if (!baseScale || isNaN(baseScale)) baseScale = 1;
-        let scale = baseScale;
-        if (active) {
-          const t = Math.max(0, 1 - (d / influence) ** 2);
-          scale = baseScale * (1 + maxBoost * t); // quadratic falloff with base scale
-        }
-        img.style.transform = `scale(${scale.toFixed(3)})`;
-        // Add subtle shadow/glow based on scale
-        if (scale > 1.02) {
-          if (theme === 'dark') {
-            img.style.filter = `drop-shadow(0 8px 18px rgba(0, 160, 255, ${Math.min(0.35, (scale - 1) * 0.9).toFixed(3)}))`;
-          } else {
-            img.style.filter = `drop-shadow(0 8px 14px rgba(0, 0, 0, ${Math.min(0.22, (scale - 1) * 0.8).toFixed(3)}))`;
-          }
-        } else {
-          img.style.filter = '';
-        }
-      });
-    }
-
-    function onMove(e) {
-      mouseX = e.clientX;
-      if (!raf) raf = requestAnimationFrame(update);
-    }
-
-    function onEnter(e) {
-      active = true;
-      onMove(e);
-    }
-
-    function onLeave() {
-      active = false;
-      if (!raf) {
-        raf = requestAnimationFrame(update);
-      }
-    }
-
-    row.addEventListener('mousemove', onMove);
-    row.addEventListener('mouseenter', onEnter);
-    row.addEventListener('mouseleave', onLeave);
-  })();
-</script>
+<!-- Dock magnification disabled to avoid overlap/fusion of icons -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const isCodeAnnotation = (el) => {
