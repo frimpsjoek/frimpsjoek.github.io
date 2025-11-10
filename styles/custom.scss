@@ -468,50 +468,82 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.3 !important;
 }
 
-// Ensure consistent body text styling - SLIGHTLY LARGER
+// Ensure consistent body text styling - slightly smaller base, responsive downscale
 body, body p, body div, body span, body li {
   font-family: $font-family-sans-serif !important;
   color: var(--global-text-color) !important;
-  line-height: 1.7 !important; // Slightly increased for better readability
-  font-size: 1.05rem !important; // Slightly larger base size
+  line-height: 1.65 !important;
+  font-size: 1rem !important;
+}
+
+// Responsive downscaling for smaller screens
+@media (max-width: 991.98px) {
+  body, body p, body div, body span, body li {
+    font-size: 0.975rem !important;
+    line-height: 1.6 !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  body, body p, body div, body span, body li {
+    font-size: 0.94rem !important;
+    line-height: 1.55 !important;
+  }
 }
 
 // Consistent heading hierarchy - SLIGHTLY LARGER
 h1 {
-  font-size: 2.4rem !important; // Increased from 2.2rem
+  font-size: 2.1rem !important;
   font-weight: 400 !important;
   margin-top: 2rem !important;
-  margin-bottom: 1.5rem !important;
+  margin-bottom: 1.25rem !important;
 }
 
 h2 {
-  font-size: 2.0rem !important; // Increased from 1.8rem
+  font-size: 1.75rem !important;
   font-weight: 350 !important;
-  margin-top: 1.8rem !important;
-  margin-bottom: 1.2rem !important;
+  margin-top: 1.6rem !important;
+  margin-bottom: 1rem !important;
   border-bottom: 2px solid var(--global-divider-color) !important;
-  padding-bottom: 0.5rem !important;
+  padding-bottom: 0.4rem !important;
 }
 
 h3 {
-  font-size: 1.6rem !important; // Increased from 1.4rem
+  font-size: 1.4rem !important;
   font-weight: 300 !important;
-  margin-top: 1.5rem !important;
-  margin-bottom: 1rem !important;
+  margin-top: 1.4rem !important;
+  margin-bottom: 0.9rem !important;
 }
 
 h4 {
-  font-size: 1.35rem !important; // Increased from 1.2rem
+  font-size: 1.25rem !important;
   font-weight: 250 !important;
-  margin-top: 1.3rem !important;
-  margin-bottom: 0.8rem !important;
+  margin-top: 1.2rem !important;
+  margin-bottom: 0.7rem !important;
 }
 
 h5, h6 {
-  font-size: 1.2rem !important; // Increased from 1.1rem
-  font-weight:250 !important;
-  margin-top: 1.2rem !important;
-  margin-bottom: 0.7rem !important;
+  font-size: 1.1rem !important;
+  font-weight: 250 !important;
+  margin-top: 1.1rem !important;
+  margin-bottom: 0.6rem !important;
+}
+
+// Heading sizes scale down on tablets and phones
+@media (max-width: 991.98px) {
+  h1 { font-size: 1.9rem !important; }
+  h2 { font-size: 1.6rem !important; }
+  h3 { font-size: 1.3rem !important; }
+  h4 { font-size: 1.15rem !important; }
+  h5, h6 { font-size: 1.05rem !important; }
+}
+
+@media (max-width: 575.98px) {
+  h1 { font-size: 1.7rem !important; }
+  h2 { font-size: 1.45rem !important; }
+  h3 { font-size: 1.2rem !important; }
+  h4 { font-size: 1.1rem !important; }
+  h5, h6 { font-size: 1rem !important; }
 }
 
 hr {
@@ -3440,6 +3472,17 @@ pre, code, .sourceCode, div.sourceCode, pre.sourceCode {
 
 [data-bs-theme="dark"] .tools-row img {
   opacity: 1;
+}
+
+// Shrink tool icons and gaps on smaller screens for better wrapping
+@media (max-width: 767.98px) {
+  .tools-row { gap: 10px; }
+  .tools-row img { width: 28px; height: 28px; }
+}
+
+@media (max-width: 575.98px) {
+  .tools-row { gap: 8px; }
+  .tools-row img { width: 24px; height: 24px; }
 }
 
 /* Improve LangChain wordmark contrast on light theme (white-on-transparent asset) */
