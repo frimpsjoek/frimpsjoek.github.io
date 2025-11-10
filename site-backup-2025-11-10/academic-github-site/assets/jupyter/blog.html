@@ -73,7 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../../site_libs/bootstrap/bootstrap-930dade2153fb9244a74165446b67740.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../site_libs/bootstrap/bootstrap-4249fcde126213b58d4c483a2f632355.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -395,10 +395,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         const rect = img.getBoundingClientRect();
         const center = rect.left + rect.width / 2;
         const d = Math.abs(mouseX - center);
-        let scale = 1;
+        // read per-icon base scale from CSS variable
+        const cs = getComputedStyle(img);
+        const baseVar = cs.getPropertyValue('--icon-base-scale').trim();
+        let baseScale = parseFloat(baseVar);
+        if (!baseScale || isNaN(baseScale)) baseScale = 1;
+        let scale = baseScale;
         if (active) {
           const t = Math.max(0, 1 - (d / influence) ** 2);
-          scale = 1 + maxBoost * t; // quadratic falloff
+          scale = baseScale * (1 + maxBoost * t); // quadratic falloff with base scale
         }
         img.style.transform = `scale(${scale.toFixed(3)})`;
         // Add subtle shadow/glow based on scale

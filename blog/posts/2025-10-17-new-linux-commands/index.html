@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-190b1dde641405008e48e68f88c4b1c9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-9f038478b61843d58e5753698c209419.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -996,10 +996,15 @@ Note
         const rect = img.getBoundingClientRect();
         const center = rect.left + rect.width / 2;
         const d = Math.abs(mouseX - center);
-        let scale = 1;
+        // read per-icon base scale from CSS variable
+        const cs = getComputedStyle(img);
+        const baseVar = cs.getPropertyValue('--icon-base-scale').trim();
+        let baseScale = parseFloat(baseVar);
+        if (!baseScale || isNaN(baseScale)) baseScale = 1;
+        let scale = baseScale;
         if (active) {
           const t = Math.max(0, 1 - (d / influence) ** 2);
-          scale = 1 + maxBoost * t; // quadratic falloff
+          scale = baseScale * (1 + maxBoost * t); // quadratic falloff with base scale
         }
         img.style.transform = `scale(${scale.toFixed(3)})`;
         // Add subtle shadow/glow based on scale
