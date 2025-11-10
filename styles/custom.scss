@@ -3463,7 +3463,7 @@ pre, code, .sourceCode, div.sourceCode, pre.sourceCode {
 .tools-row {
   display: flex;
   justify-content: center;
-  gap: 18px; // a bit more spacing
+  gap: 5px; // tighter spacing per request
   flex-wrap: wrap;
   margin: 2rem auto 0; // slightly tighter top margin
   padding-top: 1.25rem; // reduce top padding
@@ -3480,24 +3480,14 @@ pre, code, .sourceCode, div.sourceCode, pre.sourceCode {
   background: transparent !important;
   padding: 0;
   object-fit: contain;
-  transition: transform 0.22s ease, filter 0.2s ease; // smoother, more obvious zoom
+  transition: transform 0.12s ease, filter 0.12s ease; // snappier for dock effect
 }
 
 [data-bs-theme="dark"] .tools-row img {
   opacity: 1;
 }
 
-// Interactive zoom on hover with shadow/glow
-.tools-row img:hover {
-  transform: scale(1.18);
-  /* Light theme: subtle realistic shadow */
-  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.18));
-}
-
-/* Dark theme: colored glow for visibility */
-[data-bs-theme="dark"] .tools-row img:hover {
-  filter: drop-shadow(0 8px 18px color-mix(in srgb, var(--global-hover-color) 60%, transparent));
-}
+/* JS-driven dock effect will set transform/filter dynamically */
 
 // Shrink tool icons and gaps on smaller screens for better wrapping
 @media (max-width: 767.98px) {

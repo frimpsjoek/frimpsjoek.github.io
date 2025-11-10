@@ -166,3 +166,69 @@
     }
   })();
 </script>
+<script>
+  // MacOS Dock-like magnification for the tools icon row
+  (function() {
+    const row = document.querySelector('.tools-row');
+    if (!row) return;
+    const icons = Array.from(row.querySelectorAll('img'));
+    if (icons.length === 0) return;
+
+    let raf = null;
+    let mouseX = 0;
+    let active = false;
+    const influence = 90; // px radius of influence
+    const maxBoost = 0.6; // max extra scale (1 + maxBoost)
+
+    function getTheme() {
+      return document.documentElement.getAttribute('data-bs-theme') || 'light';
+    }
+
+    function update() {
+      raf = null;
+      const theme = getTheme();
+      icons.forEach((img) => {
+        const rect = img.getBoundingClientRect();
+        const center = rect.left + rect.width / 2;
+        const d = Math.abs(mouseX - center);
+        let scale = 1;
+        if (active) {
+          const t = Math.max(0, 1 - (d / influence) ** 2);
+          scale = 1 + maxBoost * t; // quadratic falloff
+        }
+        img.style.transform = `scale(${scale.toFixed(3)})`;
+        // Add subtle shadow/glow based on scale
+        if (scale > 1.02) {
+          if (theme === 'dark') {
+            img.style.filter = `drop-shadow(0 8px 18px rgba(0, 160, 255, ${Math.min(0.35, (scale - 1) * 0.9).toFixed(3)}))`;
+          } else {
+            img.style.filter = `drop-shadow(0 8px 14px rgba(0, 0, 0, ${Math.min(0.22, (scale - 1) * 0.8).toFixed(3)}))`;
+          }
+        } else {
+          img.style.filter = '';
+        }
+      });
+    }
+
+    function onMove(e) {
+      mouseX = e.clientX;
+      if (!raf) raf = requestAnimationFrame(update);
+    }
+
+    function onEnter(e) {
+      active = true;
+      onMove(e);
+    }
+
+    function onLeave() {
+      active = false;
+      if (!raf) {
+        raf = requestAnimationFrame(update);
+      }
+    }
+
+    row.addEventListener('mousemove', onMove);
+    row.addEventListener('mouseenter', onEnter);
+    row.addEventListener('mouseleave', onLeave);
+  })();
+</script>
