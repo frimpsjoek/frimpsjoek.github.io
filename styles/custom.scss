@@ -3485,6 +3485,10 @@ pre, code, .sourceCode, div.sourceCode, pre.sourceCode {
 
 // Boost size for icons that look visually smaller inside their SVG viewboxes
 .tools-row img.icon-boost { width: 64px; height: 64px; }
+// Stronger boost for especially small marks/wordmarks
+.tools-row img.icon-boost-strong { width: 72px; height: 72px; }
+// Remove internal padding when the SVG already has whitespace
+.tools-row img.icon-no-pad { padding: 0 !important; }
 
 [data-bs-theme="dark"] .tools-row img {
   opacity: 1;
@@ -3497,12 +3501,14 @@ pre, code, .sourceCode, div.sourceCode, pre.sourceCode {
   .tools-row { gap: 16px; margin-top: 1.5rem; padding-top: 1rem; }
   .tools-row img { width: 40px; height: 40px; padding: 3px; }
   .tools-row img.icon-boost { width: 48px; height: 48px; }
+  .tools-row img.icon-boost-strong { width: 56px; height: 56px; }
 }
 
 @media (max-width: 575.98px) {
   .tools-row { gap: 14px; margin-top: 1.25rem; padding-top: 0.75rem; }
   .tools-row img { width: 32px; height: 32px; padding: 2px; }
   .tools-row img.icon-boost { width: 38px; height: 38px; }
+  .tools-row img.icon-boost-strong { width: 44px; height: 44px; }
 }
 
 // Subtle background highlight on hover (non-square feel)

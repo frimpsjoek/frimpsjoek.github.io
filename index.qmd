@@ -69,12 +69,12 @@ See the full list on the [news page](news.qmd).
   <img alt="CSS" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" />
   <img class="icon-invert-dark" alt="GitHub" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" />
   <img alt="Bash" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" />
-  <img class="langchain-logo icon-boost" alt="LangChain" src="assets/icons/langchain.svg" style="height: 36px; width: auto;" />
-  <img class="icon-boost" alt="GitHub Copilot" src="assets/icons/githubcopilot.svg" style="height: 36px; width: auto;" />
-  <img class="icon-invert-dark icon-boost" alt="Notion" src="assets/icons/notion.svg" style="height: 36px; width: auto;" />
+  <img class="langchain-logo icon-boost-strong icon-no-pad" alt="LangChain" src="assets/icons/langchain.svg" style="height: 36px; width: auto;" />
+  <img class="icon-boost-strong icon-no-pad" alt="GitHub Copilot" src="assets/icons/githubcopilot.svg" style="height: 36px; width: auto;" />
+  <img class="icon-invert-dark icon-boost-strong icon-no-pad" alt="Notion" src="assets/icons/notion.svg" style="height: 36px; width: auto;" />
   <!-- Cline icon pending proper asset; hiding for now -->
-  <img class="icon-invert-dark icon-boost" alt="MCP" src="assets/icons/mcp.svg" style="height: 36px; width: auto;" />
+  <img class="icon-invert-dark icon-boost-strong icon-no-pad" alt="MCP" src="assets/icons/mcp.svg" style="height: 36px; width: auto;" />
   <img alt="Gradio" src="https://www.gradio.app/_app/immutable/assets/gradio.CHB5adID.svg" style="height: 36px; width: auto;" />
-  <img class="icon-boost" alt="HuggingFace" src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" style="height: 36px; width: auto;" />
+  <img class="icon-boost-strong icon-no-pad" alt="HuggingFace" src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" style="height: 36px; width: auto;" />
   <img alt="Blender" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" />
 </div>
