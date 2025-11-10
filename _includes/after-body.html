@@ -178,8 +178,8 @@
     let raf = null;
     let mouseX = 0;
     let active = false;
-    const influence = 110; // px radius of influence
-    const maxBoost = 1.0;  // up to +100% (2x) size at center
+    const influence = 80;  // smaller radius so neighbors barely move
+    const maxBoost = 0.9;  // strong center zoom, less global motion
 
     // capture base sizes once
     const base = new Map();
@@ -199,17 +199,22 @@
 
     function update() {
       raf = null;
+      const rowRect = row.getBoundingClientRect();
+      const rowHeight = rowRect.height || 110;
       icons.forEach((img) => {
         const b = base.get(img);
         if (!b) return;
         const rect = img.getBoundingClientRect();
         const center = rect.left + rect.width / 2;
         const d = Math.abs(mouseX - center);
-        // smooth gaussian-like falloff
+        // smooth gaussian-like falloff with threshold to avoid "elastic" feel
         const t = Math.exp(-((d / influence) ** 2));
-        let scale = b.bs * (1 + maxBoost * (active ? t : 0));
-        // clamp maximum to avoid excessive jump
-        const maxScale = b.bs * 2.0;
+        const neighborCutoff = 0.28; // below this, no growth at all
+        const eff = active && t > neighborCutoff ? (t - neighborCutoff) / (1 - neighborCutoff) : 0;
+        let scale = b.bs * (1 + maxBoost * eff);
+        // clamp maximum to avoid exceeding row height (keep top/bottom fixed)
+        const maxByHeight = (rowHeight - 6) / b.h;
+        const maxScale = Math.min(b.bs * 2.0, maxByHeight);
         if (scale > maxScale) scale = maxScale;
         img.style.width = (b.w * scale).toFixed(2) + 'px';
         img.style.height = (b.h * scale).toFixed(2) + 'px';
@@ -233,6 +238,7 @@
           img.style.zIndex = '1';
         }
       });
+      // keep container height steady (CSS min-height handles this)
     }
 
     row.addEventListener('mousemove', onMove);
