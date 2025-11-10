@@ -1,5 +1,7 @@
 # Joseph Frimpong - Academic Website
 
+[![Quarto Publish](https://github.com/frimpsjoek/frimpsjoek.github.io/actions/workflows/quarto-publish.yml/badge.svg?branch=main)](https://github.com/frimpsjoek/frimpsjoek.github.io/actions/workflows/quarto-publish.yml)
+
 A modern academic website built with [Quarto](https://quarto.org), featuring enhanced UI, responsive design, and integrated blog functionality.
 
 ## Features
@@ -32,10 +34,7 @@ A modern academic website built with [Quarto](https://quarto.org), featuring enh
 
 1. **Install Quarto**: Follow the [installation guide](https://quarto.org/docs/get-started/)
 
-2. **Clone and navigate to project**:
-   ```bash
-   cd "Quarto website"
-   ```
+2. **Navigate to the repository root** (this is the project root).
 
 3. **Preview the site**:
    ```bash
@@ -89,13 +88,18 @@ The site can be deployed to:
 
 ### GitHub Pages Deployment
 
-```bash
-# Configure for GitHub Pages
-quarto publish gh-pages
+This repository is configured to deploy automatically via GitHub Actions to the `gh-pages` branch using the workflow at `.github/workflows/quarto-publish.yml`.
 
-# Or manual deployment
+One-time setup:
+- In GitHub: Settings → Pages → Source: select `gh-pages` and root `/`.
+
+Manual commands (optional):
+```bash
+# Render locally
 quarto render
-# Then push _site/ contents to gh-pages branch
+
+# Or publish using Quarto's helper (creates/updates gh-pages)
+quarto publish gh-pages
 ```
 
 ## Configuration
