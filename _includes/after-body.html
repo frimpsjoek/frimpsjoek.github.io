@@ -191,10 +191,15 @@
         const rect = img.getBoundingClientRect();
         const center = rect.left + rect.width / 2;
         const d = Math.abs(mouseX - center);
-        let scale = 1;
+        // read per-icon base scale from CSS variable
+        const cs = getComputedStyle(img);
+        const baseVar = cs.getPropertyValue('--icon-base-scale').trim();
+        let baseScale = parseFloat(baseVar);
+        if (!baseScale || isNaN(baseScale)) baseScale = 1;
+        let scale = baseScale;
         if (active) {
           const t = Math.max(0, 1 - (d / influence) ** 2);
-          scale = 1 + maxBoost * t; // quadratic falloff
+          scale = baseScale * (1 + maxBoost * t); // quadratic falloff with base scale
         }
         img.style.transform = `scale(${scale.toFixed(3)})`;
         // Add subtle shadow/glow based on scale
