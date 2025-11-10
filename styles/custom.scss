@@ -3463,12 +3463,12 @@ pre, code, .sourceCode, div.sourceCode, pre.sourceCode {
 .tools-row {
   display: flex;
   justify-content: center;
-  gap: 5px; // tighter spacing per request
+  gap: 14px; // more spacing to avoid overlap
   flex-wrap: wrap;
   margin: 2rem auto 0; // slightly tighter top margin
   padding-top: 1.25rem; // reduce top padding
   padding-bottom: 0;
-  border-top: 2px solid var(--global-divider-color); // restore subtle divider line
+  border-top: 2px solid var(--global-divider-color); // subtle divider line
 }
 
 .tools-row img {
@@ -3476,9 +3476,9 @@ pre, code, .sourceCode, div.sourceCode, pre.sourceCode {
   height: 36px;
   opacity: 0.85;
   vertical-align: middle;
-  border-radius: 0 !important; // ensure no rounding/cropping
+  border-radius: 6px; // soften square edges without cropping
   background: transparent !important;
-  padding: 0;
+  padding: 3px; // breathing room around icons
   object-fit: contain;
   transition: transform 0.12s ease, filter 0.12s ease; // snappier for dock effect
 }
@@ -3499,6 +3499,10 @@ pre, code, .sourceCode, div.sourceCode, pre.sourceCode {
   .tools-row { gap: 10px; margin-top: 1.25rem; padding-top: 0.75rem; }
   .tools-row img { width: 24px; height: 24px; }
 }
+
+// Subtle background highlight on hover (non-square feel)
+.tools-row img:hover { background-color: rgba(0,0,0,0.05); }
+[data-bs-theme="dark"] .tools-row img:hover { background-color: rgba(255,255,255,0.06); }
 
 /* Ensure LangChain icon doesn't get inverted but can still glow on hover */
 .tools-row img.langchain-logo { filter: none; }
