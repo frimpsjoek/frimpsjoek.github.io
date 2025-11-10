@@ -3463,12 +3463,12 @@ pre, code, .sourceCode, div.sourceCode, pre.sourceCode {
 .tools-row {
   display: flex;
   justify-content: center;
-  gap: 14px;
+  gap: 18px; // a bit more spacing
   flex-wrap: wrap;
-  margin: 3rem auto 0;
-  padding-top: 3rem;
+  margin: 2rem auto 0; // slightly tighter top margin
+  padding-top: 1.25rem; // reduce top padding
   padding-bottom: 0;
-  border-top: 2px solid rgba(0, 0, 0, 0.15);
+  border-top: none; // remove dividing line/shadow under the row
 }
 
 .tools-row img {
@@ -3480,20 +3480,27 @@ pre, code, .sourceCode, div.sourceCode, pre.sourceCode {
   background: transparent !important;
   padding: 0;
   object-fit: contain;
+  transition: transform 0.18s ease; // smooth interactive zoom
 }
 
 [data-bs-theme="dark"] .tools-row img {
   opacity: 1;
 }
 
+// Interactive zoom on hover (without shadow)
+.tools-row img:hover {
+  transform: scale(1.1);
+  box-shadow: none !important;
+}
+
 // Shrink tool icons and gaps on smaller screens for better wrapping
 @media (max-width: 767.98px) {
-  .tools-row { gap: 10px; }
+  .tools-row { gap: 12px; margin-top: 1.5rem; padding-top: 1rem; }
   .tools-row img { width: 28px; height: 28px; }
 }
 
 @media (max-width: 575.98px) {
-  .tools-row { gap: 8px; }
+  .tools-row { gap: 10px; margin-top: 1.25rem; padding-top: 0.75rem; }
   .tools-row img { width: 24px; height: 24px; }
 }
 
