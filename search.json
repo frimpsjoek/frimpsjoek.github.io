@@ -263,11 +263,7 @@
     "href": "blog/index.html",
     "title": "Blog",
     "section": "",
-    "text": "Welcome to my blog where I share thoughts on academic life, computational materials science, and the journey of being a postdoctoral researcher.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nModern Alternatives to Traditional Linux Commands\n\n\nDiscover 6 essential modern CLI tools that replace traditional Linux commands with better performance and usability. Learn how ripgrep, bat, fd, eza, zoxide, and delta can supercharge your workflow.\n\n\n\n\n\nOct 17, 2025\n\n15 min\n\n\n\n\n\n\n\n\n\n\n\nGetting Started with Linux\n\n\nA practical guide for researchers transitioning to Linux for computational work, covering essential commands and workflow setup.\n\n\n\n\n\nNov 17, 2023\n\n6 min\n\n\n\n\n\n\n\n\n\n\n\nWhy Graduate School is for You\n\n\nReflections on the graduate school experience and what to expect from this transformative journey in academia.\n\n\n\n\n\nOct 12, 2023\n\n4 min\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "blog",
-      "Blog"
-    ]
+    "text": "Welcome to my blog where I share thoughts on academic life, computational materials science, and the journey of being a postdoctoral researcher.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nModern Alternatives to Traditional Linux Commands\n\n\nDiscover 6 essential modern CLI tools that replace traditional Linux commands with better performance and usability. Learn how ripgrep, bat, fd, eza, zoxide, and delta can supercharge your workflow.\n\n\n\n\n\nOct 17, 2025\n\n15 min\n\n\n\n\n\n\n\n\n\n\n\nGetting Started with Linux\n\n\nA practical guide for researchers transitioning to Linux for computational work, covering essential commands and workflow setup.\n\n\n\n\n\nNov 17, 2023\n\n6 min\n\n\n\n\n\n\n\n\n\n\n\nWhy Graduate School is for You\n\n\nReflections on the graduate school experience and what to expect from this transformative journey in academia.\n\n\n\n\n\nOct 12, 2023\n\n4 min\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "DEPLOYMENT.html",
@@ -554,7 +550,7 @@
     "href": "index.html#news",
     "title": "Joseph Frimpong",
     "section": "News",
-    "text": "News\n\nSep 15, 2024 – Joined Argonne National Laboratory as Postdoctoral Researcher — Started a postdoctoral appointment in the NST division to develop AI/ML-assisted GW/BSE workflows for heterogeneous materials.\nAug 30, 2024 – Defended Ph.D. in Chemistry at Wayne State University — Successfully defended my dissertation on many-body approaches for quantum dots and covalent interfaces.\nJul 01, 2023 – Led Chemistry Meets Computers Summer Bootcamp — taught a week intensive introducing Python and ML to high school students, mentoring on computational chemistry and machine learning.\n\nSee the full list on the news page."
+    "text": "News\n\nNov 04, 2024 – Joined Argonne National Laboratory as Postdoctoral Researcher — Started a postdoctoral appointment in the NST division to develop AI/ML-assisted GW/BSE workflows for heterogeneous materials.\nAug 30, 2024 – Defended Ph.D. in Chemistry at Wayne State University — Successfully defended my dissertation on many-body approaches for quantum dots and covalent interfaces.\nJul 01, 2023 – Led Chemistry Meets Computers Summer Bootcamp — taught a week intensive introducing Python and ML to high school students, mentoring on computational chemistry and machine learning.\n\nSee the full list on the news page."
   },
   {
     "objectID": "index.html#connect",
