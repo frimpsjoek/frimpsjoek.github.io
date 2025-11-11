@@ -31,14 +31,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Python
+      - name: Setup Python 3.11
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: '3.11'
+
+      - name: Install Python dependencies (jupyter, pyyaml, numpy, matplotlib)
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install jupyter pyyaml numpy matplotlib
 
       - name: Pre-render (home sections)
         run: |
-          python _data/generate_home_sections.py
+          python3 _data/generate_home_sections.py
 
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -49,4 +54,3 @@ jobs:
           target: gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
