@@ -43,11 +43,7 @@ website:
         href: https://linkedin.com/in/josephfrimpong
         aria-label: LinkedIn
 
-  sidebar:
-    - title: "Blog"
-      contents:
-        - blog/index.qmd
-        - blog/posts/*.qmd
+  # sidebar removed for blog pages
 
 format:
   html:
