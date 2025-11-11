@@ -6,7 +6,7 @@ author: "Joseph Frimpong"
 date: "2025-01-15"
 categories: [tutorial, quarto, python, website]
 image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop"
-draft: false
+draft: true
 format:
   html:
     code-fold: false

@@ -1,5 +1,7 @@
 ---
 title: "Joseph Frimpong"
+execute:
+  freeze: false
 format:
   html:
     toc: false
@@ -74,7 +76,7 @@ See the full list on the [news page](news.qmd).
   <img class="icon-invert-dark icon-boost-strong icon-no-pad" alt="Notion" src="assets/icons/notion.svg" />
   <!-- Cline icon pending proper asset; hiding for now -->
   <img class="icon-invert-dark icon-boost-strong icon-no-pad" alt="MCP" src="assets/icons/mcp.svg" />
-  <img class="icon-base-large icon-boost-strong icon-no-pad" alt="Gradio" src="https://www.gradio.app/_app/immutable/assets/gradio.CHB5adID.svg" />
+  <img class="icon-base-large icon-boost-xstrong icon-no-pad" alt="Gradio" src="https://www.gradio.app/_app/immutable/assets/gradio.CHB5adID.svg" />
   <img class="icon-boost-strong icon-no-pad" alt="HuggingFace" src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" />
   <img alt="Blender" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" />
 </div>

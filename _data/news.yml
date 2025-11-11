@@ -3,7 +3,7 @@
     "date": "2024-09-15",
     "title": "Joined Argonne National Laboratory as Postdoctoral Researcher",
     "location": "Lemont, IL",
-    "summary": "Started a postdoctoral appointment in the Materials Science division to develop ML-assisted GW/BSE workflows for heterogeneous materials.",
+    "summary": "Started a postdoctoral appointment in the NST division to develop AI/ML-assisted GW/BSE workflows for heterogeneous materials.",
     "link": null
   },
   {
@@ -17,7 +17,7 @@
     "date": "2023-07-01",
     "title": "Led Chemistry Meets Computers Summer Bootcamp",
     "location": "Wayne State University",
-    "summary": "Designed and taught a three-week intensive introducing Python and ASE to chemistry students, mentoring project teams through materials workflows.",
+    "summary": "taught a week intensive introducing Python and ML to high school students, mentoring on computational chemistry and machine learning.",
     "link": null
   }
 ]

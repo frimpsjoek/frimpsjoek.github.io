@@ -1,3 +1,3 @@
 - **Oct 17, 2025** – [Modern Alternatives to Traditional Linux Commands](blog/posts/2025-10-17-new-linux-commands/)
-- **Sep 26, 2025** – [A Quarto Page Layout Example](blog/posts/2025-09-26-tufte-layout/)
-- **Jan 15, 2025** – [Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python](blog/posts/2025-01-15-quarto-tutorial/)
+- **Nov 17, 2023** – [Getting Started with Linux](blog/posts/2023-11-17-getting-started-linux/)
+- **Oct 12, 2023** – [Why Graduate School is for You](blog/posts/2023-10-12-why-graduate-school/)
