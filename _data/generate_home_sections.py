@@ -38,7 +38,16 @@ def latest_posts(max_items: int = 3) -> list[dict]:
     entries: list[tuple[datetime, dict, Path]] = []
     for post_dir in BLOG_DIR.glob("*/index.qmd"):
         meta = parse_front_matter(post_dir.read_text())
-        if not meta or meta.get("draft"):
+        if not meta:
+            continue
+        # Normalize draft flag: only treat explicit true/yes/1 as draft
+        draft_val = meta.get("draft")
+        is_draft = False
+        if isinstance(draft_val, bool):
+            is_draft = draft_val
+        elif isinstance(draft_val, str):
+            is_draft = draft_val.strip().lower() in {"true", "yes", "1", "on"}
+        if is_draft:
             continue
         date_str = meta.get("date", "")
         try:

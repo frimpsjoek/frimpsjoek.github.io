@@ -14,7 +14,7 @@ listing:
   feed:
     title: "Joseph Frimpong's Blog"
     description: "Thoughts on academic life, computational materials science, and research"
-    categories: [academia, tutorial, research, AI/ML]
+    categories: [academia, tutorial, research]
 ---
 
 
