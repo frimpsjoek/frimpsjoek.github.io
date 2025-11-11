@@ -224,132 +224,6 @@
     "text": "Joined Argonne National Laboratory as Postdoctoral Researcher\n    Sep 15, 2024 · Lemont, IL\n    Started a postdoctoral appointment in the Materials Science division to develop ML-assisted GW/BSE workflows for heterogeneous materials.\n  \n\n\n\n  \n  \n    Defended Ph.D. in Chemistry at Wayne State University\n    Aug 30, 2024 · Detroit, MI\n    Successfully defended my dissertation on many-body approaches for quantum dots and covalent interfaces.\n  \n\n\n\n  \n  \n    Led Chemistry Meets Computers Summer Bootcamp\n    Jul 01, 2023 · Wayne State University\n    Designed and taught a three-week intensive introducing Python and ASE to chemistry students, mentoring project teams through materials workflows."
   },
   {
-    "objectID": "blog/posts/2025-01-15-quarto-tutorial/index.html",
-    "href": "blog/posts/2025-01-15-quarto-tutorial/index.html",
-    "title": "Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python",
-    "section": "",
-    "text": "Quarto is a powerful open-source publishing system that allows you to create beautiful websites, blogs, presentations, and documents using a single consistent workflow. In this comprehensive tutorial, we’ll learn how to:\n\nSet up a complete Quarto website with blog functionality\nCreate engaging blog posts with Python code and visualizations\nBuild stunning presentation slides\nCustomize themes and styling\nDeploy your site to GitHub Pages\n\nBy the end of this tutorial, you’ll have all the tools needed to create a professional academic website with an integrated blog and presentation capabilities."
-  },
-  {
-    "objectID": "blog/posts/2025-01-15-quarto-tutorial/index.html#initialize-your-project",
-    "href": "blog/posts/2025-01-15-quarto-tutorial/index.html#initialize-your-project",
-    "title": "Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python",
-    "section": "Initialize Your Project",
-    "text": "Initialize Your Project\nFirst, let’s create a new directory for our Quarto website and initialize it:\n\n# Create project directory\nmkdir quarto-academic-site\ncd quarto-academic-site\n\n# Initialize with Quarto\nquarto create project website\n\n:::\n:::\nThis creates a basic website structure with: - index.qmd - Homepage - _quarto.yml - Configuration file - styles/ - Custom styling directory - posts/ - Blog posts directory"
-  },
-  {
-    "objectID": "blog/posts/2025-01-15-quarto-tutorial/index.html#project-structure",
-    "href": "blog/posts/2025-01-15-quarto-tutorial/index.html#project-structure",
-    "title": "Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python",
-    "section": "Project Structure",
-    "text": "Project Structure\nHere’s the recommended structure for an academic website:\n\nquarto-academic-site/\n├── index.qmd                 # Homepage\n├── about.qmd                 # About page\n├── research.qmd              # Research page\n├── publications.qmd          # Publications page\n├── blog/\n│   └── index.qmd            # Blog listing page\n│   └── posts/\n│       └── 2024-01-01-first-post/\n│           └── index.qmd    # Individual blog post\n├── slides/\n│   └── presentation.qmd     # Presentation slides\n├── _quarto.yml              # Site configuration\n├── _bibliography/\n│   └── references.bib       # Publication references\n├── styles/\n│   └── custom.scss          # Custom styling\n└── assets/\n    └── img/                 # Images and figures\n\n:::\n:::"
-  },
-  {
-    "objectID": "blog/posts/2025-01-15-quarto-tutorial/index.html#site-configuration",
-    "href": "blog/posts/2025-01-15-quarto-tutorial/index.html#site-configuration",
-    "title": "Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python",
-    "section": "Site Configuration",
-    "text": "Site Configuration\nLet’s set up the main configuration file (_quarto.yml):\n\nproject:\n  type: website\n  output-dir: _site\n\nwebsite:\n  title: \"Dr. Jane Smith\"\n  description: \"Assistant Professor of Computational Chemistry\"\n  site-url: \"https://yourusername.github.io\"\n  repo-url: \"https://github.com/yourusername/yourusername.github.io\"\n\n  navbar:\n    background: primary\n    search: true\n    left:\n      - text: \"Home\"\n        href: index.qmd\n      - text: \"About\"\n        href: about.qmd\n      - text: \"Research\"\n        href: research.qmd\n      - text: \"Publications\"\n        href: publications.qmd\n      - text: \"Blog\"\n        href: blog/\n      - text: \"CV\"\n        href: cv.qmd\n    right:\n      - icon: github\n        href: https://github.com/yourusername\n      - icon: linkedin\n        href: https://linkedin.com/in/yourusername\n      - icon: envelope\n        href: \"mailto:your.email@university.edu\"\n\n  page-footer:\n    left: \"© 2024 Jane Smith, Built with [Quarto](https://quarto.org)\"\n    center: \"Hosted on [GitHub Pages](https://pages.github.com)\"\n    right:\n      - icon: github\n        href: https://github.com/yourusername\n      - icon: linkedin\n        href: https://linkedin.com/in/yourusername\n\nformat:\n  html:\n    theme:\n      - flatly\n      - styles/custom.scss\n    toc: true\n    toc-depth: 3\n    code-copy: true\n    code-overflow: wrap\n    citations-hover: true\n    footnotes-hover: true\n    highlight-style: github\n    css: styles/styles.css\n    include-in-header: assets/html/head.html\n    include-after-body: assets/html/after-body.html\n\nexecute:\n  echo: fenced\n  freeze: auto\n\n:::\n:::"
-  },
-  {
-    "objectID": "blog/posts/2025-01-15-quarto-tutorial/index.html#custom-styling",
-    "href": "blog/posts/2025-01-15-quarto-tutorial/index.html#custom-styling",
-    "title": "Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python",
-    "section": "Custom Styling",
-    "text": "Custom Styling\nCreate a custom SCSS file for theming:\n\n// styles/custom.scss\n/* Custom Academic Theme */\n:root {\n  --bs-primary: #2c5aa0;\n  --bs-secondary: #6c757d;\n  --accent-color: #e74c3c;\n}\n\n/* Navigation enhancements */\n.navbar {\n  box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n  backdrop-filter: blur(10px);\n}\n\n.navbar-brand {\n  font-weight: 600;\n  font-size: 1.25rem;\n}\n\n/* Content styling */\n.content-container {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 0 1rem;\n}\n\n/* Publication styling */\n.publication-card {\n  border: 1px solid var(--bs-border-color);\n  border-radius: 0.5rem;\n  padding: 1.5rem;\n  margin-bottom: 1.5rem;\n  transition: all 0.3s ease;\n\n  &:hover {\n    box-shadow: 0 4px 12px rgba(0,0,0,0.1);\n    transform: translateY(-2px);\n  }\n}\n\n/* Code block enhancements */\npre.sourceCode {\n  border-radius: 0.5rem;\n  border: 1px solid var(--bs-border-color);\n}\n\ncode {\n  background-color: var(--bs-gray-100);\n  padding: 0.125rem 0.25rem;\n  border-radius: 0.25rem;\n}\n\n:::\n:::"
-  },
-  {
-    "objectID": "blog/posts/2025-01-15-quarto-tutorial/index.html#homepage",
-    "href": "blog/posts/2025-01-15-quarto-tutorial/index.html#homepage",
-    "title": "Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python",
-    "section": "Homepage",
-    "text": "Homepage\nCreate an engaging homepage (index.qmd):\n\n---\ntitle: \"Dr. Jane Smith\"\nsubtitle: \"Computational Chemist & Assistant Professor\"\npage-layout: full\nformat:\n  html:\n    toc: false\n---\n\n::: {.hero-section}\n::: {.content-container}\n::: {.hero-content}\n::: {.hero-text}\n# Welcome to My Research\n\nI'm a computational chemist developing new methods for understanding chemical reactivity and molecular dynamics. My research combines quantum chemistry, machine learning, and statistical mechanics to tackle challenging problems in catalysis and drug discovery.\n\n:::\n\n::: {.hero-image}\n![](images/hero-research.png){width=\"400px\"}\n:::\n\n::: {.content-container}\n::: {.stats-grid}\n::: {.stat-item}\n::: {.stat-number}\n50+\n:::\n\n::: {.stat-label}\nPublications\n:::\n\n::: {.stat-item}\n::: {.stat-number}\n$2.1M\n:::\n\n::: {.stat-label}\nResearch Funding\n:::\n\n::: {.stat-item}\n::: {.stat-number}\n15\n:::\n\n::: {.stat-label}\nPhD Students\n:::\n\n## Featured Research\n\n::: {.research-highlight}\n::: {.research-image}\n![](images/recent-paper.png){width=\"200px\"}\n:::\n\n::: {.research-content}\n### Recent Publication\n\n**Machine Learning Potentials for Reactive Chemistry**\n\nWe developed a new neural network potential that achieves DFT accuracy with molecular mechanics speed, enabling reactive dynamics simulations of large systems.\n\n[Read Paper](publications/smith-ml-potentials-2024.qmd) • [View Code](https://github.com/jsmith/ml-potentials)\n:::\n\n## Latest Blog Posts\n\n::: {.blog-preview}\n::: {.posts-grid}\n::: {.post-card}\n### Getting Started with Computational Chemistry\n\nA beginner's guide to setting up computational chemistry workflows with Python and modern quantum chemistry codes.\n\n[Read More](blog/2024-01-01-computational-chemistry-guide/)\n:::\n\n::: {.post-card}\n### Publishing Reproducible Research\n\nBest practices for creating reproducible scientific publications with modern tools.\n\n[Read More](blog/2024-01-15-reproducible-research/)\n:::\n\n:::\n:::"
-  },
-  {
-    "objectID": "blog/posts/2025-01-15-quarto-tutorial/index.html#about-page",
-    "href": "blog/posts/2025-01-15-quarto-tutorial/index.html#about-page",
-    "title": "Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python",
-    "section": "About Page",
-    "text": "About Page\nCreate a professional about page:\n\n---\ntitle: \"About\"\nformat:\n  html:\n    toc: false\n---\n\n::: {.content-container}\n::: {.about-hero}\n::: {.profile-section}\n::: {.profile-image}\n![](images/profile-photo.jpg){width=\"300px\"}\n:::\n\n::: {.profile-content}\n# About Me\n\n**Assistant Professor of Chemistry**  \nUniversity of Academic Excellence\n\nI am a computational chemist passionate about developing new theoretical methods and computational tools to understand chemical reactivity, molecular dynamics, and materials properties. My research group works at the interface of quantum chemistry, statistical mechanics, and machine learning.\n\n## Research Interests\n\n- **Quantum Chemistry**: Developing new electronic structure methods\n- **Machine Learning**: Neural network potentials for reactive chemistry\n- **Molecular Dynamics**: Enhanced sampling methods for rare events\n- **Materials Science**: Computational design of functional materials\n\n## Education\n\n- **PhD, Theoretical Chemistry** - MIT (2018)\n- **BS, Chemistry** - Caltech (2013)\n\n## Awards & Honors\n\n- NSF CAREER Award (2023)\n- ACS COMP Young Investigator Award (2022)\n- Sloan Research Fellowship (2021)\n:::\n\n:::\n:::"
-  },
-  {
-    "objectID": "blog/posts/2025-01-15-quarto-tutorial/index.html#creating-blog-posts",
-    "href": "blog/posts/2025-01-15-quarto-tutorial/index.html#creating-blog-posts",
-    "title": "Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python",
-    "section": "Creating Blog Posts",
-    "text": "Creating Blog Posts\nBlog posts are stored in blog/posts/ with the following structure:\n\nblog/posts/\n├── 2024-01-01-post-title/\n│   ├── index.qmd\n│   └── images/\n│       └── figure1.png\n└── 2024-01-15-another-post/\n    └── index.qmd\n\n:::\n:::"
-  },
-  {
-    "objectID": "blog/posts/2025-01-15-quarto-tutorial/index.html#sample-blog-post",
-    "href": "blog/posts/2025-01-15-quarto-tutorial/index.html#sample-blog-post",
-    "title": "Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python",
-    "section": "Sample Blog Post",
-    "text": "Sample Blog Post\nHere’s a complete blog post example:\n\n---\ntitle: \"Getting Started with Computational Chemistry Workflows\"\nsubtitle: \"A practical guide for beginners\"\nauthor: \"Dr. Jane Smith\"\ndate: \"2024-01-01\"\ncategories: [computational-chemistry, tutorial, python]\nimage: featured-workflow.png\n---\n\n# Introduction\n\nComputational chemistry has become an essential tool in modern chemical research. This guide will walk you through setting up efficient computational workflows using Python and popular quantum chemistry packages.\n\n## Setting Up Your Environment\n\nFirst, let's create a Python environment with all necessary packages:\n\n````python\n#| label: setup-environment\n#| eval: false\n# Create conda environment\nconda create -n comp-chem python=3.9 -y\nconda activate comp-chem\n\n# Install computational chemistry packages\nconda install -c conda-forge rdkit openbabel pyscf xtb -y\n\n# Install Python packages for workflow management\npip install jupyter papermill papermill[azure] python-dotenv\n\nBasic Quantum Chemistry Calculation\nLet’s perform a simple DFT calculation using Psi4:#| label: pyscf-calculation import numpy as np from pyscf import gto, scf, dft\n\n\nSet up water molecule (smaller example)\nmol = gto.M(atom=““” O 0.000000 0.000000 0.000000 H 0.757000 0.587000 0.000000 H -0.757000 0.587000 0.000000 “““, basis=’6-31g*’)\n\n\nRun DFT calculation\nmf = dft.RKS(mol) mf.xc = ‘b3lyp’ energy = mf.kernel()\n\n\nGet orbital energies\nhomo_energy = mf.mo_energy[mol.nelectron//2 - 1] lumo_energy = mf.mo_energy[mol.nelectron//2]\nprint(f”Total energy: {energy:.6f} Hartree”) print(f”HOMO energy: {homo_energy:.3f} Hartree”) print(f”LUMO energy: {lumo_energy:.3f} Hartree”) print(f”HOMO-LUMO gap: {lumo_energy - homo_energy:.3f} Hartree”):::\n\n\n\n\n\n\n\n\nNotePerformance Tips\n\n\n\nFor larger molecules, consider using smaller basis sets for initial geometry optimizations and increase basis set size for final energy calculations."
-  },
-  {
-    "objectID": "blog/posts/2025-01-15-quarto-tutorial/index.html#basic-quantum-chemistry-calculation",
-    "href": "blog/posts/2025-01-15-quarto-tutorial/index.html#basic-quantum-chemistry-calculation",
-    "title": "Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python",
-    "section": "Basic Quantum Chemistry Calculation",
-    "text": "Basic Quantum Chemistry Calculation\nLet’s perform a simple DFT calculation using Psi4:#| label: pyscf-calculation import numpy as np from pyscf import gto, scf, dft"
-  },
-  {
-    "objectID": "blog/posts/2025-01-15-quarto-tutorial/index.html#visualization-with-python",
-    "href": "blog/posts/2025-01-15-quarto-tutorial/index.html#visualization-with-python",
-    "title": "Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python",
-    "section": "Visualization with Python",
-    "text": "Visualization with Python\nLet’s visualize the molecular orbitals:\n::: {.details summary=“Show code”}#| label: molecular-orbitals #| fig-cap: HOMO and LUMO orbitals of caffeine import matplotlib.pyplot as plt from mpl_toolkits.mplot3d import Axes3D"
-  },
-  {
-    "objectID": "blog/posts/2025-01-15-quarto-tutorial/index.html#workflow-automation",
-    "href": "blog/posts/2025-01-15-quarto-tutorial/index.html#workflow-automation",
-    "title": "Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python",
-    "section": "Workflow Automation",
-    "text": "Workflow Automation\nCreate reusable functions for common tasks:\n::: {.details summary=“Show code”}#| label: workflow-functions def optimize_geometry(xyz_string, method=‘B3LYP’, basis=’6-31g*’): “““Optimize molecular geometry and return energy.”“” from pyscf import gto, dft\nmol = gto.M(atom=xyz_string, basis=basis)\nmf = dft.RKS(mol)\nmf.xc = method.lower()\nenergy = mf.kernel()\n\nreturn energy, mol.atom_coords().tolist()\ndef calculate_properties(xyz_string): “““Calculate molecular properties.”“” from pyscf import gto, dft\nmol = gto.M(atom=xyz_string, basis='6-31g*')\nmf = dft.RKS(mol)\nmf.xc = 'b3lyp'\nenergy = mf.kernel()\n\n# Get orbital energies\nhomo_energy = mf.mo_energy[mol.nelectron//2 - 1]\nlumo_energy = mf.mo_energy[mol.nelectron//2]\n\nreturn {\n    'energy': energy,\n    'homo_energy': homo_energy,\n    'lumo_energy': lumo_energy,\n    'homo_lumo_gap': lumo_energy - homo_energy\n}:::\n:::"
-  },
-  {
-    "objectID": "blog/posts/2025-01-15-quarto-tutorial/index.html#best-practices",
-    "href": "blog/posts/2025-01-15-quarto-tutorial/index.html#best-practices",
-    "title": "Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python",
-    "section": "Best Practices",
-    "text": "Best Practices\n\n1. Version Control Everything\nAlways track your computational workflows:\n\n:::\n\n# Initialize git repository\ngit init\n\n# Create .gitignore for Python projects\necho \"__pycache__/\n*.pyc\n*.pyo\n*.pyd\n.Python\nenv/\npip-log.txt\npip-delete-this-directory.txt\n.tox\n.coverage\n.coverage.*\n.pytest_cache/\nnosetests.xml\ncoverage.xml\n*.cover\n*.log\n.conda/\n.coverage\ncoverage.xml\n*.cover\n.hypothesis\n.pytest_cache/\n\" &gt; .gitignore\n\n::: {.details summary=\"Show code\"}\n\n:::\n:::\n\n\n2. Use Environment Management\nCreate reproducible environments:\n\n# environment.yml\nname: computational-chemistry\nchannels:\n  - conda-forge\ndependencies:\n  - python=3.9\n  - pyscf\n  - rdkit\n  - openbabel\n  - jupyter\n  - matplotlib\n  - seaborn\n  - pandas\n  - numpy\n  - scipy\n  - pip\n  - pip:\n    - py3dmol\n    - nglview\n    - plotly\n\n:::\n:::\n:::\n\n\n3. Document Your Methods\nAlways include detailed methodology in your posts:\n\n\n\n\n\n\nImportantComputational Details\n\n\n\nLevel of Theory: B3LYP/6-311+G**\nBasis Set: 6-311+G** for heavy atoms, 6-31G* for hydrogens\nSolvent Model: SMD with water\nConvergence Criteria: Default Psi4 tight criteria"
-  },
-  {
-    "objectID": "blog/posts/2025-01-15-quarto-tutorial/index.html#presentation-setup",
-    "href": "blog/posts/2025-01-15-quarto-tutorial/index.html#presentation-setup",
-    "title": "Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python",
-    "section": "Presentation Setup",
-    "text": "Presentation Setup\nCreate engaging academic presentations by following three quick steps:\n\nSave the slide template below as slides/presentation.qmd.\nRender it with quarto render slides/presentation.qmd to produce slides/presentation.html.\nEmbed the rendered HTML so readers can page through the deck inline.\n\n::: {.ratio ratio-16x9 .slides-preview}  :::\n\n---\ntitle: \"Machine Learning in Chemistry\"\nsubtitle: \"Recent Advances and Applications\"\nauthor: \"Dr. Jane Smith\"\ninstitute: \"University of Academic Excellence\"\ndate: \"2024-01-15\"\nformat:\n  revealjs:\n    theme: [default, custom.scss]\n    transition: slide\n    background-transition: fade\n    slide-number: true\n    show-slide-number: speaker\n    preview-links: true\n    footer: \"ML in Chemistry - Jane Smith\"\n---\n\n# Introduction\n\n::: {.r-fit-text}\nMachine Learning is **revolutionizing** computational chemistry\n:::\n\n## Overview\n\n::: {.columns}\n::: {.column width=\"60%\"}\n- **Neural Network Potentials**\n- **Property Prediction**\n- **Reaction Discovery**\n- **Materials Design**\n:::\n\n::: {.column width=\"40%\"}\n![](images/ml-chemistry-overview.png)\n:::\n:::\n\n# Neural Network Potentials\n\n## Traditional vs ML Potentials\n\n| Aspect | Traditional DFT | ML Potentials |\n|--------|----------------|---------------|\n| Accuracy | High | Near-DFT |\n| Speed | Slow | Fast |\n| Scaling | Poor | Excellent |\n\n::: {.fragment}\n**Key Insight:** ML potentials achieve DFT accuracy with MM speed\n:::\n\n## Performance Comparison\n\n::: {#cell-performance-plot .cell execution_count=1}\n``` {.python .cell-code}\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nmethods = ['DFT', 'MP2', 'CCSD(T)', 'ANI-2x', 'Our Method']\naccuracy = [0.95, 0.85, 1.0, 0.92, 0.94]\nspeed = [1, 5, 0.1, 1000, 800]\n\nfig, ax = plt.subplots(figsize=(10, 6))\nscatter = ax.scatter(speed, accuracy, s=[m*50 for m in [1, 0.8, 0.6, 1.2, 1.1]],\n                     c=['red', 'blue', 'green', 'orange', 'purple'],\n                     alpha=0.7)\n\nfor i, method in enumerate(methods):\n    ax.annotate(method, (speed[i], accuracy[i]),\n                xytext=(5, 5), textcoords='offset points')\n\nax.set_xlabel('Relative Speed')\nax.set_ylabel('Accuracy (vs CCSD(T))')\nax.set_title('Computational Method Performance')\nax.set_xscale('log')\nax.grid(True, alpha=0.3)\n```\n\n::: {.cell-output .cell-output-display}\n![Speed vs Accuracy comparison](index_files/figure-html/performance-plot-output-1.png){#performance-plot width=856 height=525}\n:::\n:::\n\n\n## Advanced Features\n\n### Interactive Elements\n\nAdd interactive elements to your slides:\n\n```markdown\n::: {.fragment}\n\n::: {#dc3c3f05 .cell execution_count=2}\n\n::: {.cell-output .cell-output-display}\n```{=html}\n&lt;div id=\"3dmolviewer_1760976808667518\"  style=\"position: relative; width: 600px; height: 400px;\"&gt;\n        &lt;p id=\"3dmolwarning_1760976808667518\" style=\"background-color:#ffcccc;color:black\"&gt;3Dmol.js failed to load for some reason.  Please check your browser console for error messages.&lt;br&gt;&lt;/p&gt;\n        &lt;/div&gt;\n&lt;script&gt;\n\nvar loadScriptAsync = function(uri){\n  return new Promise((resolve, reject) =&gt; {\n    //this is to ignore the existence of requirejs amd\n    var savedexports, savedmodule;\n    if (typeof exports !== 'undefined') savedexports = exports;\n    else exports = {}\n    if (typeof module !== 'undefined') savedmodule = module;\n    else module = {}\n\n    var tag = document.createElement('script');\n    tag.src = uri;\n    tag.async = true;\n    tag.onload = () =&gt; {\n        exports = savedexports;\n        module = savedmodule;\n        resolve();\n    };\n  var firstScriptTag = document.getElementsByTagName('script')[0];\n  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);\n});\n};\n\nif(typeof $3Dmolpromise === 'undefined') {\n$3Dmolpromise = null;\n  $3Dmolpromise = loadScriptAsync('https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.4.2/3Dmol-min.js');\n}\n\nvar viewer_1760976808667518 = null;\nvar warn = document.getElementById(\"3dmolwarning_1760976808667518\");\nif(warn) {\n    warn.parentNode.removeChild(warn);\n}\n$3Dmolpromise.then(function() {\nviewer_1760976808667518 = $3Dmol.createViewer(document.getElementById(\"3dmolviewer_1760976808667518\"),{backgroundColor:\"white\"});\nviewer_1760976808667518.zoomTo();\n    viewer_1760976808667518.addModel(\"\\nC  0.000000  0.000000  0.000000\\nC  1.234000  0.000000  0.000000\\nC  2.468000  0.000000  0.000000\\nN  3.702000  0.000000  0.000000\\nC  4.936000  0.000000  0.000000\\nN  6.170000  0.000000  0.000000\\nC  7.404000  0.000000  0.000000\\nN  8.638000  0.000000  0.000000\\nC  9.872000  0.000000  0.000000\\nC  11.106000  0.000000  0.000000\\n\",\"xyz\");\n    viewer_1760976808667518.setStyle({\"stick\": {}});\n    viewer_1760976808667518.zoomTo();\nviewer_1760976808667518.render();\n});\n&lt;/script&gt;\n```\n\nInteractive 3D molecule visualization\n:::\n:::\n\n\n:::\n```"
-  },
-  {
-    "objectID": "blog/posts/2025-01-15-quarto-tutorial/index.html#github-pages-deployment",
-    "href": "blog/posts/2025-01-15-quarto-tutorial/index.html#github-pages-deployment",
-    "title": "Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python",
-    "section": "GitHub Pages Deployment",
-    "text": "GitHub Pages Deployment\nDeploy your site automatically:\n\n# .github/workflows/deploy.yml\nname: Deploy to GitHub Pages\n\non:\n  push:\n    branches: [main]\n  workflow_dispatch:\n\npermissions:\n  contents: read\n  pages: write\n  id-token: write\n\nconcurrency:\n  group: \"pages\"\n  cancel-in-progress: false\n\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout\n        uses: actions/checkout@v4\n\n      - name: Setup Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n\n      - name: Render Site\n        run: quarto render\n\n      - name: Setup Pages\n        uses: actions/configure-pages@v4\n\n      - name: Upload artifact\n        uses: actions/upload-pages-artifact@v3\n        with:\n          path: '_site'\n\n  deploy:\n    environment:\n      name: github-pages\n      url: ${{ steps.deployment.outputs.page_url }}\n    runs-on: ubuntu-latest\n    needs: build\n    steps:\n      - name: Deploy to GitHub Pages\n        id: deployment\n        uses: actions/deploy-pages@v4\n\n:::\n:::"
-  },
-  {
-    "objectID": "blog/posts/2025-01-15-quarto-tutorial/index.html#manual-deployment",
-    "href": "blog/posts/2025-01-15-quarto-tutorial/index.html#manual-deployment",
-    "title": "Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python",
-    "section": "Manual Deployment",
-    "text": "Manual Deployment\nFor one-time deployment:\n\n# Render site\nquarto render\n\n# Deploy to GitHub Pages\nquarto publish gh-pages\n\n:::\n:::"
-  },
-  {
-    "objectID": "blog/posts/2025-01-15-quarto-tutorial/index.html#custom-filters",
-    "href": "blog/posts/2025-01-15-quarto-tutorial/index.html#custom-filters",
-    "title": "Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python",
-    "section": "Custom Filters",
-    "text": "Custom Filters\nCreate custom filters for specialized content:\n\n# _extensions/filters.py\nimport re\nfrom typing import Dict, Any\n\ndef chemistry_callout(doc):\n    \"\"\"Convert chemistry callouts to styled divs.\"\"\"\n    # Custom filter logic here\n    return doc\n\ndef publication_cards(doc):\n    \"\"\"Convert publication metadata to styled cards.\"\"\"\n    # Custom filter logic here\n    return doc\n\n:::\n:::"
-  },
-  {
-    "objectID": "blog/posts/2025-01-15-quarto-tutorial/index.html#automated-content",
-    "href": "blog/posts/2025-01-15-quarto-tutorial/index.html#automated-content",
-    "title": "Complete Quarto Tutorial: Build Websites, Blogs, and Slides with Python",
-    "section": "Automated Content",
-    "text": "Automated Content\nGenerate content automatically:\n\n# _scripts/generate-publications.py\nimport bibtexparser\nimport pandas as pd\n\ndef generate_publication_pages():\n    \"\"\"Generate publication pages from BibTeX.\"\"\"\n\n    # Load bibliography\n    with open('_bibliography/publications.bib') as bibtex_file:\n        bib_database = bibtexparser.load(bibtex_file)\n\n    # Generate pages for each publication\n    for entry in bib_database.entries:\n        generate_single_publication(entry)\n\ndef generate_single_publication(entry):\n    \"\"\"Generate a single publication page.\"\"\"\n\n    # Create markdown content\n    content = f\"\"\"---\ntitle: \"{entry['title'].replace('{', '').replace('}', '')}\"\nsubtitle: \"{entry.get('journal', '')}\"\ndate: \"{entry.get('year', '')}\"\ncategories: {parse_keywords(entry.get('keywords', ''))}\n---\n\n# Publication Details\n\n**Authors:** {format_authors(entry.get('author', ''))}\n\n**Journal:** {entry.get('journal', '')}\n\n**Year:** {entry.get('year', '')}\n\n## Abstract\n\n{entry.get('abstract', 'No abstract available.')}\n\n## Citation\n\n```bibtex\n{format_bibtex_entry(entry)}\n\n:::\n:::\n““”\n# Write to file\nfilename = f\"publications/{entry['ID']}.qmd\"\nwith open(filename, 'w') as f:\n    f.write(content)\n\n\n# Conclusion\n\nQuarto provides a powerful, flexible platform for academic publishing. With its Python integration, you can create dynamic, reproducible content that combines narrative, code, and visualizations seamlessly.\n\n## Key Takeaways\n\n1. **Unified Workflow**: Use the same tools for websites, blogs, and slides\n2. **Python Integration**: Leverage Python's scientific ecosystem\n3. **Reproducible Research**: Embed computations directly in your content\n4. **Beautiful Output**: Professional themes and customization options\n5. **Easy Deployment**: Simple GitHub Pages integration\n\n## Next Steps\n\n1. Start with a simple website structure\n2. Add your first blog post with Python code\n3. Create your first presentation\n4. Customize the styling to match your preferences\n5. Deploy to GitHub Pages\n\nThe combination of Quarto and Python provides everything you need to create a modern, professional academic web presence that showcases your research effectively.\n\n::: {.callout-tip}\n## Getting Help\n\n- [Quarto Documentation](https://quarto.org/docs)\n- [Quarto Gallery](https://quarto.org/docs/gallery)\n- [GitHub Issues](https://github.com/quarto-dev/quarto-cli/issues)\n- [Community Forum](https://github.com/quarto-dev/quarto-cli/discussions)\n:::\n\n:::\n:::"
-  },
-  {
     "objectID": "blog/posts/2023-10-12-why-graduate-school/index.html",
     "href": "blog/posts/2023-10-12-why-graduate-school/index.html",
     "title": "Why Graduate School is for You",
@@ -389,7 +263,7 @@
     "href": "blog/index.html",
     "title": "Blog",
     "section": "",
-    "text": "Welcome to my blog where I share thoughts on academic life, computational materials science, and the journey of being a postdoctoral researcher.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nModern Alternatives to Traditional Linux Commands\n\n\nDiscover 6 essential modern CLI tools that replace traditional Linux commands with better performance and usability. Learn how ripgrep, bat, fd, eza, zoxide, and delta can supercharge your workflow.\n\n\n\n\n\nOct 17, 2025\n\n15 min\n\n\n\n\n\n\n\n\n\n\n\nA Quarto Page Layout Example\n\n\n\n\n\n\n\n\nSep 26, 2025\n\n12 min\n\n\n\n\n\n\n\n\n\n\n\nComplete Quarto Tutorial: Build Websites, Blogs, and Slides with Python\n\n\nLearn how to create beautiful websites, blogs, and presentations using Quarto with Python. This comprehensive tutorial covers setup, customization, and deployment to GitHub Pages.\n\n\n\n\n\nJan 15, 2025\n\n20 min\n\n\n\n\n\n\n\n\n\n\n\nGetting Started with Linux\n\n\nA practical guide for researchers transitioning to Linux for computational work, covering essential commands and workflow setup.\n\n\n\n\n\nNov 17, 2023\n\n6 min\n\n\n\n\n\n\n\n\n\n\n\nWhy Graduate School is for You\n\n\nReflections on the graduate school experience and what to expect from this transformative journey in academia.\n\n\n\n\n\nOct 12, 2023\n\n4 min\n\n\n\n\nNo matching items",
+    "text": "Welcome to my blog where I share thoughts on academic life, computational materials science, and the journey of being a postdoctoral researcher.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nModern Alternatives to Traditional Linux Commands\n\n\nDiscover 6 essential modern CLI tools that replace traditional Linux commands with better performance and usability. Learn how ripgrep, bat, fd, eza, zoxide, and delta can supercharge your workflow.\n\n\n\n\n\nOct 17, 2025\n\n15 min\n\n\n\n\n\n\n\n\n\n\n\nGetting Started with Linux\n\n\nA practical guide for researchers transitioning to Linux for computational work, covering essential commands and workflow setup.\n\n\n\n\n\nNov 17, 2023\n\n6 min\n\n\n\n\n\n\n\n\n\n\n\nWhy Graduate School is for You\n\n\nReflections on the graduate school experience and what to expect from this transformative journey in academia.\n\n\n\n\n\nOct 12, 2023\n\n4 min\n\n\n\n\nNo matching items",
     "crumbs": [
       "blog",
       "Blog"
@@ -673,14 +547,14 @@
     "href": "index.html#latest-posts",
     "title": "Joseph Frimpong",
     "section": "Latest Posts",
-    "text": "Latest Posts\nNo posts yet. Check back soon!"
+    "text": "Latest Posts\n\nOct 17, 2025 – Modern Alternatives to Traditional Linux Commands\nNov 17, 2023 – Getting Started with Linux\nOct 12, 2023 – Why Graduate School is for You"
   },
   {
     "objectID": "index.html#news",
     "href": "index.html#news",
     "title": "Joseph Frimpong",
     "section": "News",
-    "text": "News\n\nSep 15, 2024 – Joined Argonne National Laboratory as Postdoctoral Researcher — Started a postdoctoral appointment in the Materials Science division to develop ML-assisted GW/BSE workflows for heterogeneous materials.\nAug 30, 2024 – Defended Ph.D. in Chemistry at Wayne State University — Successfully defended my dissertation on many-body approaches for quantum dots and covalent interfaces.\nJul 01, 2023 – Led Chemistry Meets Computers Summer Bootcamp — Designed and taught a three-week intensive introducing Python and ASE to chemistry students, mentoring project teams through materials workflows.\n\nSee the full list on the news page."
+    "text": "News\n\nSep 15, 2024 – Joined Argonne National Laboratory as Postdoctoral Researcher — Started a postdoctoral appointment in the NST division to develop AI/ML-assisted GW/BSE workflows for heterogeneous materials.\nAug 30, 2024 – Defended Ph.D. in Chemistry at Wayne State University — Successfully defended my dissertation on many-body approaches for quantum dots and covalent interfaces.\nJul 01, 2023 – Led Chemistry Meets Computers Summer Bootcamp — taught a week intensive introducing Python and ML to high school students, mentoring on computational chemistry and machine learning.\n\nSee the full list on the news page."
   },
   {
     "objectID": "index.html#connect",
@@ -751,62 +625,6 @@
     "title": "Publications",
     "section": "Technical Talks & Presentations",
     "text": "Technical Talks & Presentations\n\n\n\n\n  \n  \n    Invited Talk\n    Understanding Ligand Exchange in Quantum Dots from First Principles\n    J. Frimpong, J. Zhan, Victor Yu, Guilia Galli, Maria Chan\n    Midwest Theoretical Chemistry Conference · May 26, 2025 · Detroit, MI\n    SLIDES\n  \n\n\n\n  \n  \n    Talk\n    Understanding Ligand Exchange in Quantum Dots from First Principles\n    J. Frimpong, Z. Liu\n    ACS Spring Meeting · March 19, 2024 · New Orleans, LA\n    SLIDES\n  \n\n\n\n  \n  \n    Talk\n    Development of GW-Based Substrate Screening Methods for Strongly Coupled Molecule-Metal Interfaces\n    J. Frimpong, Z. Liu\n    APS March Meeting · March 18, 2023 · Las Vegas, NV\n    SLIDES\n  \n\n\n\n  \n  \n    Talk\n    Development of GW-Based Substrate Screening Methods for Covalently-Bound Interfaces\n    J. Frimpong, Z. Liu\n    NOBCCChE National Conference · September 12, 2023 · New Orleans, LA\n    SLIDES POSTER\n  \n\n\n\n  \n  \n    Talk\n    Electronic Structure and Optical Properties of Quantum Dots and Their Assemblies\n    J. Frimpong, S. Aryal, Z. Liu\n    APS March Meeting · March 18, 2022 · Chicago, IL\n    SLIDES\n  \n\n\n\n  \n  \n    Talk\n    Unraveling the Role of Surface Ligands in the Electronic and Optical Properties of Cadmium Sulphide Quantum Dots\n    J. Frimpong, S. Aryal, Z. Liu\n    NOBCCChE National Conference · September 25, 2022 · Orlando, FL\n    POSTER\n  \n\n\n\n  \n  \n    Virtual Talk\n    Quasiparticle Electronic Structure of Two-Dimensional Heterotriangulene-Based Covalent Organic Frameworks Adsorbed on Au(111)\n    J. Frimpong, Z. Liu\n    APS March Meeting · March 17, 2021 · Virtual\n    SLIDES VIDEO\n  \n\n\n\n  \n  \n    Student Talk\n    Electronic Structure of 2D Covalent Organic Frameworks and the Influence of Au(111) Substrate\n    J. Frimpong, Z. Liu\n    Chemistry Graduate Research Symposium (CGRS) · 2021 · Detroit, MI\n    SLIDES\n  \n\n\n\n  \n  \n    Poster\n    Mechanistic Studies of the Cycloaddition of Norbornadiene and Alkynyl Phosphonates\n    J. Frimpong\n    19th International Workshop on Computational Physics and Material Science · 2019 · Trieste, Italy\n    POSTER\n  \n\nShow More Talks"
-  },
-  {
-    "objectID": "blog/posts/2025-09-26-tufte-layout/index.html",
-    "href": "blog/posts/2025-09-26-tufte-layout/index.html",
-    "title": "A Quarto Page Layout Example",
-    "section": "",
-    "text": "This document demonstrates the use of a number of advanced page layout features to produce an attractive and usable document inspired by the Tufte handout style and the use of Tufte’s styles in RMarkdown documents (xie2018?). The Tufte handout style is a style that Edward Tufte uses in his books and handouts. Tufte’s style is known for its extensive use of sidenotes, tight integration of graphics with text, and well-set typography. Quarto1 supports most of the layout techniques that are used in the Tufte handout style for both HTML and LaTeX/PDF output.\n---\ntitle: \"An Example Using the Tufte Style\"\nauthor: \"John Smith\"\nformat:\n  html:\n    grid:\n1      margin-width: 350px\n  pdf: default\n2reference-location: margin\ncitation-location: margin\n---\n\n1\n\nIncreases the width of the margin to make more room for sidenotes and margin figures (HTML only).\n\n2\n\nPlaces footnotes and cited sources in the margin. Other layout options (for example placing a figure in the margin) will be set per element in examples below.\n\n\nThese layout features are designed with two important goals in mind:\n\nTo produce both PDF and HTML output with similar styles from the same Quarto document;\nTo provide simple syntax to write elements of the Tufte style such as side notes and margin figures. If you’d like a figure placed in the margin, just set the option fig-column: margin for your code chunk, and we will take care of the details for you2.\n\nIf you have any feature requests or find bugs in these capabilities, please do not hesitate to file them to https://github.com/quarto-dev/quarto-cli/issues."
-  },
-  {
-    "objectID": "blog/posts/2025-09-26-tufte-layout/index.html#margin-figures",
-    "href": "blog/posts/2025-09-26-tufte-layout/index.html#margin-figures",
-    "title": "A Quarto Page Layout Example",
-    "section": "Margin Figures",
-    "text": "Margin Figures\nImages and graphics play an integral role in Tufte’s work. To place figures in the margin you can use the Quarto chunk option column: margin. For example:\n\n\n\n\n\n\n\n\n\nFigure 1: MPG vs horsepower, colored by transmission.\n\n\n\n\nNote the use of the fig-cap chunk option to provide a figure caption. You can adjust the proportions of figures using the fig-width and fig-height chunk options. These are specified in inches, and will be automatically scaled down to fit within the handout margin."
-  },
-  {
-    "objectID": "blog/posts/2025-09-26-tufte-layout/index.html#arbitrary-margin-content",
-    "href": "blog/posts/2025-09-26-tufte-layout/index.html#arbitrary-margin-content",
-    "title": "A Quarto Page Layout Example",
-    "section": "Arbitrary Margin Content",
-    "text": "Arbitrary Margin Content\nYou can include anything in the margin by places the class .column-margin on the element. See an example on the right about the first fundamental theorem of calculus.\n\n\nWe know from the first fundamental theorem of calculus that for \\(x\\) in \\([a, b]\\):\n\\[\\frac{d}{dx}\\left( \\int_{a}^{x} f(u)\\,du\\right)=f(x).\\]"
-  },
-  {
-    "objectID": "blog/posts/2025-09-26-tufte-layout/index.html#full-width-figures",
-    "href": "blog/posts/2025-09-26-tufte-layout/index.html#full-width-figures",
-    "title": "A Quarto Page Layout Example",
-    "section": "Full Width Figures",
-    "text": "Full Width Figures\nYou can arrange for figures to span across the entire page by using the chunk option fig-column: page-right.\n\n\nShow code\n```{python}\n#| label: fig-fullwidth\n#| fig-cap: A full width figure.\n#| fig-column: page-right\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Create sample diamond data\nnp.random.seed(42)\nn = 200\ncarat = np.random.uniform(0.5, 3.0, n)\nprice = 3000 * carat**2 + np.random.normal(0, 500, n)\ncut_quality = np.random.choice(['Fair', 'Good', 'Very Good', 'Premium', 'Ideal'], n)\n\n# Create the plot\nfig, ax = plt.subplots(figsize=(11, 3))\nscatter = ax.scatter(carat, price, alpha=0.6, s=30)\nax.set_xlabel('Carat')\nax.set_ylabel('Price ($)')\nax.set_title('Diamond Carat vs Price')\nax.grid(True, alpha=0.3)\n\nplt.tight_layout()\n```\n\n\n\n\n\n\n\n\nFigure 2: A full width figure.\n\n\n\n\n\nOther chunk options related to figures can still be used, such as fig-width, fig-cap, and so on. For full width figures, usually fig-width is large and fig-height is small. In the above example, the plot size is \\(11 \\times 3\\)."
-  },
-  {
-    "objectID": "blog/posts/2025-09-26-tufte-layout/index.html#arbitrary-full-width-content",
-    "href": "blog/posts/2025-09-26-tufte-layout/index.html#arbitrary-full-width-content",
-    "title": "A Quarto Page Layout Example",
-    "section": "Arbitrary Full Width Content",
-    "text": "Arbitrary Full Width Content\nAny content can span to the full width of the page, simply place the element in a div and add the class column-page-right. For example, the following code will display its contents as full width.\n::: {.fullwidth}\nAny _full width_ content here.\n:::\nBelow is an example:\n\nR is free software and comes with ABSOLUTELY NO WARRANTY. You are welcome to redistribute it under the terms of the GNU General Public License versions 2 or 3. For more information about these matters see https://www.gnu.org/licenses/."
-  },
-  {
-    "objectID": "blog/posts/2025-09-26-tufte-layout/index.html#main-column-figures",
-    "href": "blog/posts/2025-09-26-tufte-layout/index.html#main-column-figures",
-    "title": "A Quarto Page Layout Example",
-    "section": "Main Column Figures",
-    "text": "Main Column Figures\nBesides margin and full width figures, you can of course also include figures constrained to the main column. This is the default type of figures in the LaTeX/HTML output.\n\n\n\n\n\n\n\n\nFigure 3: A figure in the main column."
-  },
-  {
-    "objectID": "blog/posts/2025-09-26-tufte-layout/index.html#margin-captions",
-    "href": "blog/posts/2025-09-26-tufte-layout/index.html#margin-captions",
-    "title": "A Quarto Page Layout Example",
-    "section": "Margin Captions",
-    "text": "Margin Captions\nWhen you include a figure constrained to the main column, you can choose to place the figure’s caption in the margin by using the cap-location chunk option. For example:\n\n\n\n\n\n\n\n\nFigure 4: A figure with a longer caption. The figure appears in the main column, but the caption is placed in the margin. Captions can even contain elements like a citation such as (xie2018?)."
-  },
-  {
-    "objectID": "blog/posts/2025-09-26-tufte-layout/index.html#footnotes",
-    "href": "blog/posts/2025-09-26-tufte-layout/index.html#footnotes",
-    "title": "A Quarto Page Layout Example",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nTo learn more, you can read more about Quarto or visit Quarto’s Github repository.↩︎\nYou never need to think about \\begin{marginfigure} or &lt;span class=\"marginfigure\"&gt;; the LaTeX and HTML code under the hood may be complicated, but you never need to learn or write such code.↩︎"
   },
   {
     "objectID": "blog/posts/2025-10-17-new-linux-commands/index.html",
