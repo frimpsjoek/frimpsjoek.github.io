@@ -2,7 +2,7 @@ project:
   type: website
   output-dir: _site
   pre-render:
-    - python _data/generate_home_sections.py
+    - python3 _data/generate_home_sections.py
 
 website:
   title: "Joseph Frimpong"

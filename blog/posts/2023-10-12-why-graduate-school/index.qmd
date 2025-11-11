@@ -4,7 +4,7 @@ description: "Reflections on the graduate school experience and what to expect f
 author: "Joseph Frimpong"
 date: "2023-10-12"
 categories: [academia, career, graduate-school]
-image: "/Users/frimpsjoe/Documents/frimpsjoek.github.io/blog/posts/2023-10-12-why-graduate-school/thumbnail.jpg"
+image: "thumbnail.jpg"
 draft: false
 ---
 
