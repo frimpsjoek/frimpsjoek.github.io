@@ -9,6 +9,10 @@ website:
   description: "Postdoctoral researcher at Argonne National Laboratory studying electronic structure and optical properties of materials"
   site-url: "https://frimpsjoek.github.io"
   repo-url: "https://github.com/frimpsjoek/frimpsjoek.github.io"
+  open-graph: true
+  twitter-card:
+    creator: "@frimpsjoek"
+    card-style: summary_large_image
   
   navbar:
     pinned: true

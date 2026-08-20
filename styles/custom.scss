@@ -5,12 +5,12 @@
 
 // Override Bootstrap variables before import
 $font-family-sans-serif: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-$font-family-serif: "Neuton", Georgia, "Times New Roman", serif;
+$font-family-serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
 
 /*-- scss:rules --*/
 
-// Import Google Fonts - Neuton for clean, professional look
-@import url('https://fonts.googleapis.com/css2?family=Neuton:wght@200;300;400;500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap');
+// Import Google Fonts - IBM Plex Serif pairs with IBM Plex Sans (same superfamily)
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;700&display=swap');
 
 // Swiss Design Color Palette - Clean, minimal, professional
 :root {
@@ -473,20 +473,20 @@ body, body p, body div, body span, body li {
   font-family: $font-family-sans-serif !important;
   color: var(--global-text-color) !important;
   line-height: 1.65 !important;
-  font-size: 1rem !important;
+  font-size: 1.0625rem !important;
 }
 
 // Responsive downscaling for smaller screens
 @media (max-width: 991.98px) {
   body, body p, body div, body span, body li {
-    font-size: 0.975rem !important;
+    font-size: 1rem !important;
     line-height: 1.6 !important;
   }
 }
 
 @media (max-width: 575.98px) {
   body, body p, body div, body span, body li {
-    font-size: 0.94rem !important;
+    font-size: 0.97rem !important;
     line-height: 1.55 !important;
   }
 }
@@ -494,14 +494,14 @@ body, body p, body div, body span, body li {
 // Consistent heading hierarchy - SLIGHTLY LARGER
 h1 {
   font-size: 2.1rem !important;
-  font-weight: 400 !important;
+  font-weight: 600 !important;
   margin-top: 2rem !important;
   margin-bottom: 1.25rem !important;
 }
 
 h2 {
   font-size: 1.75rem !important;
-  font-weight: 350 !important;
+  font-weight: 600 !important;
   margin-top: 1.6rem !important;
   margin-bottom: 1rem !important;
   border-bottom: 2px solid var(--global-divider-color) !important;
@@ -510,21 +510,21 @@ h2 {
 
 h3 {
   font-size: 1.4rem !important;
-  font-weight: 300 !important;
+  font-weight: 500 !important;
   margin-top: 1.4rem !important;
   margin-bottom: 0.9rem !important;
 }
 
 h4 {
   font-size: 1.25rem !important;
-  font-weight: 250 !important;
+  font-weight: 500 !important;
   margin-top: 1.2rem !important;
   margin-bottom: 0.7rem !important;
 }
 
 h5, h6 {
   font-size: 1.1rem !important;
-  font-weight: 250 !important;
+  font-weight: 500 !important;
   margin-top: 1.1rem !important;
   margin-bottom: 0.6rem !important;
 }

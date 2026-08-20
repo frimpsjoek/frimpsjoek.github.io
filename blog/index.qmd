@@ -7,7 +7,7 @@ listing:
   contents: posts
   sort: "date desc"
   type: default
-  categories: false
+  categories: true
   sort-ui: true
   filter-ui: true
   image-height: 180px
