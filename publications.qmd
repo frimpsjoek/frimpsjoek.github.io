@@ -128,7 +128,7 @@ for year, group in itertools.groupby(pubs_sorted, key=lambda p: int(p.get("year"
         pub_index += 1
     html_parts.append("</section>")
 
-html_parts.append('<div class="text-center mt-4"><button id="show-more-pubs" class="btn btn-primary">Show More Publications</button></div>')
+html_parts.append('<div class="show-more-wrap"><button id="show-more-pubs" class="btn btn-primary">Show More Publications</button></div>')
 display(HTML("".join(html_parts)))
 ```
 
@@ -213,7 +213,7 @@ display(HTML("".join(html_parts)))
 </script>
 ```
 
-## Technical Talks & Presentations
+## Technical Talks & Presentations {.section-divider}
 
 ```{python}
 #| results: asis
@@ -296,6 +296,6 @@ for talk in talks_sorted:
     )
     talk_index += 1
 rows.append("</div>")
-rows.append('<div class="text-center mt-4"><button id="show-more-talks" class="btn btn-primary">Show More Talks</button></div>')
+rows.append('<div class="show-more-wrap"><button id="show-more-talks" class="btn btn-primary">Show More Talks</button></div>')
 display(HTML("".join(rows)))
 ```

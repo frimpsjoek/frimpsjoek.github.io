@@ -1354,6 +1354,25 @@ html[data-bs-theme="dark"] .tools-row img.icon-invert-dark {
   margin-top: 1.5rem;
 }
 
+// "Show more publications / talks" buttons: room above and below
+.show-more-wrap {
+  clear: both;
+  text-align: center;
+  margin: 2.5rem 0 1rem;
+}
+
+// A new major section on a page (e.g. Talks after Publications): hairline + space
+.section-divider {
+  clear: both;
+  border-top: 1px solid var(--faint);
+  margin-top: 4.5rem;
+  padding-top: 1.5rem;
+
+  > h2 {
+    margin-top: 0;
+  }
+}
+
 // ===========================================================================
 // News timeline
 // ===========================================================================
