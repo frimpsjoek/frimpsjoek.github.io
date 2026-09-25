@@ -1354,6 +1354,20 @@ html[data-bs-theme="dark"] .tools-row img.icon-invert-dark {
   margin-top: 1.5rem;
 }
 
+// Publications page reads in normal case: titles carry Bootstrap's .h5 class
+// (which the small-heading style sets in capitals), and badges, buttons and the
+// search label are easier to read in sentence case
+.pub-title,
+.pub-badge,
+.pub .btn,
+.talk-list .btn,
+.show-more-wrap .btn,
+.pub-search .btn,
+.pub-search .form-label {
+  text-transform: none;
+  letter-spacing: 0.01em;
+}
+
 // "Show more publications / talks" buttons: room above and below
 .show-more-wrap {
   clear: both;

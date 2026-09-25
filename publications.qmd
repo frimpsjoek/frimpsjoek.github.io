@@ -116,7 +116,7 @@ for year, group in itertools.groupby(pubs_sorted, key=lambda p: int(p.get("year"
     {venue_block}
     <div class="pub-actions">
       {links}
-      <button class="btn btn-sm btn-light" data-bs-toggle="collapse" data-bs-target="#{target_id}" aria-expanded="false" aria-controls="{target_id}">ABSTRACT</button>
+      <button class="btn btn-sm btn-light" data-bs-toggle="collapse" data-bs-target="#{target_id}" aria-expanded="false" aria-controls="{target_id}">Abstract</button>
     </div>
     <div id="{target_id}" class="collapse mt-3">
       <div class="card card-body small">{abstract_text}</div>
@@ -244,7 +244,7 @@ def talk_year(entry):
     return 0
 
 def talk_buttons(entry):
-    resources = [("slides", "SLIDES"), ("poster", "POSTER"), ("video", "VIDEO")]
+    resources = [("slides", "Slides"), ("poster", "Poster"), ("video", "Video")]
     buttons = []
     for key, label in resources:
         url = entry.get(key)
