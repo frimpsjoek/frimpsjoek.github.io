@@ -9,7 +9,7 @@ year: "2022"
 pub_number: "94"
 url_source: "https://doi.org/10.1021/acs.jpclett.2c02856"
 url_preprint: "AFL22.pdf"
-image: /assets/img/publications/featured.webp
+image: /assets/img/publications/aryal-frimpong-liu-2022.jpg
 image_caption: ""
 categories:
   - 2022

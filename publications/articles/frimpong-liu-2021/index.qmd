@@ -9,7 +9,7 @@ year: "2021"
 pub_number: "93"
 url_source: "https://doi.org/10.1088/1361-648X/abf7a0"
 url_preprint: "FL21d.pdf"
-image: /assets/img/publications/featured.webp
+image: /assets/img/publications/frimpong-liu-2021.jpg
 image_caption: ""
 categories:
   - 2021
