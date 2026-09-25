@@ -14,14 +14,6 @@ format:
 ---
 
 ```{=html}
-<style>
-  body .btn-primary {
-    color: #fff !important;
-  }
-</style>
-```
-
-```{=html}
 <div class="pub-search mb-4">
   <label class="form-label" for="pub-search-input">Search publications</label>
   <div class="d-flex flex-column flex-md-row align-items-md-center gap-2">
@@ -86,7 +78,7 @@ pubs_sorted = sorted(
 html_parts = []
 pub_index = 0
 for year, group in itertools.groupby(pubs_sorted, key=lambda p: int(p.get("year", 0))):
-    html_parts.append(f'<section class="year-chunk"><div class="year-label">{year}</div>')
+    html_parts.append(f'<section class="year-chunk"><div class="year-label" aria-hidden="true">{year}</div>')
     for pub in group:
         title = html.escape(pub.get("title", "Untitled"))
         detail_url = pub.get("detail")

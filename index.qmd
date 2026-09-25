@@ -10,14 +10,6 @@ format:
     crossrefs-hover: true
 ---
 
-```{=html}
-<style>
-  .navbar-brand {
-    display: none !important;
-  }
-</style>
-```
-
 <div class="home-header">
   <p class="home-affiliation">NST, Argonne National Laboratory</p>
 </div>
@@ -29,11 +21,11 @@ format:
 :::
 
 ::: {.bio-text}
-I am postdoctoral researcher at Argonne National Laboratory, where I study the electronic structure and optical properties of materials to advance applications in catalysis, energy, and optoelectronics. My research focuses on computational methods, including density functional theory (DFT), many-body perturbation theory (GW/BSE), and machine learning, to explore structure-property relationships in heterogeneous interfaces, quantum dots, and other nanoscale materials. I am also passionate about leveraging computational chemistry and machine learning to accelerate materials discovery and improve the efficiency of next-generation materials.
+I am a postdoctoral researcher at Argonne National Laboratory, where I study the electronic structure and optical properties of materials to advance applications in catalysis, energy, and optoelectronics. My research focuses on computational methods, including density functional theory (DFT), many-body perturbation theory (GW/BSE), and machine learning, to explore structure-property relationships in heterogeneous interfaces, quantum dots, and other nanoscale materials. I am also passionate about leveraging computational chemistry and machine learning to accelerate materials discovery and improve the efficiency of next-generation materials.
 
 In addition to my academic pursuits, I aspire to share my knowledge and experiences through blogging, shedding light on complex topics in a simplified manner.
 
-I am currently working on a [**blog**](blog/index.qmd) to share insights and insights on academic life and computational materials science.
+I write a [**blog**](blog/index.qmd) with insights on academic life and computational materials science.
 :::
 :::
 
@@ -58,25 +50,30 @@ See the full list on the [news page](news.qmd).
 ::: {.social-links}
 <a href="https://linkedin.com/in/josephfrimpong" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
 <a href="https://youtube.com/@frimpsjoe" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-<a href="mailto:frimpsjoe@wayne.edu" aria-label="Email"><i class="far fa-envelope"></i></a>
+<a href="mailto:frimpsjoe@anl.gov" aria-label="Email"><i class="far fa-envelope"></i></a>
 :::
 
+## Current Tools
+
 <div class="tools-row">
-  <img alt="Python" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-plain.svg" />
-  <img alt="Git" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" />
-  <img alt="Linux" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" />
-  <img alt="Docker" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" />
-  <img alt="VSCode" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" />
-  <img alt="HTML" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg" />
-  <img alt="CSS" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" />
-  <img class="icon-invert-dark" alt="GitHub" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" />
-  <img alt="Bash" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" />
-  <img class="langchain-logo icon-boost-strong icon-no-pad" alt="LangChain" src="assets/icons/langchain.svg" />
-  <img class="icon-boost-strong icon-no-pad" alt="GitHub Copilot" src="assets/icons/githubcopilot.svg" />
-  <img class="icon-invert-dark icon-boost-strong icon-no-pad" alt="Notion" src="assets/icons/notion.svg" />
+  <a href="https://www.python.org" target="_blank" rel="noopener" title="Python" aria-label="Python"><img alt="Python" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-plain.svg" /></a>
+  <a href="https://git-scm.com" target="_blank" rel="noopener" title="Git" aria-label="Git"><img alt="Git" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" /></a>
+  <a href="https://www.kernel.org" target="_blank" rel="noopener" title="Linux" aria-label="Linux"><img alt="Linux" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" /></a>
+  <a href="https://www.docker.com" target="_blank" rel="noopener" title="Docker" aria-label="Docker"><img alt="Docker" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" /></a>
+  <a href="https://code.visualstudio.com" target="_blank" rel="noopener" title="VSCode" aria-label="VSCode"><img alt="VSCode" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" /></a>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener" title="HTML" aria-label="HTML"><img alt="HTML" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg" /></a>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener" title="CSS" aria-label="CSS"><img alt="CSS" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" /></a>
+  <a href="https://github.com" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub"><img class="icon-invert-dark" alt="GitHub" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" /></a>
+  <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noopener" title="Bash" aria-label="Bash"><img alt="Bash" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" /></a>
+  <a href="https://www.langchain.com" target="_blank" rel="noopener" title="LangChain" aria-label="LangChain"><img class="langchain-logo icon-boost-strong icon-no-pad" alt="LangChain" src="assets/icons/langchain.svg" /></a>
+  <a href="https://github.com/features/copilot" target="_blank" rel="noopener" title="GitHub Copilot" aria-label="GitHub Copilot"><img class="icon-boost-strong icon-no-pad" alt="GitHub Copilot" src="assets/icons/githubcopilot.svg" /></a>
+  <a href="https://www.notion.so" target="_blank" rel="noopener" title="Notion" aria-label="Notion"><img class="icon-invert-dark icon-boost-strong icon-no-pad" alt="Notion" src="assets/icons/notion.svg" /></a>
   <!-- Cline icon pending proper asset; hiding for now -->
-  <img class="icon-invert-dark icon-boost-strong icon-no-pad" alt="MCP" src="assets/icons/mcp.svg" />
-  <img class="icon-base-large icon-boost-xstrong icon-no-pad" alt="Gradio" src="https://www.gradio.app/_app/immutable/assets/gradio.CHB5adID.svg" />
-  <img class="icon-boost-strong icon-no-pad" alt="HuggingFace" src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" />
-  <img alt="Blender" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" />
+  <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener" title="MCP" aria-label="MCP"><img class="icon-invert-dark icon-boost-strong icon-no-pad" alt="MCP" src="assets/icons/mcp.svg" /></a>
+  <a href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener" title="Claude Code" aria-label="Claude Code"><img class="icon-no-pad" alt="Claude Code" src="assets/icons/claude-code.svg" /></a>
+  <a href="https://chatgpt.com" target="_blank" rel="noopener" title="ChatGPT" aria-label="ChatGPT"><img class="icon-invert-dark icon-no-pad" alt="ChatGPT" src="assets/icons/chatgpt.svg" /></a>
+  <a href="https://nousresearch.com" target="_blank" rel="noopener" title="Hermes Agent (Nous Research)" aria-label="Hermes Agent (Nous Research)"><img class="icon-invert-dark icon-no-pad" alt="Hermes Agent (Nous Research)" src="assets/icons/hermes.svg" /></a>
+  <a href="https://www.gradio.app" target="_blank" rel="noopener" title="Gradio" aria-label="Gradio"><img class="icon-base-large icon-boost-xstrong icon-no-pad" alt="Gradio" src="assets/icons/gradio.svg" /></a>
+  <a href="https://huggingface.co" target="_blank" rel="noopener" title="HuggingFace" aria-label="HuggingFace"><img class="icon-boost-strong icon-no-pad" alt="HuggingFace" src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" /></a>
+  <a href="https://www.blender.org" target="_blank" rel="noopener" title="Blender" aria-label="Blender"><img alt="Blender" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" /></a>
 </div>

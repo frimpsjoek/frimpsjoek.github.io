@@ -1,0 +1,129 @@
+---
+title: "Why Molecules See Smaller Gaps on Metals"
+subtitle: "A worked example of image-charge screening, written to show every paper-style element of the blog"
+description: "Sample post: numbered equations, figures and tables, margin notes and citations, a reference list and a citable appendix."
+author: "Joseph Frimpong"
+date: "2026-09-24"
+categories: [electronic-structure, GW, sample]
+image: "../2023-11-17-getting-started-linux/thumbnail.jpg"
+draft: true
+abstract: |
+  A molecule adsorbed on a metal has a smaller fundamental gap than the same molecule in the gas
+  phase, because the metal polarizes in response to an added electron or hole. This post derives the
+  size of the effect from a classical image-charge model, compares it with first-principles
+  many-body methods, and points to the approaches we use for large interfaces.
+bibliography:
+  - references.bib
+  - ../../../_bibliography/papers.bib
+execute:
+  echo: true
+  warning: false
+---
+
+## The gas-phase gap
+
+The *fundamental gap* of a molecule is the difference between its ionization potential and
+electron affinity,
+
+$$
+E_g = \mathrm{IP} - \mathrm{EA}.
+$$ {#eq-gap}
+
+Kohn–Sham eigenvalues from semilocal density functionals underestimate $E_g$ substantially. Many-body
+perturbation theory in the GW approximation fixes this by adding a self-energy correction to each
+level [@Hedin1965; @Hybertsen1986]:
+
+$$
+E_n^{\mathrm{QP}} = \varepsilon_n^{\mathrm{KS}}
+  + \left\langle \psi_n \middle| \Sigma\!\left(E_n^{\mathrm{QP}}\right) - V_{\mathrm{xc}} \middle| \psi_n \right\rangle .
+$$ {#eq-qp}
+
+In practice @eq-qp is usually solved to first order, which introduces a renormalization
+factor $Z_n$.[^z]
+
+[^z]: $Z_n = \left(1 - \partial \Sigma / \partial E \right)^{-1}$, evaluated at the Kohn–Sham energy. Typical values are 0.7–0.9.
+
+## What the metal does
+
+When an electron is added to or removed from an adsorbed molecule, conduction electrons in the metal
+rearrange to screen the extra charge. Classically, a point charge $q$ at distance $z$ from a
+perfect conductor feels its image, which lowers its energy by
+
+::: {.column-margin}
+$z$ is measured from the metal's *image plane*, which sits roughly 1 Å outside the top atomic layer.
+:::
+
+$$
+\Delta E(z) = -\frac{q^2}{16\pi\varepsilon_0 z} \approx -\frac{3.6\ \mathrm{eV\,Å}}{z}.
+$$ {#eq-image}
+
+Both the added electron and the added hole are stabilised by @eq-image, so the occupied level moves
+up, the unoccupied level moves down, and the gap closes by twice that amount. @Neaton2006 showed that
+GW calculations on benzene adsorbed on graphite capture exactly this renormalization, which is absent from
+the Kohn–Sham gap.
+
+```{python}
+#| label: fig-image-charge
+#| fig-cap: "Gap reduction from the classical image-charge model, $2|\\Delta E(z)|$ from @eq-image, as a function of the molecule–image-plane distance."
+#| code-fold: true
+#| code-summary: "Show the plotting code"
+import numpy as np
+import matplotlib.pyplot as plt
+
+K = 14.3996  # e^2 / (4 pi eps0) in eV·Å
+z = np.linspace(2.0, 10.0, 200)          # Å
+gap_reduction = 2 * K / (4 * z)          # eV, electron + hole images
+
+fig, ax = plt.subplots(figsize=(6, 3.4))
+ax.plot(z, gap_reduction, color="#0066cc", lw=2)
+ax.set_xlabel("distance from image plane, z (Å)")
+ax.set_ylabel("gap reduction (eV)")
+ax.spines[["top", "right"]].set_visible(False)
+ax.grid(alpha=0.25)
+fig.tight_layout()
+plt.show()
+```
+
+@fig-image-charge shows why the effect matters: at a typical physisorption distance of 3–4 Å the
+predicted gap reduction is about 2 eV, comparable to the error that GW corrects in the first place.
+
+## How the methods compare
+
+| Method | Captures substrate screening? | Cost for a 500-atom interface |
+|:-------|:-----------------------------:|:------------------------------|
+| Kohn–Sham DFT (semilocal) | No | Low |
+| Full GW on the interface | Yes | Very high |
+| Substrate-screening GW | Yes | Moderate |
+| Generalized substrate-screening GW | Yes, including covalent bonds | Moderate |
+
+: Approaches to quasiparticle levels at interfaces. {#tbl-methods}
+
+@tbl-methods summarises the trade-off. Treating the whole interface at the GW level is accurate but
+expensive, so we compute the substrate's polarizability separately and embed it. The generalized
+version also handles covalently bonded interfaces such as thiolates on gold [@FL24], and related
+many-body treatments apply to quantum-dot assemblies [@AFL22].
+
+::: {.callout-note}
+## Rule of thumb
+If your molecule sits within about 5 Å of a metal, expect its gap to shrink by 1–2 eV relative to
+the gas phase. A calculation that ignores the substrate will overestimate the gap.
+:::
+
+> The image-charge model is a guide, not a substitute: it ignores the molecule's own polarizability,
+> the finite size of the charge distribution and chemical bonding to the surface.
+
+## Reproducing this
+
+The figure above is generated when the page renders. To run a quick G₀W₀ calculation yourself, a
+typical sequence with Quantum ESPRESSO and WEST looks like this:
+
+```bash
+pw.x    -i pw.in    > pw.out     # ground state
+wstat.x -i wstat.in > wstat.out  # dielectric screening
+wfreq.x -i wfreq.in > wfreq.out  # quasiparticle corrections
+```
+
+## References
+
+::: {#refs}
+:::

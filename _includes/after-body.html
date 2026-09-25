@@ -2,34 +2,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <script src="/assets/js/theme-toggle.js"></script>
 
-<style>
-/* CRITICAL FIX: Callout text colors - override everything */
-/* Light mode */
-.callout *,
-.callout .callout-title-container,
-.callout .callout-header,
-.callout .callout-body,
-.callout p,
-.callout div,
-.callout span,
-.callout strong,
-.callout em {
-  color: #000000 !important;
-}
-
-/* Dark mode */
-[data-bs-theme="dark"] .callout *,
-[data-bs-theme="dark"] .callout .callout-title-container,
-[data-bs-theme="dark"] .callout .callout-header,
-[data-bs-theme="dark"] .callout .callout-body,
-[data-bs-theme="dark"] .callout p,
-[data-bs-theme="dark"] .callout div,
-[data-bs-theme="dark"] .callout span,
-[data-bs-theme="dark"] .callout strong,
-[data-bs-theme="dark"] .callout em {
-  color: #ffffff !important;
-}
-</style>
 
 <footer class="site-footer">
   <div class="site-footer-inner">
@@ -37,6 +9,64 @@
   </div>
 </footer>
 
+<script>
+  // Blog posts cite in the margin (citation-location: margin), and Quarto then omits
+  // the end-of-post bibliography. Rebuild it from the margin entries, one per key,
+  // sorted by the rendered text (author-year style).
+  (function () {
+    if (!document.body.classList.contains('blog-post')) return;
+    const seen = new Map();
+    document.querySelectorAll('.column-margin .csl-entry, aside .csl-entry').forEach(function (entry) {
+      const key = (entry.id || entry.textContent).replace(/^ref-/, '');
+      if (!seen.has(key)) seen.set(key, entry);
+    });
+    if (!seen.size) return;
+    const list = document.createElement('div');
+    list.className = 'references csl-bib-body post-references';
+    list.setAttribute('role', 'list');
+    Array.from(seen.values())
+      .sort(function (a, b) { return a.textContent.localeCompare(b.textContent); })
+      .forEach(function (entry) {
+        const item = entry.cloneNode(true);
+        item.removeAttribute('id');
+        item.setAttribute('role', 'listitem');
+        list.appendChild(item);
+      });
+    const target = document.getElementById('refs') || document.getElementById('references');
+    if (target) {
+      target.appendChild(list);
+    } else {
+      const section = document.createElement('section');
+      section.id = 'references';
+      section.innerHTML = '<h2>References</h2>';
+      section.appendChild(list);
+      const main = document.querySelector('main.content');
+      const appendix = document.getElementById('quarto-appendix');
+      if (appendix) appendix.parentNode.insertBefore(section, appendix); else main.appendChild(section);
+    }
+  })();
+</script>
+<script>
+  // Scroll reveal for blog cards (styles in site.scss, timing from basicappleguy.com).
+  // Only cards that start below the viewport are hidden-then-revealed; if
+  // IntersectionObserver is missing or motion is reduced, nothing is hidden.
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const cards = document.querySelectorAll('.post-tile, .quarto-listing-default .quarto-post');
+    if (!cards.length) return;
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-loaded'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    cards.forEach(function (card) {
+      if (card.getBoundingClientRect().top < window.innerHeight) return;
+      card.classList.add('reveal');
+      io.observe(card);
+    });
+  })();
+</script>
 <script>
   (function() {
     const el = document.getElementById('copyright-year');
@@ -65,6 +95,8 @@
   (function() {
     const body = document.body;
     if (!body) return;
+    // Blog posts show code in full; readers came for it.
+    if (body.classList.contains('blog-post')) return;
 
     const MIN_LINES = 10;
 
@@ -164,91 +196,5 @@
     } else {
       enhanceAll();
     }
-  })();
-</script>
-<!-- Dock magnification disabled to avoid overlap/fusion of icons -->
-<script>
-  // Layout-safe dock magnification for tools icons
-  (function() {
-    const row = document.querySelector('.tools-row');
-    if (!row) return;
-    const icons = Array.from(row.querySelectorAll('img'));
-    if (!icons.length) return;
-
-    let raf = null;
-    let mouseX = 0;
-    let active = false;
-    const influence = 70;  // tighter radius so neighbors barely move
-    const maxBoost = 0.45; // gentler max zoom (~1.45x at center)
-
-    // capture base sizes once
-    const base = new Map();
-    function captureBase() {
-      icons.forEach((img) => {
-        const cs = getComputedStyle(img);
-        const w = parseFloat(cs.width) || 45;
-        const h = parseFloat(cs.height) || 45;
-        const bs = parseFloat(cs.getPropertyValue('--icon-base-scale')) || 1;
-        base.set(img, { w, h, bs });
-        // reset inline sizes
-        img.style.width = w + 'px';
-        img.style.height = h + 'px';
-      });
-    }
-    captureBase();
-
-    function update() {
-      raf = null;
-      const rowRect = row.getBoundingClientRect();
-      const rowHeight = rowRect.height || 110;
-      icons.forEach((img) => {
-        const b = base.get(img);
-        if (!b) return;
-        const rect = img.getBoundingClientRect();
-        const center = rect.left + rect.width / 2;
-        const d = Math.abs(mouseX - center);
-        // smooth gaussian-like falloff with threshold to avoid "elastic" feel
-        const t = Math.exp(-((d / influence) ** 2));
-        const neighborCutoff = 0.55; // stronger cutoff so only hovered icon grows
-        const eff = active && t > neighborCutoff ? (t - neighborCutoff) / (1 - neighborCutoff) : 0;
-        let scale = b.bs * (1 + maxBoost * eff);
-        // clamp maximum to avoid exceeding row height (keep top/bottom fixed)
-        const maxByHeight = (rowHeight - 6) / b.h;
-        const maxScale = Math.min(b.bs * 1.6, maxByHeight);
-        if (scale > maxScale) scale = maxScale;
-        img.style.width = (b.w * scale).toFixed(2) + 'px';
-        img.style.height = (b.h * scale).toFixed(2) + 'px';
-        img.style.zIndex = String(Math.round(scale * 100));
-      });
-    }
-
-    function onMove(e) {
-      mouseX = e.clientX;
-      if (!raf) raf = requestAnimationFrame(update);
-    }
-    function onEnter(e) { active = true; onMove(e); }
-    function onLeave() {
-      active = false;
-      // reset sizes to base
-      icons.forEach((img) => {
-        const b = base.get(img);
-        if (b) {
-          img.style.width = b.w + 'px';
-          img.style.height = b.h + 'px';
-          img.style.zIndex = '1';
-        }
-      });
-      // keep container height steady (CSS min-height handles this)
-    }
-
-    row.addEventListener('mousemove', onMove);
-    row.addEventListener('mouseenter', onEnter);
-    row.addEventListener('mouseleave', onLeave);
-
-    // Recompute base sizes on resize (e.g., responsive breakpoints)
-    window.addEventListener('resize', () => {
-      captureBase();
-      update();
-    });
   })();
 </script>

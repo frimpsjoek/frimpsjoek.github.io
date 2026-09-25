@@ -2,9 +2,6 @@
 title: "Curriculum Vitae"
 format:
   html:
-    theme: 
-      - flatly
-      - styles/custom.scss
     toc: false
     toc-location: left
     page-layout: full
@@ -17,7 +14,7 @@ format:
 
 # Joseph Frimpong
 Postdoctoral Researcher · Argonne National Laboratory  
-Email: frimpsjoe@wayne.edu · GitHub: [frimpsjoek](https://github.com/frimpsjoek){target="_blank"} · LinkedIn: [frimpsjoek](https://linkedin.com/in/frimpsjoek){target="_blank"}
+Email: frimpsjoe@anl.gov · GitHub: [frimpsjoek](https://github.com/frimpsjoek){target="_blank"} · LinkedIn: [josephfrimpong](https://linkedin.com/in/josephfrimpong){target="_blank"}
 :::
 
 ::: {.cv-summary}
@@ -66,4 +63,4 @@ Referee for *J. Phys.: Condens. Matter*, *Phys. Rev. B*, *Phys. Rev. Lett.*, and
 
 Developing electronic-structure and scientific programming curricula, inclusive mentoring models, and reproducible open-source workflows for large-scale simulations. -->
 
-For collaboration inquiries or an updated CV, contact me via [email](mailto:frimpsjoe@wayne.edu) or LinkedIn.
+For collaboration inquiries or an updated CV, contact me via [email](mailto:frimpsjoe@anl.gov) or LinkedIn.

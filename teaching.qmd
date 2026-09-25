@@ -2,9 +2,6 @@
 title: "Teaching & Mentoring"
 format:
   html:
-    theme:
-      - flatly
-      - styles/custom.scss
     toc: false
     page-layout: full
     citations-hover: true

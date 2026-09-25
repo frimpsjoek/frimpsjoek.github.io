@@ -98,7 +98,7 @@ Add new entries to `_bibliography/papers.bib` in standard BibTeX format.
 
 ### Modifying Styling
 
-Edit `styles/custom.scss` to customize colors, fonts, and layouts.
+Edit `styles/site.scss` to customize colors, fonts, and layouts (tokens are at the top of the file).
 
 ## Performance Optimization
 

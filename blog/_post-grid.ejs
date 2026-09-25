@@ -1,0 +1,19 @@
+<%
+// Grid view: 3:2 image, "M/D/YY | CATEGORIES" meta, title, 2-line description, Read More.
+// Output stays flush-left: indented lines would be parsed as Markdown code blocks.
+%>
+<div class="post-grid list">
+<% for (const item of items) { %>
+<article class="post-tile" <%= metadataAttrs(item) %>>
+<% if (item.image) { %>
+<a class="post-tile-media" href="<%- item.path %>" tabindex="-1" aria-hidden="true"><img src="<%- item.image %>" alt="" loading="lazy"></a>
+<% } %>
+<div class="post-tile-meta"><span class="listing-date"><%= item.date %></span><% if (item.categories && item.categories.length) { %><span class="sep"></span><span><%= item.categories.join(", ") %></span><% } %></div>
+<h3 class="post-tile-title no-anchor"><a class="listing-title" href="<%- item.path %>"><%= item.title %></a></h3>
+<% if (item.description) { %>
+<p class="post-tile-desc listing-description"><%= item.description %></p>
+<% } %>
+<a class="post-tile-more" href="<%- item.path %>">Read More</a>
+</article>
+<% } %>
+</div>

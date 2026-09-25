@@ -9,6 +9,10 @@ website:
   description: "Postdoctoral researcher at Argonne National Laboratory studying electronic structure and optical properties of materials"
   site-url: "https://frimpsjoek.github.io"
   repo-url: "https://github.com/frimpsjoek/frimpsjoek.github.io"
+  open-graph: true
+  twitter-card:
+    creator: "@frimpsjoek"
+    card-style: summary_large_image
   
   navbar:
     pinned: true
@@ -16,7 +20,7 @@ website:
     logo-alt: "Joseph Frimpong"
     # Theme-aware colors handled by CSS custom properties
     search: true
-    right:
+    left:
       - text: "about"
         href: index.qmd
       #- text: "projects"
@@ -33,15 +37,19 @@ website:
             href: news.qmd
           - text: "teaching"
             href: teaching.qmd
+    right:
       - icon: github
         href: https://github.com/frimpsjoek
         aria-label: GitHub
-      - icon: twitter
+      - icon: twitter-x
         href: https://twitter.com/frimpsjoek
-        aria-label: Twitter
+        aria-label: X (Twitter)
       - icon: linkedin
         href: https://linkedin.com/in/josephfrimpong
         aria-label: LinkedIn
+      - icon: envelope
+        href: mailto:frimpsjoe@anl.gov
+        aria-label: Email
 
   # sidebar removed for blog pages
 
@@ -49,19 +57,20 @@ format:
   html:
     theme:
       - flatly
-      - styles/custom.scss
+      - styles/site.scss
     anchor-sections: false
     toc: true
     toc-location: right
     toc-depth: 3
-    smooth-scroll: true
+    smooth-scroll: false  # zenscroll clashes with require.js on Jupyter pages; CSS scroll-behavior instead
     page-layout: article
     grid:
       sidebar-width: 0px
-      body-width: 900px
-      margin-width: 250px
+      body-width: 720px
+      margin-width: 260px
       gutter-width: 1.5rem
     html-math-method: mathjax
+    include-in-header: _includes/theme-init.html
     include-after-body: _includes/after-body.html
 
 execute:

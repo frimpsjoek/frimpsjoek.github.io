@@ -1,0 +1,1589 @@
+/*-- scss:defaults --*/
+
+// Site theme, layered on Bootswatch Flatly.
+// Spec: docs/superpowers/specs/2026-09-24-site-revamp-design.md
+//
+// Type (serif-heading variant): Newsreader, a modern editorial serif, for headings
+// and titles; Roboto Condensed for navigation, labels and buttons; a light
+// humanist sans for reading text. To use Myriad Pro from an Adobe Fonts kit instead,
+// add the kit <link> to _includes/theme-init.html and change --font-body below.
+
+$font-family-sans-serif: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+$font-family-monospace: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+$headings-font-family: "Newsreader", "Iowan Old Style", Georgia, serif;
+$headings-font-weight: 400;
+$font-weight-base: 300;
+$body-bg: #f9f9f9;
+$body-color: #2c2c2e;
+$link-color: #0066cc;
+$primary: #0066cc;
+$navbar-bg: #f9f9f9;
+$navbar-fg: #1d1d1f;
+$navbar-hl: #000000;
+$footer-bg: #f9f9f9;
+
+/*-- scss:rules --*/
+
+// Web fonts are requested from <head> (_includes/theme-init.html) so they load early.
+
+// ===========================================================================
+// Tokens
+// ===========================================================================
+
+:root {
+  --bg: #f9f9f9;
+  --ink: #1d1d1f;
+  --text: #2c2c2e;
+  --muted: #6e6e73;
+  --faint: #e3e3e6;
+  --surface: #eeeef0;
+  --accent: #0066cc;
+  --nav-bg: rgba(249, 249, 249, 0.72);
+  --shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  --card-shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.15);
+
+  --font-display: "Roboto Condensed", "Arial Narrow", sans-serif;
+  --font-heading: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-body: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --body-weight: 300;
+  --body-tracking: 0.02em;
+
+  --measure: 720px;
+  --wide: 1200px;
+}
+
+html[data-bs-theme="dark"] {
+  --bg: #161617;
+  --ink: #f5f5f7;
+  --text: #e3e3e6;
+  --muted: #a1a1a6;
+  --faint: #333336;
+  --surface: #232326;
+  --accent: #4da3ff;
+  --nav-bg: rgba(22, 22, 23, 0.72);
+  --shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+  --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+  --card-shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+
+// ===========================================================================
+// Base
+// ===========================================================================
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: var(--body-weight);
+  letter-spacing: var(--body-tracking);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+strong, b, th {
+  font-weight: 600;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  transition: color 150ms ease, text-decoration-color 150ms ease, opacity 150ms ease;
+
+  &:hover {
+    color: var(--accent);
+    text-decoration-color: currentColor;
+  }
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--faint);
+  opacity: 1;
+  margin: 3rem 0;
+}
+
+// Label style shared by meta lines, tags, nav: small condensed capitals
+%label {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+// ===========================================================================
+// Headings
+// ===========================================================================
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--font-heading);
+  font-optical-sizing: auto;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  line-height: 1.15;
+  border: none;
+}
+
+h1, .h1, #title-block-header h1.title {
+  font-size: clamp(2.2rem, 4.5vw, 3.1rem);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.75rem;
+}
+
+h2, .h2 {
+  font-size: 1.85rem;
+  font-weight: 400;
+  margin: 2.75rem 0 0.9rem;
+}
+
+h3, .h3 {
+  font-size: 1.35rem;
+  font-weight: 500;
+  margin: 2rem 0 0.6rem;
+}
+
+// Small headings stay as condensed capitals (label style)
+h4, .h4, h5, .h5, h6, .h6 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 1.75rem 0 0.5rem;
+}
+
+// Quarto title block
+#title-block-header {
+  margin-bottom: 2.5rem;
+
+  .subtitle,
+  .description {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 0.25rem 0 0;
+  }
+
+  .quarto-title-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 1.5rem;
+    margin-top: 1.25rem;
+
+    .quarto-title-meta-heading {
+      display: none;
+    }
+
+    p, div {
+      @extend %label;
+      margin: 0;
+    }
+  }
+
+  .quarto-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.9rem;
+    margin-top: 1rem;
+
+    .quarto-category {
+      @extend %label;
+      background: none;
+      border: none;
+      padding: 0;
+      opacity: 1;
+    }
+  }
+}
+
+// ===========================================================================
+// Layout: one reading column for text pages
+// ===========================================================================
+
+// Full-layout pages (home, CV, ...) get a centred column. Article-layout pages
+// (posts) already get a 720px body column from the grid in _quarto.yml, and their
+// main element spans the margin column too, so it must not be capped.
+#quarto-content.page-layout-full main.content {
+  width: 100%;
+  max-width: var(--measure);
+  margin-inline: auto;
+}
+
+// ===========================================================================
+// Navbar: translucent, blurred, condensed capitals
+// ===========================================================================
+
+#quarto-header {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+#quarto-header .navbar {
+  background: var(--nav-bg) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid color-mix(in srgb, var(--faint) 70%, transparent);
+  box-shadow: none;
+  padding: 0.6rem 0;
+
+  .navbar-container {
+    max-width: var(--wide);
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  .navbar-brand,
+  .navbar-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink) !important;
+    margin-right: 2rem;
+  }
+
+  .brand-last {
+    font-weight: 300;
+  }
+
+  .nav-link {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink) !important;
+    padding: 0.4rem 0.75rem !important;
+    text-decoration: none;
+
+    .menu-text {
+      text-decoration: none;
+    }
+
+    &:hover .menu-text {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 6px;
+      text-decoration-color: color-mix(in srgb, var(--ink) 40%, transparent);
+    }
+
+    // Same weight as the other links: a bolder active link is wider and nudges its neighbours
+    &.active {
+      .menu-text {
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 6px;
+        text-decoration-color: var(--ink);
+      }
+    }
+
+    .bi {
+      font-size: 1.1rem;
+    }
+  }
+
+  // Dropdown as on basicappleguy.com: translucent, 14px blur, 12px corners
+  .dropdown-menu {
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    backdrop-filter: saturate(180%) blur(14px);
+    border: 1px solid color-mix(in srgb, var(--faint) 80%, transparent);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 0.35rem;
+
+    .dropdown-item {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      border-radius: 6px;
+      transition: background 0.3s ease;
+
+      &:hover, &:focus {
+        background: color-mix(in srgb, var(--ink) 8%, transparent);
+      }
+    }
+  }
+
+  .navbar-toggler {
+    border: none;
+    box-shadow: none;
+    color: var(--ink);
+  }
+
+  .navbar-toggler-icon {
+    filter: none;
+  }
+
+  #quarto-search .aa-DetachedSearchButton,
+  .quarto-navbar-tools .quarto-navigation-tool {
+    color: var(--ink);
+  }
+
+  #theme-toggle {
+    color: var(--ink) !important;
+    padding: 0.4rem 0.75rem !important;
+  }
+}
+
+// Fixed bar height: body padding (below) must equal it, or content jumps after load
+:root {
+  --nav-height: 64px;
+}
+
+@media (min-width: 992px) {
+  #quarto-header .navbar {
+    height: var(--nav-height);
+    padding-block: 0;
+  }
+
+  body.nav-fixed {
+    padding-top: var(--nav-height);
+  }
+}
+
+// Theme toggle is injected by theme-toggle.js after load; size it like the icon links
+#quarto-header #theme-toggle {
+  line-height: inherit;
+
+  i {
+    font-size: 1.1rem !important;
+  }
+}
+
+html[data-bs-theme="dark"] #quarto-header .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+// Mobile menu panel
+@media (max-width: 991.98px) {
+  #quarto-header .navbar .navbar-collapse {
+    padding: 0.75rem 0 0.5rem;
+
+    .nav-link {
+      padding: 0.5rem 0 !important;
+    }
+  }
+}
+
+// ===========================================================================
+// Reading progress bar (posts only)
+// ===========================================================================
+
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  z-index: 2000;
+  display: none;
+  pointer-events: none;
+}
+
+body.blog-post #scroll-progress {
+  display: block;
+}
+
+// Quarto pads every direct child of #quarto-content (padding-top: 14px)
+#quarto-content > #scroll-progress {
+  padding: 0;
+}
+
+// ===========================================================================
+// Content elements
+// ===========================================================================
+
+main.content {
+  p, li {
+    line-height: 1.7;
+  }
+
+  p {
+    margin-bottom: 1.25rem;
+  }
+
+  li {
+    margin-bottom: 0.35rem;
+  }
+
+  blockquote {
+    border-left: 2px solid var(--faint);
+    padding: 0 0 0 1.25rem;
+    margin: 1.75rem 0;
+    color: var(--muted);
+    font-size: 1.05rem;
+    background: none;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  figure img, p > img {
+    border-radius: 8px;
+  }
+
+  figcaption, .figure-caption {
+    font-size: 0.9rem;
+    color: var(--muted);
+    text-align: left;
+  }
+
+  table {
+    font-size: 0.95rem;
+    color: var(--text);
+    border-color: var(--faint);
+
+    th {
+      font-family: var(--font-display);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.8rem;
+      color: var(--ink);
+    }
+
+    td, th {
+      border-color: var(--faint);
+      background: transparent;
+      color: inherit;
+    }
+  }
+}
+
+// Code
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+  letter-spacing: 0;
+}
+
+#quarto-content :not(pre) > code:not(.sourceCode),
+:not(pre) > code {
+  font-size: 0.85em;
+  color: var(--ink);
+  background: var(--surface);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+
+div.sourceCode, pre {
+  background: var(--surface) !important;
+  border: none !important;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+pre {
+  padding: 1rem 1.25rem;
+}
+
+pre code {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+// Syntax colors (GitHub light/dark), all >= 4.5:1 on the code surface
+pre code span {
+  &.kw, &.cf, &.pp, &.im { color: #cf222e; }
+  &.dt, &.va, &.bu       { color: #953800; }
+  &.dv, &.bn, &.fl, &.sc, &.at, &.cn { color: #0550ae; }
+  &.st, &.ch, &.vs, &.ss, &.sp { color: #0a3069; }
+  &.co, &.do, &.an, &.cv, &.in { color: #57606a; font-style: normal; }
+  &.fu, &.ex             { color: #6639ba; }
+  &.er, &.al             { color: #cf222e; }
+  &.wa                   { color: #9a6700; }
+  &.op, &.ot             { color: inherit; }
+}
+
+// Untokenised spans inherit the code color (Quarto defaults them to a dark teal)
+html[data-bs-theme="dark"] code span {
+  color: var(--ink);
+}
+
+html[data-bs-theme="dark"] pre code span {
+  &.kw, &.cf, &.pp, &.im { color: #ff7b72; }
+  &.dt, &.va, &.bu       { color: #ffa657; }
+  &.dv, &.bn, &.fl, &.sc, &.at, &.cn { color: #79c0ff; }
+  &.st, &.ch, &.vs, &.ss, &.sp { color: #a5d6ff; }
+  &.co, &.do, &.an, &.cv, &.in { color: #8b949e; }
+  &.fu, &.ex             { color: #d2a8ff; }
+  &.er, &.al             { color: #ff7b72; }
+  &.wa                   { color: #d29922; }
+}
+
+// Quarto code-fold toggle ("Show the plotting code")
+details.code-fold > summary {
+  @extend %label;
+  color: var(--ink);
+  opacity: 1;
+  margin-bottom: 0.5rem;
+}
+
+// Collapsible long code blocks (after-body.html script, non-blog pages)
+details.code-block-collapsible {
+  background: var(--surface);
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  overflow: hidden;
+
+  summary {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem 1rem;
+    cursor: pointer;
+    list-style: none;
+    @extend %label;
+    color: var(--ink);
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    .code-block-summary-text {
+      flex: 1;
+    }
+  }
+
+  .code-copy-btn {
+    @extend %label;
+    border: 1px solid var(--faint);
+    background: transparent;
+    border-radius: 999px;
+    padding: 0.2rem 0.75rem;
+    color: var(--ink);
+  }
+
+  .code-collapse-body {
+    padding: 0 0.5rem 0.5rem;
+
+    div.sourceCode, pre {
+      margin: 0;
+    }
+  }
+}
+
+// Callouts: one accent bar on a soft surface
+.callout {
+  border: none !important;
+  border-left: 3px solid var(--accent) !important;
+  border-radius: 0 8px 8px 0 !important;
+  background: var(--surface) !important;
+  box-shadow: none !important;
+  color: var(--text);
+
+  .callout-header {
+    background: transparent !important;
+    border: none !important;
+  }
+
+  .callout-title-container {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  &.callout-warning, &.callout-caution, &.callout-important {
+    border-left-color: #d9822b !important;
+  }
+}
+
+// Buttons: outline, condensed capitals
+.btn {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 999px;
+  box-shadow: none !important;
+}
+
+.btn-primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg) !important;
+
+  &:hover, &:focus {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff !important;
+  }
+}
+
+.btn-outline-primary, .btn-outline-secondary, .btn-light, .btn-outline-dark {
+  background: transparent;
+  border: 1px solid var(--faint);
+  color: var(--ink) !important;
+
+  &:hover, &:focus {
+    background: var(--surface);
+    border-color: var(--muted);
+    color: var(--ink) !important;
+  }
+}
+
+.form-control {
+  background: transparent;
+  color: var(--ink);
+  border: none;
+  border-bottom: 1px solid var(--faint);
+  border-radius: 0;
+  font-weight: 300;
+  padding-inline: 0;
+
+  &:focus {
+    background: transparent;
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+    box-shadow: none;
+  }
+
+  &::placeholder {
+    color: var(--muted);
+  }
+}
+
+.form-label, .text-muted {
+  color: var(--muted) !important;
+}
+
+.alert-info {
+  background: var(--surface);
+  border: none;
+  color: var(--text);
+}
+
+.card {
+  background: var(--surface);
+  border: none;
+  color: var(--text);
+}
+
+// ===========================================================================
+// Paper features: margin notes, citations, cross-refs, appendix
+// ===========================================================================
+
+.column-margin, .margin-aside, aside {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--muted);
+
+  p {
+    font-size: inherit;
+    line-height: inherit;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.csl-entry {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+
+.column-margin .csl-entry {
+  font-size: 0.8rem;
+}
+
+a.footnote-ref, a.quarto-xref {
+  text-decoration: none;
+}
+
+.MathJax, mjx-container {
+  color: var(--ink);
+}
+
+mjx-container[display="true"] {
+  margin: 1.5rem 0 !important;
+}
+
+// Wide display equations scroll inside their own box on narrow screens
+.math.display,
+span[id^="eq-"] {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+#quarto-appendix.default {
+  border-top: 1px solid var(--faint);
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  background: none;
+
+  .appendix-heading, h2 {
+    @extend %label;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    color: var(--ink);
+    border: none;
+    margin-top: 2rem;
+  }
+
+  .quarto-appendix-contents, .quarto-appendix-contents p {
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .quarto-appendix-bibtex, pre {
+    font-size: 0.8rem;
+  }
+}
+
+// Table of contents (right margin)
+nav#TOC, #TOC {
+  #toc-title, h2 {
+    @extend %label;
+    font-family: var(--font-display);
+    color: var(--ink);
+    margin: 0 0 0.75rem;
+  }
+
+  ul {
+    border-left: 1px solid var(--faint);
+  }
+
+  a.nav-link {
+    font-size: 0.85rem;
+    color: var(--muted);
+    border-left: 1px solid transparent;
+    margin-left: -1px;
+    padding: 0.2rem 0 0.2rem 0.75rem;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--ink);
+    }
+
+    &.active {
+      // Quarto sets the active TOC link to a fixed blue with !important
+      color: var(--ink) !important;
+      font-weight: 400;
+      border-left-color: var(--ink);
+      background: none;
+    }
+  }
+}
+
+// ===========================================================================
+// Blog: index (grid + list views)
+// ===========================================================================
+
+body.blog-index {
+  #quarto-content.page-layout-full main.content {
+    max-width: var(--wide);
+  }
+
+  #title-block-header {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.view-toggle {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.25rem;
+  margin: 0 0 2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--faint);
+
+  button {
+    @extend %label;
+    font-size: 0.85rem;
+    background: none;
+    border: none;
+    padding: 0.2rem 0;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--ink);
+    }
+
+    &[aria-pressed="true"] {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 6px;
+    }
+  }
+}
+
+// The inactive view is hidden with the `hidden` attribute; keep it hidden
+[data-blog-view][hidden] {
+  display: none !important;
+}
+
+// The category sidebar belongs to the list view. In grid view hide it and let
+// the grid span the whole page (Quarto otherwise stops main at the margin column).
+body.blog-view-grid {
+  #quarto-margin-sidebar {
+    display: none;
+  }
+
+  #quarto-content.page-layout-full main.content {
+    grid-column: page-start / page-end;
+  }
+}
+
+// --- Grid view -------------------------------------------------------------
+
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3.5rem 2.25rem;
+
+  @media (max-width: 991.98px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 575.98px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.post-tile {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+
+  // Hover as on basicappleguy.com: the frame lifts 2px and its shadow deepens
+  a.post-tile-media {
+    display: block;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    border-radius: 10px;
+    background: var(--surface);
+    box-shadow: var(--card-shadow);
+    margin-bottom: 1.1rem;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  &:hover a.post-tile-media {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .post-tile-meta {
+    @extend %label;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    .sep {
+      width: 1px;
+      height: 0.85rem;
+      background: var(--muted);
+      opacity: 0.6;
+    }
+  }
+
+  h3.post-tile-title {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-size: 1.6rem;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin: 0.5rem 0 0.6rem;
+
+    a {
+      color: var(--ink);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--accent);
+      }
+    }
+  }
+
+  p.post-tile-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text);
+    margin: 0 0 0.9rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  a.post-tile-more {
+    align-self: flex-start;
+    color: var(--ink);
+    font-size: 1rem;
+    text-decoration-color: var(--ink);
+    margin-top: auto;
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+}
+
+// --- List view (Quarto default listing, restyled) --------------------------
+
+.quarto-listing-default {
+  .quarto-post {
+    border-bottom: 1px solid var(--faint);
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    gap: 1.5rem;
+
+    .thumbnail img, img.thumbnail-image {
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: var(--card-shadow);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    &:hover .thumbnail img, &:hover img.thumbnail-image {
+      box-shadow: var(--card-shadow-hover);
+      transform: translateY(-2px);
+    }
+
+    .listing-title {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 1.6rem;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .listing-description {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .metadata, .listing-date, .listing-reading-time {
+      @extend %label;
+    }
+
+    .listing-categories {
+      margin-top: 0.4rem;
+
+      .listing-category {
+        @extend %label;
+        font-size: 0.7rem;
+        background: none;
+        border: 1px solid var(--faint);
+        border-radius: 999px;
+        padding: 0.1rem 0.55rem;
+      }
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+.quarto-listing-category-title {
+  @extend %label;
+  color: var(--ink);
+}
+
+.quarto-listing-category .category {
+  font-size: 0.9rem;
+  color: var(--muted);
+
+  &.active {
+    color: var(--ink);
+    font-weight: 500;
+  }
+}
+
+.quarto-listing-filter .form-control,
+.quarto-listing-sort .form-select {
+  font-size: 0.9rem;
+}
+
+.form-select {
+  background-color: transparent;
+  color: var(--ink);
+  border-color: var(--faint);
+  font-weight: 300;
+}
+
+// ===========================================================================
+// Blog: posts
+// ===========================================================================
+
+.post-hero {
+  margin: 1.75rem 0 0;
+
+  img {
+    width: 100%;
+    max-height: 340px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    display: block;
+  }
+}
+
+body.blog-post main.content {
+  p, li {
+    font-size: 1.0625rem;
+  }
+}
+
+// ===========================================================================
+// Home
+// ===========================================================================
+
+.home-header {
+  margin: 0 0 0.25rem;
+}
+
+.home-affiliation {
+  @extend %label;
+  font-size: 0.85rem;
+  margin: 0 0 1.5rem;
+}
+
+.bio-container {
+  margin: 0.5rem 0 1rem;
+
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .profile-image {
+    float: right;
+    width: 280px;
+    max-width: 38%;
+    margin: 0 0 1.5rem 2rem;
+
+    // Square photo: reserve its box before it loads so the text doesn't reflow
+    img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+      border-radius: 50%;
+      shape-outside: circle();
+      box-shadow: var(--shadow);
+    }
+
+    @media (max-width: 767.98px) {
+      float: none;
+      width: 200px;
+      max-width: 60%;
+      margin: 0 auto 2rem;
+    }
+  }
+
+  .bio-text p {
+    line-height: 1.75;
+    margin-bottom: 0.9rem;
+  }
+}
+
+// Sizes match the original site: 2.8rem icons, 3rem apart.
+// Quarto wraps the links in a <p>; display: contents lets them join the flex row.
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin: 2.5rem 0 1.5rem;
+
+  > p {
+    display: contents;
+  }
+
+  a {
+    color: var(--ink);
+    font-size: 2.8rem;
+    line-height: 1;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+}
+
+// Current tools: small uniform icons in one row, each linking to the tool's site.
+// Only the icon under the pointer (or keyboard focus) grows; the row reserves
+// that height so nothing below moves.
+.tools-row {
+  --tool-size: 26px;
+  --tool-hover-scale: 1.7;
+
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 12px;
+  height: calc(var(--tool-size) * var(--tool-hover-scale) + 1rem);
+  padding-bottom: 0.25rem;
+  margin: 0.5rem auto 0;
+
+  // Quarto wraps the icons in a <p>; display: contents lets them join the flex row
+  > p {
+    display: contents;
+  }
+
+  a {
+    display: inline-flex;
+    line-height: 0;
+    text-decoration: none;
+    border-radius: 6px;
+
+    &:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+  }
+
+  img {
+    width: var(--tool-size);
+    height: var(--tool-size);
+    object-fit: contain;
+    background: transparent;
+    transform-origin: 50% 100%;
+    transition: transform 160ms ease-out;
+  }
+
+  a:hover img,
+  a:focus-visible img {
+    transform: scale(var(--tool-hover-scale));
+  }
+
+  // Narrow windows: wrap onto several rows
+  @media (max-width: 767.98px) {
+    flex-wrap: wrap;
+    height: auto;
+    gap: 16px;
+  }
+}
+
+html[data-bs-theme="dark"] .tools-row img.icon-invert-dark {
+  filter: invert(1) brightness(1.2);
+}
+
+// ===========================================================================
+// CV
+// ===========================================================================
+
+.cv-header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h1 {
+    margin-top: 1.25rem;
+  }
+
+  p {
+    color: var(--muted);
+  }
+}
+
+.cv-summary {
+  max-width: 620px;
+  margin: 0 auto 2.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: center;
+  color: var(--text);
+}
+
+// ===========================================================================
+// Publications
+// ===========================================================================
+
+.pub-search {
+  margin-bottom: 2.5rem;
+
+  .form-label {
+    @extend %label;
+  }
+
+  .form-control-lg {
+    font-size: 1.15rem;
+  }
+}
+
+.year-chunk {
+  display: flow-root;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.year-label {
+  position: sticky;
+  top: 5rem;
+  float: right;
+  font-family: var(--font-heading);
+  font-weight: 300;
+  font-size: clamp(3rem, 9vw, 5rem);
+  line-height: 1;
+  color: var(--ink);
+  opacity: 0.12;
+  user-select: none;
+  pointer-events: none;
+}
+
+.pub {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--faint);
+  margin: 0 !important;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 575.98px) {
+    flex-direction: column;
+  }
+}
+
+.pub-hidden, .talk-hidden {
+  display: none !important;
+}
+
+.pub-image {
+  flex: 0 0 140px;
+
+  .thumb {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 8px;
+    background: var(--surface);
+    border: none;
+  }
+
+  @media (max-width: 575.98px) {
+    flex-basis: auto;
+    max-width: 180px;
+  }
+}
+
+.pub-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.pub-badge-wrap {
+  display: flex;
+}
+
+.pub-badge {
+  @extend %label;
+  font-size: 0.7rem;
+  color: var(--ink);
+  border: 1px solid var(--faint);
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+}
+
+.pub-title {
+  font-family: var(--font-heading);
+  font-weight: 400 !important;
+  font-size: 1.35rem;
+  line-height: 1.3;
+  color: var(--ink);
+
+  a {
+    color: var(--ink);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+}
+
+.pub-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.talk-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+}
+
+// ===========================================================================
+// News timeline
+// ===========================================================================
+
+.news-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0.3rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 1px;
+    background: var(--faint);
+  }
+}
+
+.news-item {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+}
+
+.news-marker {
+  position: absolute;
+  left: -1.5rem;
+  top: 0.55rem;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--ink);
+}
+
+.news-content {
+  flex: 1;
+  min-width: 0;
+}
+
+h3.news-title {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin: 0;
+
+  a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+}
+
+.news-meta {
+  @extend %label;
+  margin-top: 0.35rem;
+
+  .news-location {
+    color: inherit;
+  }
+}
+
+.news-summary {
+  margin: 0.6rem 0 0;
+}
+
+// ===========================================================================
+// Projects
+// ===========================================================================
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem 2rem;
+
+  @media (max-width: 767.98px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  background: none;
+  border: none;
+}
+
+.project-thumb {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+.project-card-icon {
+  display: none;
+}
+
+.project-title {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 1.35rem;
+  margin: 0.4rem 0 0;
+
+  a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+}
+
+.project-meta, .project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.9rem;
+}
+
+.project-meta-chip, .project-tag {
+  @extend %label;
+  font-size: 0.7rem;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.project-summary {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+// ===========================================================================
+// Footer
+// ===========================================================================
+
+.site-footer {
+  border-top: 1px solid var(--faint);
+  margin-top: 4rem;
+  background: transparent;
+}
+
+.site-footer-inner {
+  @extend %label;
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 1.75rem 1.5rem 2.25rem;
+  text-align: center;
+
+  a {
+    color: var(--ink);
+  }
+}
+
+.nav-footer {
+  display: none;
+}
+
+// ===========================================================================
+// Scroll reveal, as on basicappleguy.com: blog cards below the fold fade in and
+// settle 15px downward over 1s as they enter the viewport. The script adds
+// .reveal only to cards that start off-screen, so content is never left hidden.
+// ===========================================================================
+
+.reveal {
+  opacity: 0;
+  transform: translateY(-15px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal.is-loaded {
+  opacity: 1;
+  transform: none;
+}
+
+// ===========================================================================
+// Page transitions: when a link to another page on this site is followed, the
+// menu bar stays still while the old page fades out and the new page eases in.
+// Uses cross-document View Transitions (Chrome/Edge 126+, Safari 18.2+); other
+// browsers switch pages instantly, as before.
+// ===========================================================================
+
+@view-transition {
+  navigation: auto;
+}
+
+#quarto-header {
+  view-transition-name: site-header;
+}
+
+::view-transition-group(site-header) {
+  animation: none;
+}
+
+::view-transition-old(root) {
+  animation: page-out 160ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+::view-transition-new(root) {
+  animation: page-in 380ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@keyframes page-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+// ===========================================================================
+// Motion: no entrance or looping animations; honour reduced motion
+// ===========================================================================
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

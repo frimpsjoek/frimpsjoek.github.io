@@ -1,19 +1,25 @@
-title-block-banner: true
+# Defaults for every blog post: paper-like reading (spec R4).
+google-scholar: true
+citation: true
+appendix-style: default
+reference-location: margin
+citation-location: margin
 format:
   html:
+    body-classes: blog-post
+    template-partials:
+      - _partials/title-block.html
     toc: true
-    toc-depth: 3
-    code-fold: true
-    code-summary: "Show code"
-    code-overflow: scroll
-    code-copy: true
-    code-line-numbers: false
-    code-tools: true
-    highlight-style:
-      light: github
-      dark: monokai
+    toc-depth: 2
     toc-location: right
+    toc-title: "Contents"
     page-layout: article
+    code-fold: false
+    code-overflow: scroll
+    code-copy: hover
+    code-line-numbers: false
+    code-tools: false
+    highlight-style: github
     lightbox: true
     fig-cap-location: bottom
     fig-align: center

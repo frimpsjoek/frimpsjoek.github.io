@@ -73,7 +73,7 @@ Edit `projects.qmd` to add new research projects with descriptions and status up
 
 The site uses a custom SCSS theme based on the original al-folio colors:
 
-- **Main styles**: `styles/custom.scss`
+- **Main styles**: `styles/site.scss` (design spec: `docs/superpowers/specs/2026-09-24-site-revamp-design.md`)
 - **Variables**: `styles/_variables.scss`
 - **Color scheme**: Maintains academic blue (#0076df) as primary color
 - **Typography**: Roboto/Roboto Slab font combination

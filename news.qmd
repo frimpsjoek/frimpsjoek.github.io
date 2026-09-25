@@ -3,9 +3,6 @@ title: "News & Highlights"
 description: "Updates on talks, awards, and collaborations."
 format:
   html:
-    theme:
-      - flatly
-      - styles/custom.scss
     toc: false
     page-layout: full
     citations-hover: true

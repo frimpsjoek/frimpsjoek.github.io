@@ -1,23 +1,70 @@
 ---
 title: "Blog"
-subtitle: "Reflections on academic life, computational science, and research"
+subtitle: "Notes on academic life, computational science, and research."
 page-layout: full
+toc: false
 sidebar: false
+body-classes: blog-index
 listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: false
-  sort-ui: true
-  filter-ui: true
-  image-height: 180px
-  fields: [image, date, title, reading-time, description]
-  feed:
-    title: "Joseph Frimpong's Blog"
-    description: "Thoughts on academic life, computational materials science, and research"
-    categories: [academia, tutorial, research]
+  - id: posts-grid
+    contents: posts
+    sort: "date desc"
+    template: _post-grid.ejs
+    date-format: "M/D/YY"
+    fields: [image, date, title, description, categories]
+    feed:
+      title: "Joseph Frimpong's Blog"
+      description: "Thoughts on academic life, computational materials science, and research"
+      categories: [academia, tutorial, research]
+  - id: posts-list
+    contents: posts
+    sort: "date desc"
+    type: default
+    categories: true
+    sort-ui: true
+    filter-ui: true
+    image-height: 180px
+    fields: [image, date, title, reading-time, description, categories]
 ---
 
+```{=html}
+<div class="view-toggle" role="group" aria-label="Blog layout">
+  <button type="button" data-view="grid" aria-pressed="true">Grid</button>
+  <button type="button" data-view="list" aria-pressed="false">List</button>
+</div>
+```
 
-Welcome to my blog where I share thoughts on academic life, computational materials science, and the journey of being a postdoctoral researcher.
+::: {#posts-grid data-blog-view="grid"}
+:::
 
+::: {#posts-list data-blog-view="list" hidden="hidden"}
+:::
+
+```{=html}
+<script>
+  // Grid | List toggle; the choice is remembered per visitor.
+  (function () {
+    var KEY = 'blog-view';
+    var buttons = document.querySelectorAll('.view-toggle button');
+    function show(view) {
+      document.querySelectorAll('[data-blog-view]').forEach(function (el) {
+        el.hidden = el.getAttribute('data-blog-view') !== view;
+      });
+      buttons.forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.dataset.view === view));
+      });
+      document.body.classList.toggle('blog-view-grid', view === 'grid');
+      document.body.classList.toggle('blog-view-list', view === 'list');
+    }
+    var saved = null;
+    try { saved = localStorage.getItem(KEY); } catch (e) {}
+    show(saved === 'list' ? 'list' : 'grid');
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        show(b.dataset.view);
+        try { localStorage.setItem(KEY, b.dataset.view); } catch (e) {}
+      });
+    });
+  })();
+</script>
+```

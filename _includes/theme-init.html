@@ -1,0 +1,14 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,300..500&family=Roboto+Condensed:wght@300..600&family=Source+Sans+3:ital,wght@0,200..700;1,300..400&family=JetBrains+Mono:wght@400;500&display=swap">
+<script>
+  // Apply the saved or system color scheme before first paint (no light flash in dark mode).
+  // theme-toggle.js reads and writes the same localStorage key.
+  (function () {
+    try {
+      var saved = localStorage.getItem('quarto-color-scheme');
+      var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-bs-theme', saved || (dark ? 'dark' : 'light'));
+    } catch (e) {}
+  })();
+</script>
