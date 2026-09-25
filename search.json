@@ -683,42 +683,77 @@
     "href": "cv.html#appointments",
     "title": "Curriculum Vitae",
     "section": "Appointments",
-    "text": "Appointments\n\nPostdoctoral Researcher, Argonne National Laboratory — 2024 – present\nML-enhanced GW/BSE workflows and exascale automation within the NST Division.\nGraduate Research Assistant, Wayne State University — 2019 – 2024\nQuantum dot interfaces, dielectric embedding, and ligand chemistry (Advisor: Prof. Zhen-Fei Liu)."
+    "text": "Appointments\n\nPostdoctoral Researcher, Argonne National Laboratory, Lemont, IL — Nov 2024 – present\nAI/ML for electronic-structure calculations; Midwest Integrated Center for Computational Materials (MICCoM). Advisors: Maria Chan and Giulia Galli.\nSchaap-Rumble Research Fellow & Graduate Research Assistant, Wayne State University, Detroit, MI — Sept 2020 – July 2024\nGW/BSE methods for large heterogeneous interfaces; quantum dots, covalent organic frameworks, and molecule–metal interfaces. Advisor: Zhen-Fei Liu.\nData Analyst (project), Wayne State University — Sept 2022 – May 2023\nPhysics Teacher, Tamale Senior High School, Ghana — Nov 2018 – Aug 2019\nResearch Assistant, Kwame Nkrumah University of Science and Technology, Ghana — May 2016 – Aug 2018\nAdvisors: Caroline Kwawu and Evans Adei."
   },
   {
     "objectID": "cv.html#education",
     "href": "cv.html#education",
     "title": "Curriculum Vitae",
     "section": "Education",
-    "text": "Education\n\nPh.D., Chemistry, Wayne State University (2019 – 2024)\nPhysical chemistry focus with specialization in many-body perturbation theory and scientific software development.\nB.S., Chemistry (Honors), Kwame Nkrumah University of Science & Technology (2017)"
+    "text": "Education\n\nPh.D., Chemistry (Physical Chemistry), Wayne State University — 2019 – 2024\nThesis: Development & Use of Computational Methods for the Electronic Structure of Quantum Materials and Interfaces\nB.S., Chemistry (Honors), Kwame Nkrumah University of Science and Technology — 2013 – 2017"
   },
   {
-    "objectID": "cv.html#selected-publications",
-    "href": "cv.html#selected-publications",
+    "objectID": "cv.html#awards-honors",
+    "href": "cv.html#awards-honors",
     "title": "Curriculum Vitae",
-    "section": "Selected Publications",
-    "text": "Selected Publications\n\nJ. Frimpong & Z.-F. Liu, J. Phys. Chem. Lett. 15 (2024) 2133–2141 — Generalized substrate-screening GW for covalent interfaces.\nJ. Frimpong et al., Chem. Mater. 36 (2024) 11519–11528 — Ligand exchange and passivation in CdS quantum dots.\nR. Maity et al., J. Am. Chem. Soc. 146 (2024) 34141–34151 — Dual-pathway hydrogen isotope labeling via CdS quantum dots.\n\nFull bibliography available on the Publications page."
+    "section": "Awards & Honors",
+    "text": "Awards & Honors\n\nBSSw Fellowship Honorable Mention, Better Scientific Software (2026) — announcement\nVisionary Award, LLM Hackathon for Applications in Materials Science and Chemistry — Atomic Shorts (2025)\nCenter for Nanoscale Materials Grant, Argonne — computational work in machine learning for electronic structure (2025)\nDan Trivich Memorial Award for Research in Physical Chemistry, Wayne State University (2024)\nSummer Dissertation Award, Wayne State University (2023)\nNOBCChE Advancing Science Conference Award (2022, 2023)\nEnergy Research Travel Funding (GERA), APS March Meeting (2022, 2023)\nA. Paul and Carole C. Schaap Endowed Distinguished Graduate Award, Wayne State University (2022)\nThomas C. Rumble Fellowship, Wayne State University (2022)\nBest Poster Award — Computational Chemistry, NOBCChE National Conference (2022)\nICTP Travel Award, Abdus Salam International Centre for Theoretical Physics, Italy (2019)\nKBN Merit Scholarship, Kwame Nkrumah University of Science and Technology (2019)"
+  },
+  {
+    "objectID": "cv.html#publications",
+    "href": "cv.html#publications",
+    "title": "Curriculum Vitae",
+    "section": "Publications",
+    "text": "Publications\n\nJ. Frimpong, J. Zhan, V. Yu, G. Galli, M. Chan — Towards accelerating excited-state calculations with generative modeling. In preparation.\nR. Maity, O. Dungan, F. A. Perras, …, J. Frimpong, T. Quainoo, Z.-F. Liu, L. Luo, J. Am. Chem. Soc. 146 (2024) 34141–34151 — Hydrogen isotope labeling of pharmaceuticals via dual hydrogen isotope exchange pathways using a CdS quantum dot photocatalyst.\nJ. Frimpong*, S. Aryal*, T. Karun, Z.-F. Liu, Chem. Mater. 36 (2024) 11519–11528 — Ligand exchange and surface passivation in CdS quantum dots from first principles.\nJ. Frimpong & Z.-F. Liu, J. Phys. Chem. Lett. 15 (2024) 2133–2141 — Generalized substrate-screening GW for covalently bonded interfaces.\nN. Behera, D. Gunasekera, J. Mahajan, J. Frimpong, Z.-F. Liu, L. Luo, Faraday Discuss. 247 (2023) 45–58 — Electrochemical hydrogen isotope exchange of amines controlled by alternating current frequency.\nS. Aryal*, J. Frimpong*, Z.-F. Liu, J. Phys. Chem. Lett. 13 (2022) 10153–10161 — Covalent and van der Waals CdS quantum dot assemblies from many-body perturbation theory.\nJ. Frimpong & Z.-F. Liu, J. Phys.: Condens. Matter 33 (2021) 254004 — Quasiparticle electronic structure of 2D heterotriangulene-based COFs on Au(111).\n\n* Equal contribution. Details, abstracts, and links on the Publications page."
+  },
+  {
+    "objectID": "cv.html#talks-presentations-selected",
+    "href": "cv.html#talks-presentations-selected",
+    "title": "Curriculum Vitae",
+    "section": "Talks & Presentations (selected)",
+    "text": "Talks & Presentations (selected)\n\nGordon Research Seminar, Computational Materials Science and Engineering — Newry, ME, Aug 2026 (talk and poster)\nLearning Faithful Representations of the Dielectric Matrix for Excited-State Calculations with Generative Modeling\nGordon Research Conference, Computational Materials Science and Engineering — Newry, ME, Aug 2026 (poster)\nAccelerating Calculations Based on Many-Body Perturbation Theory\nArgonne Postdoctoral Research & Career Symposium — Lemont, IL, Oct 2025\nTowards Accelerating Excited State Calculations with Generative Modeling\nMidwest Theoretical Chemistry Conference — Detroit, MI, May 2025\nTowards Accelerating Excited State Calculations with Generative Modeling\nACS Spring Meeting — New Orleans, LA, Mar 2024\nUnderstanding Ligand Exchange in Quantum Dots from First Principles\nNOBCChE National Conference — New Orleans, LA, Sept 2023; APS March Meeting — Las Vegas, NV, Mar 2023\nGW-based substrate screening methods for covalently bound and strongly coupled interfaces\n\nFull list on the Publications page."
+  },
+  {
+    "objectID": "cv.html#training-schools",
+    "href": "cv.html#training-schools",
+    "title": "Curriculum Vitae",
+    "section": "Training & Schools",
+    "text": "Training & Schools\n\nArgonne Training Program on Extreme-Scale Computing (ATPESC) — St. Charles, IL, July 27 – Aug 8, 2025\nDeep Learning for Science Summer School, Berkeley Lab — Berkeley, CA, June 23 – 27, 2025\nURSSI Summer School in Open Science and Research Software Engineering — UIUC, July – Aug 2024"
+  },
+  {
+    "objectID": "cv.html#projects",
+    "href": "cv.html#projects",
+    "title": "Curriculum Vitae",
+    "section": "Projects",
+    "text": "Projects\n\nAtomic Shorts — an agentic AI system that makes short videos explaining complex materials-science concepts (LLM Hackathon Visionary Award, 2025).\nMCP server for Quantum ESPRESSO — runs Quantum ESPRESSO calculations from any LLM client, locally with Docker or remotely through Globus Compute (Polaris endpoint)."
   },
   {
     "objectID": "cv.html#technical-profile",
     "href": "cv.html#technical-profile",
     "title": "Curriculum Vitae",
     "section": "Technical Profile",
-    "text": "Technical Profile\n\nMethods: DFT, GW/BSE, dielectric embedding, excitonic analysis.\n\nSoftware: Quantum ESPRESSO, BerkeleyGW, WEST, PyTorch, ASE, FireWorks.\n\nProgramming & DevOps: Python, Bash, FORTRAN utilities, MPI, Git/GitHub, Slurm-based HPC."
+    "text": "Technical Profile\n\nMethods: DFT, GW/BSE, many-body perturbation theory, dielectric embedding, QM/MM, generative and graph-based deep learning.\nElectronic-structure codes: Quantum ESPRESSO, WEST, BerkeleyGW, VASP, PySCF, Gaussian, TeraChem, AMBER, GROMACS.\nMachine learning & data: PyTorch (DDP, multi-node GPU training), PyTorch Geometric, Horovod, Weights & Biases, NumPy, pandas, pymatgen, Matminer, DeepChem.\nHPC: Perlmutter, Polaris, Aurora, ACCESS (Bridges, Expanse), Carbon; MPI, OpenMP, Slurm/PBS.\nProgramming & DevOps: Python, Bash, C++, Fortran, MATLAB, R, Git, CI/CD, Docker."
   },
   {
-    "objectID": "cv.html#leadership-outreach-selected",
-    "href": "cv.html#leadership-outreach-selected",
+    "objectID": "cv.html#mentoring",
+    "href": "cv.html#mentoring",
     "title": "Curriculum Vitae",
-    "section": "Leadership & Outreach (selected)",
-    "text": "Leadership & Outreach (selected)\n\nNOBCChE Conference Planning Committee (2022 – present) — develop programming supporting URM scientists.\n\nSocial Media Coordinator & Secretary, NOBCChE @ Wayne State (2021 – 2023) — managed communications and events.\n\n“Chemistry Meets Computers” facilitator (2021–2023) — created coding bootcamps linking programming with chemistry.\n\nDetroit STEM outreach (2021–2023) — hands-on demonstrations and mentoring for K-12 and community audiences."
+    "section": "Mentoring",
+    "text": "Mentoring\n\nAmber Witherspoon, ACTSO ’26 — machine learning for out-of-domain classification of brain tumors (2025 – 2026)\nTejas Karun, B.S. Chemistry, Wayne State ’23 — DFT electronic structure of 2DPA-1 (2022 – 2023)\nLyric Elliott, B.S. Chemistry, Wayne State ’21 — DFT electronic structure of quinoidal polymers (2021)"
   },
   {
-    "objectID": "cv.html#reviewer-service",
-    "href": "cv.html#reviewer-service",
+    "objectID": "cv.html#leadership-service",
+    "href": "cv.html#leadership-service",
     "title": "Curriculum Vitae",
-    "section": "Reviewer Service",
-    "text": "Reviewer Service\nReferee for J. Phys.: Condens. Matter, Phys. Rev. B, Phys. Rev. Lett., and Physica Scripta.\n\nFor collaboration inquiries or an updated CV, contact me via email or LinkedIn."
+    "section": "Leadership & Service",
+    "text": "Leadership & Service\n\nProfessional Development Officer, Postdoctoral Society of Argonne (2026)\nNOBCChE Conference Planning Committee (2022 – present)\nGeneral Secretary (2021 – 2022) and Social Media Coordinator (2022 – 2023), NOBCChE @ Wayne State\nFacilitator, “Chemistry Meets Computers” coding summer camp, Wayne State (2021 – 2023)\nNOBCChE K-12 Initiative and Detroit public-school STEM outreach (2021 – 2023)\nPeer reviewer for J. Phys.: Condens. Matter, Phys. Rev. B, Phys. Rev. Lett., Physica Scripta, ACS journals, and the DOE SCGSR fellowship program"
+  },
+  {
+    "objectID": "cv.html#professional-memberships",
+    "href": "cv.html#professional-memberships",
+    "title": "Curriculum Vitae",
+    "section": "Professional Memberships",
+    "text": "Professional Memberships\nAmerican Physical Society · American Chemical Society · NOBCChE · Sigma Xi\nFor collaboration inquiries, contact me by email or LinkedIn."
   },
   {
     "objectID": "index.html",
@@ -746,7 +781,7 @@
     "href": "index.html#news",
     "title": "Joseph Frimpong",
     "section": "News",
-    "text": "News\n\nNov 04, 2024 – Joined Argonne National Laboratory as Postdoctoral Researcher — Started a postdoctoral appointment in the NST division to develop AI/ML-assisted GW/BSE workflows for heterogeneous materials.\nAug 30, 2024 – Defended Ph.D. in Chemistry at Wayne State University — Successfully defended my dissertation on many-body approaches for quantum dots and covalent interfaces.\nJul 01, 2023 – Led Chemistry Meets Computers Summer Bootcamp — Taught a week-long intensive introducing Python and ML to high school students, mentoring on computational chemistry and machine learning.\n\nSee the full list on the news page."
+    "text": "News\n\nAug 02, 2026 – Poster at the Gordon Research Conference on Computational Materials Science and Engineering — Presented “Accelerating Calculations Based on Many-Body Perturbation Theory” at the 2026 GRC, Computational Methods and Artificial Intelligence Tools for Materials Discovery and Industrial Application (Aug 2-7).\nAug 01, 2026 – Talk and poster at the Gordon Research Seminar on Computational Materials Science and Engineering — Presented “Learning Faithful Representations of the Dielectric Matrix for Excited-State Calculations with Generative Modeling” (with J. Zhan, V. Yu, M. Govoni, G. Galli, and M. Chan).\nFeb 17, 2026 – Named a 2026 BSSw Fellowship Honorable Mention — Recognized as one of six Honorable Mentions in the 2026 Better Scientific Software (BSSw) Fellowship program.\nJan 01, 2026 – Professional Development Officer, Postdoctoral Society of Argonne — Serving as Professional Development Officer of the Postdoctoral Society of Argonne for 2026.\nOct 31, 2025 – Talk at the Argonne Postdoctoral Research & Career Symposium — Presented “Towards Accelerating Excited State Calculations with Generative Modeling”.\n\nSee the full list on the news page."
   },
   {
     "objectID": "index.html#connect",
@@ -900,14 +935,14 @@
     "href": "publications.html#technical-talks-presentations",
     "title": "Publications",
     "section": "Technical Talks & Presentations",
-    "text": "Technical Talks & Presentations\n\n\n\n\n  \n  \n    Invited Talk\n    Understanding Ligand Exchange in Quantum Dots from First Principles\n    J. Frimpong, J. Zhan, Victor Yu, Guilia Galli, Maria Chan\n    Midwest Theoretical Chemistry Conference · May 26, 2025 · Detroit, MI\n    SLIDES\n  \n\n\n\n  \n  \n    Talk\n    Understanding Ligand Exchange in Quantum Dots from First Principles\n    J. Frimpong, Z. Liu\n    ACS Spring Meeting · March 19, 2024 · New Orleans, LA\n    SLIDES\n  \n\n\n\n  \n  \n    Talk\n    Development of GW-Based Substrate Screening Methods for Strongly Coupled Molecule-Metal Interfaces\n    J. Frimpong, Z. Liu\n    APS March Meeting · March 18, 2023 · Las Vegas, NV\n    SLIDES\n  \n\n\n\n  \n  \n    Talk\n    Development of GW-Based Substrate Screening Methods for Covalently-Bound Interfaces\n    J. Frimpong, Z. Liu\n    NOBCCChE National Conference · September 12, 2023 · New Orleans, LA\n    SLIDES POSTER\n  \n\n\n\n  \n  \n    Talk\n    Electronic Structure and Optical Properties of Quantum Dots and Their Assemblies\n    J. Frimpong, S. Aryal, Z. Liu\n    APS March Meeting · March 18, 2022 · Chicago, IL\n    SLIDES\n  \n\n\n\n  \n  \n    Talk\n    Unraveling the Role of Surface Ligands in the Electronic and Optical Properties of Cadmium Sulphide Quantum Dots\n    J. Frimpong, S. Aryal, Z. Liu\n    NOBCCChE National Conference · September 25, 2022 · Orlando, FL\n    POSTER\n  \n\n\n\n  \n  \n    Virtual Talk\n    Quasiparticle Electronic Structure of Two-Dimensional Heterotriangulene-Based Covalent Organic Frameworks Adsorbed on Au(111)\n    J. Frimpong, Z. Liu\n    APS March Meeting · March 17, 2021 · Virtual\n    SLIDES VIDEO\n  \n\n\n\n  \n  \n    Student Talk\n    Electronic Structure of 2D Covalent Organic Frameworks and the Influence of Au(111) Substrate\n    J. Frimpong, Z. Liu\n    Chemistry Graduate Research Symposium (CGRS) · 2021 · Detroit, MI\n    SLIDES\n  \n\n\n\n  \n  \n    Poster\n    Mechanistic Studies of the Cycloaddition of Norbornadiene and Alkynyl Phosphonates\n    J. Frimpong\n    19th International Workshop on Computational Physics and Material Science · 2019 · Trieste, Italy\n    POSTER\n  \n\nShow More Talks"
+    "text": "Technical Talks & Presentations\n\n\n\n\n  \n  \n    Poster\n    Accelerating Calculations Based on Many-Body Perturbation Theory\n    J. Frimpong\n    Gordon Research Conference: Computational Materials Science and Engineering · August 3, 2026 · Newry, ME\n    \n  \n\n\n\n  \n  \n    Talk & Poster\n    Learning Faithful Representations of the Dielectric Matrix for Excited-State Calculations with Generative Modeling\n    J. Frimpong, J. Zhan, V. Yu, M. Govoni, G. Galli, M. Chan\n    Gordon Research Seminar: Computational Materials Science and Engineering · August 1, 2026 · Newry, ME\n    \n  \n\n\n\n  \n  \n    Talk\n    Towards Accelerating Excited State Calculations with Generative Modeling\n    J. Frimpong\n    Argonne Postdoctoral Research & Career Symposium · October 31, 2025 · Lemont, IL\n    \n  \n\n\n\n  \n  \n    Contributed Talk\n    Towards Accelerating Excited State Calculations with Generative Modeling\n    J. Frimpong, J. Zhan, Victor Yu, Guilia Galli, Maria Chan\n    Midwest Theoretical Chemistry Conference · May 26, 2025 · Detroit, MI\n    SLIDES\n  \n\n\n\n  \n  \n    Talk\n    Understanding Ligand Exchange in Quantum Dots from First Principles\n    J. Frimpong, Z. Liu\n    ACS Spring Meeting · March 19, 2024 · New Orleans, LA\n    SLIDES\n  \n\n\n\n  \n  \n    Talk\n    Development of GW-Based Substrate Screening Methods for Strongly Coupled Molecule-Metal Interfaces\n    J. Frimpong, Z. Liu\n    APS March Meeting · March 18, 2023 · Las Vegas, NV\n    SLIDES\n  \n\n\n\n  \n  \n    Talk\n    Development of GW-Based Substrate Screening Methods for Covalently-Bound Interfaces\n    J. Frimpong, Z. Liu\n    NOBCCChE National Conference · September 12, 2023 · New Orleans, LA\n    SLIDES POSTER\n  \n\n\n\n  \n  \n    Talk\n    Electronic Structure and Optical Properties of Quantum Dots and Their Assemblies\n    J. Frimpong, S. Aryal, Z. Liu\n    APS March Meeting · March 18, 2022 · Chicago, IL\n    SLIDES\n  \n\n\n\n  \n  \n    Talk\n    Unraveling the Role of Surface Ligands in the Electronic and Optical Properties of Cadmium Sulphide Quantum Dots\n    J. Frimpong, S. Aryal, Z. Liu\n    NOBCCChE National Conference · September 25, 2022 · Orlando, FL\n    POSTER\n  \n\n\n\n  \n  \n    Virtual Talk\n    Quasiparticle Electronic Structure of Two-Dimensional Heterotriangulene-Based Covalent Organic Frameworks Adsorbed on Au(111)\n    J. Frimpong, Z. Liu\n    APS March Meeting · March 17, 2021 · Virtual\n    SLIDES VIDEO\n  \n\n\n\n  \n  \n    Student Talk\n    Electronic Structure of 2D Covalent Organic Frameworks and the Influence of Au(111) Substrate\n    J. Frimpong, Z. Liu\n    Chemistry Graduate Research Symposium (CGRS) · 2021 · Detroit, MI\n    SLIDES\n  \n\n\n\n  \n  \n    Poster\n    Mechanistic Studies of the Cycloaddition of Norbornadiene and Alkynyl Phosphonates\n    J. Frimpong\n    19th International Workshop on Computational Physics and Material Science · 2019 · Trieste, Italy\n    POSTER\n  \n\nShow More Talks"
   },
   {
     "objectID": "news.html",
     "href": "news.html",
     "title": "News & Highlights",
     "section": "",
-    "text": "Joined Argonne National Laboratory as Postdoctoral Researcher\n    Nov 04, 2024 · Lemont, IL\n    Started a postdoctoral appointment in the NST division to develop AI/ML-assisted GW/BSE workflows for heterogeneous materials.\n  \n\n\n\n  \n  \n    Defended Ph.D. in Chemistry at Wayne State University\n    Aug 30, 2024 · Detroit, MI\n    Successfully defended my dissertation on many-body approaches for quantum dots and covalent interfaces.\n  \n\n\n\n  \n  \n    Led Chemistry Meets Computers Summer Bootcamp\n    Jul 01, 2023 · Wayne State University\n    Taught a week-long intensive introducing Python and ML to high school students, mentoring on computational chemistry and machine learning."
+    "text": "Poster at the Gordon Research Conference on Computational Materials Science and Engineering\n    Aug 02, 2026 · Newry, ME\n    Presented \"Accelerating Calculations Based on Many-Body Perturbation Theory\" at the 2026 GRC, Computational Methods and Artificial Intelligence Tools for Materials Discovery and Industrial Application (Aug 2-7).\n  \n\n\n\n  \n  \n    Talk and poster at the Gordon Research Seminar on Computational Materials Science and Engineering\n    Aug 01, 2026 · Newry, ME\n    Presented \"Learning Faithful Representations of the Dielectric Matrix for Excited-State Calculations with Generative Modeling\" (with J. Zhan, V. Yu, M. Govoni, G. Galli, and M. Chan).\n  \n\n\n\n  \n  \n    Named a 2026 BSSw Fellowship Honorable Mention\n    Feb 17, 2026 · Better Scientific Software\n    Recognized as one of six Honorable Mentions in the 2026 Better Scientific Software (BSSw) Fellowship program.\n  \n\n\n\n  \n  \n    Professional Development Officer, Postdoctoral Society of Argonne\n    Jan 01, 2026 · Lemont, IL\n    Serving as Professional Development Officer of the Postdoctoral Society of Argonne for 2026.\n  \n\n\n\n  \n  \n    Talk at the Argonne Postdoctoral Research & Career Symposium\n    Oct 31, 2025 · Lemont, IL\n    Presented \"Towards Accelerating Excited State Calculations with Generative Modeling\".\n  \n\n\n\n  \n  \n    Visionary Award at the LLM Hackathon for Materials Science and Chemistry\n    Sep 11, 2025\n    Atomic Shorts, an agentic AI system that makes short videos explaining materials-science concepts, received a 2025 Visionary Award.\n  \n\n\n\n  \n  \n    Attended the Argonne Training Program on Extreme-Scale Computing (ATPESC)\n    Jul 27, 2025 · St. Charles, IL\n    Two-week intensive training (July 27 - August 8) on programming and running science applications on leadership-class and exascale supercomputers.\n  \n\n\n\n  \n  \n    Attended the Deep Learning for Science Summer School\n    Jun 23, 2025 · Berkeley, CA\n    Week-long Berkeley Lab school (June 23-27) on deep learning and generative AI for scientific research.\n  \n\n\n\n  \n  \n    Talk at the Midwest Theoretical Chemistry Conference\n    May 26, 2025 · Detroit, MI\n    Presented \"Towards Accelerating Excited State Calculations with Generative Modeling\" (with J. Zhan, V. Yu, G. Galli, and M. Chan).\n  \n\n\n\n  \n  \n    Joined Argonne National Laboratory as Postdoctoral Researcher\n    Nov 04, 2024 · Lemont, IL\n    Started a postdoctoral appointment in the NST division to develop AI/ML-assisted GW/BSE workflows for heterogeneous materials.\n  \n\n\n\n  \n  \n    Defended Ph.D. in Chemistry at Wayne State University\n    Aug 30, 2024 · Detroit, MI\n    Successfully defended my dissertation on many-body approaches for quantum dots and covalent interfaces.\n  \n\n\n\n  \n  \n    Led Chemistry Meets Computers Summer Bootcamp\n    Jul 01, 2023 · Wayne State University\n    Taught a week-long intensive introducing Python and ML to high school students, mentoring on computational chemistry and machine learning."
   },
   {
     "objectID": "projects/isotopic-labeling-catalysis.html",
