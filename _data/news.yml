@@ -1,5 +1,68 @@
 [
   {
+    "date": "2026-08-02",
+    "title": "Poster at the Gordon Research Conference on Computational Materials Science and Engineering",
+    "location": "Newry, ME",
+    "summary": "Presented \"Accelerating Calculations Based on Many-Body Perturbation Theory\" at the 2026 GRC, Computational Methods and Artificial Intelligence Tools for Materials Discovery and Industrial Application (Aug 2-7).",
+    "link": null
+  },
+  {
+    "date": "2026-08-01",
+    "title": "Talk and poster at the Gordon Research Seminar on Computational Materials Science and Engineering",
+    "location": "Newry, ME",
+    "summary": "Presented \"Learning Faithful Representations of the Dielectric Matrix for Excited-State Calculations with Generative Modeling\" (with J. Zhan, V. Yu, M. Govoni, G. Galli, and M. Chan).",
+    "link": null
+  },
+  {
+    "date": "2026-02-17",
+    "title": "Named a 2026 BSSw Fellowship Honorable Mention",
+    "location": "Better Scientific Software",
+    "summary": "Recognized as one of six Honorable Mentions in the 2026 Better Scientific Software (BSSw) Fellowship program.",
+    "link": "https://bssw.io/blog_posts/introducing-the-2026-bssw-fellows"
+  },
+  {
+    "date": "2026-01-01",
+    "title": "Professional Development Officer, Postdoctoral Society of Argonne",
+    "location": "Lemont, IL",
+    "summary": "Serving as Professional Development Officer of the Postdoctoral Society of Argonne for 2026.",
+    "link": null
+  },
+  {
+    "date": "2025-10-31",
+    "title": "Talk at the Argonne Postdoctoral Research & Career Symposium",
+    "location": "Lemont, IL",
+    "summary": "Presented \"Towards Accelerating Excited State Calculations with Generative Modeling\".",
+    "link": null
+  },
+  {
+    "date": "2025-09-11",
+    "title": "Visionary Award at the LLM Hackathon for Materials Science and Chemistry",
+    "location": null,
+    "summary": "Atomic Shorts, an agentic AI system that makes short videos explaining materials-science concepts, received a 2025 Visionary Award.",
+    "link": "https://llmhackathon.github.io/awards/"
+  },
+  {
+    "date": "2025-07-27",
+    "title": "Attended the Argonne Training Program on Extreme-Scale Computing (ATPESC)",
+    "location": "St. Charles, IL",
+    "summary": "Two-week intensive training (July 27 - August 8) on programming and running science applications on leadership-class and exascale supercomputers.",
+    "link": "https://extremecomputingtraining.anl.gov/atpesc-2025/"
+  },
+  {
+    "date": "2025-06-23",
+    "title": "Attended the Deep Learning for Science Summer School",
+    "location": "Berkeley, CA",
+    "summary": "Week-long Berkeley Lab school (June 23-27) on deep learning and generative AI for scientific research.",
+    "link": null
+  },
+  {
+    "date": "2025-05-26",
+    "title": "Talk at the Midwest Theoretical Chemistry Conference",
+    "location": "Detroit, MI",
+    "summary": "Presented \"Towards Accelerating Excited State Calculations with Generative Modeling\" (with J. Zhan, V. Yu, G. Galli, and M. Chan).",
+    "link": null
+  },
+  {
     "date": "2024-11-04",
     "title": "Joined Argonne National Laboratory as Postdoctoral Researcher",
     "location": "Lemont, IL",

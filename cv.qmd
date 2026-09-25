@@ -10,7 +10,7 @@ format:
 ---
 
 ::: {.cv-header}
-[**Download CV (PDF)**](assets/pdf/frimpong-joseph-cv-resume.pdf){.btn .btn-outline-primary .btn-sm target="_blank"}
+[**Download CV (PDF)**](assets/pdf/frimpong-joseph-cv.pdf){.btn .btn-outline-primary .btn-sm target="_blank"}
 
 # Joseph Frimpong
 Postdoctoral Researcher · Argonne National Laboratory  
@@ -18,49 +18,106 @@ Email: frimpsjoe@anl.gov · GitHub: [frimpsjoek](https://github.com/frimpsjoek){
 :::
 
 ::: {.cv-summary}
-Computational chemist applying many-body electronic-structure theory, machine learning, and high-performance workflows to accelerate quantum materials discovery and catalytic interface design.
+Computational chemist developing AI/ML-accelerated many-body electronic-structure methods (GW/BSE) and high-performance workflows to speed up materials discovery for catalysis, optoelectronics, and energy applications.
 :::
 
 ## Appointments
 
-- **Postdoctoral Researcher**, Argonne National Laboratory — 2024 – present  
-  ML-enhanced GW/BSE workflows and exascale automation within the NST Division.
-- **Graduate Research Assistant**, Wayne State University — 2019 – 2024  
-  Quantum dot interfaces, dielectric embedding, and ligand chemistry (Advisor: Prof. Zhen-Fei Liu).
+- **Postdoctoral Researcher**, Argonne National Laboratory, Lemont, IL — Nov 2024 – present  
+  AI/ML for electronic-structure calculations; Midwest Integrated Center for Computational Materials (MICCoM). Advisors: Maria Chan and Giulia Galli.
+- **Schaap-Rumble Research Fellow & Graduate Research Assistant**, Wayne State University, Detroit, MI — Sept 2020 – July 2024  
+  GW/BSE methods for large heterogeneous interfaces; quantum dots, covalent organic frameworks, and molecule–metal interfaces. Advisor: Zhen-Fei Liu.
+- **Data Analyst (project)**, Wayne State University — Sept 2022 – May 2023
+- **Physics Teacher**, Tamale Senior High School, Ghana — Nov 2018 – Aug 2019
+- **Research Assistant**, Kwame Nkrumah University of Science and Technology, Ghana — May 2016 – Aug 2018  
+  Advisors: Caroline Kwawu and Evans Adei.
 
 ## Education
 
-- **Ph.D., Chemistry**, Wayne State University (2019 – 2024)   
-  Physical chemistry focus with specialization in many-body perturbation theory and scientific software development.
-- **B.S., Chemistry (Honors)**, Kwame Nkrumah University of Science & Technology (2017)
+- **Ph.D., Chemistry (Physical Chemistry)**, Wayne State University — 2019 – 2024  
+  Thesis: *Development & Use of Computational Methods for the Electronic Structure of Quantum Materials and Interfaces*
+- **B.S., Chemistry (Honors)**, Kwame Nkrumah University of Science and Technology — 2013 – 2017
 
-## Selected Publications
+## Awards & Honors
 
-- J. Frimpong & Z.-F. Liu, *J. Phys. Chem. Lett.* **15** (2024) 2133–2141 — Generalized substrate-screening GW for covalent interfaces.
-- J. Frimpong *et al.*, *Chem. Mater.* **36** (2024) 11519–11528 — Ligand exchange and passivation in CdS quantum dots.
-- R. Maity *et al.*, *J. Am. Chem. Soc.* **146** (2024) 34141–34151 — Dual-pathway hydrogen isotope labeling via CdS quantum dots.
+- **BSSw Fellowship Honorable Mention**, Better Scientific Software (2026) — [announcement](https://bssw.io/blog_posts/introducing-the-2026-bssw-fellows){target="_blank" rel="noopener"}
+- **Visionary Award**, LLM Hackathon for Applications in Materials Science and Chemistry — *Atomic Shorts* (2025)
+- **Center for Nanoscale Materials Grant**, Argonne — computational work in machine learning for electronic structure (2025)
+- **Dan Trivich Memorial Award** for Research in Physical Chemistry, Wayne State University (2024)
+- **Summer Dissertation Award**, Wayne State University (2023)
+- **NOBCChE Advancing Science Conference Award** (2022, 2023)
+- **Energy Research Travel Funding (GERA)**, APS March Meeting (2022, 2023)
+- **A. Paul and Carole C. Schaap Endowed Distinguished Graduate Award**, Wayne State University (2022)
+- **Thomas C. Rumble Fellowship**, Wayne State University (2022)
+- **Best Poster Award — Computational Chemistry**, NOBCChE National Conference (2022)
+- **ICTP Travel Award**, Abdus Salam International Centre for Theoretical Physics, Italy (2019)
+- **KBN Merit Scholarship**, Kwame Nkrumah University of Science and Technology (2019)
 
-Full bibliography available on the Publications page.
+## Publications
+
+- J. Frimpong, J. Zhan, V. Yu, G. Galli, M. Chan — Towards accelerating excited-state calculations with generative modeling. *In preparation.*
+- R. Maity, O. Dungan, F. A. Perras, …, J. Frimpong, T. Quainoo, Z.-F. Liu, L. Luo, *J. Am. Chem. Soc.* **146** (2024) 34141–34151 — Hydrogen isotope labeling of pharmaceuticals via dual hydrogen isotope exchange pathways using a CdS quantum dot photocatalyst.
+- J. Frimpong\*, S. Aryal\*, T. Karun, Z.-F. Liu, *Chem. Mater.* **36** (2024) 11519–11528 — Ligand exchange and surface passivation in CdS quantum dots from first principles.
+- J. Frimpong & Z.-F. Liu, *J. Phys. Chem. Lett.* **15** (2024) 2133–2141 — Generalized substrate-screening GW for covalently bonded interfaces.
+- N. Behera, D. Gunasekera, J. Mahajan, J. Frimpong, Z.-F. Liu, L. Luo, *Faraday Discuss.* **247** (2023) 45–58 — Electrochemical hydrogen isotope exchange of amines controlled by alternating current frequency.
+- S. Aryal\*, J. Frimpong\*, Z.-F. Liu, *J. Phys. Chem. Lett.* **13** (2022) 10153–10161 — Covalent and van der Waals CdS quantum dot assemblies from many-body perturbation theory.
+- J. Frimpong & Z.-F. Liu, *J. Phys.: Condens. Matter* **33** (2021) 254004 — Quasiparticle electronic structure of 2D heterotriangulene-based COFs on Au(111).
+
+\* Equal contribution. Details, abstracts, and links on the [Publications](publications.qmd) page.
+
+## Talks & Presentations (selected)
+
+- **Gordon Research Seminar**, Computational Materials Science and Engineering — Newry, ME, Aug 2026 (talk and poster)  
+  *Learning Faithful Representations of the Dielectric Matrix for Excited-State Calculations with Generative Modeling*
+- **Gordon Research Conference**, Computational Materials Science and Engineering — Newry, ME, Aug 2026 (poster)  
+  *Accelerating Calculations Based on Many-Body Perturbation Theory*
+- **Argonne Postdoctoral Research & Career Symposium** — Lemont, IL, Oct 2025  
+  *Towards Accelerating Excited State Calculations with Generative Modeling*
+- **Midwest Theoretical Chemistry Conference** — Detroit, MI, May 2025  
+  *Towards Accelerating Excited State Calculations with Generative Modeling*
+- **ACS Spring Meeting** — New Orleans, LA, Mar 2024  
+  *Understanding Ligand Exchange in Quantum Dots from First Principles*
+- **NOBCChE National Conference** — New Orleans, LA, Sept 2023; **APS March Meeting** — Las Vegas, NV, Mar 2023  
+  *GW-based substrate screening methods for covalently bound and strongly coupled interfaces*
+
+Full list on the [Publications](publications.qmd) page.
+
+## Training & Schools
+
+- **Argonne Training Program on Extreme-Scale Computing (ATPESC)** — St. Charles, IL, July 27 – Aug 8, 2025
+- **Deep Learning for Science Summer School**, Berkeley Lab — Berkeley, CA, June 23 – 27, 2025
+- **URSSI Summer School** in Open Science and Research Software Engineering — UIUC, July – Aug 2024
+
+## Projects
+
+- **Atomic Shorts** — an agentic AI system that makes short videos explaining complex materials-science concepts (LLM Hackathon Visionary Award, 2025).
+- **MCP server for Quantum ESPRESSO** — runs Quantum ESPRESSO calculations from any LLM client, locally with Docker or remotely through Globus Compute (Polaris endpoint).
 
 ## Technical Profile
 
-- **Methods:** DFT, GW/BSE, dielectric embedding, excitonic analysis.  
-- **Software:** Quantum ESPRESSO, BerkeleyGW, WEST, PyTorch, ASE, FireWorks.  
-- **Programming & DevOps:** Python, Bash, FORTRAN utilities, MPI, Git/GitHub, Slurm-based HPC.
+- **Methods:** DFT, GW/BSE, many-body perturbation theory, dielectric embedding, QM/MM, generative and graph-based deep learning.
+- **Electronic-structure codes:** Quantum ESPRESSO, WEST, BerkeleyGW, VASP, PySCF, Gaussian, TeraChem, AMBER, GROMACS.
+- **Machine learning & data:** PyTorch (DDP, multi-node GPU training), PyTorch Geometric, Horovod, Weights & Biases, NumPy, pandas, pymatgen, Matminer, DeepChem.
+- **HPC:** Perlmutter, Polaris, Aurora, ACCESS (Bridges, Expanse), Carbon; MPI, OpenMP, Slurm/PBS.
+- **Programming & DevOps:** Python, Bash, C++, Fortran, MATLAB, R, Git, CI/CD, Docker.
 
-## Leadership & Outreach (selected)
+## Mentoring
 
-- NOBCChE Conference Planning Committee (2022 – present) — develop programming supporting URM scientists.  
-- Social Media Coordinator & Secretary, NOBCChE @ Wayne State (2021 – 2023) — managed communications and events.  
-- “Chemistry Meets Computers” facilitator (2021–2023) — created coding bootcamps linking programming with chemistry.  
-- Detroit STEM outreach (2021–2023) — hands-on demonstrations and mentoring for K-12 and community audiences.
+- **Amber Witherspoon**, ACTSO '26 — machine learning for out-of-domain classification of brain tumors (2025 – 2026)
+- **Tejas Karun**, B.S. Chemistry, Wayne State '23 — DFT electronic structure of 2DPA-1 (2022 – 2023)
+- **Lyric Elliott**, B.S. Chemistry, Wayne State '21 — DFT electronic structure of quinoidal polymers (2021)
 
-## Reviewer Service
+## Leadership & Service
 
-Referee for *J. Phys.: Condens. Matter*, *Phys. Rev. B*, *Phys. Rev. Lett.*, and *Physica Scripta*.
+- **Professional Development Officer**, Postdoctoral Society of Argonne (2026)
+- **NOBCChE Conference Planning Committee** (2022 – present)
+- **General Secretary** (2021 – 2022) and **Social Media Coordinator** (2022 – 2023), NOBCChE @ Wayne State
+- **Facilitator**, "Chemistry Meets Computers" coding summer camp, Wayne State (2021 – 2023)
+- **NOBCChE K-12 Initiative** and Detroit public-school STEM outreach (2021 – 2023)
+- **Peer reviewer** for *J. Phys.: Condens. Matter*, *Phys. Rev. B*, *Phys. Rev. Lett.*, *Physica Scripta*, ACS journals, and the DOE SCGSR fellowship program
 
-<!-- ## Professional Interests
+## Professional Memberships
 
-Developing electronic-structure and scientific programming curricula, inclusive mentoring models, and reproducible open-source workflows for large-scale simulations. -->
+American Physical Society · American Chemical Society · NOBCChE · Sigma Xi
 
-For collaboration inquiries or an updated CV, contact me via [email](mailto:frimpsjoe@anl.gov) or LinkedIn.
+For collaboration inquiries, contact me by [email](mailto:frimpsjoe@anl.gov) or LinkedIn.

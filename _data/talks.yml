@@ -1,6 +1,30 @@
 [
   {
-    "title": "Understanding Ligand Exchange in Quantum Dots from First Principles",
+    "title": "Learning Faithful Representations of the Dielectric Matrix for Excited-State Calculations with Generative Modeling",
+    "authors": ["J. Frimpong", "J. Zhan", "V. Yu", "M. Govoni", "G. Galli", "M. Chan"],
+    "event": "Gordon Research Seminar: Computational Materials Science and Engineering",
+    "date": "August 1, 2026",
+    "location": "Newry, ME",
+    "type": "Talk & Poster",
+  },
+  {
+    "title": "Accelerating Calculations Based on Many-Body Perturbation Theory",
+    "authors": ["J. Frimpong"],
+    "event": "Gordon Research Conference: Computational Materials Science and Engineering",
+    "date": "August 3, 2026",
+    "location": "Newry, ME",
+    "type": "Poster",
+  },
+  {
+    "title": "Towards Accelerating Excited State Calculations with Generative Modeling",
+    "authors": ["J. Frimpong"],
+    "event": "Argonne Postdoctoral Research & Career Symposium",
+    "date": "October 31, 2025",
+    "location": "Lemont, IL",
+    "type": "Talk",
+  },
+  {
+    "title": "Towards Accelerating Excited State Calculations with Generative Modeling",
     "authors": ["J. Frimpong", "J. Zhan", "Victor Yu", "Guilia Galli", "Maria Chan"],
     "event": "Midwest Theoretical Chemistry Conference",
     "date": "May 26, 2025",

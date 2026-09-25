@@ -1,3 +1,5 @@
-- **Nov 04, 2024** – Joined Argonne National Laboratory as Postdoctoral Researcher — Started a postdoctoral appointment in the NST division to develop AI/ML-assisted GW/BSE workflows for heterogeneous materials.
-- **Aug 30, 2024** – Defended Ph.D. in Chemistry at Wayne State University — Successfully defended my dissertation on many-body approaches for quantum dots and covalent interfaces.
-- **Jul 01, 2023** – Led Chemistry Meets Computers Summer Bootcamp — Taught a week-long intensive introducing Python and ML to high school students, mentoring on computational chemistry and machine learning.
+- **Aug 02, 2026** – Poster at the Gordon Research Conference on Computational Materials Science and Engineering — Presented "Accelerating Calculations Based on Many-Body Perturbation Theory" at the 2026 GRC, Computational Methods and Artificial Intelligence Tools for Materials Discovery and Industrial Application (Aug 2-7).
+- **Aug 01, 2026** – Talk and poster at the Gordon Research Seminar on Computational Materials Science and Engineering — Presented "Learning Faithful Representations of the Dielectric Matrix for Excited-State Calculations with Generative Modeling" (with J. Zhan, V. Yu, M. Govoni, G. Galli, and M. Chan).
+- **Feb 17, 2026** – Named a 2026 BSSw Fellowship Honorable Mention — Recognized as one of six Honorable Mentions in the 2026 Better Scientific Software (BSSw) Fellowship program.
+- **Jan 01, 2026** – Professional Development Officer, Postdoctoral Society of Argonne — Serving as Professional Development Officer of the Postdoctoral Society of Argonne for 2026.
+- **Oct 31, 2025** – Talk at the Argonne Postdoctoral Research & Career Symposium — Presented "Towards Accelerating Excited State Calculations with Generative Modeling".

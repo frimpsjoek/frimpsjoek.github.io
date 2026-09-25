@@ -79,6 +79,9 @@ def write_latest_posts():
     LATEST_POSTS_INCLUDE.write_text(content)
 
 
+HOME_NEWS_MAX = 5  # the home page shows the latest few; news.qmd has the full list
+
+
 def write_news():
     raw = NEWS_FILE.read_text()
     try:
@@ -98,12 +101,13 @@ def write_news():
         except ValueError:
             dt = datetime.min
         news_items.append((dt, entry))
-    news_items.sort(reverse=True)
+    # sort on the date only: equal dates would otherwise compare the dicts and raise
+    news_items.sort(key=lambda item: item[0], reverse=True)
     if not news_items:
         NEWS_INCLUDE.write_text("No news yet.\n")
         return
     lines = []
-    for dt, entry in news_items:
+    for dt, entry in news_items[:HOME_NEWS_MAX]:
         date_label = dt.strftime("%b %d, %Y") if dt != datetime.min else ""
         title = entry.get("title", "Update")
         summary = entry.get("summary")
