@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,16 @@
 
 <title>Getting Started with Linux – Joseph Frimpong</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -69,14 +75,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../../../">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-d5e46415c29d9d8c13eb6bbdb046d278.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-42ea289396f8f48b9989438fca5323c9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-5ddc990d445f73aaab66a073339fc277.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -104,20 +109,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<style>html{ scroll-behavior: smooth; }</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,300..500&amp;family=Roboto+Condensed:wght@300..600&amp;family=Source+Sans+3:ital,wght@0,200..700;1,300..400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<script>
+  // Apply the saved or system color scheme before first paint (no light flash in dark mode).
+  // theme-toggle.js reads and writes the same localStorage key.
+  (function () {
+    try {
+      var saved = localStorage.getItem('quarto-color-scheme');
+      var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-bs-theme', saved || (dark ? 'dark' : 'light'));
+    } catch (e) {}
+  })();
+</script>
 
 
+<meta property="og:title" content="Getting Started with Linux – Joseph Frimpong">
+<meta property="og:description" content="A practical guide for researchers transitioning to Linux for computational work, covering essential commands and workflow setup.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&amp;h=400&amp;fit=crop">
+<meta property="og:site_name" content="Joseph Frimpong">
+<meta name="twitter:title" content="Getting Started with Linux – Joseph Frimpong">
+<meta name="twitter:description" content="A practical guide for researchers transitioning to Linux for computational work, covering essential commands and workflow setup.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&amp;h=400&amp;fit=crop">
+<meta name="twitter:creator" content="@frimpsjoek">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="Getting Started with Linux">
+<meta name="citation_author" content="Joseph Frimpong">
+<meta name="citation_publication_date" content="2023-11-17">
+<meta name="citation_cover_date" content="2023-11-17">
+<meta name="citation_year" content="2023">
+<meta name="citation_online_date" content="2023-11-17">
+<meta name="citation_fulltext_html_url" content="https://frimpsjoek.github.io/blog/posts/2023-11-17-getting-started-linux/">
+<meta name="citation_language" content="en">
+<meta name="citation_reference" content="citation_title=Comparative Study of Covalent and van der Waals CdS Quantum Dot Assemblies from Many-Body Perturbation Theory;,citation_abstract=Quantum dot (QD) assemblies are nanostructured networks made from aggregates of QDs and feature improved charge and energy transfer efficiencies compared to discrete QDs. Using first-principles many-body perturbation theory, we systematically compare the electronic and optical properties of two types of CdS QD assemblies that have been experimentally investigated: (i) QD gels, where individual QDs are covalently connected via di- or polysulfide bonds, and (ii) QD nanocrystals, where individual QDs are bound via van der Waals interactions. Our work illustrates how the electronic and optical properties evolve when discrete QDs are assembled into 1D, 2D, and 3D gels and nanocrystals, as well as how the one-body and many-body interactions in these systems impact the trends as the dimensionality of the assembly increases. Furthermore, our work reveals the crucial role of the di- or polysulfide covalent bonds in the localization of the excitons, which highlights the difference between QD gels and QD nanocrystals.;,citation_author=Sandip Aryal;,citation_author=Joseph Frimpong;,citation_author=Zhen-Fei Liu;,citation_publication_date=2022-11;,citation_cover_date=2022-11;,citation_year=2022;,citation_issue=43;,citation_doi=10.1021/acs.jpclett.2c02856;,citation_issn=1948-7185, 1948-7185;,citation_volume=13;,citation_language=en-US;,citation_journal_title=J. Phys. Chem. Lett.;">
+<meta name="citation_reference" content="citation_title=Quasiparticle electronic structure of two-dimensional heterotriangulene-based covalent organic frameworks adsorbed on Au(111);,citation_abstract=The modular nature and unique electronic properties of two-dimensional (2D) covalent organic frameworks (COFs) make them an attractive option for applications in catalysis, optoelectronics, and spintronics. The fabrications of such devices often involve interfaces formed between COFs and substrates. In this work, we employ the first-principles GW approach to accurately determine the quasiparticle electronic structure of three 2D carbonyl bridged heterotriangulene-based COFs featuring honeycomb–kagome lattice, with their properties ranging from a semi-metal to a wide-gap semiconductor. Moreover, we study the adsorption of these COFs on Au(111) surface and characterize the quasiparticle electronic structure at the heterogeneous COF/Au(111) interfaces. To reduce the computational cost, we apply the recently developed dielectric embedding GW approach and show that our results agree with existing experimental measurement on the interfacial energy level alignment. Our calculations illustrate how the many-body dielectric screening at the interface modulates the energies and shapes of the Dirac bands, the effective masses of semiconducting COFs, as well as the Fermi velocity of the semi-metallic COF.;,citation_author=Joseph Frimpong;,citation_author=Zhen-Fei Liu;,citation_publication_date=2021-05;,citation_cover_date=2021-05;,citation_year=2021;,citation_issue=25;,citation_doi=10.1088/1361-648X/abf7a0;,citation_issn=0953-8984;,citation_volume=33;,citation_language=en-US;,citation_journal_title=J. Phys.: Condens. Matter;,citation_publisher=IOP Publishing;">
+<meta name="citation_reference" content="citation_title=Generalized Substrate Screening GW for Covalently Bonded Interfaces;,citation_abstract=An accurate description of the interfacial quasiparticle electronic structure is key to the design of heterogeneous materials. While the first-principles GW approach is state-of-the-art, the computational cost is high for large interface systems. This has led to the substrate screening GW approach for weakly coupled interfaces, which breaks down for covalently bonded interfaces. In this work, we present the generalized substrate screening GW approach, based on the following two considerations: (i) the contribution of the interfacial covalent bond to the polarizability can be efficiently calculated with a low energy cutoff; (ii) the contribution of the deprotonated adsorbate to the interface polarizability can be well approximated by that of the protonated molecule. Our approach is exemplified using interfaces formed between benzene-1,4-dithiol (BDT) and Au(111), which feature the widely used Au–S bonds in experiments. Our work provides a robust and simple scheme for accurate and efficient GW calculations of covalently bonded interfaces.;,citation_author=Joseph Frimpong;,citation_author=Zhen-Fei Liu;,citation_publication_date=2024-02;,citation_cover_date=2024-02;,citation_year=2024;,citation_issue=8;,citation_doi=10.1021/acs.jpclett.3c03470;,citation_volume=15;,citation_journal_title=J. Phys. Chem. Lett.;,citation_publisher=American Chemical Society;">
+<meta name="citation_reference" content="citation_title=Electrochemical hydrogen isotope exchange of amines controlled by alternating current frequency;,citation_abstract=Here, we report an electrochemical protocol for hydrogen isotope exchange (HIE) at α-C(sp3)–H amine sites. Tetrahydroisoquinoline and pyrrolidine are selected as two model substrates because of their different proton transfer (PT) and hydrogen atom transfer (HAT) kinetics at the α-C(sp3)–H amine sites, which are utilized to control the HIE reaction outcome at different applied alternating current (AC) frequencies. We found the highest deuterium incorporation for tetrahydroisoquinolines at 0 Hz (i.e., under direct current (DC) electrolysis conditions) and pyrrolidines at 0.5 Hz. Analysis of the product distribution and D isotope incorporation at different frequencies reveals that the HIE of tetrahydroisoquinolines is limited by its slow HAT, whereas the HIE of pyrrolidines is limited by the overoxidation of its α-amino radical intermediates. The AC-frequency-dependent HIE of amines can be potentially used to achieve selective labeling of α-amine sites in one drug molecule, which will significantly impact the pharmaceutical industry.;,citation_author=Nibedita Behera;,citation_author=Disni Gunasekera;,citation_author=Jyoti P. Mahajan;,citation_author=Joseph Frimpong;,citation_author=Zhen-Fei Liu;,citation_author=Long Luo;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_fulltext_html_url=http://dx.doi.org/10.1039/D3FD00044C;,citation_doi=10.1039/D3FD00044C;,citation_volume=247;,citation_journal_title=Faraday Discuss.;,citation_publisher=The Royal Society of Chemistry;">
+<meta name="citation_reference" content="citation_title=Hydrogen isotope labeling of pharmaceuticals via dual hydrogen isotope exchange pathways using CdS quantum dot photocatalyst;,citation_author=Rajendra Maity;,citation_author=Otto Dungan;,citation_author=Frédéric A. Perras;,citation_author=Jingwei Li;,citation_author=Daohua Liu;,citation_author=Sumei Ren;,citation_author=Dan Lehnherr;,citation_author=Zheng Huang;,citation_author=Eric M. Phillips;,citation_author=Moses Adeyemo;,citation_author=Joseph Frimpong;,citation_author=Timothy Quainoo;,citation_author=Zhen-Fei Liu;,citation_author=Long Luo;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url= https://doi.org/10.1021/jacs.4c13857;,citation_issue=49;,citation_doi=10.1021/jacs.4c13857;,citation_volume=146;,citation_journal_title=Journal of the American Chemical Society;">
+<meta name="citation_reference" content="citation_title=Understanding ligand exchange and surface passivation in CdS quantum dots from first principles;,citation_author=Joseph Frimpong;,citation_author=Sandip Aryal;,citation_author=Tejas Karun;,citation_author=Zhen-Fei Liu;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_fulltext_html_url= https://doi.org/10.1021/acs.chemmater.4c02232;,citation_issue=23;,citation_doi=10.1021/acs.chemmater.4c02232;,citation_volume=36;,citation_journal_title=Chemistry of Materials;">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed blog-post quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title"><span class="brand-first">Joseph</span> <span class="brand-last">Frimpong</span></span>
     </a>
@@ -127,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">about</span></a>
@@ -148,7 +187,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-more" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">more</span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-more">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-more">    
         <li>
     <a class="dropdown-item" href="../../../news.html">
  <span class="dropdown-text">news</span></a>
@@ -159,18 +198,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/frimpsjoek"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/frimpsjoek"> <i class="bi bi-twitter" role="img" aria-label="Twitter">
+    <a class="nav-link" href="https://twitter.com/frimpsjoek"> <i class="bi bi-twitter-x" role="img" aria-label="X (Twitter)">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://linkedin.com/in/josephfrimpong"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:frimpsjoe@anl.gov"> <i class="bi bi-envelope" role="img" aria-label="Email">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -182,82 +228,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <div class="quarto-title-block"><div><h1 class="title">Getting Started with Linux</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
-                  <div>
-        <div class="description">
-          A practical guide for researchers transitioning to Linux for computational work, covering essential commands and workflow setup.
-        </div>
-      </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">linux</div>
-                <div class="quarto-category">computational-science</div>
-                <div class="quarto-category">tutorial</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Joseph Frimpong </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">November 17, 2023</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">Contents</h2>
    
-  <ul>
-  <li><a href="#why-linux-for-scientific-computing" id="toc-why-linux-for-scientific-computing" class="nav-link active" data-scroll-target="#why-linux-for-scientific-computing">Why Linux for Scientific Computing?</a>
   <ul class="collapse">
-  <li><a href="#performance-and-efficiency" id="toc-performance-and-efficiency" class="nav-link" data-scroll-target="#performance-and-efficiency">Performance and Efficiency</a></li>
-  <li><a href="#package-management" id="toc-package-management" class="nav-link" data-scroll-target="#package-management">Package Management</a></li>
-  <li><a href="#high-performance-computing-hpc-integration" id="toc-high-performance-computing-hpc-integration" class="nav-link" data-scroll-target="#high-performance-computing-hpc-integration">High-Performance Computing (HPC) Integration</a></li>
-  </ul></li>
-  <li><a href="#essential-commands-for-scientists" id="toc-essential-commands-for-scientists" class="nav-link" data-scroll-target="#essential-commands-for-scientists">Essential Commands for Scientists</a>
-  <ul class="collapse">
-  <li><a href="#file-and-directory-operations" id="toc-file-and-directory-operations" class="nav-link" data-scroll-target="#file-and-directory-operations">File and Directory Operations</a></li>
-  <li><a href="#text-processing-and-data-analysis" id="toc-text-processing-and-data-analysis" class="nav-link" data-scroll-target="#text-processing-and-data-analysis">Text Processing and Data Analysis</a></li>
-  <li><a href="#process-management" id="toc-process-management" class="nav-link" data-scroll-target="#process-management">Process Management</a></li>
-  </ul></li>
-  <li><a href="#setting-up-your-research-environment" id="toc-setting-up-your-research-environment" class="nav-link" data-scroll-target="#setting-up-your-research-environment">Setting Up Your Research Environment</a>
-  <ul class="collapse">
-  <li><a href="#python-environment-management" id="toc-python-environment-management" class="nav-link" data-scroll-target="#python-environment-management">Python Environment Management</a></li>
-  <li><a href="#text-editors-for-code-and-scripts" id="toc-text-editors-for-code-and-scripts" class="nav-link" data-scroll-target="#text-editors-for-code-and-scripts">Text Editors for Code and Scripts</a></li>
-  <li><a href="#version-control-with-git" id="toc-version-control-with-git" class="nav-link" data-scroll-target="#version-control-with-git">Version Control with Git</a></li>
-  </ul></li>
-  <li><a href="#workflow-tips-for-computational-research" id="toc-workflow-tips-for-computational-research" class="nav-link" data-scroll-target="#workflow-tips-for-computational-research">Workflow Tips for Computational Research</a>
-  <ul class="collapse">
-  <li><a href="#organizing-your-projects" id="toc-organizing-your-projects" class="nav-link" data-scroll-target="#organizing-your-projects">Organizing Your Projects</a></li>
-  <li><a href="#running-long-calculations" id="toc-running-long-calculations" class="nav-link" data-scroll-target="#running-long-calculations">Running Long Calculations</a></li>
-  <li><a href="#monitoring-system-resources" id="toc-monitoring-system-resources" class="nav-link" data-scroll-target="#monitoring-system-resources">Monitoring System Resources</a></li>
-  </ul></li>
-  <li><a href="#common-pitfalls-and-solutions" id="toc-common-pitfalls-and-solutions" class="nav-link" data-scroll-target="#common-pitfalls-and-solutions">Common Pitfalls and Solutions</a>
-  <ul class="collapse">
-  <li><a href="#file-permissions" id="toc-file-permissions" class="nav-link" data-scroll-target="#file-permissions">File Permissions</a></li>
-  <li><a href="#path-issues" id="toc-path-issues" class="nav-link" data-scroll-target="#path-issues">Path Issues</a></li>
-  <li><a href="#ssh-and-remote-access" id="toc-ssh-and-remote-access" class="nav-link" data-scroll-target="#ssh-and-remote-access">SSH and Remote Access</a></li>
-  </ul></li>
+  <li><a href="#why-linux-for-scientific-computing" id="toc-why-linux-for-scientific-computing" class="nav-link active" data-scroll-target="#why-linux-for-scientific-computing">Why Linux for Scientific Computing?</a></li>
+  <li><a href="#essential-commands-for-scientists" id="toc-essential-commands-for-scientists" class="nav-link" data-scroll-target="#essential-commands-for-scientists">Essential Commands for Scientists</a></li>
+  <li><a href="#setting-up-your-research-environment" id="toc-setting-up-your-research-environment" class="nav-link" data-scroll-target="#setting-up-your-research-environment">Setting Up Your Research Environment</a></li>
+  <li><a href="#workflow-tips-for-computational-research" id="toc-workflow-tips-for-computational-research" class="nav-link" data-scroll-target="#workflow-tips-for-computational-research">Workflow Tips for Computational Research</a></li>
+  <li><a href="#common-pitfalls-and-solutions" id="toc-common-pitfalls-and-solutions" class="nav-link" data-scroll-target="#common-pitfalls-and-solutions">Common Pitfalls and Solutions</a></li>
   <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next Steps</a></li>
   <li><a href="#resources-for-continued-learning" id="toc-resources-for-continued-learning" class="nav-link" data-scroll-target="#resources-for-continued-learning">Resources for Continued Learning</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
@@ -265,10 +248,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<!-- Quarto default title block + header image (post-hero). Must be named title-block.html; used by blog/posts/_metadata.yml. -->
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Getting Started with Linux</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">linux</div>
+    <div class="quarto-category">computational-science</div>
+    <div class="quarto-category">tutorial</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    A practical guide for researchers transitioning to Linux for computational work, covering essential commands and workflow setup.
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Joseph Frimpong </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 17, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+<figure class="post-hero figure"><img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&amp;h=400&amp;fit=crop" alt="" class="figure-img"></figure>
+
+</header>
 
 
 <p>As a computational materials scientist, Linux has become an indispensable part of my daily workflow. Whether you’re running density functional theory calculations, managing large datasets, or developing scientific software, Linux provides the power and flexibility needed for serious computational work.</p>
@@ -485,43 +508,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>Have questions about getting started with Linux for research? Feel free to reach out—I’m happy to help fellow researchers navigate this transition!</em></p>
 
 
-<!-- -->
-
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{frimpong2023,
+  author = {Frimpong, Joseph},
+  title = {Getting {Started} with {Linux}},
+  date = {2023-11-17},
+  url = {https://frimpsjoek.github.io/blog/posts/2023-11-17-getting-started-linux/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-frimpong2023" class="csl-entry quarto-appendix-citeas" role="listitem">
+Frimpong, J. (2023, November 17). Getting Started with Linux. Retrieved
+from <a href="https://frimpsjoek.github.io/blog/posts/2023-11-17-getting-started-linux/">https://frimpsjoek.github.io/blog/posts/2023-11-17-getting-started-linux/</a>
+</div></div></section></div></main> <!-- /main -->
 <div id="scroll-progress" class="scroll-progress"></div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <script src="../../../assets/js/theme-toggle.js"></script>
 
-<style>
-/* CRITICAL FIX: Callout text colors - override everything */
-/* Light mode */
-.callout *,
-.callout .callout-title-container,
-.callout .callout-header,
-.callout .callout-body,
-.callout p,
-.callout div,
-.callout span,
-.callout strong,
-.callout em {
-  color: #000000 !important;
-}
-
-/* Dark mode */
-[data-bs-theme="dark"] .callout *,
-[data-bs-theme="dark"] .callout .callout-title-container,
-[data-bs-theme="dark"] .callout .callout-header,
-[data-bs-theme="dark"] .callout .callout-body,
-[data-bs-theme="dark"] .callout p,
-[data-bs-theme="dark"] .callout div,
-[data-bs-theme="dark"] .callout span,
-[data-bs-theme="dark"] .callout strong,
-[data-bs-theme="dark"] .callout em {
-  color: #ffffff !important;
-}
-</style>
 
 <footer class="site-footer">
   <div class="site-footer-inner">
@@ -529,6 +532,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </footer>
 
+<script>
+  // Blog posts cite in the margin (citation-location: margin), and Quarto then omits
+  // the end-of-post bibliography. Rebuild it from the margin entries, one per key,
+  // sorted by the rendered text (author-year style).
+  (function () {
+    if (!document.body.classList.contains('blog-post')) return;
+    const seen = new Map();
+    document.querySelectorAll('.column-margin .csl-entry, aside .csl-entry').forEach(function (entry) {
+      const key = (entry.id || entry.textContent).replace(/^ref-/, '');
+      if (!seen.has(key)) seen.set(key, entry);
+    });
+    if (!seen.size) return;
+    const list = document.createElement('div');
+    list.className = 'references csl-bib-body post-references';
+    list.setAttribute('role', 'list');
+    Array.from(seen.values())
+      .sort(function (a, b) { return a.textContent.localeCompare(b.textContent); })
+      .forEach(function (entry) {
+        const item = entry.cloneNode(true);
+        item.removeAttribute('id');
+        item.setAttribute('role', 'listitem');
+        list.appendChild(item);
+      });
+    const target = document.getElementById('refs') || document.getElementById('references');
+    if (target) {
+      target.appendChild(list);
+    } else {
+      const section = document.createElement('section');
+      section.id = 'references';
+      section.innerHTML = '<h2>References</h2>';
+      section.appendChild(list);
+      const main = document.querySelector('main.content');
+      const appendix = document.getElementById('quarto-appendix');
+      if (appendix) appendix.parentNode.insertBefore(section, appendix); else main.appendChild(section);
+    }
+  })();
+</script>
+<script>
+  // Scroll reveal for blog cards (styles in site.scss, timing from basicappleguy.com).
+  // Only cards that start below the viewport are hidden-then-revealed; if
+  // IntersectionObserver is missing or motion is reduced, nothing is hidden.
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const cards = document.querySelectorAll('.post-tile, .quarto-listing-default .quarto-post');
+    if (!cards.length) return;
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-loaded'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    cards.forEach(function (card) {
+      if (card.getBoundingClientRect().top < window.innerHeight) return;
+      card.classList.add('reveal');
+      io.observe(card);
+    });
+  })();
+</script>
 <script>
   (function() {
     const el = document.getElementById('copyright-year');
@@ -557,6 +618,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   (function() {
     const body = document.body;
     if (!body) return;
+    // Blog posts show code in full; readers came for it.
+    if (body.classList.contains('blog-post')) return;
 
     const MIN_LINES = 10;
 
@@ -658,92 +721,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   })();
 </script>
-<!-- Dock magnification disabled to avoid overlap/fusion of icons -->
-<script>
-  // Layout-safe dock magnification for tools icons
-  (function() {
-    const row = document.querySelector('.tools-row');
-    if (!row) return;
-    const icons = Array.from(row.querySelectorAll('img'));
-    if (!icons.length) return;
-
-    let raf = null;
-    let mouseX = 0;
-    let active = false;
-    const influence = 70;  // tighter radius so neighbors barely move
-    const maxBoost = 0.45; // gentler max zoom (~1.45x at center)
-
-    // capture base sizes once
-    const base = new Map();
-    function captureBase() {
-      icons.forEach((img) => {
-        const cs = getComputedStyle(img);
-        const w = parseFloat(cs.width) || 45;
-        const h = parseFloat(cs.height) || 45;
-        const bs = parseFloat(cs.getPropertyValue('--icon-base-scale')) || 1;
-        base.set(img, { w, h, bs });
-        // reset inline sizes
-        img.style.width = w + 'px';
-        img.style.height = h + 'px';
-      });
-    }
-    captureBase();
-
-    function update() {
-      raf = null;
-      const rowRect = row.getBoundingClientRect();
-      const rowHeight = rowRect.height || 110;
-      icons.forEach((img) => {
-        const b = base.get(img);
-        if (!b) return;
-        const rect = img.getBoundingClientRect();
-        const center = rect.left + rect.width / 2;
-        const d = Math.abs(mouseX - center);
-        // smooth gaussian-like falloff with threshold to avoid "elastic" feel
-        const t = Math.exp(-((d / influence) ** 2));
-        const neighborCutoff = 0.55; // stronger cutoff so only hovered icon grows
-        const eff = active && t > neighborCutoff ? (t - neighborCutoff) / (1 - neighborCutoff) : 0;
-        let scale = b.bs * (1 + maxBoost * eff);
-        // clamp maximum to avoid exceeding row height (keep top/bottom fixed)
-        const maxByHeight = (rowHeight - 6) / b.h;
-        const maxScale = Math.min(b.bs * 1.6, maxByHeight);
-        if (scale > maxScale) scale = maxScale;
-        img.style.width = (b.w * scale).toFixed(2) + 'px';
-        img.style.height = (b.h * scale).toFixed(2) + 'px';
-        img.style.zIndex = String(Math.round(scale * 100));
-      });
-    }
-
-    function onMove(e) {
-      mouseX = e.clientX;
-      if (!raf) raf = requestAnimationFrame(update);
-    }
-    function onEnter(e) { active = true; onMove(e); }
-    function onLeave() {
-      active = false;
-      // reset sizes to base
-      icons.forEach((img) => {
-        const b = base.get(img);
-        if (b) {
-          img.style.width = b.w + 'px';
-          img.style.height = b.h + 'px';
-          img.style.zIndex = '1';
-        }
-      });
-      // keep container height steady (CSS min-height handles this)
-    }
-
-    row.addEventListener('mousemove', onMove);
-    row.addEventListener('mouseenter', onEnter);
-    row.addEventListener('mouseleave', onLeave);
-
-    // Recompute base sizes on resize (e.g., responsive breakpoints)
-    window.addEventListener('resize', () => {
-      captureBase();
-      update();
-    });
-  })();
-</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const isCodeAnnotation = (el) => {
@@ -807,57 +784,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
       clipboardModal.on('success', onCopySuccess);
-    }
-    const viewSource = window.document.getElementById('quarto-view-source') ||
-                       window.document.getElementById('quarto-code-tools-source');
-    if (viewSource) {
-      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-      viewSource.addEventListener("click", function(e) {
-        if (sourceUrl) {
-          // rstudio viewer pane
-          if (/\bcapabilities=\b/.test(window.location)) {
-            window.open(sourceUrl);
-          } else {
-            window.location.href = sourceUrl;
-          }
-        } else {
-          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-          modal.show();
-        }
-        return false;
-      });
-    }
-    function toggleCodeHandler(show) {
-      return function(e) {
-        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-        for (let i=0; i<detailsSrc.length; i++) {
-          const details = detailsSrc[i].parentElement;
-          if (show) {
-            details.open = true;
-          } else {
-            details.removeAttribute("open");
-          }
-        }
-        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-        const fromCls = show ? "hidden" : "unhidden";
-        const toCls = show ? "unhidden" : "hidden";
-        for (let i=0; i<cellCodeDivs.length; i++) {
-          const codeDiv = cellCodeDivs[i];
-          if (codeDiv.classList.contains(fromCls)) {
-            codeDiv.classList.remove(fromCls);
-            codeDiv.classList.add(toCls);
-          } 
-        }
-        return false;
-      }
-    }
-    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-    if (hideAllCode) {
-      hideAllCode.addEventListener("click", toggleCodeHandler(false));
-    }
-    const showAllCode = window.document.getElementById("quarto-show-all-code");
-    if (showAllCode) {
-      showAllCode.addEventListener("click", toggleCodeHandler(true));
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
@@ -1187,257 +1113,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       }
     }
   });
-  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Getting Started with Linux"</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "A practical guide for researchers transitioning to Linux for computational work, covering essential commands and workflow setup."</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Joseph Frimpong"</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2023-11-17"</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [linux, computational-science, tutorial]</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&amp;h=400&amp;fit=crop"</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="an">draft:</span><span class="co"> false</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>As a computational materials scientist, Linux has become an indispensable part of my daily workflow. Whether you're running density functional theory calculations, managing large datasets, or developing scientific software, Linux provides the power and flexibility needed for serious computational work.</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>If you're new to Linux or considering making the switch from Windows or macOS for your research work, this guide will help you get started with confidence.</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why Linux for Scientific Computing?</span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>Before diving into the technical details, let's understand why Linux is so popular in the scientific computing community:</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="fu">### Performance and Efficiency</span></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Direct hardware access**: Linux provides better control over system resources</span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Lower overhead**: More of your computer's power goes to your calculations</span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Stability**: Long-running computations benefit from Linux's reliability</span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="fu">### Package Management</span></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Easy installation of scientific software through package managers</span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Consistent dependency management</span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Access to cutting-edge research tools</span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="fu">### High-Performance Computing (HPC) Integration</span></span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Most supercomputers and clusters run Linux</span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Seamless workflow from desktop to HPC systems</span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Better job scheduling and resource management tools</span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## Essential Commands for Scientists</span></span>
-<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>Here are the Linux commands I use most frequently in my research work:</span>
-<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a><span class="fu">### File and Directory Operations</span></span>
-<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Navigate directories</span></span>
-<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /path/to/your/research</span>
-<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span>  <span class="co"># Print current directory</span></span>
-<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span>  <span class="co"># List files with details</span></span>
-<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a><span class="co"># File operations</span></span>
-<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> source_file destination  <span class="co"># Copy files</span></span>
-<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> old_name new_name        <span class="co"># Move/rename files</span></span>
-<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> new_directory         <span class="co"># Create directory</span></span>
-<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> directory_name       <span class="co"># Remove directory and contents (use carefully!)</span></span>
-<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a><span class="fu">### Text Processing and Data Analysis</span></span>
-<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a><span class="co"># View file contents</span></span>
-<span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 20 data_file.txt    <span class="co"># First 20 lines</span></span>
-<span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span> <span class="at">-n</span> 10 output.log       <span class="co"># Last 10 lines</span></span>
-<span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"ERROR"</span> calculation.log <span class="co"># Search for patterns</span></span>
-<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Count lines, words, characters</span></span>
-<span id="cb15-62"><a href="#cb15-62" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> data_file.txt</span>
-<span id="cb15-63"><a href="#cb15-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-64"><a href="#cb15-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort and process data</span></span>
-<span id="cb15-65"><a href="#cb15-65" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> data.txt <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span>     <span class="co"># Sort and count unique entries</span></span>
-<span id="cb15-66"><a href="#cb15-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-67"><a href="#cb15-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-68"><a href="#cb15-68" aria-hidden="true" tabindex="-1"></a><span class="fu">### Process Management</span></span>
-<span id="cb15-69"><a href="#cb15-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-70"><a href="#cb15-70" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb15-71"><a href="#cb15-71" aria-hidden="true" tabindex="-1"></a><span class="co"># Monitor system resources</span></span>
-<span id="cb15-72"><a href="#cb15-72" aria-hidden="true" tabindex="-1"></a><span class="ex">top</span>                         <span class="co"># Real-time process monitor</span></span>
-<span id="cb15-73"><a href="#cb15-73" aria-hidden="true" tabindex="-1"></a><span class="ex">htop</span>                       <span class="co"># Enhanced process monitor (if installed)</span></span>
-<span id="cb15-74"><a href="#cb15-74" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> aux <span class="kw">|</span> <span class="fu">grep</span> python       <span class="co"># Find Python processes</span></span>
-<span id="cb15-75"><a href="#cb15-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-76"><a href="#cb15-76" aria-hidden="true" tabindex="-1"></a><span class="co"># Job control</span></span>
-<span id="cb15-77"><a href="#cb15-77" aria-hidden="true" tabindex="-1"></a><span class="fu">nohup</span> python script.py <span class="kw">&amp;</span>   <span class="co"># Run command in background</span></span>
-<span id="cb15-78"><a href="#cb15-78" aria-hidden="true" tabindex="-1"></a><span class="bu">jobs</span>                       <span class="co"># List active jobs</span></span>
-<span id="cb15-79"><a href="#cb15-79" aria-hidden="true" tabindex="-1"></a><span class="bu">kill</span> PID                   <span class="co"># Terminate process by ID</span></span>
-<span id="cb15-80"><a href="#cb15-80" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-81"><a href="#cb15-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-82"><a href="#cb15-82" aria-hidden="true" tabindex="-1"></a><span class="fu">## Setting Up Your Research Environment</span></span>
-<span id="cb15-83"><a href="#cb15-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-84"><a href="#cb15-84" aria-hidden="true" tabindex="-1"></a><span class="fu">### Python Environment Management</span></span>
-<span id="cb15-85"><a href="#cb15-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-86"><a href="#cb15-86" aria-hidden="true" tabindex="-1"></a>For computational work, I highly recommend using conda to manage your Python environments:</span>
-<span id="cb15-87"><a href="#cb15-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-88"><a href="#cb15-88" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb15-89"><a href="#cb15-89" aria-hidden="true" tabindex="-1"></a><span class="co"># Install Miniconda (lightweight conda)</span></span>
-<span id="cb15-90"><a href="#cb15-90" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</span>
-<span id="cb15-91"><a href="#cb15-91" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> Miniconda3-latest-Linux-x86_64.sh</span>
-<span id="cb15-92"><a href="#cb15-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-93"><a href="#cb15-93" aria-hidden="true" tabindex="-1"></a><span class="co"># Create environment for your research</span></span>
-<span id="cb15-94"><a href="#cb15-94" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> computational-chem python=3.9</span>
-<span id="cb15-95"><a href="#cb15-95" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate computational-chem</span>
-<span id="cb15-96"><a href="#cb15-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-97"><a href="#cb15-97" aria-hidden="true" tabindex="-1"></a><span class="co"># Install essential scientific packages</span></span>
-<span id="cb15-98"><a href="#cb15-98" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install numpy scipy matplotlib pandas</span>
-<span id="cb15-99"><a href="#cb15-99" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install jupyter notebook</span>
-<span id="cb15-100"><a href="#cb15-100" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install ase  <span class="co"># Atomic Simulation Environment</span></span>
-<span id="cb15-101"><a href="#cb15-101" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-102"><a href="#cb15-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-103"><a href="#cb15-103" aria-hidden="true" tabindex="-1"></a><span class="fu">### Text Editors for Code and Scripts</span></span>
-<span id="cb15-104"><a href="#cb15-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-105"><a href="#cb15-105" aria-hidden="true" tabindex="-1"></a>Choose a text editor you're comfortable with. Here are popular options:</span>
-<span id="cb15-106"><a href="#cb15-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-107"><a href="#cb15-107" aria-hidden="true" tabindex="-1"></a>**Nano** (beginner-friendly):</span>
-<span id="cb15-108"><a href="#cb15-108" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb15-109"><a href="#cb15-109" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> my_script.py</span>
-<span id="cb15-110"><a href="#cb15-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-111"><a href="#cb15-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-112"><a href="#cb15-112" aria-hidden="true" tabindex="-1"></a>**Vim** (powerful but steeper learning curve):</span>
-<span id="cb15-113"><a href="#cb15-113" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb15-114"><a href="#cb15-114" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> my_script.py  <span class="co"># Press 'i' to insert, 'Esc' then ':wq' to save and quit</span></span>
-<span id="cb15-115"><a href="#cb15-115" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-116"><a href="#cb15-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-117"><a href="#cb15-117" aria-hidden="true" tabindex="-1"></a>**VS Code** (graphical, if you prefer):</span>
-<span id="cb15-118"><a href="#cb15-118" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb15-119"><a href="#cb15-119" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> my_script.py  <span class="co"># If VS Code is installed</span></span>
-<span id="cb15-120"><a href="#cb15-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-121"><a href="#cb15-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-122"><a href="#cb15-122" aria-hidden="true" tabindex="-1"></a><span class="fu">### Version Control with Git</span></span>
-<span id="cb15-123"><a href="#cb15-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-124"><a href="#cb15-124" aria-hidden="true" tabindex="-1"></a>Essential for tracking your research code:</span>
-<span id="cb15-125"><a href="#cb15-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-126"><a href="#cb15-126" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb15-127"><a href="#cb15-127" aria-hidden="true" tabindex="-1"></a><span class="co"># Configure Git (one-time setup)</span></span>
-<span id="cb15-128"><a href="#cb15-128" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Your Name"</span></span>
-<span id="cb15-129"><a href="#cb15-129" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"your.email@institution.edu"</span></span>
-<span id="cb15-130"><a href="#cb15-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-131"><a href="#cb15-131" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a repository for your project</span></span>
-<span id="cb15-132"><a href="#cb15-132" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my_research_project</span>
-<span id="cb15-133"><a href="#cb15-133" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span>
-<span id="cb15-134"><a href="#cb15-134" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb15-135"><a href="#cb15-135" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Initial commit"</span></span>
-<span id="cb15-136"><a href="#cb15-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-137"><a href="#cb15-137" aria-hidden="true" tabindex="-1"></a><span class="co"># Connect to GitHub/GitLab</span></span>
-<span id="cb15-138"><a href="#cb15-138" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/username/project.git</span>
-<span id="cb15-139"><a href="#cb15-139" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span>
-<span id="cb15-140"><a href="#cb15-140" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-141"><a href="#cb15-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-142"><a href="#cb15-142" aria-hidden="true" tabindex="-1"></a><span class="fu">## Workflow Tips for Computational Research</span></span>
-<span id="cb15-143"><a href="#cb15-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-144"><a href="#cb15-144" aria-hidden="true" tabindex="-1"></a><span class="fu">### Organizing Your Projects</span></span>
-<span id="cb15-145"><a href="#cb15-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-146"><a href="#cb15-146" aria-hidden="true" tabindex="-1"></a>I recommend this directory structure for research projects:</span>
-<span id="cb15-147"><a href="#cb15-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-148"><a href="#cb15-148" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-149"><a href="#cb15-149" aria-hidden="true" tabindex="-1"></a><span class="in">research_project/</span></span>
-<span id="cb15-150"><a href="#cb15-150" aria-hidden="true" tabindex="-1"></a><span class="in">├── data/           # Raw and processed data</span></span>
-<span id="cb15-151"><a href="#cb15-151" aria-hidden="true" tabindex="-1"></a><span class="in">├── scripts/        # Analysis and processing scripts</span></span>
-<span id="cb15-152"><a href="#cb15-152" aria-hidden="true" tabindex="-1"></a><span class="in">├── notebooks/      # Jupyter notebooks</span></span>
-<span id="cb15-153"><a href="#cb15-153" aria-hidden="true" tabindex="-1"></a><span class="in">├── results/        # Output files and figures</span></span>
-<span id="cb15-154"><a href="#cb15-154" aria-hidden="true" tabindex="-1"></a><span class="in">├── docs/           # Documentation and notes</span></span>
-<span id="cb15-155"><a href="#cb15-155" aria-hidden="true" tabindex="-1"></a><span class="in">└── README.md       # Project description</span></span>
-<span id="cb15-156"><a href="#cb15-156" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-157"><a href="#cb15-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-158"><a href="#cb15-158" aria-hidden="true" tabindex="-1"></a><span class="fu">### Running Long Calculations</span></span>
-<span id="cb15-159"><a href="#cb15-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-160"><a href="#cb15-160" aria-hidden="true" tabindex="-1"></a>For computationally intensive work:</span>
-<span id="cb15-161"><a href="#cb15-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-162"><a href="#cb15-162" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb15-163"><a href="#cb15-163" aria-hidden="true" tabindex="-1"></a><span class="co"># Use screen or tmux for persistent sessions</span></span>
-<span id="cb15-164"><a href="#cb15-164" aria-hidden="true" tabindex="-1"></a><span class="ex">screen</span> <span class="at">-S</span> calculation_name</span>
-<span id="cb15-165"><a href="#cb15-165" aria-hidden="true" tabindex="-1"></a><span class="co"># Your long-running command here</span></span>
-<span id="cb15-166"><a href="#cb15-166" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> expensive_calculation.py</span>
-<span id="cb15-167"><a href="#cb15-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-168"><a href="#cb15-168" aria-hidden="true" tabindex="-1"></a><span class="co"># Detach with Ctrl+A then D</span></span>
-<span id="cb15-169"><a href="#cb15-169" aria-hidden="true" tabindex="-1"></a><span class="co"># Reattach later with: screen -r calculation_name</span></span>
-<span id="cb15-170"><a href="#cb15-170" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-171"><a href="#cb15-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-172"><a href="#cb15-172" aria-hidden="true" tabindex="-1"></a><span class="fu">### Monitoring System Resources</span></span>
-<span id="cb15-173"><a href="#cb15-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-174"><a href="#cb15-174" aria-hidden="true" tabindex="-1"></a>Keep an eye on system usage during calculations:</span>
-<span id="cb15-175"><a href="#cb15-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-176"><a href="#cb15-176" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb15-177"><a href="#cb15-177" aria-hidden="true" tabindex="-1"></a><span class="co"># Monitor GPU usage (if using CUDA)</span></span>
-<span id="cb15-178"><a href="#cb15-178" aria-hidden="true" tabindex="-1"></a><span class="ex">nvidia-smi</span></span>
-<span id="cb15-179"><a href="#cb15-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-180"><a href="#cb15-180" aria-hidden="true" tabindex="-1"></a><span class="co"># Check disk space</span></span>
-<span id="cb15-181"><a href="#cb15-181" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span> <span class="at">-h</span></span>
-<span id="cb15-182"><a href="#cb15-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-183"><a href="#cb15-183" aria-hidden="true" tabindex="-1"></a><span class="co"># Monitor memory usage</span></span>
-<span id="cb15-184"><a href="#cb15-184" aria-hidden="true" tabindex="-1"></a><span class="fu">free</span> <span class="at">-h</span></span>
-<span id="cb15-185"><a href="#cb15-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-186"><a href="#cb15-186" aria-hidden="true" tabindex="-1"></a><span class="co"># Watch file changes in real-time</span></span>
-<span id="cb15-187"><a href="#cb15-187" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span> <span class="at">-f</span> output.log</span>
-<span id="cb15-188"><a href="#cb15-188" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-189"><a href="#cb15-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-190"><a href="#cb15-190" aria-hidden="true" tabindex="-1"></a><span class="fu">## Common Pitfalls and Solutions</span></span>
-<span id="cb15-191"><a href="#cb15-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-192"><a href="#cb15-192" aria-hidden="true" tabindex="-1"></a><span class="fu">### File Permissions</span></span>
-<span id="cb15-193"><a href="#cb15-193" aria-hidden="true" tabindex="-1"></a>If you get "permission denied" errors:</span>
-<span id="cb15-194"><a href="#cb15-194" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb15-195"><a href="#cb15-195" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x script.py          <span class="co"># Make file executable</span></span>
-<span id="cb15-196"><a href="#cb15-196" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 755 directory_name    <span class="co"># Set directory permissions</span></span>
-<span id="cb15-197"><a href="#cb15-197" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-198"><a href="#cb15-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-199"><a href="#cb15-199" aria-hidden="true" tabindex="-1"></a><span class="fu">### Path Issues</span></span>
-<span id="cb15-200"><a href="#cb15-200" aria-hidden="true" tabindex="-1"></a>Make sure your programs are in your PATH:</span>
-<span id="cb15-201"><a href="#cb15-201" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb15-202"><a href="#cb15-202" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$PATH</span>                  <span class="co"># Check current PATH</span></span>
-<span id="cb15-203"><a href="#cb15-203" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">$PATH</span>:/new/path <span class="co"># Add to PATH temporarily</span></span>
-<span id="cb15-204"><a href="#cb15-204" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-205"><a href="#cb15-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-206"><a href="#cb15-206" aria-hidden="true" tabindex="-1"></a>For permanent changes, add the export line to your <span class="in">`~/.bashrc`</span> file.</span>
-<span id="cb15-207"><a href="#cb15-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-208"><a href="#cb15-208" aria-hidden="true" tabindex="-1"></a><span class="fu">### SSH and Remote Access</span></span>
-<span id="cb15-209"><a href="#cb15-209" aria-hidden="true" tabindex="-1"></a>For working on remote servers:</span>
-<span id="cb15-210"><a href="#cb15-210" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb15-211"><a href="#cb15-211" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate SSH key (one-time)</span></span>
-<span id="cb15-212"><a href="#cb15-212" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> rsa</span>
-<span id="cb15-213"><a href="#cb15-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-214"><a href="#cb15-214" aria-hidden="true" tabindex="-1"></a><span class="co"># Connect to remote server</span></span>
-<span id="cb15-215"><a href="#cb15-215" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> username@server.institution.edu</span>
-<span id="cb15-216"><a href="#cb15-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-217"><a href="#cb15-217" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy files to/from remote server</span></span>
-<span id="cb15-218"><a href="#cb15-218" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> local_file.txt username@server:/remote/path/</span>
-<span id="cb15-219"><a href="#cb15-219" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-av</span> local_directory/ username@server:/remote/directory/</span>
-<span id="cb15-220"><a href="#cb15-220" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-221"><a href="#cb15-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-222"><a href="#cb15-222" aria-hidden="true" tabindex="-1"></a><span class="fu">## Next Steps</span></span>
-<span id="cb15-223"><a href="#cb15-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-224"><a href="#cb15-224" aria-hidden="true" tabindex="-1"></a>Once you're comfortable with these basics, consider exploring:</span>
-<span id="cb15-225"><a href="#cb15-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-226"><a href="#cb15-226" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Shell scripting**: Automate repetitive tasks</span>
-<span id="cb15-227"><a href="#cb15-227" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Docker containers**: Reproducible computational environments  </span>
-<span id="cb15-228"><a href="#cb15-228" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Job schedulers**: SLURM for HPC systems</span>
-<span id="cb15-229"><a href="#cb15-229" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Advanced text processing**: awk, sed for data manipulation</span>
-<span id="cb15-230"><a href="#cb15-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-231"><a href="#cb15-231" aria-hidden="true" tabindex="-1"></a><span class="fu">## Resources for Continued Learning</span></span>
-<span id="cb15-232"><a href="#cb15-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-233"><a href="#cb15-233" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**The Linux Command Line** by William Shotts (free online)</span>
-<span id="cb15-234"><a href="#cb15-234" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Software Carpentry** workshops and materials</span>
-<span id="cb15-235"><a href="#cb15-235" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Linux Academy** or **Linux Professional Institute** for structured learning</span>
-<span id="cb15-236"><a href="#cb15-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-237"><a href="#cb15-237" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conclusion</span></span>
-<span id="cb15-238"><a href="#cb15-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-239"><a href="#cb15-239" aria-hidden="true" tabindex="-1"></a>Transitioning to Linux might seem daunting at first, but the investment in learning pays dividends in computational efficiency and workflow flexibility. Start with these basics, practice regularly, and don't hesitate to use the excellent documentation available (<span class="in">`man command_name`</span> shows manual pages for any command).</span>
-<span id="cb15-240"><a href="#cb15-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-241"><a href="#cb15-241" aria-hidden="true" tabindex="-1"></a>Remember, even experienced Linux users regularly look up commands and syntax—it's not about memorizing everything, but about understanding the concepts and knowing how to find information when you need it.</span>
-<span id="cb15-242"><a href="#cb15-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-243"><a href="#cb15-243" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb15-244"><a href="#cb15-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-245"><a href="#cb15-245" aria-hidden="true" tabindex="-1"></a>*Have questions about getting started with Linux for research? Feel free to reach out—I'm happy to help fellow researchers navigate this transition!*</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
-</div></div></div></div></div>
+  </script>
 </div> <!-- /content -->
 
 
 
 
-<script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

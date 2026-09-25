@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>deployment – Joseph Frimpong</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -66,14 +72,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-73b0ff3878a4e6fc3716dc69a6aaefa3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-528a3a12eb1b1a2bc983796fbaaffdf2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-26fcad57ec7a447c490c3b70c708fda8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -101,9 +106,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<style>html{ scroll-behavior: smooth; }</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,300..500&amp;family=Roboto+Condensed:wght@300..600&amp;family=Source+Sans+3:ital,wght@0,200..700;1,300..400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<script>
+  // Apply the saved or system color scheme before first paint (no light flash in dark mode).
+  // theme-toggle.js reads and writes the same localStorage key.
+  (function () {
+    try {
+      var saved = localStorage.getItem('quarto-color-scheme');
+      var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-bs-theme', saved || (dark ? 'dark' : 'light'));
+    } catch (e) {}
+  })();
+</script>
 
 
+<meta property="og:title" content="Joseph Frimpong">
+<meta property="og:description" content="Postdoctoral researcher at Argonne National Laboratory studying electronic structure and optical properties of materials">
+<meta property="og:site_name" content="Joseph Frimpong">
+<meta name="twitter:title" content="Joseph Frimpong">
+<meta name="twitter:description" content="Postdoctoral researcher at Argonne National Laboratory studying electronic structure and optical properties of materials">
+<meta name="twitter:creator" content="@frimpsjoek">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -113,8 +138,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title"><span class="brand-first">Joseph</span> <span class="brand-last">Frimpong</span></span>
     </a>
@@ -124,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
 <span class="menu-text">about</span></a>
@@ -145,7 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-more" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">more</span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-more">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-more">    
         <li>
     <a class="dropdown-item" href="./news.html">
  <span class="dropdown-text">news</span></a>
@@ -156,18 +179,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/frimpsjoek"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/frimpsjoek"> <i class="bi bi-twitter" role="img" aria-label="Twitter">
+    <a class="nav-link" href="https://twitter.com/frimpsjoek"> <i class="bi bi-twitter-x" role="img" aria-label="X (Twitter)">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://linkedin.com/in/josephfrimpong"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:frimpsjoe@anl.gov"> <i class="bi bi-envelope" role="img" aria-label="Email">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -316,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="modifying-styling" class="level3">
 <h3 data-anchor-id="modifying-styling">Modifying Styling</h3>
-<p>Edit <code>styles/custom.scss</code> to customize colors, fonts, and layouts.</p>
+<p>Edit <code>styles/site.scss</code> to customize colors, fonts, and layouts (tokens are at the top of the file).</p>
 </section>
 </section>
 <section id="performance-optimization" class="level2">
@@ -351,34 +381,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <script src="./assets/js/theme-toggle.js"></script>
 
-<style>
-/* CRITICAL FIX: Callout text colors - override everything */
-/* Light mode */
-.callout *,
-.callout .callout-title-container,
-.callout .callout-header,
-.callout .callout-body,
-.callout p,
-.callout div,
-.callout span,
-.callout strong,
-.callout em {
-  color: #000000 !important;
-}
-
-/* Dark mode */
-[data-bs-theme="dark"] .callout *,
-[data-bs-theme="dark"] .callout .callout-title-container,
-[data-bs-theme="dark"] .callout .callout-header,
-[data-bs-theme="dark"] .callout .callout-body,
-[data-bs-theme="dark"] .callout p,
-[data-bs-theme="dark"] .callout div,
-[data-bs-theme="dark"] .callout span,
-[data-bs-theme="dark"] .callout strong,
-[data-bs-theme="dark"] .callout em {
-  color: #ffffff !important;
-}
-</style>
 
 <footer class="site-footer">
   <div class="site-footer-inner">
@@ -386,6 +388,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </footer>
 
+<script>
+  // Blog posts cite in the margin (citation-location: margin), and Quarto then omits
+  // the end-of-post bibliography. Rebuild it from the margin entries, one per key,
+  // sorted by the rendered text (author-year style).
+  (function () {
+    if (!document.body.classList.contains('blog-post')) return;
+    const seen = new Map();
+    document.querySelectorAll('.column-margin .csl-entry, aside .csl-entry').forEach(function (entry) {
+      const key = (entry.id || entry.textContent).replace(/^ref-/, '');
+      if (!seen.has(key)) seen.set(key, entry);
+    });
+    if (!seen.size) return;
+    const list = document.createElement('div');
+    list.className = 'references csl-bib-body post-references';
+    list.setAttribute('role', 'list');
+    Array.from(seen.values())
+      .sort(function (a, b) { return a.textContent.localeCompare(b.textContent); })
+      .forEach(function (entry) {
+        const item = entry.cloneNode(true);
+        item.removeAttribute('id');
+        item.setAttribute('role', 'listitem');
+        list.appendChild(item);
+      });
+    const target = document.getElementById('refs') || document.getElementById('references');
+    if (target) {
+      target.appendChild(list);
+    } else {
+      const section = document.createElement('section');
+      section.id = 'references';
+      section.innerHTML = '<h2>References</h2>';
+      section.appendChild(list);
+      const main = document.querySelector('main.content');
+      const appendix = document.getElementById('quarto-appendix');
+      if (appendix) appendix.parentNode.insertBefore(section, appendix); else main.appendChild(section);
+    }
+  })();
+</script>
+<script>
+  // Scroll reveal for blog cards (styles in site.scss, timing from basicappleguy.com).
+  // Only cards that start below the viewport are hidden-then-revealed; if
+  // IntersectionObserver is missing or motion is reduced, nothing is hidden.
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const cards = document.querySelectorAll('.post-tile, .quarto-listing-default .quarto-post');
+    if (!cards.length) return;
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-loaded'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    cards.forEach(function (card) {
+      if (card.getBoundingClientRect().top < window.innerHeight) return;
+      card.classList.add('reveal');
+      io.observe(card);
+    });
+  })();
+</script>
 <script>
   (function() {
     const el = document.getElementById('copyright-year');
@@ -414,6 +474,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   (function() {
     const body = document.body;
     if (!body) return;
+    // Blog posts show code in full; readers came for it.
+    if (body.classList.contains('blog-post')) return;
 
     const MIN_LINES = 10;
 
@@ -513,92 +575,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     } else {
       enhanceAll();
     }
-  })();
-</script>
-<!-- Dock magnification disabled to avoid overlap/fusion of icons -->
-<script>
-  // Layout-safe dock magnification for tools icons
-  (function() {
-    const row = document.querySelector('.tools-row');
-    if (!row) return;
-    const icons = Array.from(row.querySelectorAll('img'));
-    if (!icons.length) return;
-
-    let raf = null;
-    let mouseX = 0;
-    let active = false;
-    const influence = 70;  // tighter radius so neighbors barely move
-    const maxBoost = 0.45; // gentler max zoom (~1.45x at center)
-
-    // capture base sizes once
-    const base = new Map();
-    function captureBase() {
-      icons.forEach((img) => {
-        const cs = getComputedStyle(img);
-        const w = parseFloat(cs.width) || 45;
-        const h = parseFloat(cs.height) || 45;
-        const bs = parseFloat(cs.getPropertyValue('--icon-base-scale')) || 1;
-        base.set(img, { w, h, bs });
-        // reset inline sizes
-        img.style.width = w + 'px';
-        img.style.height = h + 'px';
-      });
-    }
-    captureBase();
-
-    function update() {
-      raf = null;
-      const rowRect = row.getBoundingClientRect();
-      const rowHeight = rowRect.height || 110;
-      icons.forEach((img) => {
-        const b = base.get(img);
-        if (!b) return;
-        const rect = img.getBoundingClientRect();
-        const center = rect.left + rect.width / 2;
-        const d = Math.abs(mouseX - center);
-        // smooth gaussian-like falloff with threshold to avoid "elastic" feel
-        const t = Math.exp(-((d / influence) ** 2));
-        const neighborCutoff = 0.55; // stronger cutoff so only hovered icon grows
-        const eff = active && t > neighborCutoff ? (t - neighborCutoff) / (1 - neighborCutoff) : 0;
-        let scale = b.bs * (1 + maxBoost * eff);
-        // clamp maximum to avoid exceeding row height (keep top/bottom fixed)
-        const maxByHeight = (rowHeight - 6) / b.h;
-        const maxScale = Math.min(b.bs * 1.6, maxByHeight);
-        if (scale > maxScale) scale = maxScale;
-        img.style.width = (b.w * scale).toFixed(2) + 'px';
-        img.style.height = (b.h * scale).toFixed(2) + 'px';
-        img.style.zIndex = String(Math.round(scale * 100));
-      });
-    }
-
-    function onMove(e) {
-      mouseX = e.clientX;
-      if (!raf) raf = requestAnimationFrame(update);
-    }
-    function onEnter(e) { active = true; onMove(e); }
-    function onLeave() {
-      active = false;
-      // reset sizes to base
-      icons.forEach((img) => {
-        const b = base.get(img);
-        if (b) {
-          img.style.width = b.w + 'px';
-          img.style.height = b.h + 'px';
-          img.style.zIndex = '1';
-        }
-      });
-      // keep container height steady (CSS min-height handles this)
-    }
-
-    row.addEventListener('mousemove', onMove);
-    row.addEventListener('mouseenter', onEnter);
-    row.addEventListener('mouseleave', onLeave);
-
-    // Recompute base sizes on resize (e.g., responsive breakpoints)
-    window.addEventListener('resize', () => {
-      captureBase();
-      update();
-    });
   })();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
@@ -999,5 +975,4 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

@@ -29,12 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add toggle button to navbar
     const addThemeToggle = () => {
-        const navbar = document.querySelector('.navbar-nav');
+        // Right-hand nav group (icons); fall back to the first group
+        const navs = document.querySelectorAll('#navbarCollapse .navbar-nav');
+        const navbar = navs.length ? navs[navs.length - 1] : document.querySelector('.navbar-nav');
         if (navbar) {
             const toggleButton = document.createElement('li');
             toggleButton.className = 'nav-item';
             toggleButton.innerHTML = `
-                <button class="nav-link btn btn-link" id="theme-toggle" style="border: none; background: none; color: var(--global-text-color);">
+                <button class="nav-link btn btn-link" id="theme-toggle" style="border: none; background: none;" aria-label="Toggle dark mode">
                     <i class="bi bi-sun-fill" id="light-icon" style="display: ${initialTheme === 'dark' ? 'none' : 'inline'}; font-size: 1.2rem;"></i>
                     <i class="bi bi-moon-stars-fill" id="dark-icon" style="display: ${initialTheme === 'dark' ? 'inline' : 'none'}; font-size: 1.2rem;"></i>
                 </button>

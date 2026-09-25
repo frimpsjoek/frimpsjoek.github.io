@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Blog – Joseph Frimpong</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -33,14 +39,13 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-73b0ff3878a4e6fc3716dc69a6aaefa3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-528a3a12eb1b1a2bc983796fbaaffdf2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-26fcad57ec7a447c490c3b70c708fda8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,20 +76,48 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    const listingTargetEl = window.document.querySelector('#listing-posts-grid .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-reading-time','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-date','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description"],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-execute","listing-bibliography","listing-csl","listing-engines","listing-language","listing-google-scholar","listing-citation","listing-appendix-style","listing-reference-location","listing-citation-location","listing-title","listing-description","listing-author","listing-date","listing-categories","listing-image","listing-draft","listing-path","listing-outputHref","listing-date-modified","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-subtitle","listing-editor"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+    window['quarto-listings']['listing-posts-grid'] = new List('listing-posts-grid', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-posts-list .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-date','listing-title','listing-reading-time','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-posts-list'] = new List('listing-posts-list', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -97,10 +130,23 @@ ul.task-list li input[type="checkbox"] {
     }
   })
   </script>
-<style>html{ scroll-behavior: smooth; }</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,300..500&amp;family=Roboto+Condensed:wght@300..600&amp;family=Source+Sans+3:ital,wght@0,200..700;1,300..400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<script>
+  // Apply the saved or system color scheme before first paint (no light flash in dark mode).
+  // theme-toggle.js reads and writes the same localStorage key.
+  (function () {
+    try {
+      var saved = localStorage.getItem('quarto-color-scheme');
+      var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-bs-theme', saved || (dark ? 'dark' : 'light'));
+    } catch (e) {}
+  })();
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -129,17 +175,26 @@ window.Quarto = {
 };
 </script>
 
-<link rel="alternate" type="application/rss+xml" title="Joseph Frimpong's Blog" href="index.xml" data-external="1"></head>
+<link rel="alternate" type="application/rss+xml" title="Joseph Frimpong's Blog" href="index.xml" data-external="1"><meta property="og:title" content="Blog – Joseph Frimpong">
+<meta property="og:description" content="Notes on academic life, computational science, and research.">
+<meta property="og:image" content="https://frimpsjoek.github.io/blog/posts/2023-10-12-why-graduate-school/thumbnail.jpg">
+<meta property="og:site_name" content="Joseph Frimpong">
+<meta property="og:image:alt" content="">
+<meta name="twitter:title" content="Blog – Joseph Frimpong">
+<meta name="twitter:description" content="Notes on academic life, computational science, and research.">
+<meta name="twitter:image" content="https://frimpsjoek.github.io/blog/posts/2023-10-12-why-graduate-school/thumbnail.jpg">
+<meta name="twitter:creator" content="@frimpsjoek">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="">
+</head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed blog-index quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title"><span class="brand-first">Joseph</span> <span class="brand-last">Frimpong</span></span>
     </a>
@@ -149,7 +204,7 @@ window.Quarto = {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../index.html"> 
 <span class="menu-text">about</span></a>
@@ -170,7 +225,7 @@ window.Quarto = {
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-more" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">more</span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-more">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-more">    
         <li>
     <a class="dropdown-item" href="../news.html">
  <span class="dropdown-text">news</span></a>
@@ -181,18 +236,25 @@ window.Quarto = {
   </li>  
     </ul>
   </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/frimpsjoek"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/frimpsjoek"> <i class="bi bi-twitter" role="img" aria-label="Twitter">
+    <a class="nav-link" href="https://twitter.com/frimpsjoek"> <i class="bi bi-twitter-x" role="img" aria-label="X (Twitter)">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://linkedin.com/in/josephfrimpong"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:frimpsjoe@anl.gov"> <i class="bi bi-envelope" role="img" aria-label="Email">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -207,21 +269,20 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(6)</span></div><div class="category" data-category="YWNhZGVtaWE=">academia <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Y2FyZWVy">career <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Y29tcHV0YXRpb25hbC1zY2llbmNl">computational-science <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Z3JhZHVhdGUtc2Nob29s">graduate-school <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bGludXg=">linux <span class="quarto-category-count">(4)</span></div><div class="category" data-category="cHJvZHVjdGl2aXR5">productivity <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dHV0b3JpYWw=">tutorial <span class="quarto-category-count">(4)</span></div></div></div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Blog</h1>
-<p class="subtitle lead">Reflections on academic life, computational science, and research</p>
+<p class="subtitle lead">Notes on academic life, computational science, and research.</p>
 </div>
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -233,16 +294,59 @@ window.Quarto = {
 </header>
 
 
-<p>Welcome to my blog where I share thoughts on academic life, computational materials science, and the journey of being a postdoctoral researcher.</p>
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="view-toggle" role="group" aria-label="Blog layout">
+  <button type="button" data-view="grid" aria-pressed="true">Grid</button>
+  <button type="button" data-view="list" aria-pressed="false">List</button>
+</div>
+<div id="listing-posts-grid" data-blog-view="grid" class="quarto-listing quarto-listing-container-custom">
+<div class="post-grid list">
+<article class="post-tile" data-index="0" data-categories="dHV0b3JpYWwlMkNsaW51eCUyQ3Byb2R1Y3Rpdml0eQ==" data-listing-date-sort="1760659200000" data-listing-file-modified-sort="1790309114310" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2949">
+<p><a class="post-tile-media" href="../blog/posts/2025-10-17-new-linux-commands/index.html" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&amp;h=400&amp;fit=crop" alt="" loading="lazy"></a></p>
+<div class="post-tile-meta">
+<span class="listing-date">10/17/25</span><span class="sep"></span><span>tutorial, linux, productivity</span>
+</div>
+<h3 class="post-tile-title no-anchor">
+<a class="listing-title" href="../blog/posts/2025-10-17-new-linux-commands/index.html">Modern Alternatives to Traditional Linux Commands</a>
+</h3>
+<p class="post-tile-desc listing-description">
+Discover 6 essential modern CLI tools that replace traditional Linux commands with better performance and usability. Learn how ripgrep, bat, fd, eza, zoxide, and delta can supercharge your workflow.
+</p>
+<a class="post-tile-more" href="../blog/posts/2025-10-17-new-linux-commands/index.html">Read More</a>
+</article>
+<article class="post-tile" data-index="1" data-categories="bGludXglMkNjb21wdXRhdGlvbmFsLXNjaWVuY2UlMkN0dXRvcmlhbA==" data-listing-date-sort="1700179200000" data-listing-file-modified-sort="1790309114271" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1009">
+<p><a class="post-tile-media" href="../blog/posts/2023-11-17-getting-started-linux/index.html" tabindex="-1" aria-hidden="true"><img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&amp;h=400&amp;fit=crop" alt="" loading="lazy"></a></p>
+<div class="post-tile-meta">
+<span class="listing-date">11/17/23</span><span class="sep"></span><span>linux, computational-science, tutorial</span>
+</div>
+<h3 class="post-tile-title no-anchor">
+<a class="listing-title" href="../blog/posts/2023-11-17-getting-started-linux/index.html">Getting Started with Linux</a>
+</h3>
+<p class="post-tile-desc listing-description">
+A practical guide for researchers transitioning to Linux for computational work, covering essential commands and workflow setup.
+</p>
+<a class="post-tile-more" href="../blog/posts/2023-11-17-getting-started-linux/index.html">Read More</a>
+</article>
+<article class="post-tile" data-index="2" data-categories="YWNhZGVtaWElMkNjYXJlZXIlMkNncmFkdWF0ZS1zY2hvb2w=" data-listing-date-sort="1697068800000" data-listing-file-modified-sort="1790309114271" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="608">
+<p><a class="post-tile-media" href="../blog/posts/2023-10-12-why-graduate-school/index.html" tabindex="-1" aria-hidden="true"><img src="../blog/posts/2023-10-12-why-graduate-school/thumbnail.jpg" alt="" loading="lazy"></a></p>
+<div class="post-tile-meta">
+<span class="listing-date">10/12/23</span><span class="sep"></span><span>academia, career, graduate-school</span>
+</div>
+<h3 class="post-tile-title no-anchor">
+<a class="listing-title" href="../blog/posts/2023-10-12-why-graduate-school/index.html">Why Graduate School is for You</a>
+</h3>
+<p class="post-tile-desc listing-description">
+Reflections on the graduate school experience and what to expect from this transformative journey in academia.
+</p>
+<a class="post-tile-more" href="../blog/posts/2023-10-12-why-graduate-school/index.html">Read More</a>
+</article>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+<div id="listing-posts-list" data-blog-view="list" hidden="hidden" class="quarto-listing quarto-listing-container-default">
 <div class="listing-actions-group">
    <div class="input-group input-group-sm quarto-listing-sort">
     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+    <select id="listing-posts-list-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-posts-list'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
       <option value="" disabled="" selected="" hidden="">Order By</option>
       <option value="index" data-direction="asc">Default</option>
       <option value="listing-title" data-direction="asc">
@@ -262,7 +366,7 @@ window.Quarto = {
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="dHV0b3JpYWwlMkNsaW51eCUyQ3Byb2R1Y3Rpdml0eQ==" data-listing-date-sort="1760659200000" data-listing-file-modified-sort="1762884198027" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2953">
+<div class="quarto-post image-right" data-index="0" data-categories="dHV0b3JpYWwlMkNsaW51eCUyQ3Byb2R1Y3Rpdml0eQ==" data-listing-date-sort="1760659200000" data-listing-file-modified-sort="1790309114310" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2949">
 <div class="thumbnail"><a href="../blog/posts/2025-10-17-new-linux-commands/index.html" class="no-external">
 
 <img loading="lazy" src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&amp;h=400&amp;fit=crop" class="thumbnail-image" style="height: 180px;">
@@ -272,6 +376,15 @@ window.Quarto = {
 <h3 class="no-anchor listing-title">
 <a href="../blog/posts/2025-10-17-new-linux-commands/index.html" class="no-external">Modern Alternatives to Traditional Linux Commands</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bGludXg='); return false;">linux</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHJvZHVjdGl2aXR5'); return false;">productivity</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/posts/2025-10-17-new-linux-commands/index.html" class="no-external">
 <p>Discover 6 essential modern CLI tools that replace traditional Linux commands with better performance and usability. Learn how ripgrep, bat, fd, eza, zoxide, and delta can supercharge your workflow.</p>
 </a></div>
@@ -285,7 +398,7 @@ Oct 17, 2025
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="bGludXglMkNjb21wdXRhdGlvbmFsLXNjaWVuY2UlMkN0dXRvcmlhbA==" data-listing-date-sort="1700179200000" data-listing-file-modified-sort="1762884197984" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1009">
+<div class="quarto-post image-right" data-index="1" data-categories="bGludXglMkNjb21wdXRhdGlvbmFsLXNjaWVuY2UlMkN0dXRvcmlhbA==" data-listing-date-sort="1700179200000" data-listing-file-modified-sort="1790309114271" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1009">
 <div class="thumbnail"><a href="../blog/posts/2023-11-17-getting-started-linux/index.html" class="no-external">
 
 <img loading="lazy" src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&amp;h=400&amp;fit=crop" class="thumbnail-image" style="height: 180px;">
@@ -295,6 +408,15 @@ Oct 17, 2025
 <h3 class="no-anchor listing-title">
 <a href="../blog/posts/2023-11-17-getting-started-linux/index.html" class="no-external">Getting Started with Linux</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bGludXg='); return false;">linux</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29tcHV0YXRpb25hbC1zY2llbmNl'); return false;">computational-science</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dHV0b3JpYWw='); return false;">tutorial</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/posts/2023-11-17-getting-started-linux/index.html" class="no-external">
 <p>A practical guide for researchers transitioning to Linux for computational work, covering essential commands and workflow setup.</p>
 </a></div>
@@ -308,7 +430,7 @@ Nov 17, 2023
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="YWNhZGVtaWElMkNjYXJlZXIlMkNncmFkdWF0ZS1zY2hvb2w=" data-listing-date-sort="1697068800000" data-listing-file-modified-sort="1762884197984" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="608">
+<div class="quarto-post image-right" data-index="2" data-categories="YWNhZGVtaWElMkNjYXJlZXIlMkNncmFkdWF0ZS1zY2hvb2w=" data-listing-date-sort="1697068800000" data-listing-file-modified-sort="1790309114271" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="608">
 <div class="thumbnail"><a href="../blog/posts/2023-10-12-why-graduate-school/index.html" class="no-external">
 
 <img loading="lazy" src="../blog/posts/2023-10-12-why-graduate-school/thumbnail.jpg" class="thumbnail-image" style="height: 180px;">
@@ -318,6 +440,15 @@ Nov 17, 2023
 <h3 class="no-anchor listing-title">
 <a href="../blog/posts/2023-10-12-why-graduate-school/index.html" class="no-external">Why Graduate School is for You</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YWNhZGVtaWE='); return false;">academia</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y2FyZWVy'); return false;">career</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z3JhZHVhdGUtc2Nob29s'); return false;">graduate-school</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/posts/2023-10-12-why-graduate-school/index.html" class="no-external">
 <p>Reflections on the graduate school experience and what to expect from this transformative journey in academia.</p>
 </a></div>
@@ -333,39 +464,42 @@ Oct 12, 2023
 </div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</div>
+<script>
+  // Grid | List toggle; the choice is remembered per visitor.
+  (function () {
+    var KEY = 'blog-view';
+    var buttons = document.querySelectorAll('.view-toggle button');
+    function show(view) {
+      document.querySelectorAll('[data-blog-view]').forEach(function (el) {
+        el.hidden = el.getAttribute('data-blog-view') !== view;
+      });
+      buttons.forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.dataset.view === view));
+      });
+      document.body.classList.toggle('blog-view-grid', view === 'grid');
+      document.body.classList.toggle('blog-view-list', view === 'list');
+    }
+    var saved = null;
+    try { saved = localStorage.getItem(KEY); } catch (e) {}
+    show(saved === 'list' ? 'list' : 'grid');
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        show(b.dataset.view);
+        try { localStorage.setItem(KEY, b.dataset.view); } catch (e) {}
+      });
+    });
+  })();
+</script>
+
+
+
+
+</main> <!-- /main -->
 <div id="scroll-progress" class="scroll-progress"></div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <script src="../assets/js/theme-toggle.js"></script>
 
-<style>
-/* CRITICAL FIX: Callout text colors - override everything */
-/* Light mode */
-.callout *,
-.callout .callout-title-container,
-.callout .callout-header,
-.callout .callout-body,
-.callout p,
-.callout div,
-.callout span,
-.callout strong,
-.callout em {
-  color: #000000 !important;
-}
-
-/* Dark mode */
-[data-bs-theme="dark"] .callout *,
-[data-bs-theme="dark"] .callout .callout-title-container,
-[data-bs-theme="dark"] .callout .callout-header,
-[data-bs-theme="dark"] .callout .callout-body,
-[data-bs-theme="dark"] .callout p,
-[data-bs-theme="dark"] .callout div,
-[data-bs-theme="dark"] .callout span,
-[data-bs-theme="dark"] .callout strong,
-[data-bs-theme="dark"] .callout em {
-  color: #ffffff !important;
-}
-</style>
 
 <footer class="site-footer">
   <div class="site-footer-inner">
@@ -373,6 +507,64 @@ Oct 12, 2023
   </div>
 </footer>
 
+<script>
+  // Blog posts cite in the margin (citation-location: margin), and Quarto then omits
+  // the end-of-post bibliography. Rebuild it from the margin entries, one per key,
+  // sorted by the rendered text (author-year style).
+  (function () {
+    if (!document.body.classList.contains('blog-post')) return;
+    const seen = new Map();
+    document.querySelectorAll('.column-margin .csl-entry, aside .csl-entry').forEach(function (entry) {
+      const key = (entry.id || entry.textContent).replace(/^ref-/, '');
+      if (!seen.has(key)) seen.set(key, entry);
+    });
+    if (!seen.size) return;
+    const list = document.createElement('div');
+    list.className = 'references csl-bib-body post-references';
+    list.setAttribute('role', 'list');
+    Array.from(seen.values())
+      .sort(function (a, b) { return a.textContent.localeCompare(b.textContent); })
+      .forEach(function (entry) {
+        const item = entry.cloneNode(true);
+        item.removeAttribute('id');
+        item.setAttribute('role', 'listitem');
+        list.appendChild(item);
+      });
+    const target = document.getElementById('refs') || document.getElementById('references');
+    if (target) {
+      target.appendChild(list);
+    } else {
+      const section = document.createElement('section');
+      section.id = 'references';
+      section.innerHTML = '<h2>References</h2>';
+      section.appendChild(list);
+      const main = document.querySelector('main.content');
+      const appendix = document.getElementById('quarto-appendix');
+      if (appendix) appendix.parentNode.insertBefore(section, appendix); else main.appendChild(section);
+    }
+  })();
+</script>
+<script>
+  // Scroll reveal for blog cards (styles in site.scss, timing from basicappleguy.com).
+  // Only cards that start below the viewport are hidden-then-revealed; if
+  // IntersectionObserver is missing or motion is reduced, nothing is hidden.
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const cards = document.querySelectorAll('.post-tile, .quarto-listing-default .quarto-post');
+    if (!cards.length) return;
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-loaded'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    cards.forEach(function (card) {
+      if (card.getBoundingClientRect().top < window.innerHeight) return;
+      card.classList.add('reveal');
+      io.observe(card);
+    });
+  })();
+</script>
 <script>
   (function() {
     const el = document.getElementById('copyright-year');
@@ -401,6 +593,8 @@ Oct 12, 2023
   (function() {
     const body = document.body;
     if (!body) return;
+    // Blog posts show code in full; readers came for it.
+    if (body.classList.contains('blog-post')) return;
 
     const MIN_LINES = 10;
 
@@ -500,92 +694,6 @@ Oct 12, 2023
     } else {
       enhanceAll();
     }
-  })();
-</script>
-<!-- Dock magnification disabled to avoid overlap/fusion of icons -->
-<script>
-  // Layout-safe dock magnification for tools icons
-  (function() {
-    const row = document.querySelector('.tools-row');
-    if (!row) return;
-    const icons = Array.from(row.querySelectorAll('img'));
-    if (!icons.length) return;
-
-    let raf = null;
-    let mouseX = 0;
-    let active = false;
-    const influence = 70;  // tighter radius so neighbors barely move
-    const maxBoost = 0.45; // gentler max zoom (~1.45x at center)
-
-    // capture base sizes once
-    const base = new Map();
-    function captureBase() {
-      icons.forEach((img) => {
-        const cs = getComputedStyle(img);
-        const w = parseFloat(cs.width) || 45;
-        const h = parseFloat(cs.height) || 45;
-        const bs = parseFloat(cs.getPropertyValue('--icon-base-scale')) || 1;
-        base.set(img, { w, h, bs });
-        // reset inline sizes
-        img.style.width = w + 'px';
-        img.style.height = h + 'px';
-      });
-    }
-    captureBase();
-
-    function update() {
-      raf = null;
-      const rowRect = row.getBoundingClientRect();
-      const rowHeight = rowRect.height || 110;
-      icons.forEach((img) => {
-        const b = base.get(img);
-        if (!b) return;
-        const rect = img.getBoundingClientRect();
-        const center = rect.left + rect.width / 2;
-        const d = Math.abs(mouseX - center);
-        // smooth gaussian-like falloff with threshold to avoid "elastic" feel
-        const t = Math.exp(-((d / influence) ** 2));
-        const neighborCutoff = 0.55; // stronger cutoff so only hovered icon grows
-        const eff = active && t > neighborCutoff ? (t - neighborCutoff) / (1 - neighborCutoff) : 0;
-        let scale = b.bs * (1 + maxBoost * eff);
-        // clamp maximum to avoid exceeding row height (keep top/bottom fixed)
-        const maxByHeight = (rowHeight - 6) / b.h;
-        const maxScale = Math.min(b.bs * 1.6, maxByHeight);
-        if (scale > maxScale) scale = maxScale;
-        img.style.width = (b.w * scale).toFixed(2) + 'px';
-        img.style.height = (b.h * scale).toFixed(2) + 'px';
-        img.style.zIndex = String(Math.round(scale * 100));
-      });
-    }
-
-    function onMove(e) {
-      mouseX = e.clientX;
-      if (!raf) raf = requestAnimationFrame(update);
-    }
-    function onEnter(e) { active = true; onMove(e); }
-    function onLeave() {
-      active = false;
-      // reset sizes to base
-      icons.forEach((img) => {
-        const b = base.get(img);
-        if (b) {
-          img.style.width = b.w + 'px';
-          img.style.height = b.h + 'px';
-          img.style.zIndex = '1';
-        }
-      });
-      // keep container height steady (CSS min-height handles this)
-    }
-
-    row.addEventListener('mousemove', onMove);
-    row.addEventListener('mouseenter', onEnter);
-    row.addEventListener('mouseleave', onLeave);
-
-    // Recompute base sizes on resize (e.g., responsive breakpoints)
-    window.addEventListener('resize', () => {
-      captureBase();
-      update();
-    });
   })();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
@@ -986,5 +1094,4 @@ Oct 12, 2023
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
