@@ -10,7 +10,7 @@ format:
 
 ## Teaching Snapshot
 
-- **Teaching interests:** computational materials science and computational chemistry; electronic-structure methods (DFT → GW/BSE); AI/ML for science; AI for scientific research, including AI agents; and generative AI for materials science and chemistry.
+- **Teaching interests:** computational materials science and computational chemistry; electronic-structure methods (DFT → GW/BSE); AI/ML for science; AI for scientific research, including AI agents; generative AI for materials science and chemistry; and HPC for scientists.
 - **Mentoring focus:** inclusive, project-based research experiences that pair modern software practices with rigorous physical insight.  
 - **Formats delivered:** graduate mini-courses, bootcamps, invited tutorials, and K–12 outreach workshops.
 
