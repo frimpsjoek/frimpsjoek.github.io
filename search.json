@@ -1,474 +1,5 @@
 [
   {
-    "objectID": "projects/method-development-hpc.html",
-    "href": "projects/method-development-hpc.html",
-    "title": "Method Development & HPC Tooling",
-    "section": "",
-    "text": "Timeline: Ongoing\nRole: Developer & Maintainer\nCollaborators: WEST, BerkeleyGW, and community tooling teams"
-  },
-  {
-    "objectID": "projects/method-development-hpc.html#motivation",
-    "href": "projects/method-development-hpc.html#motivation",
-    "title": "Method Development & HPC Tooling",
-    "section": "Motivation",
-    "text": "Motivation\nLeadership-class simulations demand reproducible pipelines, data hygiene, and responsive visualization. I build tooling that bridges traditional electronic-structure packages with modern workflow engines so that large-scale screening stays transparent and repeatable."
-  },
-  {
-    "objectID": "projects/method-development-hpc.html#core-contributions",
-    "href": "projects/method-development-hpc.html#core-contributions",
-    "title": "Method Development & HPC Tooling",
-    "section": "Core Contributions",
-    "text": "Core Contributions\n\nMPI-aware task orchestration for WEST/BerkeleyGW calculations on Polaris, Perlmutter, and Frontier.\nAutomated provenance capture and lightweight dashboards for monitoring calculation health.\nPyTorch-based surrogate models that plug into existing workflows to pre-screen candidate structures."
-  },
-  {
-    "objectID": "projects/method-development-hpc.html#resources",
-    "href": "projects/method-development-hpc.html#resources",
-    "title": "Method Development & HPC Tooling",
-    "section": "Resources",
-    "text": "Resources\n\nSource and notebooks on GitHub\nInternal documentation (available to collaborators upon request)"
-  },
-  {
-    "objectID": "projects/method-development-hpc.html#roadmap",
-    "href": "projects/method-development-hpc.html#roadmap",
-    "title": "Method Development & HPC Tooling",
-    "section": "Roadmap",
-    "text": "Roadmap\nCurrent tasks include integrating ML surrogates directly into WEST’s scheduling layer and publishing a reusable cookiecutter for multi-fidelity excited-state screening."
-  },
-  {
-    "objectID": "projects/quantum-dots-interfaces.html",
-    "href": "projects/quantum-dots-interfaces.html",
-    "title": "Quantum Dots & Interfaces",
-    "section": "",
-    "text": "Timeline: 2019 – 2024\nRole: PhD Researcher\nAffiliation: Wayne State University"
-  },
-  {
-    "objectID": "projects/quantum-dots-interfaces.html#overview",
-    "href": "projects/quantum-dots-interfaces.html#overview",
-    "title": "Quantum Dots & Interfaces",
-    "section": "Overview",
-    "text": "Overview\nThis project examined how ligands, solvents, and solid supports reshape the optical and electronic structure of quantum dots. By combining GW/BSE calculations with dielectric embedding and explicit interface models, I mapped the structure–property relationships that control emission energies, hot carrier relaxation and catalytic activity."
-  },
-  {
-    "objectID": "projects/quantum-dots-interfaces.html#highlights",
-    "href": "projects/quantum-dots-interfaces.html#highlights",
-    "title": "Quantum Dots & Interfaces",
-    "section": "Highlights",
-    "text": "Highlights\n\nQuantified ligand-induced shifts in excitonic gaps for CdSe nanocrystals and hybrid interfaces.\nDeveloped workflows for converged Coulomb truncation and surface screening corrections within WEST.\nCollaborated with spectroscopy groups to interpret transient absorption and single-dot photoluminescence."
-  },
-  {
-    "objectID": "projects/quantum-dots-interfaces.html#representative-publications",
-    "href": "projects/quantum-dots-interfaces.html#representative-publications",
-    "title": "Quantum Dots & Interfaces",
-    "section": "Representative Publications",
-    "text": "Representative Publications\n\nJ. Phys. Chem. Lett. (2024)\nChem. Mater. (2024)"
-  },
-  {
-    "objectID": "projects/quantum-dots-interfaces.html#continuing-directions",
-    "href": "projects/quantum-dots-interfaces.html#continuing-directions",
-    "title": "Quantum Dots & Interfaces",
-    "section": "Continuing Directions",
-    "text": "Continuing Directions\nFuture work focuses on mixed-dimensional heterostructures, integrating machine-learned polarizabilities, and closing the loop with time-resolved experiments."
-  },
-  {
-    "objectID": "docs/superpowers/specs/2026-09-24-site-revamp-design.html",
-    "href": "docs/superpowers/specs/2026-09-24-site-revamp-design.html",
-    "title": "Site revamp — design (approved 2026-09-24)",
-    "section": "",
-    "text": "Reference: basicappleguy.com (fonts, menubar, hierarchy, grid blog). Approved in chat.\n\n\n\nR1 Type system, site-wide: Roboto Condensed (nav, titles, meta; nav/meta uppercase, titles title-case), body in a light weight (Myriad Pro via Adobe Fonts kit if provided, else Source Sans 3 Light, tracked). Weights: 300 body, 400 titles, 500 active nav. Code: JetBrains Mono. One definition, every page.\nR2 Menubar: full width, translucent off-white with backdrop blur; name left, uppercase links left, active link underlined; icons (GitHub, X, LinkedIn, email, theme toggle) right; simple mobile menu. Page background off-white.\nR3 Blog index: two views with a Grid | List toggle, choice remembered per visitor. Grid (default): 3 / 2 / 1 columns, 3:2 rounded image with soft shadow, meta line M/D/YY | CATEGORIES, condensed title, 2-line light description, underlined “Read More”. List: the original Quarto default listing (image, date, title, reading time, description, categories, sort, filter).\nR4 Posts read like a paper: meta line, condensed title, light subtitle, header image capped in height; ~720px text column, TOC in right margin; numbered equations/figures with cross-refs; footnotes and citations in the margin; reference list from .bib; “Cite this post” appendix + Google Scholar metadata. Reading-progress bar 2px.\nR5 Other pages (home, CV, publications, news, teaching, projects) use the same menu, fonts and heading hierarchy; content unchanged.\nR6 Replace legacy custom.scss (~4000 lines, entrance animations, !important layering) with one clean theme. Keep and restyle used components: bio photo, social links, tools row, CV header, publications list/search, news timeline, projects grid, footer, collapsible code.\nR7 Dark mode works on every page with matching colors and no light flash on load.\nR8 No entrance/looping animations; hover = color/opacity only (+ subtle blog image zoom).\n\n\n\n\n\nV1 Full quarto render succeeds with no warnings from site sources.\nV2 Headless audit, light + dark, 390px and 1512px: computed fonts match R1 on every page; zero hidden text nodes; WCAG contrast pass; no horizontal overflow.\nV3 Blog toggle switches views and persists across reload.\nV4 Demo post (draft) renders numbered eq/fig refs, margin footnote + citation, reference list, citation appendix, citation_* meta tags.\nV5 Progress bar computed height 2px; navbar has backdrop-filter and translucent background.\n\n\n\n\n\nV1 quarto render: no warnings from site sources. Draft demo rendered with -M draft:false.\nV2 11 pages x {light, dark} x {1512, 390}px: body Source Sans 3 (300), h1 and nav Roboto Condensed (nav uppercase); 0 hidden text nodes; 0 WCAG contrast failures; 0 horizontal overflow; 0 JS errors.\nV3 Grid default, 3 tiles with loaded images, 3/2/1 columns at 1512/900/390px; List shows 3 posts with categories; choice persists across reload.\nV4 Demo post: “Equation 1” / “Figure 1” cross-refs, (1) equation number, margin footnote, margin note, margin citation, end reference list (2 entries), Citation appendix with BibTeX, citation_title meta; header image capped (340px).\nV5 Progress bar 2px (posts only); navbar backdrop-filter: saturate(1.8) blur(20px), background alpha 0.72.\n\nNotes: smooth-scroll turned off (Quarto’s zenscroll raised a require.js “mismatched define” error on Jupyter pages); CSS scroll-behavior: smooth replaces it. With citation-location: margin Quarto omits the end bibliography, so _includes/after-body.html rebuilds it from the margin entries.\n\n\n\nSame design, except headings and titles (h1-h3, grid/list post titles, publication, news and project titles, callout titles, publication year watermark) use Newsreader, a modern editorial serif with optical sizing. Navigation, meta labels, h4-h6, buttons, TOC and appendix labels keep Roboto Condensed; body stays Source Sans 3 Light."
-  },
-  {
-    "objectID": "docs/superpowers/specs/2026-09-24-site-revamp-design.html#requirements",
-    "href": "docs/superpowers/specs/2026-09-24-site-revamp-design.html#requirements",
-    "title": "Site revamp — design (approved 2026-09-24)",
-    "section": "",
-    "text": "R1 Type system, site-wide: Roboto Condensed (nav, titles, meta; nav/meta uppercase, titles title-case), body in a light weight (Myriad Pro via Adobe Fonts kit if provided, else Source Sans 3 Light, tracked). Weights: 300 body, 400 titles, 500 active nav. Code: JetBrains Mono. One definition, every page.\nR2 Menubar: full width, translucent off-white with backdrop blur; name left, uppercase links left, active link underlined; icons (GitHub, X, LinkedIn, email, theme toggle) right; simple mobile menu. Page background off-white.\nR3 Blog index: two views with a Grid | List toggle, choice remembered per visitor. Grid (default): 3 / 2 / 1 columns, 3:2 rounded image with soft shadow, meta line M/D/YY | CATEGORIES, condensed title, 2-line light description, underlined “Read More”. List: the original Quarto default listing (image, date, title, reading time, description, categories, sort, filter).\nR4 Posts read like a paper: meta line, condensed title, light subtitle, header image capped in height; ~720px text column, TOC in right margin; numbered equations/figures with cross-refs; footnotes and citations in the margin; reference list from .bib; “Cite this post” appendix + Google Scholar metadata. Reading-progress bar 2px.\nR5 Other pages (home, CV, publications, news, teaching, projects) use the same menu, fonts and heading hierarchy; content unchanged.\nR6 Replace legacy custom.scss (~4000 lines, entrance animations, !important layering) with one clean theme. Keep and restyle used components: bio photo, social links, tools row, CV header, publications list/search, news timeline, projects grid, footer, collapsible code.\nR7 Dark mode works on every page with matching colors and no light flash on load.\nR8 No entrance/looping animations; hover = color/opacity only (+ subtle blog image zoom)."
-  },
-  {
-    "objectID": "docs/superpowers/specs/2026-09-24-site-revamp-design.html#validation",
-    "href": "docs/superpowers/specs/2026-09-24-site-revamp-design.html#validation",
-    "title": "Site revamp — design (approved 2026-09-24)",
-    "section": "",
-    "text": "V1 Full quarto render succeeds with no warnings from site sources.\nV2 Headless audit, light + dark, 390px and 1512px: computed fonts match R1 on every page; zero hidden text nodes; WCAG contrast pass; no horizontal overflow.\nV3 Blog toggle switches views and persists across reload.\nV4 Demo post (draft) renders numbered eq/fig refs, margin footnote + citation, reference list, citation appendix, citation_* meta tags.\nV5 Progress bar computed height 2px; navbar has backdrop-filter and translucent background."
-  },
-  {
-    "objectID": "docs/superpowers/specs/2026-09-24-site-revamp-design.html#evidence-2026-09-24-quarto-1.7.32-headless-chromium",
-    "href": "docs/superpowers/specs/2026-09-24-site-revamp-design.html#evidence-2026-09-24-quarto-1.7.32-headless-chromium",
-    "title": "Site revamp — design (approved 2026-09-24)",
-    "section": "",
-    "text": "V1 quarto render: no warnings from site sources. Draft demo rendered with -M draft:false.\nV2 11 pages x {light, dark} x {1512, 390}px: body Source Sans 3 (300), h1 and nav Roboto Condensed (nav uppercase); 0 hidden text nodes; 0 WCAG contrast failures; 0 horizontal overflow; 0 JS errors.\nV3 Grid default, 3 tiles with loaded images, 3/2/1 columns at 1512/900/390px; List shows 3 posts with categories; choice persists across reload.\nV4 Demo post: “Equation 1” / “Figure 1” cross-refs, (1) equation number, margin footnote, margin note, margin citation, end reference list (2 entries), Citation appendix with BibTeX, citation_title meta; header image capped (340px).\nV5 Progress bar 2px (posts only); navbar backdrop-filter: saturate(1.8) blur(20px), background alpha 0.72.\n\nNotes: smooth-scroll turned off (Quarto’s zenscroll raised a require.js “mismatched define” error on Jupyter pages); CSS scroll-behavior: smooth replaces it. With citation-location: margin Quarto omits the end bibliography, so _includes/after-body.html rebuilds it from the margin entries."
-  },
-  {
-    "objectID": "docs/superpowers/specs/2026-09-24-site-revamp-design.html#variant-serif-headings-branch-famous-glowworm-2026-09-24",
-    "href": "docs/superpowers/specs/2026-09-24-site-revamp-design.html#variant-serif-headings-branch-famous-glowworm-2026-09-24",
-    "title": "Site revamp — design (approved 2026-09-24)",
-    "section": "",
-    "text": "Same design, except headings and titles (h1-h3, grid/list post titles, publication, news and project titles, callout titles, publication year watermark) use Newsreader, a modern editorial serif with optical sizing. Navigation, meta labels, h4-h6, buttons, TOC and appendix labels keep Roboto Condensed; body stays Source Sans 3 Light."
-  },
-  {
-    "objectID": "DEPLOYMENT.html",
-    "href": "DEPLOYMENT.html",
-    "title": "Deployment Guide",
-    "section": "",
-    "text": "Your new Quarto academic website is ready for deployment! Here are the steps to get it online.\n\n\nThe site is currently running locally at: http://localhost:4200\nTo stop the preview server:\nquarto preview --stop\n\n\n\n\n\n# Navigate to your project directory\ncd \"Quarto website\"\n\n# Deploy to GitHub Pages\nquarto publish gh-pages\n\n# Follow the prompts to configure GitHub repository\n\n\n\n\nPush your project to a GitHub repository\nConnect Netlify to your repository\nSet build command: quarto render\nSet publish directory: _site\nDeploy automatically on every push\n\n\n\n\n\nPush your project to a GitHub repository\n\nImport project in Vercel\nVercel will auto-detect Quarto and configure build settings\nDeploy automatically\n\n\n\n\n# Build the site\nquarto render\n\n# Upload contents of _site/ folder to your web server\n\n\n\n\n\nUpdate contact information in _quarto.yml\nReplace placeholder content with your actual information\nAdd your publications to _bibliography/papers.bib\nUpdate social media links in navigation\nAdd your actual profile picture\nTest all links and navigation\nReview and customize the styling if needed\n\n\n\n\nIf using a custom domain:\n\nGitHub Pages: Add CNAME file with your domain\nNetlify: Configure domain in site settings\nVercel: Add domain in project settings\n\n\n\n\nAll modern hosting platforms provide free SSL certificates. Ensure your site uses HTTPS for: - Better SEO rankings - Secure connections - Professional appearance\n\n\n\n\n\n# Create new post directory\nmkdir \"blog/posts/YYYY-MM-DD-post-title\"\n\n# Create index.qmd with frontmatter:\n---\ntitle: \"Your Post Title\"\ndescription: \"Brief description\"\nauthor: \"Joseph Frimpong\"\ndate: \"2024-01-15\"\ncategories: [category1, category2]\n---\n\n\n\nAdd new entries to _bibliography/papers.bib in standard BibTeX format.\n\n\n\nEdit styles/site.scss to customize colors, fonts, and layouts (tokens are at the top of the file).\n\n\n\n\nYour site is already optimized with: - ✅ Responsive images - ✅ Minified CSS/JS - ✅ Clean HTML structure - ✅ Fast loading times - ✅ Mobile-friendly design\n\n\n\nConsider adding: - Google Analytics - Search Console verification - OpenGraph meta tags (already included) - XML sitemap (auto-generated)\n\n\n\nFor Quarto-specific issues: - Quarto Documentation - Quarto Community\nFor website content questions: - Review this README.md - Check example content in blog posts - Refer to original site structure\n\n\n\n\nKeep source code in Git repository\nRegular commits for content updates\nExport/backup _bibliography/papers.bib\nSave any custom assets/images\n\nYour new academic website combines the best of modern web development with academic functionality. Enjoy showcasing your research and insights!"
-  },
-  {
-    "objectID": "DEPLOYMENT.html#quick-start",
-    "href": "DEPLOYMENT.html#quick-start",
-    "title": "Deployment Guide",
-    "section": "",
-    "text": "The site is currently running locally at: http://localhost:4200\nTo stop the preview server:\nquarto preview --stop"
-  },
-  {
-    "objectID": "DEPLOYMENT.html#deployment-options",
-    "href": "DEPLOYMENT.html#deployment-options",
-    "title": "Deployment Guide",
-    "section": "",
-    "text": "# Navigate to your project directory\ncd \"Quarto website\"\n\n# Deploy to GitHub Pages\nquarto publish gh-pages\n\n# Follow the prompts to configure GitHub repository\n\n\n\n\nPush your project to a GitHub repository\nConnect Netlify to your repository\nSet build command: quarto render\nSet publish directory: _site\nDeploy automatically on every push\n\n\n\n\n\nPush your project to a GitHub repository\n\nImport project in Vercel\nVercel will auto-detect Quarto and configure build settings\nDeploy automatically\n\n\n\n\n# Build the site\nquarto render\n\n# Upload contents of _site/ folder to your web server"
-  },
-  {
-    "objectID": "DEPLOYMENT.html#pre-deployment-checklist",
-    "href": "DEPLOYMENT.html#pre-deployment-checklist",
-    "title": "Deployment Guide",
-    "section": "",
-    "text": "Update contact information in _quarto.yml\nReplace placeholder content with your actual information\nAdd your publications to _bibliography/papers.bib\nUpdate social media links in navigation\nAdd your actual profile picture\nTest all links and navigation\nReview and customize the styling if needed"
-  },
-  {
-    "objectID": "DEPLOYMENT.html#domain-configuration",
-    "href": "DEPLOYMENT.html#domain-configuration",
-    "title": "Deployment Guide",
-    "section": "",
-    "text": "If using a custom domain:\n\nGitHub Pages: Add CNAME file with your domain\nNetlify: Configure domain in site settings\nVercel: Add domain in project settings"
-  },
-  {
-    "objectID": "DEPLOYMENT.html#sslhttps",
-    "href": "DEPLOYMENT.html#sslhttps",
-    "title": "Deployment Guide",
-    "section": "",
-    "text": "All modern hosting platforms provide free SSL certificates. Ensure your site uses HTTPS for: - Better SEO rankings - Secure connections - Professional appearance"
-  },
-  {
-    "objectID": "DEPLOYMENT.html#site-maintenance",
-    "href": "DEPLOYMENT.html#site-maintenance",
-    "title": "Deployment Guide",
-    "section": "",
-    "text": "# Create new post directory\nmkdir \"blog/posts/YYYY-MM-DD-post-title\"\n\n# Create index.qmd with frontmatter:\n---\ntitle: \"Your Post Title\"\ndescription: \"Brief description\"\nauthor: \"Joseph Frimpong\"\ndate: \"2024-01-15\"\ncategories: [category1, category2]\n---\n\n\n\nAdd new entries to _bibliography/papers.bib in standard BibTeX format.\n\n\n\nEdit styles/site.scss to customize colors, fonts, and layouts (tokens are at the top of the file)."
-  },
-  {
-    "objectID": "DEPLOYMENT.html#performance-optimization",
-    "href": "DEPLOYMENT.html#performance-optimization",
-    "title": "Deployment Guide",
-    "section": "",
-    "text": "Your site is already optimized with: - ✅ Responsive images - ✅ Minified CSS/JS - ✅ Clean HTML structure - ✅ Fast loading times - ✅ Mobile-friendly design"
-  },
-  {
-    "objectID": "DEPLOYMENT.html#analytics-seo",
-    "href": "DEPLOYMENT.html#analytics-seo",
-    "title": "Deployment Guide",
-    "section": "",
-    "text": "Consider adding: - Google Analytics - Search Console verification - OpenGraph meta tags (already included) - XML sitemap (auto-generated)"
-  },
-  {
-    "objectID": "DEPLOYMENT.html#support",
-    "href": "DEPLOYMENT.html#support",
-    "title": "Deployment Guide",
-    "section": "",
-    "text": "For Quarto-specific issues: - Quarto Documentation - Quarto Community\nFor website content questions: - Review this README.md - Check example content in blog posts - Refer to original site structure"
-  },
-  {
-    "objectID": "DEPLOYMENT.html#backup-strategy",
-    "href": "DEPLOYMENT.html#backup-strategy",
-    "title": "Deployment Guide",
-    "section": "",
-    "text": "Keep source code in Git repository\nRegular commits for content updates\nExport/backup _bibliography/papers.bib\nSave any custom assets/images\n\nYour new academic website combines the best of modern web development with academic functionality. Enjoy showcasing your research and insights!"
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/INSTALL.html",
-    "href": "site-backup-2025-11-10/academic-github-site/INSTALL.html",
-    "title": "Table of Contents",
-    "section": "",
-    "text": "Table of Contents\nInstalling and Deploying\n\nRecommended Approach\nLocal setup on Windows\nLocal setup using Docker (Recommended)\n\nBuild your own docker image\n\nLocal Setup with Development Containers\nLocal Setup (Legacy, no longer supported)\nDeployment\n\nFor personal and organization webpages\nFor project pages\nEnabling automatic deployment\nManual deployment to GitHub Pages\nDeployment to another hosting server (non GitHub Pages)\nDeployment to a separate repository (advanced users only)\n\nUpgrading from a previous version"
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/INSTALL.html#recommended-approach",
-    "href": "site-backup-2025-11-10/academic-github-site/INSTALL.html#recommended-approach",
-    "title": "Table of Contents",
-    "section": "Recommended Approach",
-    "text": "Recommended Approach\nThe recommended approach for using al-folio is to first create your own site using the template with as few changes as possible, and only when it is up and running customize it however you like. This way it is easier to pinpoint what causes a potential issue in case of a bug. The minimum steps required to create your own site are (video tutorial here):\n\nCreate a new repository using this template. For this, click on Use this template -&gt; Create a new repository above the file list. If you plan to upload your site to &lt;your-github-username&gt;.github.io, note that the name of your repository :warning: MUST BE :warning: &lt;your-github-username&gt;.github.io or &lt;your-github-orgname&gt;.github.io, as stated in the GitHub pages docs.\nIn this new repository, go to Settings -&gt; Actions -&gt; General -&gt; Workflow permissions and give Read and write permissions to GitHub Actions.\nOpen file _config.yml, set url to https://&lt;your-github-username&gt;.github.io and leave baseurl empty (do NOT delete it), as baseurl:.\nWait until the GitHub action with subtitle Deploy site finishes (check your repository Actions tab), which takes ~4 min. Now, in addition to the main branch, your repository has a newly built gh-pages branch.\nFinally, in the repository page go to Settings -&gt; Pages -&gt; Build and deployment, make sure that Source is set to Deploy from a branch and set the branch to gh-pages (NOT to main).\nWait until the GitHub action pages-build-deployment finishes (check your repository Actions tab), which takes ~45s, then simply navigate to https://&lt;your-github-username&gt;.github.io in your browser. At this point you should see a copy of the theme’s demo website. After everything is set up, you can download the repository to your machine and start customizing it. To do so, run the following commands:\n\n$ git clone git@github.com:&lt;your-username&gt;/&lt;your-repo-name&gt;.git\nStarting version v0.3.5, al-folio will automatically re-deploy your webpage each time you push new changes to your repository! :sparkles:"
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/INSTALL.html#local-setup-on-windows",
-    "href": "site-backup-2025-11-10/academic-github-site/INSTALL.html#local-setup-on-windows",
-    "title": "Table of Contents",
-    "section": "Local setup on Windows",
-    "text": "Local setup on Windows\nIf you are using Windows, it is highly recommended to use Windows Subsystem for Linux (WSL), which is a compatibility layer for running Linux on top of Windows. You can follow these instructions to install WSL and Ubuntu on your machine. You only need to go up to the step 4 of the tutorial (you don’t have to enable the optional systemd nor the graphical applications), and then you can follow the instructions below to install docker. You can install docker natively on Windows as well, but it has been having some issues as can be seen in #1540, #2007."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/INSTALL.html#local-setup-using-docker-recommended",
-    "href": "site-backup-2025-11-10/academic-github-site/INSTALL.html#local-setup-using-docker-recommended",
-    "title": "Table of Contents",
-    "section": "Local setup using Docker (Recommended)",
-    "text": "Local setup using Docker (Recommended)\nUsing Docker to install Jekyll and Ruby dependencies is the easiest way.\nYou need to take the following steps to get al-folio up and running on your local machine:\n\nFirst, install docker and docker-compose.\nFinally, run the following command that will pull the latest pre-built image from DockerHub and will run your website.\n\n$ docker compose pull\n$ docker compose up\nNote that when you run it for the first time, it will download a docker image of size 400MB or so. To see the template running, open your browser and go to http://localhost:8080. You should see a copy of the theme’s demo website.\nNow, feel free to customize the theme however you like (don’t forget to change the name!). Also, your changes should be automatically rendered in real-time (or maybe after a few seconds).\n\nBeta: You can also use the slimmed docker image with a size below 100MBs and exact same functionality. Just use docker compose -f docker-compose-slim.yml up\n\n\nBuild your own docker image\n\nNote: this approach is only necessary if you would like to build an older or very custom version of al-folio.\n\nBuild and run a new docker image using:\n$ docker compose up --build\n\nIf you want to update jekyll, install new ruby packages, etc., all you have to do is build the image again using --force-recreate argument at the end of the previous command! It will download Ruby and Jekyll and install all Ruby packages again from scratch.\n\nIf you want to use a specific docker version, you can do so by changing latest tag to your_version in docker-compose.yaml. For example, you might have created your website on v0.10.0 and you want to stick with that."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/INSTALL.html#local-setup-with-development-containers",
-    "href": "site-backup-2025-11-10/academic-github-site/INSTALL.html#local-setup-with-development-containers",
-    "title": "Table of Contents",
-    "section": "Local Setup with Development Containers",
-    "text": "Local Setup with Development Containers\nal-folio supports Development Containers. For example, when you open the repository with Visual Studio Code (VSCode), it prompts you to install the necessary extension and automatically install everything necessary."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/INSTALL.html#local-setup-legacy-no-longer-supported",
-    "href": "site-backup-2025-11-10/academic-github-site/INSTALL.html#local-setup-legacy-no-longer-supported",
-    "title": "Table of Contents",
-    "section": "Local Setup (Legacy, no longer supported)",
-    "text": "Local Setup (Legacy, no longer supported)\nFor a hands-on walkthrough of running al-folio locally without using Docker, check out this cool blog post by one of the community members!\nAssuming you have Ruby and Bundler installed on your system (hint: for ease of managing ruby gems, consider using rbenv), and also Python and pip (hint: for ease of managing python packages, consider using a virtual environment, like venv or conda).\n$ bundle install\n# assuming pip is your Python package manager\n$ pip install jupyter\n$ bundle exec jekyll serve\nTo see the template running, open your browser and go to http://localhost:4000. You should see a copy of the theme’s demo website. Now, feel free to customize the theme however you like. After you are done, remember to commit your final changes."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/INSTALL.html#deployment",
-    "href": "site-backup-2025-11-10/academic-github-site/INSTALL.html#deployment",
-    "title": "Table of Contents",
-    "section": "Deployment",
-    "text": "Deployment\nDeploying your website to GitHub Pages is the most popular option. Starting version v0.3.5, al-folio will automatically re-deploy your webpage each time you push new changes to your repository main branch! :sparkles:\n\nFor personal and organization webpages\n\nThe name of your repository MUST BE &lt;your-github-username&gt;.github.io or &lt;your-github-orgname&gt;.github.io.\nIn _config.yml, set url to https://&lt;your-github-username&gt;.github.io and leave baseurl empty.\nSet up automatic deployment of your webpage (see instructions below).\nMake changes to your main branch, commit, and push!\nAfter deployment, the webpage will become available at &lt;your-github-username&gt;.github.io.\n\n\n\nFor project pages\n\nIn _config.yml, set url to https://&lt;your-github-username&gt;.github.io and baseurl to /&lt;your-repository-name&gt;/.\nSet up automatic deployment of your webpage (see instructions below).\nMake changes to your main branch, commit, and push!\nAfter deployment, the webpage will become available at &lt;your-github-username&gt;.github.io/&lt;your-repository-name&gt;/.\n\n\n\nEnabling automatic deployment\n\nClick on Actions tab and Enable GitHub Actions; do not worry about creating any workflows as everything has already been set for you.\nGo to Settings -&gt; Actions -&gt; General -&gt; Workflow permissions, and give Read and write permissions to GitHub Actions\nMake any other changes to your webpage, commit, and push to your main branch. This will automatically trigger the Deploy action.\nWait for a few minutes and let the action complete. You can see the progress in the Actions tab. If completed successfully, in addition to the main branch, your repository should now have a newly built gh-pages branch. Do NOT touch this branch!\nFinally, in the Settings of your repository, in the Pages section, set the branch to gh-pages (NOT to main). For more details, see Configuring a publishing source for your GitHub Pages site.\n\nIf you keep your site on another branch, open .github/workflows/deploy.yml on the branch you keep your website on and change on-&gt;push-&gt;branches and on-&gt;pull\\_request-&gt;branches to the branch you keep your website on. This will trigger the action on pulls/pushes on that branch. The action will then deploy the website on the branch it was triggered from.\n\n\nManual deployment to GitHub Pages\nIf you need to manually re-deploy your website to GitHub pages, go to Actions, click “Deploy” in the left sidebar, then “Run workflow.”\n\n\nDeploy on Netlify\n\nUse this template -&gt; Create a new repository.\nNetlify: Add new site -&gt; Import an existing project -&gt; GitHub and give Netlify access to the repository you just created.\nNetlify: In the deploy settings\n\nSet Branch to deploy to main\nBase directory is empty\nSet Build command to sed -i \"s/^\\(baseurl: \\).*$/baseurl:/\" _config.yml && bundle exec jekyll build\nSet Publish directory to _site\n\nNetlify: Add the following two environment variables\n\n\n\n\n\n\n\n\nKey\nValue\n\n\n\n\nJEKYLL_ENV\nproduction\n\n\nRUBY_VERSION\nset to the Ruby version found in .github/workflows/deploy.yml (for example, 3.3.5)\n\n\n\n\nNetlify: Click Deploy and wait for the site to be published. If you want to use your own domain name, follow the steps in this documentation.\n\n\n\nDeployment to another hosting server (non GitHub Pages)\nIf you decide to not use GitHub Pages and host your page elsewhere, simply run:\n$ bundle exec jekyll build\nwhich will (re-)generate the static webpage in the _site/ folder. Then simply copy the contents of the _site/ directory to your hosting server.\nIf you also want to remove unused css classes from your file, run:\n$ purgecss -c purgecss.config.js\nwhich will replace the css files in the _site/assets/css/ folder with the purged css files.\nNote: Make sure to correctly set the url and baseurl fields in _config.yml before building the webpage. If you are deploying your webpage to your-domain.com/your-project/, you must set url: your-domain.com and baseurl: /your-project/. If you are deploying directly to your-domain.com, leave baseurl blank, do not delete it.\n\n\nDeployment to a separate repository (advanced users only)\nNote: Do not try using this method unless you know what you are doing (make sure you are familiar with publishing sources). This approach allows to have the website’s source code in one repository and the deployment version in a different repository.\nLet’s assume that your website’s publishing source is a publishing-source subdirectory of a git-versioned repository cloned under $HOME/repo/. For a user site this could well be something like $HOME/&lt;user&gt;.github.io.\nFirstly, from the deployment repo dir, checkout the git branch hosting your publishing source.\nThen from the website sources dir (commonly your al-folio fork’s clone):\n$ bundle exec jekyll build --destination $HOME/repo/publishing-source\nThis will instruct jekyll to deploy the website under $HOME/repo/publishing-source.\nNote: Jekyll will clean $HOME/repo/publishing-source before building!\nThe quote below is taken directly from the jekyll configuration docs:\n\nDestination folders are cleaned on site builds\nThe contents of &lt;destination&gt; are automatically cleaned, by default, when the site is built. Files or folders that are not created by your site will be removed. Some files could be retained by specifying them within the &lt;keep_files&gt; configuration directive.\nDo not use an important location for &lt;destination&gt;; instead, use it as a staging area and copy files from there to your web server.\n\nIf $HOME/repo/publishing-source contains files that you want jekyll to leave untouched, specify them under keep_files in _config.yml. In its default configuration, al-folio will copy the top-level README.md to the publishing source. If you want to change this behavior, add README.md under exclude in _config.yml.\nNote: Do not run jekyll clean on your publishing source repo as this will result in the entire directory getting deleted, irrespective of the content of keep_files in _config.yml."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/INSTALL.html#upgrading-from-a-previous-version",
-    "href": "site-backup-2025-11-10/academic-github-site/INSTALL.html#upgrading-from-a-previous-version",
-    "title": "Table of Contents",
-    "section": "Upgrading from a previous version",
-    "text": "Upgrading from a previous version\nIf you installed al-folio as described above, you can manually update your code by following the steps below:\n# Assuming the current directory is &lt;your-repo-name&gt;\n$ git remote add upstream https://github.com/alshedivat/al-folio.git\n$ git fetch upstream\n$ git rebase v0.11.0\nIf you have extensively customized a previous version, it might be trickier to upgrade. You can still follow the steps above, but git rebase may result in merge conflicts that must be resolved. See git rebase manual and how to resolve conflicts for more information. If rebasing is too complicated, we recommend re-installing the new version of the theme from scratch and port over your content and changes from the previous version manually. You can use tools like meld or winmerge to help in this process."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/assets/jupyter/blog.html",
-    "href": "site-backup-2025-11-10/academic-github-site/assets/jupyter/blog.html",
-    "title": "Joseph Frimpong",
-    "section": "",
-    "text": "import sys\nsys.version_info\n\nsys.version_info(major=3, minor=6, micro=2, releaselevel='final', serial=0)"
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CONTRIBUTING.html",
-    "href": "site-backup-2025-11-10/academic-github-site/CONTRIBUTING.html",
-    "title": "Contributing to al-folio",
-    "section": "",
-    "text": "Thank you for considering contributing to al-folio!\n\n\nWe welcome your pull requests (PRs). For minor fixes (e.g., documentation improvements), feel free to submit a PR directly. If you would like to implement a new feature or a bug, please make sure you (or someone else) has opened an appropriate issue first; in your PR, please mention the issue it addresses.\nNote that since #2048 al-folio uses the prettier formatter for its code, meaning all new submitted code must conform to its standard. If you don’t have prettier installed for your setup and the prettier code check fails when submitting a PR, you can check the referred failed action in our repo. In that action there will be an artifact with an HTML diff showing the needed changes.\n\n\n\nWe use GitHub issues to track bugs and feature requests. Before submitting an issue, please make sure:\n\nYou have read the FAQ section of the README and your question is NOT addressed there.\nYou have done your best to ensure that your issue is NOT a duplicate of one of the previous issues.\nYour issue is either a bug (unexpected/undesirable behavior) or a feature request. If it is just a question, please ask it in the Discussions forum.\n\nWhen submitting an issue, please make sure to use the appropriate template.\n\n\n\nBy contributing to al-folio, you agree that your contributions will be licensed under the LICENSE file in the root directory of the source tree."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CONTRIBUTING.html#pull-requests",
-    "href": "site-backup-2025-11-10/academic-github-site/CONTRIBUTING.html#pull-requests",
-    "title": "Contributing to al-folio",
-    "section": "",
-    "text": "We welcome your pull requests (PRs). For minor fixes (e.g., documentation improvements), feel free to submit a PR directly. If you would like to implement a new feature or a bug, please make sure you (or someone else) has opened an appropriate issue first; in your PR, please mention the issue it addresses.\nNote that since #2048 al-folio uses the prettier formatter for its code, meaning all new submitted code must conform to its standard. If you don’t have prettier installed for your setup and the prettier code check fails when submitting a PR, you can check the referred failed action in our repo. In that action there will be an artifact with an HTML diff showing the needed changes."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CONTRIBUTING.html#issues",
-    "href": "site-backup-2025-11-10/academic-github-site/CONTRIBUTING.html#issues",
-    "title": "Contributing to al-folio",
-    "section": "",
-    "text": "We use GitHub issues to track bugs and feature requests. Before submitting an issue, please make sure:\n\nYou have read the FAQ section of the README and your question is NOT addressed there.\nYou have done your best to ensure that your issue is NOT a duplicate of one of the previous issues.\nYour issue is either a bug (unexpected/undesirable behavior) or a feature request. If it is just a question, please ask it in the Discussions forum.\n\nWhen submitting an issue, please make sure to use the appropriate template."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CONTRIBUTING.html#license",
-    "href": "site-backup-2025-11-10/academic-github-site/CONTRIBUTING.html#license",
-    "title": "Contributing to al-folio",
-    "section": "",
-    "text": "By contributing to al-folio, you agree that your contributions will be licensed under the LICENSE file in the root directory of the source tree."
-  },
-  {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "Research Projects",
-    "section": "",
-    "text": "AI/ML for Electronic Structure\n    \n    2024 – presentArgonne National LaboratoryPostdoctoral Researcher\n    Generative and surrogate models to accelerate GW/BSE workflows, including latent representations for screened Coulomb interactions and uncertainty-aware property prediction.\n    GW/BSEMachine LearningHPC\n  \n\n\n\n  \n    \n  \n  \n    \n      \n      Quantum Dots & Interfaces\n    \n    2019 – 2024Wayne State UniversityPhD Researcher\n    Many-body perturbation theory for colloidal nanocrystals and molecule/metal interfaces; ligand exchange thermodynamics, optical transitions, and environment-induced screening.\n    Quantum DotsInterfacesGW\n  \n\n\n\n  \n    \n  \n  \n    \n      \n      Isotopic Labeling & Catalysis\n    \n    2022 – 2024Collaborations with Luo Lab & PartnersComputational Collaborator\n    Photocatalytic and electrochemical hydrogen isotope exchange using quantum dots; mechanistic modeling of proton-coupled electron transfer in complex pharmaceuticals.\n    Isotope LabelingPhotocatalysisElectrochemistry\n  \n\n\n\n  \n    \n  \n  \n    \n      \n      Method Development & HPC Tooling\n    \n    OngoingCollaborative Software ProjectsDeveloper & Maintainer\n    Workflow automation, MPI-enabled screening, and reproducible data management for exascale systems; contributions to WEST/BerkeleyGW utilities and PyTorch-driven surrogates.\n    SoftwareAutomationMPI"
-  },
-  {
-    "objectID": "blog/posts/2023-10-12-why-graduate-school/index.html",
-    "href": "blog/posts/2023-10-12-why-graduate-school/index.html",
-    "title": "Why Graduate School is for You",
-    "section": "",
-    "text": "Graduate school represents one of the most transformative periods in an academic’s journey. As a postdoctoral researcher reflecting on my own path through graduate studies, I’ve come to appreciate both the challenges and rewards that define this unique experience."
-  },
-  {
-    "objectID": "blog/posts/2023-10-12-why-graduate-school/index.html#the-decision-to-pursue-graduate-studies",
-    "href": "blog/posts/2023-10-12-why-graduate-school/index.html#the-decision-to-pursue-graduate-studies",
-    "title": "Why Graduate School is for You",
-    "section": "The Decision to Pursue Graduate Studies",
-    "text": "The Decision to Pursue Graduate Studies\nThe decision to enter graduate school shouldn’t be taken lightly. Unlike undergraduate studies, graduate school requires a different kind of commitment—one that goes beyond coursework to include original research, intellectual independence, and often, a redefinition of your relationship with learning itself.\n\nWhat Graduate School Really Offers\nIntellectual Freedom: Perhaps the most rewarding aspect of graduate school is the freedom to pursue questions that genuinely intrigue you. While this freedom can initially feel overwhelming, it ultimately allows you to develop your own research identity.\nResearch Skills: You’ll develop critical thinking skills, learn to design experiments, analyze complex data, and communicate your findings effectively. These skills are valuable far beyond academia.\nProfessional Network: The connections you make—with advisors, peers, and collaborators—often prove to be among the most valuable aspects of your graduate experience."
-  },
-  {
-    "objectID": "blog/posts/2023-10-12-why-graduate-school/index.html#the-realities-and-challenges",
-    "href": "blog/posts/2023-10-12-why-graduate-school/index.html#the-realities-and-challenges",
-    "title": "Why Graduate School is for You",
-    "section": "The Realities and Challenges",
-    "text": "The Realities and Challenges\nGraduate school isn’t just about the intellectual rewards. It comes with real challenges that prospective students should understand:\n\nFinancial Considerations\nMost graduate programs in the sciences offer funding through assistantships or fellowships, but the stipends are typically modest. Learning to live on a graduate student budget while focusing on your research requires careful planning and often some lifestyle adjustments.\n\n\nTime Management and Work-Life Balance\nThe flexibility of graduate school can be both a blessing and a curse. Without structured class schedules, you’ll need to develop strong self-discipline and time management skills. Finding balance between research, coursework, and personal life becomes an essential skill.\n\n\nImposter Syndrome and Mental Health\nIt’s common to feel like you don’t belong or aren’t smart enough, especially when surrounded by brilliant peers and faculty. Recognizing these feelings as normal and seeking support when needed is crucial for long-term success and well-being."
-  },
-  {
-    "objectID": "blog/posts/2023-10-12-why-graduate-school/index.html#advice-for-prospective-students",
-    "href": "blog/posts/2023-10-12-why-graduate-school/index.html#advice-for-prospective-students",
-    "title": "Why Graduate School is for You",
-    "section": "Advice for Prospective Students",
-    "text": "Advice for Prospective Students\nIf you’re considering graduate school, here are some key questions to ask yourself:\n\nAre you passionate about research? Graduate school is primarily about conducting original research, not just taking classes.\nCan you handle uncertainty? Research involves many failed experiments and dead ends before breakthroughs occur.\nDo you have clear career goals? While it’s okay for these to evolve, having some sense of direction helps maintain motivation during challenging periods.\n\n\nMaking the Most of Your Graduate Experience\n\nChoose your advisor carefully: This relationship will significantly impact your graduate experience and future career.\nEmbrace failure as learning: Every failed experiment teaches you something valuable.\nBuild a support network: Connect with other graduate students, join professional organizations, attend conferences.\nDevelop transferable skills: Writing, presenting, project management, and leadership skills will serve you well in any career path."
-  },
-  {
-    "objectID": "blog/posts/2023-10-12-why-graduate-school/index.html#looking-forward",
-    "href": "blog/posts/2023-10-12-why-graduate-school/index.html#looking-forward",
-    "title": "Why Graduate School is for You",
-    "section": "Looking Forward",
-    "text": "Looking Forward\nGraduate school is demanding, but for those who are passionate about research and discovery, it can be incredibly rewarding. The skills you develop, the knowledge you gain, and the contributions you make to your field can have lasting impact.\nWhether you continue in academia or transition to industry, the graduate school experience shapes how you approach complex problems and think critically about the world around you. It’s not just about earning a degree—it’s about becoming an independent researcher and thinker.\nFor those considering this path, take time to reflect on your motivations and goals. Talk to current graduate students and recent graduates in your field of interest. Most importantly, remember that graduate school is just one part of your career journey, but it can be a transformative and rewarding part if approached with the right mindset and preparation.\n\nWhat questions do you have about graduate school? Feel free to reach out—I’m always happy to chat with prospective students about the academic journey."
-  },
-  {
-    "objectID": "blog/posts/2023-11-17-getting-started-linux/index.html",
-    "href": "blog/posts/2023-11-17-getting-started-linux/index.html",
-    "title": "Getting Started with Linux",
-    "section": "",
-    "text": "As a computational materials scientist, Linux has become an indispensable part of my daily workflow. Whether you’re running density functional theory calculations, managing large datasets, or developing scientific software, Linux provides the power and flexibility needed for serious computational work.\nIf you’re new to Linux or considering making the switch from Windows or macOS for your research work, this guide will help you get started with confidence."
-  },
-  {
-    "objectID": "blog/posts/2023-11-17-getting-started-linux/index.html#why-linux-for-scientific-computing",
-    "href": "blog/posts/2023-11-17-getting-started-linux/index.html#why-linux-for-scientific-computing",
-    "title": "Getting Started with Linux",
-    "section": "Why Linux for Scientific Computing?",
-    "text": "Why Linux for Scientific Computing?\nBefore diving into the technical details, let’s understand why Linux is so popular in the scientific computing community:\n\nPerformance and Efficiency\n\nDirect hardware access: Linux provides better control over system resources\nLower overhead: More of your computer’s power goes to your calculations\nStability: Long-running computations benefit from Linux’s reliability\n\n\n\nPackage Management\n\nEasy installation of scientific software through package managers\nConsistent dependency management\nAccess to cutting-edge research tools\n\n\n\nHigh-Performance Computing (HPC) Integration\n\nMost supercomputers and clusters run Linux\nSeamless workflow from desktop to HPC systems\nBetter job scheduling and resource management tools"
-  },
-  {
-    "objectID": "blog/posts/2023-11-17-getting-started-linux/index.html#essential-commands-for-scientists",
-    "href": "blog/posts/2023-11-17-getting-started-linux/index.html#essential-commands-for-scientists",
-    "title": "Getting Started with Linux",
-    "section": "Essential Commands for Scientists",
-    "text": "Essential Commands for Scientists\nHere are the Linux commands I use most frequently in my research work:\n\nFile and Directory Operations\n# Navigate directories\ncd /path/to/your/research\npwd  # Print current directory\nls -la  # List files with details\n\n# File operations\ncp source_file destination  # Copy files\nmv old_name new_name        # Move/rename files\nmkdir new_directory         # Create directory\nrm -rf directory_name       # Remove directory and contents (use carefully!)\n\n\nText Processing and Data Analysis\n# View file contents\nhead -n 20 data_file.txt    # First 20 lines\ntail -n 10 output.log       # Last 10 lines\ngrep \"ERROR\" calculation.log # Search for patterns\n\n# Count lines, words, characters\nwc -l data_file.txt\n\n# Sort and process data\nsort data.txt | uniq -c     # Sort and count unique entries\n\n\nProcess Management\n# Monitor system resources\ntop                         # Real-time process monitor\nhtop                       # Enhanced process monitor (if installed)\nps aux | grep python       # Find Python processes\n\n# Job control\nnohup python script.py &   # Run command in background\njobs                       # List active jobs\nkill PID                   # Terminate process by ID"
-  },
-  {
-    "objectID": "blog/posts/2023-11-17-getting-started-linux/index.html#setting-up-your-research-environment",
-    "href": "blog/posts/2023-11-17-getting-started-linux/index.html#setting-up-your-research-environment",
-    "title": "Getting Started with Linux",
-    "section": "Setting Up Your Research Environment",
-    "text": "Setting Up Your Research Environment\n\nPython Environment Management\nFor computational work, I highly recommend using conda to manage your Python environments:\n# Install Miniconda (lightweight conda)\nwget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh\nbash Miniconda3-latest-Linux-x86_64.sh\n\n# Create environment for your research\nconda create -n computational-chem python=3.9\nconda activate computational-chem\n\n# Install essential scientific packages\nconda install numpy scipy matplotlib pandas\nconda install jupyter notebook\npip install ase  # Atomic Simulation Environment\n\n\nText Editors for Code and Scripts\nChoose a text editor you’re comfortable with. Here are popular options:\nNano (beginner-friendly):\nnano my_script.py\nVim (powerful but steeper learning curve):\nvim my_script.py  # Press 'i' to insert, 'Esc' then ':wq' to save and quit\nVS Code (graphical, if you prefer):\ncode my_script.py  # If VS Code is installed\n\n\nVersion Control with Git\nEssential for tracking your research code:\n# Configure Git (one-time setup)\ngit config --global user.name \"Your Name\"\ngit config --global user.email \"your.email@institution.edu\"\n\n# Initialize a repository for your project\ncd my_research_project\ngit init\ngit add .\ngit commit -m \"Initial commit\"\n\n# Connect to GitHub/GitLab\ngit remote add origin https://github.com/username/project.git\ngit push -u origin main"
-  },
-  {
-    "objectID": "blog/posts/2023-11-17-getting-started-linux/index.html#workflow-tips-for-computational-research",
-    "href": "blog/posts/2023-11-17-getting-started-linux/index.html#workflow-tips-for-computational-research",
-    "title": "Getting Started with Linux",
-    "section": "Workflow Tips for Computational Research",
-    "text": "Workflow Tips for Computational Research\n\nOrganizing Your Projects\nI recommend this directory structure for research projects:\nresearch_project/\n├── data/           # Raw and processed data\n├── scripts/        # Analysis and processing scripts\n├── notebooks/      # Jupyter notebooks\n├── results/        # Output files and figures\n├── docs/           # Documentation and notes\n└── README.md       # Project description\n\n\nRunning Long Calculations\nFor computationally intensive work:\n# Use screen or tmux for persistent sessions\nscreen -S calculation_name\n# Your long-running command here\npython expensive_calculation.py\n\n# Detach with Ctrl+A then D\n# Reattach later with: screen -r calculation_name\n\n\nMonitoring System Resources\nKeep an eye on system usage during calculations:\n# Monitor GPU usage (if using CUDA)\nnvidia-smi\n\n# Check disk space\ndf -h\n\n# Monitor memory usage\nfree -h\n\n# Watch file changes in real-time\ntail -f output.log"
-  },
-  {
-    "objectID": "blog/posts/2023-11-17-getting-started-linux/index.html#common-pitfalls-and-solutions",
-    "href": "blog/posts/2023-11-17-getting-started-linux/index.html#common-pitfalls-and-solutions",
-    "title": "Getting Started with Linux",
-    "section": "Common Pitfalls and Solutions",
-    "text": "Common Pitfalls and Solutions\n\nFile Permissions\nIf you get “permission denied” errors:\nchmod +x script.py          # Make file executable\nchmod 755 directory_name    # Set directory permissions\n\n\nPath Issues\nMake sure your programs are in your PATH:\necho $PATH                  # Check current PATH\nexport PATH=$PATH:/new/path # Add to PATH temporarily\nFor permanent changes, add the export line to your ~/.bashrc file.\n\n\nSSH and Remote Access\nFor working on remote servers:\n# Generate SSH key (one-time)\nssh-keygen -t rsa\n\n# Connect to remote server\nssh username@server.institution.edu\n\n# Copy files to/from remote server\nscp local_file.txt username@server:/remote/path/\nrsync -av local_directory/ username@server:/remote/directory/"
-  },
-  {
-    "objectID": "blog/posts/2023-11-17-getting-started-linux/index.html#next-steps",
-    "href": "blog/posts/2023-11-17-getting-started-linux/index.html#next-steps",
-    "title": "Getting Started with Linux",
-    "section": "Next Steps",
-    "text": "Next Steps\nOnce you’re comfortable with these basics, consider exploring:\n\nShell scripting: Automate repetitive tasks\nDocker containers: Reproducible computational environments\n\nJob schedulers: SLURM for HPC systems\nAdvanced text processing: awk, sed for data manipulation"
-  },
-  {
-    "objectID": "blog/posts/2023-11-17-getting-started-linux/index.html#resources-for-continued-learning",
-    "href": "blog/posts/2023-11-17-getting-started-linux/index.html#resources-for-continued-learning",
-    "title": "Getting Started with Linux",
-    "section": "Resources for Continued Learning",
-    "text": "Resources for Continued Learning\n\nThe Linux Command Line by William Shotts (free online)\nSoftware Carpentry workshops and materials\nLinux Academy or Linux Professional Institute for structured learning"
-  },
-  {
-    "objectID": "blog/posts/2023-11-17-getting-started-linux/index.html#conclusion",
-    "href": "blog/posts/2023-11-17-getting-started-linux/index.html#conclusion",
-    "title": "Getting Started with Linux",
-    "section": "Conclusion",
-    "text": "Conclusion\nTransitioning to Linux might seem daunting at first, but the investment in learning pays dividends in computational efficiency and workflow flexibility. Start with these basics, practice regularly, and don’t hesitate to use the excellent documentation available (man command_name shows manual pages for any command).\nRemember, even experienced Linux users regularly look up commands and syntax—it’s not about memorizing everything, but about understanding the concepts and knowing how to find information when you need it.\n\nHave questions about getting started with Linux for research? Feel free to reach out—I’m happy to help fellow researchers navigate this transition!"
-  },
-  {
-    "objectID": "blog/index.html",
-    "href": "blog/index.html",
-    "title": "Blog",
-    "section": "",
-    "text": "Grid\n  List\n\n\n\n\n\n\n10/17/25tutorial, linux, productivity\n\n\nModern Alternatives to Traditional Linux Commands\n\n\nDiscover 6 essential modern CLI tools that replace traditional Linux commands with better performance and usability. Learn how ripgrep, bat, fd, eza, zoxide, and delta can supercharge your workflow.\n\nRead More\n\n\n\n\n11/17/23linux, computational-science, tutorial\n\n\nGetting Started with Linux\n\n\nA practical guide for researchers transitioning to Linux for computational work, covering essential commands and workflow setup.\n\nRead More\n\n\n\n\n10/12/23academia, career, graduate-school\n\n\nWhy Graduate School is for You\n\n\nReflections on the graduate school experience and what to expect from this transformative journey in academia.\n\nRead More\n\n\nNo matching items\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nModern Alternatives to Traditional Linux Commands\n\n\n\ntutorial\n\nlinux\n\nproductivity\n\n\n\nDiscover 6 essential modern CLI tools that replace traditional Linux commands with better performance and usability. Learn how ripgrep, bat, fd, eza, zoxide, and delta can supercharge your workflow.\n\n\n\n\n\nOct 17, 2025\n\n15 min\n\n\n\n\n\n\n\n\n\n\n\nGetting Started with Linux\n\n\n\nlinux\n\ncomputational-science\n\ntutorial\n\n\n\nA practical guide for researchers transitioning to Linux for computational work, covering essential commands and workflow setup.\n\n\n\n\n\nNov 17, 2023\n\n6 min\n\n\n\n\n\n\n\n\n\n\n\nWhy Graduate School is for You\n\n\n\nacademia\n\ncareer\n\ngraduate-school\n\n\n\nReflections on the graduate school experience and what to expect from this transformative journey in academia.\n\n\n\n\n\nOct 12, 2023\n\n4 min\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "publications/articles/maity-dungan-2024/index.html",
-    "href": "publications/articles/maity-dungan-2024/index.html",
-    "title": "Hydrogen Isotope Labeling of Pharmaceuticals Via Dual Hydrogen Isotope Exchange Pathways Using CdS Quantum Dot Photocatalyst",
-    "section": "",
-    "text": "Rajendra Maity, Otto Dungan, Frédéric A. Perras, Jingwei Li, Daohua Liu, Sumei Ren, Dan Lehnherr, Zheng Huang, Eric M. Phillips, Moses Adeyemo, Joseph Frimpong, Timothy Quainoo, Zhen-Fei Liu, Long Luo\nJournal: Journal of the American Chemical Society (2024) · 146, 49 · pp. 34141–34151 · Publication #90"
-  },
-  {
-    "objectID": "publications/articles/maity-dungan-2024/index.html#abstract",
-    "href": "publications/articles/maity-dungan-2024/index.html#abstract",
-    "title": "Hydrogen Isotope Labeling of Pharmaceuticals Via Dual Hydrogen Isotope Exchange Pathways Using CdS Quantum Dot Photocatalyst",
-    "section": "Abstract",
-    "text": "Abstract\nPharmaceutical synthesis often requires hydrogen isotope labeling for drug development and mechanistic studies. Traditional methods suffer from limitations in scope and selectivity. Here, we present a photocatalytic hydrogen isotope exchange (HIE) method using CdS quantum dots that operates via dual pathways: direct HAT from the CdS quantum dot surface and photogenerated hole-mediated oxidation. This dual mechanism enables broad applicability to various pharmaceutical compounds, including complex drug molecules like celecoxib, roflumilast, and mavoglurant. The method shows excellent deuterium incorporation with high precision and minimal byproduct formation. Our work demonstrates the potential of quantum dot photocatalysis for pharmaceutical isotope labeling applications."
-  },
-  {
-    "objectID": "publications/articles/maity-dungan-2024/index.html#resources",
-    "href": "publications/articles/maity-dungan-2024/index.html#resources",
-    "title": "Hydrogen Isotope Labeling of Pharmaceuticals Via Dual Hydrogen Isotope Exchange Pathways Using CdS Quantum Dot Photocatalyst",
-    "section": "Resources",
-    "text": "Resources\n\nJournal article"
-  },
-  {
-    "objectID": "publications/articles/maity-dungan-2024/index.html#citation",
-    "href": "publications/articles/maity-dungan-2024/index.html#citation",
-    "title": "Hydrogen Isotope Labeling of Pharmaceuticals Via Dual Hydrogen Isotope Exchange Pathways Using CdS Quantum Dot Photocatalyst",
-    "section": "Citation",
-    "text": "Citation\n\n\nCopy BibTeX\n\n@article{JACS-Rajendra,\nauthor = {Maity, Rajendra and Dungan, Otto and Perras, Frédéric A. and Li, Jingwei and Liu, Daohua and Ren, Sumei and Lehnherr, Dan and Huang, Zheng and Phillips, Eric M. and Adeyemo, Moses and Frimpong, Joseph and Quainoo, Timothy and Liu, Zhen-Fei and Luo, Long},\ntitle = {Hydrogen Isotope Labeling of Pharmaceuticals Via Dual Hydrogen Isotope Exchange Pathways Using CdS Quantum Dot Photocatalyst},\njournal = {Journal of the American Chemical Society},\nvolume = {146},\nnumber = {49},\npages = {34141-34151},\nyear = {2024},\ndoi = {10.1021/jacs.4c13857},\n    note ={PMID: 39579128},\nURL = { https://doi.org/10.1021/jacs.4c13857},\neprint = { https://doi.org/10.1021/jacs.4c13857} }"
-  },
-  {
-    "objectID": "publications/articles/behera-gunasekera-2023/index.html",
-    "href": "publications/articles/behera-gunasekera-2023/index.html",
-    "title": "Electrochemical Hydrogen Isotope Exchange of Amines Controlled by Alternating Current Frequency",
-    "section": "",
-    "text": "Nibedita Behera, Disni Gunasekera, Jyoti P. Mahajan, Joseph Frimpong, Zhen-Fei Liu, Long Luo\nJournal: Faraday Discuss. (2023) · 247 · pp. 45–58 · Publication #91"
-  },
-  {
-    "objectID": "publications/articles/behera-gunasekera-2023/index.html#abstract",
-    "href": "publications/articles/behera-gunasekera-2023/index.html#abstract",
-    "title": "Electrochemical Hydrogen Isotope Exchange of Amines Controlled by Alternating Current Frequency",
-    "section": "Abstract",
-    "text": "Abstract\nHere, we report an electrochemical protocol for hydrogen isotope exchange (HIE) at α-C(sp3)–H amine sites. Tetrahydroisoquinoline and pyrrolidine are selected as two model substrates because of their different proton transfer (PT) and hydrogen atom transfer (HAT) kinetics at the α-C(sp3)–H amine sites, which are utilized to control the HIE reaction outcome at different applied alternating current (AC) frequencies. We found the highest deuterium incorporation for tetrahydroisoquinolines at 0 Hz (i.e., under direct current (DC) electrolysis conditions) and pyrrolidines at 0.5 Hz. Analysis of the product distribution and D isotope incorporation at different frequencies reveals that the HIE of tetrahydroisoquinolines is limited by its slow HAT, whereas the HIE of pyrrolidines is limited by the overoxidation of its α-amino radical intermediates. The AC-frequency-dependent HIE of amines can be potentially used to achieve selective labeling of α-amine sites in one drug molecule, which will significantly impact the pharmaceutical industry."
-  },
-  {
-    "objectID": "publications/articles/behera-gunasekera-2023/index.html#resources",
-    "href": "publications/articles/behera-gunasekera-2023/index.html#resources",
-    "title": "Electrochemical Hydrogen Isotope Exchange of Amines Controlled by Alternating Current Frequency",
-    "section": "Resources",
-    "text": "Resources\n\nJournal article"
-  },
-  {
-    "objectID": "publications/articles/behera-gunasekera-2023/index.html#citation",
-    "href": "publications/articles/behera-gunasekera-2023/index.html#citation",
-    "title": "Electrochemical Hydrogen Isotope Exchange of Amines Controlled by Alternating Current Frequency",
-    "section": "Citation",
-    "text": "Citation\n\n\nCopy BibTeX\n\n@article{D3FD00044C,\nauthor =\"Behera, Nibedita and Gunasekera, Disni and Mahajan, Jyoti P. and Frimpong, Joseph and Liu, Zhen-Fei and Luo, Long\",\ntitle  =\"Electrochemical hydrogen isotope exchange of amines controlled by alternating current frequency\",\njournal  =\"Faraday Discuss.\",\nyear  =\"2023\",\nvolume  =\"247\",\nissue  =\"0\",\npages  =\"45-58\",\npublisher  =\"The Royal Society of Chemistry\",\ndoi  =\"10.1039/D3FD00044C\",\nurl  =\"http://dx.doi.org/10.1039/D3FD00044C\",\nabstract  =\"Here{,} we report an electrochemical protocol for hydrogen isotope exchange (HIE) at α-C(sp3)–H amine sites. Tetrahydroisoquinoline and pyrrolidine are selected as two model substrates because of their different proton transfer (PT) and hydrogen atom transfer (HAT) kinetics at the α-C(sp3)–H amine sites{,} which are utilized to control the HIE reaction outcome at different applied alternating current (AC) frequencies. We found the highest deuterium incorporation for tetrahydroisoquinolines at 0 Hz (i.e.{,} under direct current (DC) electrolysis conditions) and pyrrolidines at 0.5 Hz. Analysis of the product distribution and D isotope incorporation at different frequencies reveals that the HIE of tetrahydroisoquinolines is limited by its slow HAT{,} whereas the HIE of pyrrolidines is limited by the overoxidation of its α-amino radical intermediates. The AC-frequency-dependent HIE of amines can be potentially used to achieve selective labeling of α-amine sites in one drug molecule{,} which will significantly impact the pharmaceutical industry.\"\n}"
-  },
-  {
-    "objectID": "publications/articles/frimpong-liu-2021/index.html",
-    "href": "publications/articles/frimpong-liu-2021/index.html",
-    "title": "Quasiparticle Electronic Structure of Two-Dimensional Heterotriangulene-Based Covalent Organic Frameworks Adsorbed on Au(111)",
-    "section": "",
-    "text": "Joseph Frimpong, Zhen-Fei Liu\nJournal: J. Phys.: Condens. Matter (2021) · 33, 25 · pp. 254004 · Publication #93"
-  },
-  {
-    "objectID": "publications/articles/frimpong-liu-2021/index.html#abstract",
-    "href": "publications/articles/frimpong-liu-2021/index.html#abstract",
-    "title": "Quasiparticle Electronic Structure of Two-Dimensional Heterotriangulene-Based Covalent Organic Frameworks Adsorbed on Au(111)",
-    "section": "Abstract",
-    "text": "Abstract\nThe modular nature and unique electronic properties of two-dimensional (2D) covalent organic frameworks (COFs) make them an attractive option for applications in catalysis, optoelectronics, and spintronics. The fabrications of such devices often involve interfaces formed between COFs and substrates. In this work, we employ the first-principles GW approach to accurately determine the quasiparticle electronic structure of three 2D carbonyl bridged heterotriangulene-based COFs featuring honeycomb–kagome lattice, with their properties ranging from a semi-metal to a wide-gap semiconductor. Moreover, we study the adsorption of these COFs on Au(111) surface and characterize the quasiparticle electronic structure at the heterogeneous COF/Au(111) interfaces. To reduce the computational cost, we apply the recently developed dielectric embedding GW approach and show that our results agree with existing experimental measurement on the interfacial energy level alignment. Our calculations illustrate how the many-body dielectric screening at the interface modulates the energies and shapes of the Dirac bands, the effective masses of semiconducting COFs, as well as the Fermi velocity of the semi-metallic COF."
-  },
-  {
-    "objectID": "publications/articles/frimpong-liu-2021/index.html#resources",
-    "href": "publications/articles/frimpong-liu-2021/index.html#resources",
-    "title": "Quasiparticle Electronic Structure of Two-Dimensional Heterotriangulene-Based Covalent Organic Frameworks Adsorbed on Au(111)",
-    "section": "Resources",
-    "text": "Resources\n\nJournal article\nPreprint (PDF)"
-  },
-  {
-    "objectID": "publications/articles/frimpong-liu-2021/index.html#citation",
-    "href": "publications/articles/frimpong-liu-2021/index.html#citation",
-    "title": "Quasiparticle Electronic Structure of Two-Dimensional Heterotriangulene-Based Covalent Organic Frameworks Adsorbed on Au(111)",
-    "section": "Citation",
-    "text": "Citation\n\n\nCopy BibTeX\n\n@article{FL21d,\n  title = {Quasiparticle Electronic Structure of Two-Dimensional Heterotriangulene-Based Covalent Organic Frameworks Adsorbed on {{Au}}(111)},\n  author = {Frimpong, Joseph and Liu, Zhen-Fei},\n  year = {2021},\n  month = may,\n  journal = {J. Phys.: Condens. Matter},\n  volume = {33},\n  number = {25},\n  pages = {254004},\n  publisher = {IOP Publishing},\n  issn = {0953-8984},\n  doi = {10.1088/1361-648X/abf7a0},\n  urldate = {2023-12-06},\n  abstract = {The modular nature and unique electronic properties of two-dimensional (2D) covalent organic frameworks (COFs) make them an attractive option for applications in catalysis, optoelectronics, and spintronics. The fabrications of such devices often involve interfaces formed between COFs and substrates. In this work, we employ the first-principles GW approach to accurately determine the quasiparticle electronic structure of three 2D carbonyl bridged heterotriangulene-based COFs featuring honeycomb--kagome lattice, with their properties ranging from a semi-metal to a wide-gap semiconductor. Moreover, we study the adsorption of these COFs on Au(111) surface and characterize the quasiparticle electronic structure at the heterogeneous COF/Au(111) interfaces. To reduce the computational cost, we apply the recently developed dielectric embedding GW approach and show that our results agree with existing experimental measurement on the interfacial energy level alignment. Our calculations illustrate how the many-body dielectric screening at the interface modulates the energies and shapes of the Dirac bands, the effective masses of semiconducting COFs, as well as the Fermi velocity of the semi-metallic COF.},\n  langid = {english},\n  file = {/home/frimpsjoe/Zotero/FL21d.pdf}\n}"
-  },
-  {
     "objectID": "teaching.html",
     "href": "teaching.html",
     "title": "Teaching & Mentoring",
@@ -509,6 +40,34 @@
     "title": "Teaching & Mentoring",
     "section": "Contact",
     "text": "Contact\nInterested in classroom collaborations, guest lectures, or workshop development? Email me and we can design a session tailored to your audience."
+  },
+  {
+    "objectID": "publications/articles/frimpong-liu-2024/index.html",
+    "href": "publications/articles/frimpong-liu-2024/index.html",
+    "title": "Generalized Substrate Screening GW for Covalently Bonded Interfaces",
+    "section": "",
+    "text": "Joseph Frimpong, Zhen-Fei Liu\nJournal: J. Phys. Chem. Lett. (2024) · 15, 8 · pp. 2133–2141 · Publication #92"
+  },
+  {
+    "objectID": "publications/articles/frimpong-liu-2024/index.html#abstract",
+    "href": "publications/articles/frimpong-liu-2024/index.html#abstract",
+    "title": "Generalized Substrate Screening GW for Covalently Bonded Interfaces",
+    "section": "Abstract",
+    "text": "Abstract\nAn accurate description of the interfacial quasiparticle electronic structure is key to the design of heterogeneous materials. While the first-principles GW approach is state-of-the-art, the computational cost is high for large interface systems. This has led to the substrate screening GW approach for weakly coupled interfaces, which breaks down for covalently bonded interfaces. In this work, we present the generalized substrate screening GW approach, based on the following two considerations: (i) the contribution of the interfacial covalent bond to the polarizability can be efficiently calculated with a low energy cutoff; (ii) the contribution of the deprotonated adsorbate to the interface polarizability can be well approximated by that of the protonated molecule. Our approach is exemplified using interfaces formed between benzene-1,4-dithiol (BDT) and Au(111), which feature the widely used Au–S bonds in experiments. Our work provides a robust and simple scheme for accurate and efficient GW calculations of covalently bonded interfaces."
+  },
+  {
+    "objectID": "publications/articles/frimpong-liu-2024/index.html#resources",
+    "href": "publications/articles/frimpong-liu-2024/index.html#resources",
+    "title": "Generalized Substrate Screening GW for Covalently Bonded Interfaces",
+    "section": "Resources",
+    "text": "Resources\n\nJournal article"
+  },
+  {
+    "objectID": "publications/articles/frimpong-liu-2024/index.html#citation",
+    "href": "publications/articles/frimpong-liu-2024/index.html#citation",
+    "title": "Generalized Substrate Screening GW for Covalently Bonded Interfaces",
+    "section": "Citation",
+    "text": "Citation\n\n\nCopy BibTeX\n\n@article{FL24,\n  title = {Generalized {{Substrate Screening GW}} for {{Covalently Bonded Interfaces}}},\n  author = {Frimpong, Joseph and Liu, Zhen-Fei},\n  year = {2024},\n  month = feb,\n  journal = {J. Phys. Chem. Lett.},\n  volume = {15},\n  number = {8},\n  pages = {2133--2141},\n  publisher = {American Chemical Society},\n  doi = {10.1021/acs.jpclett.3c03470},\n  urldate = {2024-04-19},\n  abstract = {An accurate description of the interfacial quasiparticle electronic structure is key to the design of heterogeneous materials. While the first-principles GW approach is state-of-the-art, the computational cost is high for large interface systems. This has led to the substrate screening GW approach for weakly coupled interfaces, which breaks down for covalently bonded interfaces. In this work, we present the generalized substrate screening GW approach, based on the following two considerations: (i) the contribution of the interfacial covalent bond to the polarizability can be efficiently calculated with a low energy cutoff; (ii) the contribution of the deprotonated adsorbate to the interface polarizability can be well approximated by that of the protonated molecule. Our approach is exemplified using interfaces formed between benzene-1,4-dithiol (BDT) and Au(111), which feature the widely used Au--S bonds in experiments. Our work provides a robust and simple scheme for accurate and efficient GW calculations of covalently bonded interfaces.}\n}"
   },
   {
     "objectID": "publications/articles/frimpong-aryal-2024/index.html",
@@ -567,32 +126,123 @@
     "text": "Citation\n\n\nCopy BibTeX\n\n@article{AFL22,\n  title = {Comparative {{Study}} of {{Covalent}} and van Der {{Waals CdS Quantum Dot Assemblies}} from {{Many-Body Perturbation Theory}}},\n  author = {Aryal, Sandip and Frimpong, Joseph and Liu, Zhen-Fei},\n  year = {2022},\n  month = nov,\n  journal = {J. Phys. Chem. Lett.},\n  volume = {13},\n  number = {43},\n  pages = {10153--10161},\n  issn = {1948-7185, 1948-7185},\n  doi = {10.1021/acs.jpclett.2c02856},\n  urldate = {2023-11-14},\n  langid = {english},\n  abstract = {Quantum dot (QD) assemblies are nanostructured networks made from aggregates of QDs and feature improved charge and energy transfer efficiencies compared to discrete QDs. Using first-principles many-body perturbation theory, we systematically compare the electronic and optical properties of two types of CdS QD assemblies that have been experimentally investigated: (i) QD gels, where individual QDs are covalently connected via di- or polysulfide bonds, and (ii) QD nanocrystals, where individual QDs are bound via van der Waals interactions. Our work illustrates how the electronic and optical properties evolve when discrete QDs are assembled into 1D, 2D, and 3D gels and nanocrystals, as well as how the one-body and many-body interactions in these systems impact the trends as the dimensionality of the assembly increases. Furthermore, our work reveals the crucial role of the di- or polysulfide covalent bonds in the localization of the excitons, which highlights the difference between QD gels and QD nanocrystals.},\n  file = {/home/frimpsjoe/Zotero/zotero-files-db/The Journal of Physical Chemistry Letters/2022/AFL22.pdf}\n}"
   },
   {
-    "objectID": "publications/articles/frimpong-liu-2024/index.html",
-    "href": "publications/articles/frimpong-liu-2024/index.html",
-    "title": "Generalized Substrate Screening GW for Covalently Bonded Interfaces",
+    "objectID": "projects/quantum-dots-interfaces.html",
+    "href": "projects/quantum-dots-interfaces.html",
+    "title": "Quantum Dots & Interfaces",
     "section": "",
-    "text": "Joseph Frimpong, Zhen-Fei Liu\nJournal: J. Phys. Chem. Lett. (2024) · 15, 8 · pp. 2133–2141 · Publication #92"
+    "text": "Timeline: 2019 – 2024\nRole: PhD Researcher\nAffiliation: Wayne State University"
   },
   {
-    "objectID": "publications/articles/frimpong-liu-2024/index.html#abstract",
-    "href": "publications/articles/frimpong-liu-2024/index.html#abstract",
-    "title": "Generalized Substrate Screening GW for Covalently Bonded Interfaces",
-    "section": "Abstract",
-    "text": "Abstract\nAn accurate description of the interfacial quasiparticle electronic structure is key to the design of heterogeneous materials. While the first-principles GW approach is state-of-the-art, the computational cost is high for large interface systems. This has led to the substrate screening GW approach for weakly coupled interfaces, which breaks down for covalently bonded interfaces. In this work, we present the generalized substrate screening GW approach, based on the following two considerations: (i) the contribution of the interfacial covalent bond to the polarizability can be efficiently calculated with a low energy cutoff; (ii) the contribution of the deprotonated adsorbate to the interface polarizability can be well approximated by that of the protonated molecule. Our approach is exemplified using interfaces formed between benzene-1,4-dithiol (BDT) and Au(111), which feature the widely used Au–S bonds in experiments. Our work provides a robust and simple scheme for accurate and efficient GW calculations of covalently bonded interfaces."
+    "objectID": "projects/quantum-dots-interfaces.html#overview",
+    "href": "projects/quantum-dots-interfaces.html#overview",
+    "title": "Quantum Dots & Interfaces",
+    "section": "Overview",
+    "text": "Overview\nThis project examined how ligands, solvents, and solid supports reshape the optical and electronic structure of quantum dots. By combining GW/BSE calculations with dielectric embedding and explicit interface models, I mapped the structure–property relationships that control emission energies, hot carrier relaxation and catalytic activity."
   },
   {
-    "objectID": "publications/articles/frimpong-liu-2024/index.html#resources",
-    "href": "publications/articles/frimpong-liu-2024/index.html#resources",
-    "title": "Generalized Substrate Screening GW for Covalently Bonded Interfaces",
-    "section": "Resources",
-    "text": "Resources\n\nJournal article"
+    "objectID": "projects/quantum-dots-interfaces.html#highlights",
+    "href": "projects/quantum-dots-interfaces.html#highlights",
+    "title": "Quantum Dots & Interfaces",
+    "section": "Highlights",
+    "text": "Highlights\n\nQuantified ligand-induced shifts in excitonic gaps for CdSe nanocrystals and hybrid interfaces.\nDeveloped workflows for converged Coulomb truncation and surface screening corrections within WEST.\nCollaborated with spectroscopy groups to interpret transient absorption and single-dot photoluminescence."
   },
   {
-    "objectID": "publications/articles/frimpong-liu-2024/index.html#citation",
-    "href": "publications/articles/frimpong-liu-2024/index.html#citation",
-    "title": "Generalized Substrate Screening GW for Covalently Bonded Interfaces",
-    "section": "Citation",
-    "text": "Citation\n\n\nCopy BibTeX\n\n@article{FL24,\n  title = {Generalized {{Substrate Screening GW}} for {{Covalently Bonded Interfaces}}},\n  author = {Frimpong, Joseph and Liu, Zhen-Fei},\n  year = {2024},\n  month = feb,\n  journal = {J. Phys. Chem. Lett.},\n  volume = {15},\n  number = {8},\n  pages = {2133--2141},\n  publisher = {American Chemical Society},\n  doi = {10.1021/acs.jpclett.3c03470},\n  urldate = {2024-04-19},\n  abstract = {An accurate description of the interfacial quasiparticle electronic structure is key to the design of heterogeneous materials. While the first-principles GW approach is state-of-the-art, the computational cost is high for large interface systems. This has led to the substrate screening GW approach for weakly coupled interfaces, which breaks down for covalently bonded interfaces. In this work, we present the generalized substrate screening GW approach, based on the following two considerations: (i) the contribution of the interfacial covalent bond to the polarizability can be efficiently calculated with a low energy cutoff; (ii) the contribution of the deprotonated adsorbate to the interface polarizability can be well approximated by that of the protonated molecule. Our approach is exemplified using interfaces formed between benzene-1,4-dithiol (BDT) and Au(111), which feature the widely used Au--S bonds in experiments. Our work provides a robust and simple scheme for accurate and efficient GW calculations of covalently bonded interfaces.}\n}"
+    "objectID": "projects/quantum-dots-interfaces.html#representative-publications",
+    "href": "projects/quantum-dots-interfaces.html#representative-publications",
+    "title": "Quantum Dots & Interfaces",
+    "section": "Representative Publications",
+    "text": "Representative Publications\n\nJ. Phys. Chem. Lett. (2024)\nChem. Mater. (2024)"
+  },
+  {
+    "objectID": "projects/quantum-dots-interfaces.html#continuing-directions",
+    "href": "projects/quantum-dots-interfaces.html#continuing-directions",
+    "title": "Quantum Dots & Interfaces",
+    "section": "Continuing Directions",
+    "text": "Continuing Directions\nFuture work focuses on mixed-dimensional heterostructures, integrating machine-learned polarizabilities, and closing the loop with time-resolved experiments."
+  },
+  {
+    "objectID": "projects/isotopic-labeling-catalysis.html",
+    "href": "projects/isotopic-labeling-catalysis.html",
+    "title": "Isotopic Labeling & Catalysis",
+    "section": "",
+    "text": "Timeline: 2022 – 2024\nRole: Computational Collaborator\nCollaborators: Luo Lab and industrial partners"
+  },
+  {
+    "objectID": "projects/isotopic-labeling-catalysis.html#project-scope",
+    "href": "projects/isotopic-labeling-catalysis.html#project-scope",
+    "title": "Isotopic Labeling & Catalysis",
+    "section": "Project Scope",
+    "text": "Project Scope\nWe coupled density functional theory, GW corrections, and kinetic modeling to rationalize hydrogen isotope exchange in complex pharmaceutical intermediates. The work guided the design of photocatalytic quantum dot platforms capable of delivering late-stage deuteration and tritiation with high selectivity."
+  },
+  {
+    "objectID": "projects/isotopic-labeling-catalysis.html#what-we-delivered",
+    "href": "projects/isotopic-labeling-catalysis.html#what-we-delivered",
+    "title": "Isotopic Labeling & Catalysis",
+    "section": "What We Delivered",
+    "text": "What We Delivered\n\nEnergy landscapes for proton-coupled electron transfer steps governing catalytic turnover.\nDesign rules that linked surface terminations and sacrificial agents to quantum yield and isotope enrichment.\nSupport for synthetic campaigns, informing reaction windows and ligand choices."
+  },
+  {
+    "objectID": "projects/isotopic-labeling-catalysis.html#publications-talks",
+    "href": "projects/isotopic-labeling-catalysis.html#publications-talks",
+    "title": "Isotopic Labeling & Catalysis",
+    "section": "Publications & Talks",
+    "text": "Publications & Talks\n\nJournal of the American Chemical Society (2024)\nFaraday Discussions (2023)"
+  },
+  {
+    "objectID": "projects/isotopic-labeling-catalysis.html#outlook",
+    "href": "projects/isotopic-labeling-catalysis.html#outlook",
+    "title": "Isotopic Labeling & Catalysis",
+    "section": "Outlook",
+    "text": "Outlook\nOngoing collaborations aim to merge kinetic Monte Carlo models with operando spectroscopies to understand active-site evolution during extended catalysis runs."
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Research Projects",
+    "section": "",
+    "text": "AI/ML for Electronic Structure\n    \n    2024 – presentArgonne National LaboratoryPostdoctoral Researcher\n    Generative and surrogate models to accelerate GW/BSE workflows, including latent representations for screened Coulomb interactions and uncertainty-aware property prediction.\n    GW/BSEMachine LearningHPC\n  \n\n\n\n  \n    \n  \n  \n    \n      \n      Quantum Dots & Interfaces\n    \n    2019 – 2024Wayne State UniversityPhD Researcher\n    Many-body perturbation theory for colloidal nanocrystals and molecule/metal interfaces; ligand exchange thermodynamics, optical transitions, and environment-induced screening.\n    Quantum DotsInterfacesGW\n  \n\n\n\n  \n    \n  \n  \n    \n      \n      Isotopic Labeling & Catalysis\n    \n    2022 – 2024Collaborations with Luo Lab & PartnersComputational Collaborator\n    Photocatalytic and electrochemical hydrogen isotope exchange using quantum dots; mechanistic modeling of proton-coupled electron transfer in complex pharmaceuticals.\n    Isotope LabelingPhotocatalysisElectrochemistry\n  \n\n\n\n  \n    \n  \n  \n    \n      \n      Method Development & HPC Tooling\n    \n    OngoingCollaborative Software ProjectsDeveloper & Maintainer\n    Workflow automation, MPI-enabled screening, and reproducible data management for exascale systems; contributions to WEST/BerkeleyGW utilities and PyTorch-driven surrogates.\n    SoftwareAutomationMPI"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Joseph Frimpong",
+    "section": "",
+    "text": "NST, Argonne National Laboratory"
+  },
+  {
+    "objectID": "index.html#research-interests",
+    "href": "index.html#research-interests",
+    "title": "Joseph Frimpong",
+    "section": "Research Interests",
+    "text": "Research Interests\n\nMany-body electronic-structure (GW/BSE) and dielectric embedding for complex interfaces.\n\nMachine learning models that accelerate excited-state calculations and screening workflows.\n\nQuantum dots, nanoscale interfaces, and catalysis-directed materials design."
+  },
+  {
+    "objectID": "index.html#latest-posts",
+    "href": "index.html#latest-posts",
+    "title": "Joseph Frimpong",
+    "section": "Latest Posts",
+    "text": "Latest Posts\n\nOct 17, 2025 – Modern Alternatives to Traditional Linux Commands\nNov 17, 2023 – Getting Started with Linux\nOct 12, 2023 – Why Graduate School is for You"
+  },
+  {
+    "objectID": "index.html#news",
+    "href": "index.html#news",
+    "title": "Joseph Frimpong",
+    "section": "News",
+    "text": "News\n\nAug 02, 2026 – Poster at the Gordon Research Conference on Computational Materials Science and Engineering — Presented “Accelerating Calculations Based on Many-Body Perturbation Theory” at the 2026 GRC, Computational Methods and Artificial Intelligence Tools for Materials Discovery and Industrial Application (Aug 2-7).\nAug 01, 2026 – Talk and poster at the Gordon Research Seminar on Computational Materials Science and Engineering — Presented “Learning Faithful Representations of the Dielectric Matrix for Excited-State Calculations with Generative Modeling” (with J. Zhan, V. Yu, M. Govoni, G. Galli, and M. Chan).\nFeb 17, 2026 – Named a 2026 BSSw Fellowship Honorable Mention — Recognized as one of six Honorable Mentions in the 2026 Better Scientific Software (BSSw) Fellowship program.\nJan 01, 2026 – Professional Development Officer, Postdoctoral Society of Argonne — Serving as Professional Development Officer of the Postdoctoral Society of Argonne for 2026.\nOct 31, 2025 – Talk at the Argonne Postdoctoral Research & Career Symposium — Presented “Towards Accelerating Excited State Calculations with Generative Modeling”.\n\nSee the full list on the news page."
+  },
+  {
+    "objectID": "index.html#connect",
+    "href": "index.html#connect",
+    "title": "Joseph Frimpong",
+    "section": "Connect",
+    "text": "Connect"
+  },
+  {
+    "objectID": "index.html#current-tools",
+    "href": "index.html#current-tools",
+    "title": "Joseph Frimpong",
+    "section": "Current Tools",
+    "text": "Current Tools"
   },
   {
     "objectID": "blog/posts/2025-10-17-new-linux-commands/index.html",
@@ -670,6 +320,111 @@
     "title": "Modern Alternatives to Traditional Linux Commands",
     "section": "Essential References",
     "text": "Essential References\nFor more tools and alternatives, see:\n\nRewritten in Rust: Modern Alternatives of Command-Line Tools\n\nOfficial Documentation & GitHub Repositories:\n\nripgrep GitHub - Official ripgrep repository\nbat GitHub - Official bat repository\nfd GitHub - Official fd repository\neza GitHub - Official eza repository\nzoxide GitHub - Official zoxide repository\ndelta GitHub - Official delta repository\n\nKey Articles & Performance Comparisons: 8. ripgrep: VS Code’s Secret Weapon\n\nModern Command-Line Tooling\nClaude Code Integration\n\nTool-Specific Deep Dives:\n\nripgrep Performance Analysis\nzoxide: Smart Directory Navigation\nbat: Enhanced File Viewing\ndelta: Better Git Diffs\neza: Modern ls Replacement"
+  },
+  {
+    "objectID": "blog/posts/2023-10-12-why-graduate-school/index.html",
+    "href": "blog/posts/2023-10-12-why-graduate-school/index.html",
+    "title": "Why Graduate School is for You",
+    "section": "",
+    "text": "Graduate school represents one of the most transformative periods in an academic’s journey. As a postdoctoral researcher reflecting on my own path through graduate studies, I’ve come to appreciate both the challenges and rewards that define this unique experience."
+  },
+  {
+    "objectID": "blog/posts/2023-10-12-why-graduate-school/index.html#the-decision-to-pursue-graduate-studies",
+    "href": "blog/posts/2023-10-12-why-graduate-school/index.html#the-decision-to-pursue-graduate-studies",
+    "title": "Why Graduate School is for You",
+    "section": "The Decision to Pursue Graduate Studies",
+    "text": "The Decision to Pursue Graduate Studies\nThe decision to enter graduate school shouldn’t be taken lightly. Unlike undergraduate studies, graduate school requires a different kind of commitment—one that goes beyond coursework to include original research, intellectual independence, and often, a redefinition of your relationship with learning itself.\n\nWhat Graduate School Really Offers\nIntellectual Freedom: Perhaps the most rewarding aspect of graduate school is the freedom to pursue questions that genuinely intrigue you. While this freedom can initially feel overwhelming, it ultimately allows you to develop your own research identity.\nResearch Skills: You’ll develop critical thinking skills, learn to design experiments, analyze complex data, and communicate your findings effectively. These skills are valuable far beyond academia.\nProfessional Network: The connections you make—with advisors, peers, and collaborators—often prove to be among the most valuable aspects of your graduate experience."
+  },
+  {
+    "objectID": "blog/posts/2023-10-12-why-graduate-school/index.html#the-realities-and-challenges",
+    "href": "blog/posts/2023-10-12-why-graduate-school/index.html#the-realities-and-challenges",
+    "title": "Why Graduate School is for You",
+    "section": "The Realities and Challenges",
+    "text": "The Realities and Challenges\nGraduate school isn’t just about the intellectual rewards. It comes with real challenges that prospective students should understand:\n\nFinancial Considerations\nMost graduate programs in the sciences offer funding through assistantships or fellowships, but the stipends are typically modest. Learning to live on a graduate student budget while focusing on your research requires careful planning and often some lifestyle adjustments.\n\n\nTime Management and Work-Life Balance\nThe flexibility of graduate school can be both a blessing and a curse. Without structured class schedules, you’ll need to develop strong self-discipline and time management skills. Finding balance between research, coursework, and personal life becomes an essential skill.\n\n\nImposter Syndrome and Mental Health\nIt’s common to feel like you don’t belong or aren’t smart enough, especially when surrounded by brilliant peers and faculty. Recognizing these feelings as normal and seeking support when needed is crucial for long-term success and well-being."
+  },
+  {
+    "objectID": "blog/posts/2023-10-12-why-graduate-school/index.html#advice-for-prospective-students",
+    "href": "blog/posts/2023-10-12-why-graduate-school/index.html#advice-for-prospective-students",
+    "title": "Why Graduate School is for You",
+    "section": "Advice for Prospective Students",
+    "text": "Advice for Prospective Students\nIf you’re considering graduate school, here are some key questions to ask yourself:\n\nAre you passionate about research? Graduate school is primarily about conducting original research, not just taking classes.\nCan you handle uncertainty? Research involves many failed experiments and dead ends before breakthroughs occur.\nDo you have clear career goals? While it’s okay for these to evolve, having some sense of direction helps maintain motivation during challenging periods.\n\n\nMaking the Most of Your Graduate Experience\n\nChoose your advisor carefully: This relationship will significantly impact your graduate experience and future career.\nEmbrace failure as learning: Every failed experiment teaches you something valuable.\nBuild a support network: Connect with other graduate students, join professional organizations, attend conferences.\nDevelop transferable skills: Writing, presenting, project management, and leadership skills will serve you well in any career path."
+  },
+  {
+    "objectID": "blog/posts/2023-10-12-why-graduate-school/index.html#looking-forward",
+    "href": "blog/posts/2023-10-12-why-graduate-school/index.html#looking-forward",
+    "title": "Why Graduate School is for You",
+    "section": "Looking Forward",
+    "text": "Looking Forward\nGraduate school is demanding, but for those who are passionate about research and discovery, it can be incredibly rewarding. The skills you develop, the knowledge you gain, and the contributions you make to your field can have lasting impact.\nWhether you continue in academia or transition to industry, the graduate school experience shapes how you approach complex problems and think critically about the world around you. It’s not just about earning a degree—it’s about becoming an independent researcher and thinker.\nFor those considering this path, take time to reflect on your motivations and goals. Talk to current graduate students and recent graduates in your field of interest. Most importantly, remember that graduate school is just one part of your career journey, but it can be a transformative and rewarding part if approached with the right mindset and preparation.\n\nWhat questions do you have about graduate school? Feel free to reach out—I’m always happy to chat with prospective students about the academic journey."
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Grid\n  List\n\n\n\n\n\n\n10/17/25tutorial, linux, productivity\n\n\nModern Alternatives to Traditional Linux Commands\n\n\nDiscover 6 essential modern CLI tools that replace traditional Linux commands with better performance and usability. Learn how ripgrep, bat, fd, eza, zoxide, and delta can supercharge your workflow.\n\nRead More\n\n\n\n\n11/17/23linux, computational-science, tutorial\n\n\nGetting Started with Linux\n\n\nA practical guide for researchers transitioning to Linux for computational work, covering essential commands and workflow setup.\n\nRead More\n\n\n\n\n10/12/23academia, career, graduate-school\n\n\nWhy Graduate School is for You\n\n\nReflections on the graduate school experience and what to expect from this transformative journey in academia.\n\nRead More\n\n\nNo matching items\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nModern Alternatives to Traditional Linux Commands\n\n\n\ntutorial\n\nlinux\n\nproductivity\n\n\n\nDiscover 6 essential modern CLI tools that replace traditional Linux commands with better performance and usability. Learn how ripgrep, bat, fd, eza, zoxide, and delta can supercharge your workflow.\n\n\n\n\n\nOct 17, 2025\n\n15 min\n\n\n\n\n\n\n\n\n\n\n\nGetting Started with Linux\n\n\n\nlinux\n\ncomputational-science\n\ntutorial\n\n\n\nA practical guide for researchers transitioning to Linux for computational work, covering essential commands and workflow setup.\n\n\n\n\n\nNov 17, 2023\n\n6 min\n\n\n\n\n\n\n\n\n\n\n\nWhy Graduate School is for You\n\n\n\nacademia\n\ncareer\n\ngraduate-school\n\n\n\nReflections on the graduate school experience and what to expect from this transformative journey in academia.\n\n\n\n\n\nOct 12, 2023\n\n4 min\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog/posts/2023-11-17-getting-started-linux/index.html",
+    "href": "blog/posts/2023-11-17-getting-started-linux/index.html",
+    "title": "Getting Started with Linux",
+    "section": "",
+    "text": "As a computational materials scientist, Linux has become an indispensable part of my daily workflow. Whether you’re running density functional theory calculations, managing large datasets, or developing scientific software, Linux provides the power and flexibility needed for serious computational work.\nIf you’re new to Linux or considering making the switch from Windows or macOS for your research work, this guide will help you get started with confidence."
+  },
+  {
+    "objectID": "blog/posts/2023-11-17-getting-started-linux/index.html#why-linux-for-scientific-computing",
+    "href": "blog/posts/2023-11-17-getting-started-linux/index.html#why-linux-for-scientific-computing",
+    "title": "Getting Started with Linux",
+    "section": "Why Linux for Scientific Computing?",
+    "text": "Why Linux for Scientific Computing?\nBefore diving into the technical details, let’s understand why Linux is so popular in the scientific computing community:\n\nPerformance and Efficiency\n\nDirect hardware access: Linux provides better control over system resources\nLower overhead: More of your computer’s power goes to your calculations\nStability: Long-running computations benefit from Linux’s reliability\n\n\n\nPackage Management\n\nEasy installation of scientific software through package managers\nConsistent dependency management\nAccess to cutting-edge research tools\n\n\n\nHigh-Performance Computing (HPC) Integration\n\nMost supercomputers and clusters run Linux\nSeamless workflow from desktop to HPC systems\nBetter job scheduling and resource management tools"
+  },
+  {
+    "objectID": "blog/posts/2023-11-17-getting-started-linux/index.html#essential-commands-for-scientists",
+    "href": "blog/posts/2023-11-17-getting-started-linux/index.html#essential-commands-for-scientists",
+    "title": "Getting Started with Linux",
+    "section": "Essential Commands for Scientists",
+    "text": "Essential Commands for Scientists\nHere are the Linux commands I use most frequently in my research work:\n\nFile and Directory Operations\n# Navigate directories\ncd /path/to/your/research\npwd  # Print current directory\nls -la  # List files with details\n\n# File operations\ncp source_file destination  # Copy files\nmv old_name new_name        # Move/rename files\nmkdir new_directory         # Create directory\nrm -rf directory_name       # Remove directory and contents (use carefully!)\n\n\nText Processing and Data Analysis\n# View file contents\nhead -n 20 data_file.txt    # First 20 lines\ntail -n 10 output.log       # Last 10 lines\ngrep \"ERROR\" calculation.log # Search for patterns\n\n# Count lines, words, characters\nwc -l data_file.txt\n\n# Sort and process data\nsort data.txt | uniq -c     # Sort and count unique entries\n\n\nProcess Management\n# Monitor system resources\ntop                         # Real-time process monitor\nhtop                       # Enhanced process monitor (if installed)\nps aux | grep python       # Find Python processes\n\n# Job control\nnohup python script.py &   # Run command in background\njobs                       # List active jobs\nkill PID                   # Terminate process by ID"
+  },
+  {
+    "objectID": "blog/posts/2023-11-17-getting-started-linux/index.html#setting-up-your-research-environment",
+    "href": "blog/posts/2023-11-17-getting-started-linux/index.html#setting-up-your-research-environment",
+    "title": "Getting Started with Linux",
+    "section": "Setting Up Your Research Environment",
+    "text": "Setting Up Your Research Environment\n\nPython Environment Management\nFor computational work, I highly recommend using conda to manage your Python environments:\n# Install Miniconda (lightweight conda)\nwget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh\nbash Miniconda3-latest-Linux-x86_64.sh\n\n# Create environment for your research\nconda create -n computational-chem python=3.9\nconda activate computational-chem\n\n# Install essential scientific packages\nconda install numpy scipy matplotlib pandas\nconda install jupyter notebook\npip install ase  # Atomic Simulation Environment\n\n\nText Editors for Code and Scripts\nChoose a text editor you’re comfortable with. Here are popular options:\nNano (beginner-friendly):\nnano my_script.py\nVim (powerful but steeper learning curve):\nvim my_script.py  # Press 'i' to insert, 'Esc' then ':wq' to save and quit\nVS Code (graphical, if you prefer):\ncode my_script.py  # If VS Code is installed\n\n\nVersion Control with Git\nEssential for tracking your research code:\n# Configure Git (one-time setup)\ngit config --global user.name \"Your Name\"\ngit config --global user.email \"your.email@institution.edu\"\n\n# Initialize a repository for your project\ncd my_research_project\ngit init\ngit add .\ngit commit -m \"Initial commit\"\n\n# Connect to GitHub/GitLab\ngit remote add origin https://github.com/username/project.git\ngit push -u origin main"
+  },
+  {
+    "objectID": "blog/posts/2023-11-17-getting-started-linux/index.html#workflow-tips-for-computational-research",
+    "href": "blog/posts/2023-11-17-getting-started-linux/index.html#workflow-tips-for-computational-research",
+    "title": "Getting Started with Linux",
+    "section": "Workflow Tips for Computational Research",
+    "text": "Workflow Tips for Computational Research\n\nOrganizing Your Projects\nI recommend this directory structure for research projects:\nresearch_project/\n├── data/           # Raw and processed data\n├── scripts/        # Analysis and processing scripts\n├── notebooks/      # Jupyter notebooks\n├── results/        # Output files and figures\n├── docs/           # Documentation and notes\n└── README.md       # Project description\n\n\nRunning Long Calculations\nFor computationally intensive work:\n# Use screen or tmux for persistent sessions\nscreen -S calculation_name\n# Your long-running command here\npython expensive_calculation.py\n\n# Detach with Ctrl+A then D\n# Reattach later with: screen -r calculation_name\n\n\nMonitoring System Resources\nKeep an eye on system usage during calculations:\n# Monitor GPU usage (if using CUDA)\nnvidia-smi\n\n# Check disk space\ndf -h\n\n# Monitor memory usage\nfree -h\n\n# Watch file changes in real-time\ntail -f output.log"
+  },
+  {
+    "objectID": "blog/posts/2023-11-17-getting-started-linux/index.html#common-pitfalls-and-solutions",
+    "href": "blog/posts/2023-11-17-getting-started-linux/index.html#common-pitfalls-and-solutions",
+    "title": "Getting Started with Linux",
+    "section": "Common Pitfalls and Solutions",
+    "text": "Common Pitfalls and Solutions\n\nFile Permissions\nIf you get “permission denied” errors:\nchmod +x script.py          # Make file executable\nchmod 755 directory_name    # Set directory permissions\n\n\nPath Issues\nMake sure your programs are in your PATH:\necho $PATH                  # Check current PATH\nexport PATH=$PATH:/new/path # Add to PATH temporarily\nFor permanent changes, add the export line to your ~/.bashrc file.\n\n\nSSH and Remote Access\nFor working on remote servers:\n# Generate SSH key (one-time)\nssh-keygen -t rsa\n\n# Connect to remote server\nssh username@server.institution.edu\n\n# Copy files to/from remote server\nscp local_file.txt username@server:/remote/path/\nrsync -av local_directory/ username@server:/remote/directory/"
+  },
+  {
+    "objectID": "blog/posts/2023-11-17-getting-started-linux/index.html#next-steps",
+    "href": "blog/posts/2023-11-17-getting-started-linux/index.html#next-steps",
+    "title": "Getting Started with Linux",
+    "section": "Next Steps",
+    "text": "Next Steps\nOnce you’re comfortable with these basics, consider exploring:\n\nShell scripting: Automate repetitive tasks\nDocker containers: Reproducible computational environments\n\nJob schedulers: SLURM for HPC systems\nAdvanced text processing: awk, sed for data manipulation"
+  },
+  {
+    "objectID": "blog/posts/2023-11-17-getting-started-linux/index.html#resources-for-continued-learning",
+    "href": "blog/posts/2023-11-17-getting-started-linux/index.html#resources-for-continued-learning",
+    "title": "Getting Started with Linux",
+    "section": "Resources for Continued Learning",
+    "text": "Resources for Continued Learning\n\nThe Linux Command Line by William Shotts (free online)\nSoftware Carpentry workshops and materials\nLinux Academy or Linux Professional Institute for structured learning"
+  },
+  {
+    "objectID": "blog/posts/2023-11-17-getting-started-linux/index.html#conclusion",
+    "href": "blog/posts/2023-11-17-getting-started-linux/index.html#conclusion",
+    "title": "Getting Started with Linux",
+    "section": "Conclusion",
+    "text": "Conclusion\nTransitioning to Linux might seem daunting at first, but the investment in learning pays dividends in computational efficiency and workflow flexibility. Start with these basics, practice regularly, and don’t hesitate to use the excellent documentation available (man command_name shows manual pages for any command).\nRemember, even experienced Linux users regularly look up commands and syntax—it’s not about memorizing everything, but about understanding the concepts and knowing how to find information when you need it.\n\nHave questions about getting started with Linux for research? Feel free to reach out—I’m happy to help fellow researchers navigate this transition!"
   },
   {
     "objectID": "cv.html",
@@ -756,228 +511,11 @@
     "text": "Professional Memberships\nAmerican Physical Society · American Chemical Society · NOBCChE · Sigma Xi\nFor collaboration inquiries, contact me by email or LinkedIn."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Joseph Frimpong",
-    "section": "",
-    "text": "NST, Argonne National Laboratory"
-  },
-  {
-    "objectID": "index.html#research-interests",
-    "href": "index.html#research-interests",
-    "title": "Joseph Frimpong",
-    "section": "Research Interests",
-    "text": "Research Interests\n\nMany-body electronic-structure (GW/BSE) and dielectric embedding for complex interfaces.\n\nMachine learning models that accelerate excited-state calculations and screening workflows.\n\nQuantum dots, nanoscale interfaces, and catalysis-directed materials design."
-  },
-  {
-    "objectID": "index.html#latest-posts",
-    "href": "index.html#latest-posts",
-    "title": "Joseph Frimpong",
-    "section": "Latest Posts",
-    "text": "Latest Posts\n\nOct 17, 2025 – Modern Alternatives to Traditional Linux Commands\nNov 17, 2023 – Getting Started with Linux\nOct 12, 2023 – Why Graduate School is for You"
-  },
-  {
-    "objectID": "index.html#news",
-    "href": "index.html#news",
-    "title": "Joseph Frimpong",
-    "section": "News",
-    "text": "News\n\nAug 02, 2026 – Poster at the Gordon Research Conference on Computational Materials Science and Engineering — Presented “Accelerating Calculations Based on Many-Body Perturbation Theory” at the 2026 GRC, Computational Methods and Artificial Intelligence Tools for Materials Discovery and Industrial Application (Aug 2-7).\nAug 01, 2026 – Talk and poster at the Gordon Research Seminar on Computational Materials Science and Engineering — Presented “Learning Faithful Representations of the Dielectric Matrix for Excited-State Calculations with Generative Modeling” (with J. Zhan, V. Yu, M. Govoni, G. Galli, and M. Chan).\nFeb 17, 2026 – Named a 2026 BSSw Fellowship Honorable Mention — Recognized as one of six Honorable Mentions in the 2026 Better Scientific Software (BSSw) Fellowship program.\nJan 01, 2026 – Professional Development Officer, Postdoctoral Society of Argonne — Serving as Professional Development Officer of the Postdoctoral Society of Argonne for 2026.\nOct 31, 2025 – Talk at the Argonne Postdoctoral Research & Career Symposium — Presented “Towards Accelerating Excited State Calculations with Generative Modeling”.\n\nSee the full list on the news page."
-  },
-  {
-    "objectID": "index.html#connect",
-    "href": "index.html#connect",
-    "title": "Joseph Frimpong",
-    "section": "Connect",
-    "text": "Connect"
-  },
-  {
-    "objectID": "index.html#current-tools",
-    "href": "index.html#current-tools",
-    "title": "Joseph Frimpong",
-    "section": "Current Tools",
-    "text": "Current Tools"
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/FAQ.html",
-    "href": "site-backup-2025-11-10/academic-github-site/FAQ.html",
-    "title": "Frequently Asked Questions",
-    "section": "",
-    "text": "Frequently Asked Questions\nHere are some frequently asked questions. If you have a different question, please check if it was not already answered in the Q&A section of the GitHub Discussions. If not, feel free to ask a new question there.\n\nFrequently Asked Questions\n\nAfter I create a new repository from this template and setup the repo, I get a deployment error. Isn’t the website supposed to correctly deploy automatically?\nI am using a custom domain (e.g., foo.com). My custom domain becomes blank in the repository settings after each deployment. How do I fix that?\nMy webpage works locally. But after deploying, it fails to build and throws Unknown tag 'toc'. How do I fix that?\nMy webpage works locally. But after deploying, it is not displayed correctly (CSS and JS are not loaded properly). How do I fix that?\nAtom feed doesn’t work. Why?\nMy site doesn’t work when I enable related_blog_posts. Why?\nWhen trying to deploy, it’s asking for github login credentials, which github disabled password authentication and it exits with an error. How to fix?\nWhen I manually run the Lighthouse Badger workflow, it fails with Error: Input required and not supplied: token. How do I fix that?\nMy code runs fine locally, but when I create a commit and submit it, it fails with prettier code formatter workflow run failed for main branch. How do I fix that?\nAfter I update my site with some new content, even a small change, the GitHub action throws an error or displays a warning. What happened?\nI am trying to deploy my site, but it fails with Could not find gem 'jekyll-diagrams' in locally installed gems. How do I fix that?\nHow can I update Academicons version on the template\nHow can I update Font Awesome version on the template\nHow can I update Tabler Icons version on the template\nWhat do all these GitHub actions/workflows mean?\n\n\n\n\nAfter I create a new repository from this template and setup the repo, I get a deployment error. Isn’t the website supposed to correctly deploy automatically?\nYes, if you are using release v0.3.5 or later, the website will automatically and correctly re-deploy right after your first commit. Please make some changes (e.g., change your website info in _config.yml), commit, and push. Make sure to follow deployment instructions. (Relevant issue: 209.)\n\n\n\nI am using a custom domain (e.g., foo.com). My custom domain becomes blank in the repository settings after each deployment. How do I fix that?\nYou need to add CNAME file to the main or source branch of your repository. The file should contain your custom domain name. (Relevant issue: 130.)\n\n\n\nMy webpage works locally. But after deploying, it fails to build and throws Unknown tag 'toc'. How do I fix that?\nMake sure you followed through the deployment instructions in the previous section. You should have set the deployment branch to gh-pages. (Related issue: 1438.)\n\n\n\nMy webpage works locally. But after deploying, it is not displayed correctly (CSS and JS are not loaded properly). How do I fix that?\nIf the website does not load the theme, the layout looks weird, and all links are broken, being the main page displayed this way:\n\nmake sure to correctly specify the url and baseurl paths in _config.yml. Set url to https://&lt;your-github-username&gt;.github.io or to https://&lt;your.custom.domain&gt; if you are using a custom domain. If you are deploying a personal or organization website, leave baseurl empty (do NOT delete it). If you are deploying a project page, set baseurl: /&lt;your-project-name&gt;/. If all previous steps were done correctly, all is missing is for your browser to fetch again the site stylesheet. For this, you can:\n\npress Shift + F5 on Chromium-based or Ctrl + F5 on Firefox-based browsers to reload the page ignoring cached content\nclean your browser history\nsimply try it in a private session, here’s how to do it in Chrome and Firefox\n\n\n\n\nAtom feed doesn’t work. Why?\nMake sure to correctly specify the url and baseurl paths in _config.yml. RSS Feed plugin works with these correctly set up fields: title, url, description and author. Make sure to fill them in an appropriate way and try again.\n\n\n\nMy site doesn’t work when I enable related_blog_posts. Why?\nThis is probably due to the classifier reborn plugin, which is used to calculate related posts. If the error states Liquid Exception: Zero vectors can not be normalized... or sqrt': Numerical argument is out of domain - \"sqrt\", it means that it could not calculate related posts for a specific post. This is usually caused by empty or minimal blog posts without meaningful words (i.e. only stop words) or even specific characters you used in your posts. Also, the calculus for similar posts are made for every post, which means every page that uses layout: post, including the announcements. To change this behavior, simply add related_posts: false to the front matter of the page you don’t want to display related posts on. Another solution is to disable the lsi (latent semantic indexing) entirely by setting the lsi flag to false in _config.yml. Related issue: #1828.\n\n\n\nWhen trying to deploy, it’s asking for github login credentials, which github disabled password authentication and it exits with an error. How to fix?\nOpen .git/config file using your preferred editor. Change the https portion of the url variable to ssh. Try deploying again.\n\n\n\nWhen I manually run the Lighthouse Badger workflow, it fails with Error: Input required and not supplied: token. How do I fix that?\nYou need to create a personal access token and add it as a secret named LIGHTHOUSE_BADGER_TOKEN to your repository. For more information, check lighthouse-badger documentation on how to do this.\n\n\n\nMy code runs fine locally, but when I create a commit and submit it, it fails with prettier code formatter workflow run failed for main branch. How do I fix that?\nWe implemented support for Prettier code formatting in #2048. It basically ensures that your code is well formatted. If you want to ensure your code is compliant with Prettier, you have a few options:\n\nif you are running locally with Docker and using development containers, Prettier is already included\nif you don’t use Docker, it is simple to integrate it with your preferred IDE using an extension\nif you want to run it manually, you can follow the first 2 steps in this tutorial (Installing node version manager (nvm) and Installing Node (latest version)), then, install it using npm install prettier inside the project directory, or install it globally on your computer using npm install -g prettier. To run Prettier on your current directory use npx prettier . --write.\n\nYou can also disable it for your repo. For this, just delete the file .github/workflows/prettier.yml.\n\n\n\nAfter I update my site with some new content, even a small change, the GitHub action throws an error or displays a warning. What happened?\nProbably your GitHub workflow is throwing an error like this:\n/opt/hostedtoolcache/Ruby/3.0.2/x64/lib/ruby/gems/3.0.0/gems/bundler-2.5.5/lib/bundler/runtime.rb:304:in `check_for_activated_spec!': You have already activated uri 0.10.1, but your Gemfile requires uri 0.13.0. Since uri is a default gem, you can either remove your dependency on it or try updating to a newer version of bundler that supports uri as a default gem. (Gem::LoadError)\nor maybe displaying a warning like one of these:\nNode.js 16 actions are deprecated. Please update the following actions to use Node.js 20: actions/checkout@v3. For more information see: https://github.blog/changelog/2023-09-22-github-actions-transitioning-from-node-16-to-node-20/.\nNode.js 16 actions are deprecated. Please update the following actions to use Node.js 20: actions/checkout@v2, actions/cache@v2. For more information see: https://github.blog/changelog/2023-09-22-github-actions-transitioning-from-node-16-to-node-20/.\nThe following actions uses node12 which is deprecated and will be forced to run on node16: actions/checkout@v2, actions/cache@v2. For more info: https://github.blog/changelog/2023-06-13-github-actions-all-actions-will-run-on-node16-instead-of-node12-by-default/\nThe `set-output` command is deprecated and will be disabled soon. Please upgrade to using Environment Files. For more information see: https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/\nIf that’s the case, you are using deprecated libraries/commands. This happens because you are using a very old version of al-folio. To fix this it is recommended upgrading your code to the latest version of the template. You will probably need to do some manual merging. If you find it easier, you could create a copy of your repository, do a fresh installation from the template and reapply all your changes. For this I would recommend a tool like meld or winmerge to check the differences between directories/files.\nNote that libraries tend to be deprecated and support for them dropped as they are no longer maintained, and keep using them involves security breaches. Also, some of these deprecations are enforced, for example, by GitHub itself, so there’s so much we can do. We have also added tons of new functionality, as well as tidying things up and improving the overall speed and structure, so you could also benefit from these improvements.\n\n\n\nI am trying to deploy my site, but it fails with Could not find gem 'jekyll-diagrams' in locally installed gems. How do I fix that?\njekyll-diagrams support was dropped in #1992 in favor of using mermaid.js directly. Simply update your code to get the latest changes.\n\n\n\nHow can I update Academicons version on the template\nTo update the Academicons version, you need to download the latest release from the Academicons website. After downloading, extract the zip file and copy the files academicons.ttf and academicons.woff from the fonts/ directory to assets/fonts/ and the file academicons.min.css from the css/ directory to assets/css/.\n\n\n\nHow can I update Font Awesome version on the template\nTo update the Font Awesome version, you need to download the latest release “for the web” from the Font Awesome website. After downloading, extract the zip file and copy the scss/ directory content to _sass/font-awesome/ and the webfonts/ content to assets/webfonts/.\n\n\n\nHow can I update Tabler Icons version on the template\nTo update the Tabler Icons version, you need to download the latest release from the Tabler Icons website. After downloading, extract the zip file and copy the files tabler-icons-filled.scss, tabler-icons-outline.scss, and tabler-icons.scss from the webfont/ directory to _sass/tabler-icons/, and all the files from webfont/fonts/ to assets/fonts/.\n\n\n\nWhat do all these GitHub actions/workflows mean?\nGitHub actions are a way to automate tasks in the repository. They are defined in .github/workflows/ directory. Each file in this directory is a workflow. Workflows are made up of one or more jobs, and each job runs on a virtual machine hosted by GitHub. You can see the status of the workflows in the Actions tab of your repository. For more information, check the GitHub Actions documentation.\nCurrently we have the following workflows:\n\naxe.yml: does some accessibility testing in your site. It uses the axe cli tool with a chrome driver to render the webpage and allow the analysis. Must be run manually, since fixing some of the issues is not straightforward\nbroken-links-site.yml: checks for broken links in your built website with the lychee-action\nbroken-links.yml: checks for broken links in your repository with the lychee-action\ndeploy-docker-tag.yml: adds some metadata to the docker image and pushes it to Docker Hub\ndeploy-image.yml: deploys a new docker image with the latest changes to Docker Hub\ndeploy.yml: deploys the website to GitHub Pages\ndocker-slim.yml: deploys a smaller version of the docker image to Docker Hub with the docker-slim-action\nlighthouse-badger.yml: runs a lighthouse test for your site with the lighthouse-badger-action, saving the results in the repository for easy inspecting, as can be seen here. For more information on how to enable this workflow, check our FAQ question about it\nprettier-comment-on-pr.yml: not working. For now, this action is disabled. It was supposed to run prettier on the PRs and comment on them with the changes needed. For more information, check issue 2115\nprettier.yml: runs prettier on the code to ensure it is well formatted. For more information, check our FAQ question about it"
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html",
-    "href": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html",
-    "title": "Customize",
-    "section": "",
-    "text": "Here we will give you some tips on how to customize the website. One important thing to note is that ALL the changes you make should be done on the main branch of your repository. The gh-pages branch is automatically overwritten every time you make a change to the main branch.\n\n\nThe project is structured as follows, focusing on the main components that you will need to modify:\n.\n├── 📂 assets/: contains the assets that are displayed in the website\n│   └── 📂 json/\n    │   └── 📄 resume.json: CV in JSON format (https://jsonresume.org/)\n├── 📂 _bibliography/\n│   └── 📄 papers.bib: bibliography in BibTeX format\n├── 📄 _config.yml: the configuration file of the template\n├── 📂 _data/: contains some of the data used in the template\n│   ├── 📄 cv.yml: CV in YAML format, used when assets/json/resume.json is not found\n│   └── 📄 repositories.yml: users and repositories info in YAML format\n├── 📂 _includes/: contains code parts that are included in the main HTML file\n│   └── 📄 news.liquid: defines the news section layout in the about page\n├── 📂 _layouts/: contains the layouts to choose from in the frontmatter of the Markdown files\n├── 📂 _news/: the news that will appear in the news section in the about page\n├── 📂 _pages/: contains the pages of the website\n|   └── 📄 404.md: 404 page (page not found)\n├── 📂 _posts/: contains the blog posts\n├── 📂 _projects/: contains the projects\n└── 📂 _sass/: contains the SASS files that define the style of the website\n    ├── 📄 _base.scss: base style of the website\n    ├── 📄 _cv.scss: style of the CV page\n    ├── 📄 _distill.scss: style of the Distill articles\n    ├── 📄 _layout.scss: style of the overall layout\n    ├── 📄 _themes.scss: themes colors and a few icons\n    └── 📄 _variables.scss: variables used in the SASS files\n\n\n\nThe configuration file _config.yml contains the main configuration of the website. Most of the settings is self-explanatory and we also tried to add as much comments as possible. If you have any questions, please check if it was not already answered in the FAQ.\n\nNote that the url and baseurl settings are used to generate the links of the website, as explained in the install instructions.\n\nAll changes made to this file are only visible after you rebuild the website. That means that you need to run bundle exec jekyll serve again if you are running the website locally or push your changes to GitHub if you are using GitHub Pages. All other changes are visible immediately, you only need to refresh the page.\n\n\n\nThere are currently 2 different ways of generating the CV page content. The first one is by using a json file located in assets/json/resume.json. It is a known standard for creating a CV programmatically. The second one, currently used as a fallback when the json file is not found, is by using a yml file located in _data/cv.yml. This was the original way of creating the CV page content and since it is more human readable than a json file we decided to keep it as an option.\nWhat this means is, if there is no resume data defined in _config.yml and loaded via a json file, it will load the contents of _data/cv.yml. If you want to use the _data/cv.yml file as the source of your CV, you must delete the assets/json/resume.json file.\n\n\n\nThe user and repository information is defined in _data/repositories.yml. You can add as many users and repositories as you want. Both informations are used in the repositories section.\n\n\n\nYou can create new pages by adding new Markdown files in the _pages directory. The easiest way to do this is to copy an existing page and modify it. You can choose the layout of the page by changing the layout attribute in the frontmatter of the Markdown file, and also the path to access it by changing the permalink attribute. You can also add new layouts in the _layouts directory if you feel the need for it.\n\n\n\nTo create a new blog post, you can add a new Markdown file in the _posts directory. The name of the file must follow the format YYYY-MM-DD-title.md. The easiest way to do this is to copy an existing blog post and modify it. Note that some blog posts have optional fields in the frontmatter that are used to enable specific behaviors or functions.\nIf you want to create blog posts that are not ready to be published, but you want to track it with git, you can create a _drafts directory and store them there.\n\n\n\nYou can create new projects by adding new Markdown files in the _projects directory. The easiest way to do this is to copy an existing project and modify it.\n\n\n\nYou can add news in the about page by adding new Markdown files in the _news directory. There are currently two types of news: inline news and news with a link. News with a link take you to a new page while inline news are displayed directly in the about page. The easiest way to create yours is to copy an existing news and modify it.\n\n\n\nThis Jekyll theme implements collections to let you break up your work into categories. The theme comes with two default collections: news and projects. Items from the news collection are automatically displayed on the home page. Items from the projects collection are displayed on a responsive grid on projects page.\nYou can easily create your own collections, apps, short stories, courses, or whatever your creative work is. To do this, edit the collections in the _config.yml file, create a corresponding folder, and create a landing page for your collection, similar to _pages/projects.md.\n\n\n\nTo add publications create a new entry in the _bibliography/papers.bib file. You can find the BibTeX entry of a publication in Google Scholar by clicking on the quotation marks below the publication title, then clicking on “BibTeX”, or also in the conference page itself. By default, the publications will be sorted by year and the most recent will be displayed first. You can change this behavior and more in the Jekyll Scholar section in _config.yml file.\nYou can add extra information to a publication, like a PDF file in the assets/pdfs/ directory and add the path to the PDF file in the BibTeX entry with the pdf field. Some of the supported fields are: abstract, altmetric, annotation, arxiv, bibtex_show, blog, code, dimensions, doi, eprint, html, isbn, pdf, pmid, poster, slides, supp, video, and website.\n\n\nIn publications, the author entry for yourself is identified by string array scholar:last_name and string array scholar:first_name in _config.yml. For example, if you have the following entry in your _config.yml:\nscholar:\n  last_name: [Einstein]\n  first_name: [Albert, A.]\nIf the entry matches one form of the last names and the first names, it will be underlined. Keep meta-information about your co-authors in _data/coauthors.yml and Jekyll will insert links to their webpages automatically. The co-author data format is as follows, with the last names lower cased and without accents as the key:\n\"adams\":\n  - firstname: [\"Edwin\", \"E.\", \"E. P.\", \"Edwin Plimpton\"]\n    url: https://en.wikipedia.org/wiki/Edwin_Plimpton_Adams\n\n\"podolsky\":\n  - firstname: [\"Boris\", \"B.\", \"B. Y.\", \"Boris Yakovlevich\"]\n    url: https://en.wikipedia.org/wiki/Boris_Podolsky\n\n\"rosen\":\n  - firstname: [\"Nathan\", \"N.\"]\n    url: https://en.wikipedia.org/wiki/Nathan_Rosen\n\n\"bach\":\n  - firstname: [\"Johann Sebastian\", \"J. S.\"]\n    url: https://en.wikipedia.org/wiki/Johann_Sebastian_Bach\n\n  - firstname: [\"Carl Philipp Emanuel\", \"C. P. E.\"]\n    url: https://en.wikipedia.org/wiki/Carl_Philipp_Emanuel_Bach\nIf the entry matches one of the combinations of the last names and the first names, it will be highlighted and linked to the url provided. Note that the keys MUST BE lower cased and MUST NOT contain accents. This is because the keys are used to match the last names in the BibTeX entries, considering possible variations.\n\n\n\nThere are several custom bibtex keywords that you can use to affect how the entries are displayed on the webpage:\n\nabbr: Adds an abbreviation to the left of the entry. You can add links to these by creating a venue.yaml-file in the _data folder and adding entries that match.\nabstract: Adds an “Abs” button that expands a hidden text field when clicked to show the abstract text\naltmetric: Adds an Altmetric badge (Note: if DOI is provided just use true, otherwise only add the altmetric identifier here - the link is generated automatically)\nannotation: Adds a popover info message to the end of the author list that can potentially be used to clarify superscripts. HTML is allowed.\narxiv: Adds a link to the Arxiv website (Note: only add the arxiv identifier here - the link is generated automatically)\nbibtex_show: Adds a “Bib” button that expands a hidden text field with the full bibliography entry\nblog: Adds a “Blog” button redirecting to the specified link\ncode: Adds a “Code” button redirecting to the specified link\ndimensions: Adds a Dimensions badge (Note: if DOI or PMID is provided just use true, otherwise only add the Dimensions’ identifier here - the link is generated automatically)\nhtml: Inserts an “HTML” button redirecting to the user-specified link\npdf: Adds a “PDF” button redirecting to a specified file (if a full link is not specified, the file will be assumed to be placed in the /assets/pdf/ directory)\nposter: Adds a “Poster” button redirecting to a specified file (if a full link is not specified, the file will be assumed to be placed in the /assets/pdf/ directory)\nslides: Adds a “Slides” button redirecting to a specified file (if a full link is not specified, the file will be assumed to be placed in the /assets/pdf/ directory)\nsupp: Adds a “Supp” button to a specified file (if a full link is not specified, the file will be assumed to be placed in the /assets/pdf/ directory)\nwebsite: Adds a “Website” button redirecting to the specified link\n\nYou can implement your own buttons by editing the _layouts/bib.liquid file.\n\n\n\n\nA variety of beautiful theme colors have been selected for you to choose from. The default is purple, but you can quickly change it by editing the --global-theme-color variable in the _sass/_themes.scss file. Other color variables are listed there as well. The stock theme color options available can be found at _sass/_variables.scss. You can also add your own colors to this file assigning each a name for ease of use across the template.\n\n\n\nYou can add your social media links by adding the specified information at the Social integration section in the _config.yml file. This information will appear at the bottom of the About page.\n\n\n\nYou can add a newsletter subscription form by adding the specified information at the newsletter section in the _config.yml file. To set up a newsletter, you can use a service like Loops.so, which is the current supported solution. Once you have set up your newsletter, you can add the form endpoint to the endpoint field in the newsletter section of the _config.yml file.\nDepending on your specified footer behavior, the sign up form either will appear at the bottom of the About page and at the bottom of blogposts if related_posts are enabled, or in the footer at the bottom of each page.\n\n\n\nTo add secrets for lighthouse-badger, create a personal access token (PAT) and add it as a secret named LIGHTHOUSE_BADGER_TOKEN to your repository. The lighthouse-badger documentation specifies using an environment variable, but using it as a secret is more secure and appropriate for a PAT.\nAlso In case you face the error: “Input required and not supplied: token” in the Lighthouse Badger action, this solution resolves it.\n\n\n\ncontents: access: read and write\nmetadata: access: read-only\n\nDue to the necessary permissions (PAT and others mentioned above), it is recommended to use it as a secret rather than an environment variable.\n\n\n\n\nYou can customize the fonts, spacing, and more by editing _sass/_base.scss. The easiest way to try in advance the changes is by using chrome dev tools or firefox dev tools. In there you can click in the element and find all the attributes that are set for that element and where are they. For more information on how to use this, check chrome and firefox how-tos, and this tutorial.\n\n\n\nal-folio contains a workflow which automatically publishes all posts scheduled at a specific day, at the end of the day (23:30). By default the action is disabled, and to enable it you need to go to .github/workflows/ and find the file called schedule-posts.txt. This is the workflow file. For GitHub to recognize it as one (or to enable the action), you need to rename it to schedule-posts.yml.\nIn order to use this you need to save all of your “Completed” blog posts which are scheduled to be uploaded on a specific date, in a folder named _scheduled/ in the root directory.\n\nIncomplete posts should be saved in _drafts/\n\n\n\nIn this folder you need to store your file in the same format as you would in _posts/\n\nExample file name: 2024-08-26-This file will be uploaded on 26 August.md\n\n\n\n\n\nThe scheduler uploads posts everyday at 🕛 23:30 UTC\nIt will only upload posts at 23:30 UTC of their respective scheduled days, It’s not uploaded in 23:59 in case there are a lot of files as the scheduler must finish before 00:00\nIt will only upload files which follow the pattern yyyy-mm-dd-title.md\n\nThis means that only markdown files will be posted\nIt means that any markdown which do not follow this pattern will not be posted\n\nThe scheduler works by moving posts from the _scheduled/ directory to _posts/, it will not post to folders like _projects/ or _news/\nThe date in the name of the file is the day that file will be uploaded on\n\n2024-08-27-file1.md will not be posted before or after 27-August-2024 (Scheduler only works for posts scheduled on the present day)\n2025-08-27-file2.md will be posted exactly on 27-August-2025\nFile3.md will not be posted at all\n2026-02-31-file4.md is supposed to be posted on 31-February-2026, but there is no 31st in February hence this file will never be posted either"
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#project-structure",
-    "href": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#project-structure",
-    "title": "Customize",
-    "section": "",
-    "text": "The project is structured as follows, focusing on the main components that you will need to modify:\n.\n├── 📂 assets/: contains the assets that are displayed in the website\n│   └── 📂 json/\n    │   └── 📄 resume.json: CV in JSON format (https://jsonresume.org/)\n├── 📂 _bibliography/\n│   └── 📄 papers.bib: bibliography in BibTeX format\n├── 📄 _config.yml: the configuration file of the template\n├── 📂 _data/: contains some of the data used in the template\n│   ├── 📄 cv.yml: CV in YAML format, used when assets/json/resume.json is not found\n│   └── 📄 repositories.yml: users and repositories info in YAML format\n├── 📂 _includes/: contains code parts that are included in the main HTML file\n│   └── 📄 news.liquid: defines the news section layout in the about page\n├── 📂 _layouts/: contains the layouts to choose from in the frontmatter of the Markdown files\n├── 📂 _news/: the news that will appear in the news section in the about page\n├── 📂 _pages/: contains the pages of the website\n|   └── 📄 404.md: 404 page (page not found)\n├── 📂 _posts/: contains the blog posts\n├── 📂 _projects/: contains the projects\n└── 📂 _sass/: contains the SASS files that define the style of the website\n    ├── 📄 _base.scss: base style of the website\n    ├── 📄 _cv.scss: style of the CV page\n    ├── 📄 _distill.scss: style of the Distill articles\n    ├── 📄 _layout.scss: style of the overall layout\n    ├── 📄 _themes.scss: themes colors and a few icons\n    └── 📄 _variables.scss: variables used in the SASS files"
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#configuration",
-    "href": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#configuration",
-    "title": "Customize",
-    "section": "",
-    "text": "The configuration file _config.yml contains the main configuration of the website. Most of the settings is self-explanatory and we also tried to add as much comments as possible. If you have any questions, please check if it was not already answered in the FAQ.\n\nNote that the url and baseurl settings are used to generate the links of the website, as explained in the install instructions.\n\nAll changes made to this file are only visible after you rebuild the website. That means that you need to run bundle exec jekyll serve again if you are running the website locally or push your changes to GitHub if you are using GitHub Pages. All other changes are visible immediately, you only need to refresh the page."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#modifying-the-cv-information",
-    "href": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#modifying-the-cv-information",
-    "title": "Customize",
-    "section": "",
-    "text": "There are currently 2 different ways of generating the CV page content. The first one is by using a json file located in assets/json/resume.json. It is a known standard for creating a CV programmatically. The second one, currently used as a fallback when the json file is not found, is by using a yml file located in _data/cv.yml. This was the original way of creating the CV page content and since it is more human readable than a json file we decided to keep it as an option.\nWhat this means is, if there is no resume data defined in _config.yml and loaded via a json file, it will load the contents of _data/cv.yml. If you want to use the _data/cv.yml file as the source of your CV, you must delete the assets/json/resume.json file."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#modifying-the-user-and-repository-information",
-    "href": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#modifying-the-user-and-repository-information",
-    "title": "Customize",
-    "section": "",
-    "text": "The user and repository information is defined in _data/repositories.yml. You can add as many users and repositories as you want. Both informations are used in the repositories section."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#creating-new-pages",
-    "href": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#creating-new-pages",
-    "title": "Customize",
-    "section": "",
-    "text": "You can create new pages by adding new Markdown files in the _pages directory. The easiest way to do this is to copy an existing page and modify it. You can choose the layout of the page by changing the layout attribute in the frontmatter of the Markdown file, and also the path to access it by changing the permalink attribute. You can also add new layouts in the _layouts directory if you feel the need for it."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#creating-new-blog-posts",
-    "href": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#creating-new-blog-posts",
-    "title": "Customize",
-    "section": "",
-    "text": "To create a new blog post, you can add a new Markdown file in the _posts directory. The name of the file must follow the format YYYY-MM-DD-title.md. The easiest way to do this is to copy an existing blog post and modify it. Note that some blog posts have optional fields in the frontmatter that are used to enable specific behaviors or functions.\nIf you want to create blog posts that are not ready to be published, but you want to track it with git, you can create a _drafts directory and store them there."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#creating-new-projects",
-    "href": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#creating-new-projects",
-    "title": "Customize",
-    "section": "",
-    "text": "You can create new projects by adding new Markdown files in the _projects directory. The easiest way to do this is to copy an existing project and modify it."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#adding-some-news",
-    "href": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#adding-some-news",
-    "title": "Customize",
-    "section": "",
-    "text": "You can add news in the about page by adding new Markdown files in the _news directory. There are currently two types of news: inline news and news with a link. News with a link take you to a new page while inline news are displayed directly in the about page. The easiest way to create yours is to copy an existing news and modify it."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#adding-collections",
-    "href": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#adding-collections",
-    "title": "Customize",
-    "section": "",
-    "text": "This Jekyll theme implements collections to let you break up your work into categories. The theme comes with two default collections: news and projects. Items from the news collection are automatically displayed on the home page. Items from the projects collection are displayed on a responsive grid on projects page.\nYou can easily create your own collections, apps, short stories, courses, or whatever your creative work is. To do this, edit the collections in the _config.yml file, create a corresponding folder, and create a landing page for your collection, similar to _pages/projects.md."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#adding-a-new-publication",
-    "href": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#adding-a-new-publication",
-    "title": "Customize",
-    "section": "",
-    "text": "To add publications create a new entry in the _bibliography/papers.bib file. You can find the BibTeX entry of a publication in Google Scholar by clicking on the quotation marks below the publication title, then clicking on “BibTeX”, or also in the conference page itself. By default, the publications will be sorted by year and the most recent will be displayed first. You can change this behavior and more in the Jekyll Scholar section in _config.yml file.\nYou can add extra information to a publication, like a PDF file in the assets/pdfs/ directory and add the path to the PDF file in the BibTeX entry with the pdf field. Some of the supported fields are: abstract, altmetric, annotation, arxiv, bibtex_show, blog, code, dimensions, doi, eprint, html, isbn, pdf, pmid, poster, slides, supp, video, and website.\n\n\nIn publications, the author entry for yourself is identified by string array scholar:last_name and string array scholar:first_name in _config.yml. For example, if you have the following entry in your _config.yml:\nscholar:\n  last_name: [Einstein]\n  first_name: [Albert, A.]\nIf the entry matches one form of the last names and the first names, it will be underlined. Keep meta-information about your co-authors in _data/coauthors.yml and Jekyll will insert links to their webpages automatically. The co-author data format is as follows, with the last names lower cased and without accents as the key:\n\"adams\":\n  - firstname: [\"Edwin\", \"E.\", \"E. P.\", \"Edwin Plimpton\"]\n    url: https://en.wikipedia.org/wiki/Edwin_Plimpton_Adams\n\n\"podolsky\":\n  - firstname: [\"Boris\", \"B.\", \"B. Y.\", \"Boris Yakovlevich\"]\n    url: https://en.wikipedia.org/wiki/Boris_Podolsky\n\n\"rosen\":\n  - firstname: [\"Nathan\", \"N.\"]\n    url: https://en.wikipedia.org/wiki/Nathan_Rosen\n\n\"bach\":\n  - firstname: [\"Johann Sebastian\", \"J. S.\"]\n    url: https://en.wikipedia.org/wiki/Johann_Sebastian_Bach\n\n  - firstname: [\"Carl Philipp Emanuel\", \"C. P. E.\"]\n    url: https://en.wikipedia.org/wiki/Carl_Philipp_Emanuel_Bach\nIf the entry matches one of the combinations of the last names and the first names, it will be highlighted and linked to the url provided. Note that the keys MUST BE lower cased and MUST NOT contain accents. This is because the keys are used to match the last names in the BibTeX entries, considering possible variations.\n\n\n\nThere are several custom bibtex keywords that you can use to affect how the entries are displayed on the webpage:\n\nabbr: Adds an abbreviation to the left of the entry. You can add links to these by creating a venue.yaml-file in the _data folder and adding entries that match.\nabstract: Adds an “Abs” button that expands a hidden text field when clicked to show the abstract text\naltmetric: Adds an Altmetric badge (Note: if DOI is provided just use true, otherwise only add the altmetric identifier here - the link is generated automatically)\nannotation: Adds a popover info message to the end of the author list that can potentially be used to clarify superscripts. HTML is allowed.\narxiv: Adds a link to the Arxiv website (Note: only add the arxiv identifier here - the link is generated automatically)\nbibtex_show: Adds a “Bib” button that expands a hidden text field with the full bibliography entry\nblog: Adds a “Blog” button redirecting to the specified link\ncode: Adds a “Code” button redirecting to the specified link\ndimensions: Adds a Dimensions badge (Note: if DOI or PMID is provided just use true, otherwise only add the Dimensions’ identifier here - the link is generated automatically)\nhtml: Inserts an “HTML” button redirecting to the user-specified link\npdf: Adds a “PDF” button redirecting to a specified file (if a full link is not specified, the file will be assumed to be placed in the /assets/pdf/ directory)\nposter: Adds a “Poster” button redirecting to a specified file (if a full link is not specified, the file will be assumed to be placed in the /assets/pdf/ directory)\nslides: Adds a “Slides” button redirecting to a specified file (if a full link is not specified, the file will be assumed to be placed in the /assets/pdf/ directory)\nsupp: Adds a “Supp” button to a specified file (if a full link is not specified, the file will be assumed to be placed in the /assets/pdf/ directory)\nwebsite: Adds a “Website” button redirecting to the specified link\n\nYou can implement your own buttons by editing the _layouts/bib.liquid file."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#changing-theme-color",
-    "href": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#changing-theme-color",
-    "title": "Customize",
-    "section": "",
-    "text": "A variety of beautiful theme colors have been selected for you to choose from. The default is purple, but you can quickly change it by editing the --global-theme-color variable in the _sass/_themes.scss file. Other color variables are listed there as well. The stock theme color options available can be found at _sass/_variables.scss. You can also add your own colors to this file assigning each a name for ease of use across the template."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#adding-social-media-information",
-    "href": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#adding-social-media-information",
-    "title": "Customize",
-    "section": "",
-    "text": "You can add your social media links by adding the specified information at the Social integration section in the _config.yml file. This information will appear at the bottom of the About page."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#adding-a-newsletter",
-    "href": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#adding-a-newsletter",
-    "title": "Customize",
-    "section": "",
-    "text": "You can add a newsletter subscription form by adding the specified information at the newsletter section in the _config.yml file. To set up a newsletter, you can use a service like Loops.so, which is the current supported solution. Once you have set up your newsletter, you can add the form endpoint to the endpoint field in the newsletter section of the _config.yml file.\nDepending on your specified footer behavior, the sign up form either will appear at the bottom of the About page and at the bottom of blogposts if related_posts are enabled, or in the footer at the bottom of each page."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#adding-token-for-lighthouse-badger",
-    "href": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#adding-token-for-lighthouse-badger",
-    "title": "Customize",
-    "section": "",
-    "text": "To add secrets for lighthouse-badger, create a personal access token (PAT) and add it as a secret named LIGHTHOUSE_BADGER_TOKEN to your repository. The lighthouse-badger documentation specifies using an environment variable, but using it as a secret is more secure and appropriate for a PAT.\nAlso In case you face the error: “Input required and not supplied: token” in the Lighthouse Badger action, this solution resolves it.\n\n\n\ncontents: access: read and write\nmetadata: access: read-only\n\nDue to the necessary permissions (PAT and others mentioned above), it is recommended to use it as a secret rather than an environment variable."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#customizing-fonts-spacing-and-more",
-    "href": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#customizing-fonts-spacing-and-more",
-    "title": "Customize",
-    "section": "",
-    "text": "You can customize the fonts, spacing, and more by editing _sass/_base.scss. The easiest way to try in advance the changes is by using chrome dev tools or firefox dev tools. In there you can click in the element and find all the attributes that are set for that element and where are they. For more information on how to use this, check chrome and firefox how-tos, and this tutorial."
-  },
-  {
-    "objectID": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#scheduled-posts",
-    "href": "site-backup-2025-11-10/academic-github-site/CUSTOMIZE.html#scheduled-posts",
-    "title": "Customize",
-    "section": "",
-    "text": "al-folio contains a workflow which automatically publishes all posts scheduled at a specific day, at the end of the day (23:30). By default the action is disabled, and to enable it you need to go to .github/workflows/ and find the file called schedule-posts.txt. This is the workflow file. For GitHub to recognize it as one (or to enable the action), you need to rename it to schedule-posts.yml.\nIn order to use this you need to save all of your “Completed” blog posts which are scheduled to be uploaded on a specific date, in a folder named _scheduled/ in the root directory.\n\nIncomplete posts should be saved in _drafts/\n\n\n\nIn this folder you need to store your file in the same format as you would in _posts/\n\nExample file name: 2024-08-26-This file will be uploaded on 26 August.md\n\n\n\n\n\nThe scheduler uploads posts everyday at 🕛 23:30 UTC\nIt will only upload posts at 23:30 UTC of their respective scheduled days, It’s not uploaded in 23:59 in case there are a lot of files as the scheduler must finish before 00:00\nIt will only upload files which follow the pattern yyyy-mm-dd-title.md\n\nThis means that only markdown files will be posted\nIt means that any markdown which do not follow this pattern will not be posted\n\nThe scheduler works by moving posts from the _scheduled/ directory to _posts/, it will not post to folders like _projects/ or _news/\nThe date in the name of the file is the day that file will be uploaded on\n\n2024-08-27-file1.md will not be posted before or after 27-August-2024 (Scheduler only works for posts scheduled on the present day)\n2025-08-27-file2.md will be posted exactly on 27-August-2025\nFile3.md will not be posted at all\n2026-02-31-file4.md is supposed to be posted on 31-February-2026, but there is no 31st in February hence this file will never be posted either"
-  },
-  {
-    "objectID": "publications.html",
-    "href": "publications.html",
-    "title": "Publications",
-    "section": "",
-    "text": "Search publications\n  \n    \n    Clear\n  \n  Start typing to filter the list instantly.\n2024\n\n  \n  \n    J. Phys. Chem. Lett.\n    Generalized Substrate Screening GW for Covalently Bonded Interfaces\n    Joseph Frimpong, Zhen-Fei Liu\n    J. Phys. Chem. Lett., 15(8): 2133-2141\n    \n      \n      Abstract\n    \n    \n      An accurate description of the interfacial quasiparticle electronic structure is key to the design of heterogeneous materials. While the first-principles GW approach is state-of-the-art, the computational cost is high for large interface systems. This has led to the substrate screening GW approach for weakly coupled interfaces, which breaks down for covalently bonded interfaces. In this work, we present the generalized substrate screening GW approach, based on the following two considerations: (i) the contribution of the interfacial covalent bond to the polarizability can be efficiently calculated with a low energy cutoff; (ii) the contribution of the deprotonated adsorbate to the interface polarizability can be well approximated by that of the protonated molecule. Our approach is exemplified using interfaces formed between benzene-1,4-dithiol (BDT) and Au(111), which feature the widely used Au-S bonds in experiments. Our work provides a robust and simple scheme for accurate and efficient GW calculations of covalently bonded interfaces.\n    \n  \n\n\n\n  \n  \n    JACS\n    Hydrogen Isotope Labeling of Pharmaceuticals Via Dual Hydrogen Isotope Exchange Pathways Using CdS Quantum Dot Photocatalyst\n    Rajendra Maity, Otto Dungan, Frédéric A. Perras, Jingwei Li, Daohua Liu, Sumei Ren, Dan Lehnherr, Zheng Huang, Eric M. Phillips, Moses Adeyemo, Joseph Frimpong, Timothy Quainoo, Zhen-Fei Liu, Long Luo\n    Journal of the American Chemical Society, 146(49): 34141-34151\n    \n      \n      Abstract\n    \n    \n      Pharmaceutical synthesis often requires hydrogen isotope labeling for drug development and mechanistic studies. Traditional methods suffer from limitations in scope and selectivity. Here, we present a photocatalytic hydrogen isotope exchange (HIE) method using CdS quantum dots that operates via dual pathways: direct HAT from the CdS quantum dot surface and photogenerated hole-mediated oxidation. This dual mechanism enables broad applicability to various pharmaceutical compounds, including complex drug molecules like celecoxib, roflumilast, and mavoglurant. The method shows excellent deuterium incorporation with high precision and minimal byproduct formation. Our work demonstrates the potential of quantum dot photocatalysis for pharmaceutical isotope labeling applications.\n    \n  \n\n\n\n  \n  \n    Chem. Mater.\n    Understanding Ligand Exchange and Surface Passivation in CdS Quantum Dots from First Principles\n    Joseph Frimpong, Sandip Aryal, Tejas Karun, Zhen-Fei Liu\n    Chemistry of Materials, 36(23): 11519-11528\n    \n      \n      Abstract\n    \n    \n      Quantum dots (QDs) are semiconductor nanoparticles with unique optical and electronic properties that make them valuable for various applications including solar cells, LEDs, and biological imaging. The surface chemistry of QDs plays a crucial role in determining their properties and stability. In this work, we use first-principles density functional theory calculations to investigate ligand exchange processes and surface passivation mechanisms in CdS quantum dots. We examine how different ligands interact with CdS surfaces and how these interactions affect the electronic structure and optical properties of the QDs. Our calculations provide insights into the binding energies, electronic structure changes, and passivation effects of various ligand molecules on CdS QD surfaces.\n    \n  \n\n2023\n\n  \n  \n    Faraday Discuss.\n    Electrochemical Hydrogen Isotope Exchange of Amines Controlled by Alternating Current Frequency\n    Nibedita Behera, Disni Gunasekera, Jyoti P. Mahajan, Joseph Frimpong, Zhen-Fei Liu, Long Luo\n    Faraday Discuss., 247: 45-58\n    \n      \n      Abstract\n    \n    \n      Here, we report an electrochemical protocol for hydrogen isotope exchange (HIE) at alpha-C(sp3)-H amine sites. Tetrahydroisoquinoline and pyrrolidine are selected as two model substrates because of their different proton transfer (PT) and hydrogen atom transfer (HAT) kinetics at the alpha-C(sp3)-H amine sites, which are utilized to control the HIE reaction outcome at different applied alternating current (AC) frequencies. We found the highest deuterium incorporation for tetrahydroisoquinolines at 0 Hz (i.e., under direct current (DC) electrolysis conditions) and pyrrolidines at 0.5 Hz. Analysis of the product distribution and D isotope incorporation at different frequencies reveals that the HIE of tetrahydroisoquinolines is limited by its slow HAT, whereas the HIE of pyrrolidines is limited by the overoxidation of its alpha-amino radical intermediates. The AC-frequency-dependent HIE of amines can be potentially used to achieve selective labeling of alpha-amine sites in one drug molecule, which will significantly impact the pharmaceutical industry.\n    \n  \n\n2022\n\n  \n  \n    J. Phys. Chem. Lett.\n    Comparative Study of Covalent and van Der Waals CdS Quantum Dot Assemblies from Many-Body Perturbation Theory\n    Sandip Aryal, Joseph Frimpong, Zhen-Fei Liu\n    J. Phys. Chem. Lett., 13(43): 10153-10161\n    \n      \n      Abstract\n    \n    \n      Quantum dot (QD) assemblies are nanostructured networks made from aggregates of QDs and feature improved charge and energy transfer efficiencies compared to discrete QDs. Using first-principles many-body perturbation theory, we systematically compare the electronic and optical properties of two types of CdS QD assemblies that have been experimentally investigated: (i) QD gels, where individual QDs are covalently connected via di- or polysulfide bonds, and (ii) QD nanocrystals, where individual QDs are bound via van der Waals interactions. Our work illustrates how the electronic and optical properties evolve when discrete QDs are assembled into 1D, 2D, and 3D gels and nanocrystals, as well as how the one-body and many-body interactions in these systems impact the trends as the dimensionality of the assembly increases. Furthermore, our work reveals the crucial role of the di- or polysulfide covalent bonds in the localization of the excitons, which highlights the difference between QD gels and QD nanocrystals.\n    \n  \n\n2021\n\n  \n  \n    J. Phys.: Condens. Matter\n    Quasiparticle Electronic Structure of Two-Dimensional Heterotriangulene-Based Covalent Organic Frameworks Adsorbed on Au(111)\n    Joseph Frimpong, Zhen-Fei Liu\n    J. Phys.: Condens. Matter, 33(25): 254004\n    \n      \n      Abstract\n    \n    \n      The modular nature and unique electronic properties of two-dimensional (2D) covalent organic frameworks (COFs) make them an attractive option for applications in catalysis, optoelectronics, and spintronics. The fabrications of such devices often involve interfaces formed between COFs and substrates. In this work, we employ the first-principles GW approach to accurately determine the quasiparticle electronic structure of three 2D carbonyl bridged heterotriangulene-based COFs featuring honeycomb-kagome lattice, with their properties ranging from a semi-metal to a wide-gap semiconductor. Moreover, we study the adsorption of these COFs on Au(111) surface and characterize the quasiparticle electronic structure at the heterogeneous COF/Au(111) interfaces. To reduce the computational cost, we apply the recently developed dielectric embedding GW approach and show that our results agree with existing experimental measurement on the interfacial energy level alignment. Our calculations illustrate how the many-body dielectric screening at the interface modulates the energies and shapes of the Dirac bands, the effective masses of semiconducting COFs, as well as the Fermi velocity of the semi-metallic COF.\n    \n  \n\nShow More Publications"
-  },
-  {
-    "objectID": "publications.html#technical-talks-presentations",
-    "href": "publications.html#technical-talks-presentations",
-    "title": "Publications",
-    "section": "Technical Talks & Presentations",
-    "text": "Technical Talks & Presentations\n\n\n\n\n  \n  \n    Poster\n    Accelerating Calculations Based on Many-Body Perturbation Theory\n    J. Frimpong\n    Gordon Research Conference: Computational Materials Science and Engineering · August 3, 2026 · Newry, ME\n    \n  \n\n\n\n  \n  \n    Talk & Poster\n    Learning Faithful Representations of the Dielectric Matrix for Excited-State Calculations with Generative Modeling\n    J. Frimpong, J. Zhan, V. Yu, M. Govoni, G. Galli, M. Chan\n    Gordon Research Seminar: Computational Materials Science and Engineering · August 1, 2026 · Newry, ME\n    \n  \n\n\n\n  \n  \n    Talk\n    Towards Accelerating Excited State Calculations with Generative Modeling\n    J. Frimpong\n    Argonne Postdoctoral Research & Career Symposium · October 31, 2025 · Lemont, IL\n    \n  \n\n\n\n  \n  \n    Contributed Talk\n    Towards Accelerating Excited State Calculations with Generative Modeling\n    J. Frimpong, J. Zhan, Victor Yu, Guilia Galli, Maria Chan\n    Midwest Theoretical Chemistry Conference · May 26, 2025 · Detroit, MI\n    Slides\n  \n\n\n\n  \n  \n    Talk\n    Understanding Ligand Exchange in Quantum Dots from First Principles\n    J. Frimpong, Z. Liu\n    ACS Spring Meeting · March 19, 2024 · New Orleans, LA\n    Slides\n  \n\n\n\n  \n  \n    Talk\n    Development of GW-Based Substrate Screening Methods for Strongly Coupled Molecule-Metal Interfaces\n    J. Frimpong, Z. Liu\n    APS March Meeting · March 18, 2023 · Las Vegas, NV\n    Slides\n  \n\n\n\n  \n  \n    Talk\n    Development of GW-Based Substrate Screening Methods for Covalently-Bound Interfaces\n    J. Frimpong, Z. Liu\n    NOBCCChE National Conference · September 12, 2023 · New Orleans, LA\n    Slides Poster\n  \n\n\n\n  \n  \n    Talk\n    Electronic Structure and Optical Properties of Quantum Dots and Their Assemblies\n    J. Frimpong, S. Aryal, Z. Liu\n    APS March Meeting · March 18, 2022 · Chicago, IL\n    Slides\n  \n\n\n\n  \n  \n    Talk\n    Unraveling the Role of Surface Ligands in the Electronic and Optical Properties of Cadmium Sulphide Quantum Dots\n    J. Frimpong, S. Aryal, Z. Liu\n    NOBCCChE National Conference · September 25, 2022 · Orlando, FL\n    Poster\n  \n\n\n\n  \n  \n    Virtual Talk\n    Quasiparticle Electronic Structure of Two-Dimensional Heterotriangulene-Based Covalent Organic Frameworks Adsorbed on Au(111)\n    J. Frimpong, Z. Liu\n    APS March Meeting · March 17, 2021 · Virtual\n    Slides Video\n  \n\n\n\n  \n  \n    Student Talk\n    Electronic Structure of 2D Covalent Organic Frameworks and the Influence of Au(111) Substrate\n    J. Frimpong, Z. Liu\n    Chemistry Graduate Research Symposium (CGRS) · 2021 · Detroit, MI\n    Slides\n  \n\n\n\n  \n  \n    Poster\n    Mechanistic Studies of the Cycloaddition of Norbornadiene and Alkynyl Phosphonates\n    J. Frimpong\n    19th International Workshop on Computational Physics and Material Science · 2019 · Trieste, Italy\n    Poster\n  \n\nShow More Talks"
-  },
-  {
     "objectID": "news.html",
     "href": "news.html",
     "title": "News & Highlights",
     "section": "",
     "text": "Poster at the Gordon Research Conference on Computational Materials Science and Engineering\n    Aug 02, 2026 · Newry, ME\n    Presented \"Accelerating Calculations Based on Many-Body Perturbation Theory\" at the 2026 GRC, Computational Methods and Artificial Intelligence Tools for Materials Discovery and Industrial Application (Aug 2-7).\n  \n\n\n\n  \n  \n    Talk and poster at the Gordon Research Seminar on Computational Materials Science and Engineering\n    Aug 01, 2026 · Newry, ME\n    Presented \"Learning Faithful Representations of the Dielectric Matrix for Excited-State Calculations with Generative Modeling\" (with J. Zhan, V. Yu, M. Govoni, G. Galli, and M. Chan).\n  \n\n\n\n  \n  \n    Named a 2026 BSSw Fellowship Honorable Mention\n    Feb 17, 2026 · Better Scientific Software\n    Recognized as one of six Honorable Mentions in the 2026 Better Scientific Software (BSSw) Fellowship program.\n  \n\n\n\n  \n  \n    Professional Development Officer, Postdoctoral Society of Argonne\n    Jan 01, 2026 · Lemont, IL\n    Serving as Professional Development Officer of the Postdoctoral Society of Argonne for 2026.\n  \n\n\n\n  \n  \n    Talk at the Argonne Postdoctoral Research & Career Symposium\n    Oct 31, 2025 · Lemont, IL\n    Presented \"Towards Accelerating Excited State Calculations with Generative Modeling\".\n  \n\n\n\n  \n  \n    Visionary Award at the LLM Hackathon for Materials Science and Chemistry\n    Sep 11, 2025\n    Atomic Shorts, an agentic AI system that makes short videos explaining materials-science concepts, received a 2025 Visionary Award.\n  \n\n\n\n  \n  \n    Attended the Argonne Training Program on Extreme-Scale Computing (ATPESC)\n    Jul 27, 2025 · St. Charles, IL\n    Two-week intensive training (July 27 - August 8) on programming and running science applications on leadership-class and exascale supercomputers.\n  \n\n\n\n  \n  \n    Attended the Deep Learning for Science Summer School\n    Jun 23, 2025 · Berkeley, CA\n    Week-long Berkeley Lab school (June 23-27) on deep learning and generative AI for scientific research.\n  \n\n\n\n  \n  \n    Talk at the Midwest Theoretical Chemistry Conference\n    May 26, 2025 · Detroit, MI\n    Presented \"Towards Accelerating Excited State Calculations with Generative Modeling\" (with J. Zhan, V. Yu, G. Galli, and M. Chan).\n  \n\n\n\n  \n  \n    Joined Argonne National Laboratory as Postdoctoral Researcher\n    Nov 04, 2024 · Lemont, IL\n    Started a postdoctoral appointment in the NST division to develop AI/ML-assisted GW/BSE workflows for heterogeneous materials.\n  \n\n\n\n  \n  \n    Defended Ph.D. in Chemistry at Wayne State University\n    Aug 30, 2024 · Detroit, MI\n    Successfully defended my dissertation on many-body approaches for quantum dots and covalent interfaces.\n  \n\n\n\n  \n  \n    Led Chemistry Meets Computers Summer Bootcamp\n    Jul 01, 2023 · Wayne State University\n    Taught a week-long intensive introducing Python and ML to high school students, mentoring on computational chemistry and machine learning."
-  },
-  {
-    "objectID": "projects/isotopic-labeling-catalysis.html",
-    "href": "projects/isotopic-labeling-catalysis.html",
-    "title": "Isotopic Labeling & Catalysis",
-    "section": "",
-    "text": "Timeline: 2022 – 2024\nRole: Computational Collaborator\nCollaborators: Luo Lab and industrial partners"
-  },
-  {
-    "objectID": "projects/isotopic-labeling-catalysis.html#project-scope",
-    "href": "projects/isotopic-labeling-catalysis.html#project-scope",
-    "title": "Isotopic Labeling & Catalysis",
-    "section": "Project Scope",
-    "text": "Project Scope\nWe coupled density functional theory, GW corrections, and kinetic modeling to rationalize hydrogen isotope exchange in complex pharmaceutical intermediates. The work guided the design of photocatalytic quantum dot platforms capable of delivering late-stage deuteration and tritiation with high selectivity."
-  },
-  {
-    "objectID": "projects/isotopic-labeling-catalysis.html#what-we-delivered",
-    "href": "projects/isotopic-labeling-catalysis.html#what-we-delivered",
-    "title": "Isotopic Labeling & Catalysis",
-    "section": "What We Delivered",
-    "text": "What We Delivered\n\nEnergy landscapes for proton-coupled electron transfer steps governing catalytic turnover.\nDesign rules that linked surface terminations and sacrificial agents to quantum yield and isotope enrichment.\nSupport for synthetic campaigns, informing reaction windows and ligand choices."
-  },
-  {
-    "objectID": "projects/isotopic-labeling-catalysis.html#publications-talks",
-    "href": "projects/isotopic-labeling-catalysis.html#publications-talks",
-    "title": "Isotopic Labeling & Catalysis",
-    "section": "Publications & Talks",
-    "text": "Publications & Talks\n\nJournal of the American Chemical Society (2024)\nFaraday Discussions (2023)"
-  },
-  {
-    "objectID": "projects/isotopic-labeling-catalysis.html#outlook",
-    "href": "projects/isotopic-labeling-catalysis.html#outlook",
-    "title": "Isotopic Labeling & Catalysis",
-    "section": "Outlook",
-    "text": "Outlook\nOngoing collaborations aim to merge kinetic Monte Carlo models with operando spectroscopies to understand active-site evolution during extended catalysis runs."
   },
   {
     "objectID": "projects/ai-ml-electronic-structure.html",
@@ -1013,5 +551,138 @@
     "title": "AI/ML for Electronic Structure",
     "section": "Next Steps",
     "text": "Next Steps\nI am integrating data-assimilation pipelines that combine experimental photoluminescence spectra with theoretical priors, and extending the surrogate models to handle strongly anisotropic interfaces."
+  },
+  {
+    "objectID": "projects/method-development-hpc.html",
+    "href": "projects/method-development-hpc.html",
+    "title": "Method Development & HPC Tooling",
+    "section": "",
+    "text": "Timeline: Ongoing\nRole: Developer & Maintainer\nCollaborators: WEST, BerkeleyGW, and community tooling teams"
+  },
+  {
+    "objectID": "projects/method-development-hpc.html#motivation",
+    "href": "projects/method-development-hpc.html#motivation",
+    "title": "Method Development & HPC Tooling",
+    "section": "Motivation",
+    "text": "Motivation\nLeadership-class simulations demand reproducible pipelines, data hygiene, and responsive visualization. I build tooling that bridges traditional electronic-structure packages with modern workflow engines so that large-scale screening stays transparent and repeatable."
+  },
+  {
+    "objectID": "projects/method-development-hpc.html#core-contributions",
+    "href": "projects/method-development-hpc.html#core-contributions",
+    "title": "Method Development & HPC Tooling",
+    "section": "Core Contributions",
+    "text": "Core Contributions\n\nMPI-aware task orchestration for WEST/BerkeleyGW calculations on Polaris, Perlmutter, and Frontier.\nAutomated provenance capture and lightweight dashboards for monitoring calculation health.\nPyTorch-based surrogate models that plug into existing workflows to pre-screen candidate structures."
+  },
+  {
+    "objectID": "projects/method-development-hpc.html#resources",
+    "href": "projects/method-development-hpc.html#resources",
+    "title": "Method Development & HPC Tooling",
+    "section": "Resources",
+    "text": "Resources\n\nSource and notebooks on GitHub\nInternal documentation (available to collaborators upon request)"
+  },
+  {
+    "objectID": "projects/method-development-hpc.html#roadmap",
+    "href": "projects/method-development-hpc.html#roadmap",
+    "title": "Method Development & HPC Tooling",
+    "section": "Roadmap",
+    "text": "Roadmap\nCurrent tasks include integrating ML surrogates directly into WEST’s scheduling layer and publishing a reusable cookiecutter for multi-fidelity excited-state screening."
+  },
+  {
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "Publications",
+    "section": "",
+    "text": "Search publications\n  \n    \n    Clear\n  \n  Start typing to filter the list instantly.\n2024\n\n  \n  \n    J. Phys. Chem. Lett.\n    Generalized Substrate Screening GW for Covalently Bonded Interfaces\n    Joseph Frimpong, Zhen-Fei Liu\n    J. Phys. Chem. Lett., 15(8): 2133-2141\n    \n      \n      Abstract\n    \n    \n      An accurate description of the interfacial quasiparticle electronic structure is key to the design of heterogeneous materials. While the first-principles GW approach is state-of-the-art, the computational cost is high for large interface systems. This has led to the substrate screening GW approach for weakly coupled interfaces, which breaks down for covalently bonded interfaces. In this work, we present the generalized substrate screening GW approach, based on the following two considerations: (i) the contribution of the interfacial covalent bond to the polarizability can be efficiently calculated with a low energy cutoff; (ii) the contribution of the deprotonated adsorbate to the interface polarizability can be well approximated by that of the protonated molecule. Our approach is exemplified using interfaces formed between benzene-1,4-dithiol (BDT) and Au(111), which feature the widely used Au-S bonds in experiments. Our work provides a robust and simple scheme for accurate and efficient GW calculations of covalently bonded interfaces.\n    \n  \n\n\n\n  \n  \n    JACS\n    Hydrogen Isotope Labeling of Pharmaceuticals Via Dual Hydrogen Isotope Exchange Pathways Using CdS Quantum Dot Photocatalyst\n    Rajendra Maity, Otto Dungan, Frédéric A. Perras, Jingwei Li, Daohua Liu, Sumei Ren, Dan Lehnherr, Zheng Huang, Eric M. Phillips, Moses Adeyemo, Joseph Frimpong, Timothy Quainoo, Zhen-Fei Liu, Long Luo\n    Journal of the American Chemical Society, 146(49): 34141-34151\n    \n      \n      Abstract\n    \n    \n      Pharmaceutical synthesis often requires hydrogen isotope labeling for drug development and mechanistic studies. Traditional methods suffer from limitations in scope and selectivity. Here, we present a photocatalytic hydrogen isotope exchange (HIE) method using CdS quantum dots that operates via dual pathways: direct HAT from the CdS quantum dot surface and photogenerated hole-mediated oxidation. This dual mechanism enables broad applicability to various pharmaceutical compounds, including complex drug molecules like celecoxib, roflumilast, and mavoglurant. The method shows excellent deuterium incorporation with high precision and minimal byproduct formation. Our work demonstrates the potential of quantum dot photocatalysis for pharmaceutical isotope labeling applications.\n    \n  \n\n\n\n  \n  \n    Chem. Mater.\n    Understanding Ligand Exchange and Surface Passivation in CdS Quantum Dots from First Principles\n    Joseph Frimpong, Sandip Aryal, Tejas Karun, Zhen-Fei Liu\n    Chemistry of Materials, 36(23): 11519-11528\n    \n      \n      Abstract\n    \n    \n      Quantum dots (QDs) are semiconductor nanoparticles with unique optical and electronic properties that make them valuable for various applications including solar cells, LEDs, and biological imaging. The surface chemistry of QDs plays a crucial role in determining their properties and stability. In this work, we use first-principles density functional theory calculations to investigate ligand exchange processes and surface passivation mechanisms in CdS quantum dots. We examine how different ligands interact with CdS surfaces and how these interactions affect the electronic structure and optical properties of the QDs. Our calculations provide insights into the binding energies, electronic structure changes, and passivation effects of various ligand molecules on CdS QD surfaces.\n    \n  \n\n2023\n\n  \n  \n    Faraday Discuss.\n    Electrochemical Hydrogen Isotope Exchange of Amines Controlled by Alternating Current Frequency\n    Nibedita Behera, Disni Gunasekera, Jyoti P. Mahajan, Joseph Frimpong, Zhen-Fei Liu, Long Luo\n    Faraday Discuss., 247: 45-58\n    \n      \n      Abstract\n    \n    \n      Here, we report an electrochemical protocol for hydrogen isotope exchange (HIE) at alpha-C(sp3)-H amine sites. Tetrahydroisoquinoline and pyrrolidine are selected as two model substrates because of their different proton transfer (PT) and hydrogen atom transfer (HAT) kinetics at the alpha-C(sp3)-H amine sites, which are utilized to control the HIE reaction outcome at different applied alternating current (AC) frequencies. We found the highest deuterium incorporation for tetrahydroisoquinolines at 0 Hz (i.e., under direct current (DC) electrolysis conditions) and pyrrolidines at 0.5 Hz. Analysis of the product distribution and D isotope incorporation at different frequencies reveals that the HIE of tetrahydroisoquinolines is limited by its slow HAT, whereas the HIE of pyrrolidines is limited by the overoxidation of its alpha-amino radical intermediates. The AC-frequency-dependent HIE of amines can be potentially used to achieve selective labeling of alpha-amine sites in one drug molecule, which will significantly impact the pharmaceutical industry.\n    \n  \n\n2022\n\n  \n  \n    J. Phys. Chem. Lett.\n    Comparative Study of Covalent and van Der Waals CdS Quantum Dot Assemblies from Many-Body Perturbation Theory\n    Sandip Aryal, Joseph Frimpong, Zhen-Fei Liu\n    J. Phys. Chem. Lett., 13(43): 10153-10161\n    \n      \n      Abstract\n    \n    \n      Quantum dot (QD) assemblies are nanostructured networks made from aggregates of QDs and feature improved charge and energy transfer efficiencies compared to discrete QDs. Using first-principles many-body perturbation theory, we systematically compare the electronic and optical properties of two types of CdS QD assemblies that have been experimentally investigated: (i) QD gels, where individual QDs are covalently connected via di- or polysulfide bonds, and (ii) QD nanocrystals, where individual QDs are bound via van der Waals interactions. Our work illustrates how the electronic and optical properties evolve when discrete QDs are assembled into 1D, 2D, and 3D gels and nanocrystals, as well as how the one-body and many-body interactions in these systems impact the trends as the dimensionality of the assembly increases. Furthermore, our work reveals the crucial role of the di- or polysulfide covalent bonds in the localization of the excitons, which highlights the difference between QD gels and QD nanocrystals.\n    \n  \n\n2021\n\n  \n  \n    J. Phys.: Condens. Matter\n    Quasiparticle Electronic Structure of Two-Dimensional Heterotriangulene-Based Covalent Organic Frameworks Adsorbed on Au(111)\n    Joseph Frimpong, Zhen-Fei Liu\n    J. Phys.: Condens. Matter, 33(25): 254004\n    \n      \n      Abstract\n    \n    \n      The modular nature and unique electronic properties of two-dimensional (2D) covalent organic frameworks (COFs) make them an attractive option for applications in catalysis, optoelectronics, and spintronics. The fabrications of such devices often involve interfaces formed between COFs and substrates. In this work, we employ the first-principles GW approach to accurately determine the quasiparticle electronic structure of three 2D carbonyl bridged heterotriangulene-based COFs featuring honeycomb-kagome lattice, with their properties ranging from a semi-metal to a wide-gap semiconductor. Moreover, we study the adsorption of these COFs on Au(111) surface and characterize the quasiparticle electronic structure at the heterogeneous COF/Au(111) interfaces. To reduce the computational cost, we apply the recently developed dielectric embedding GW approach and show that our results agree with existing experimental measurement on the interfacial energy level alignment. Our calculations illustrate how the many-body dielectric screening at the interface modulates the energies and shapes of the Dirac bands, the effective masses of semiconducting COFs, as well as the Fermi velocity of the semi-metallic COF.\n    \n  \n\nShow More Publications"
+  },
+  {
+    "objectID": "publications.html#technical-talks-presentations",
+    "href": "publications.html#technical-talks-presentations",
+    "title": "Publications",
+    "section": "Technical Talks & Presentations",
+    "text": "Technical Talks & Presentations\n\n\n\n\n  \n  \n    Poster\n    Accelerating Calculations Based on Many-Body Perturbation Theory\n    J. Frimpong\n    Gordon Research Conference: Computational Materials Science and Engineering · August 3, 2026 · Newry, ME\n    \n  \n\n\n\n  \n  \n    Talk & Poster\n    Learning Faithful Representations of the Dielectric Matrix for Excited-State Calculations with Generative Modeling\n    J. Frimpong, J. Zhan, V. Yu, M. Govoni, G. Galli, M. Chan\n    Gordon Research Seminar: Computational Materials Science and Engineering · August 1, 2026 · Newry, ME\n    \n  \n\n\n\n  \n  \n    Talk\n    Towards Accelerating Excited State Calculations with Generative Modeling\n    J. Frimpong\n    Argonne Postdoctoral Research & Career Symposium · October 31, 2025 · Lemont, IL\n    \n  \n\n\n\n  \n  \n    Contributed Talk\n    Towards Accelerating Excited State Calculations with Generative Modeling\n    J. Frimpong, J. Zhan, Victor Yu, Guilia Galli, Maria Chan\n    Midwest Theoretical Chemistry Conference · May 26, 2025 · Detroit, MI\n    Slides\n  \n\n\n\n  \n  \n    Talk\n    Understanding Ligand Exchange in Quantum Dots from First Principles\n    J. Frimpong, Z. Liu\n    ACS Spring Meeting · March 19, 2024 · New Orleans, LA\n    Slides\n  \n\n\n\n  \n  \n    Talk\n    Development of GW-Based Substrate Screening Methods for Strongly Coupled Molecule-Metal Interfaces\n    J. Frimpong, Z. Liu\n    APS March Meeting · March 18, 2023 · Las Vegas, NV\n    Slides\n  \n\n\n\n  \n  \n    Talk\n    Development of GW-Based Substrate Screening Methods for Covalently-Bound Interfaces\n    J. Frimpong, Z. Liu\n    NOBCCChE National Conference · September 12, 2023 · New Orleans, LA\n    Slides Poster\n  \n\n\n\n  \n  \n    Talk\n    Electronic Structure and Optical Properties of Quantum Dots and Their Assemblies\n    J. Frimpong, S. Aryal, Z. Liu\n    APS March Meeting · March 18, 2022 · Chicago, IL\n    Slides\n  \n\n\n\n  \n  \n    Talk\n    Unraveling the Role of Surface Ligands in the Electronic and Optical Properties of Cadmium Sulphide Quantum Dots\n    J. Frimpong, S. Aryal, Z. Liu\n    NOBCCChE National Conference · September 25, 2022 · Orlando, FL\n    Poster\n  \n\n\n\n  \n  \n    Virtual Talk\n    Quasiparticle Electronic Structure of Two-Dimensional Heterotriangulene-Based Covalent Organic Frameworks Adsorbed on Au(111)\n    J. Frimpong, Z. Liu\n    APS March Meeting · March 17, 2021 · Virtual\n    Slides Video\n  \n\n\n\n  \n  \n    Student Talk\n    Electronic Structure of 2D Covalent Organic Frameworks and the Influence of Au(111) Substrate\n    J. Frimpong, Z. Liu\n    Chemistry Graduate Research Symposium (CGRS) · 2021 · Detroit, MI\n    Slides\n  \n\n\n\n  \n  \n    Poster\n    Mechanistic Studies of the Cycloaddition of Norbornadiene and Alkynyl Phosphonates\n    J. Frimpong\n    19th International Workshop on Computational Physics and Material Science · 2019 · Trieste, Italy\n    Poster\n  \n\nShow More Talks"
+  },
+  {
+    "objectID": "publications/articles/behera-gunasekera-2023/index.html",
+    "href": "publications/articles/behera-gunasekera-2023/index.html",
+    "title": "Electrochemical Hydrogen Isotope Exchange of Amines Controlled by Alternating Current Frequency",
+    "section": "",
+    "text": "Nibedita Behera, Disni Gunasekera, Jyoti P. Mahajan, Joseph Frimpong, Zhen-Fei Liu, Long Luo\nJournal: Faraday Discuss. (2023) · 247 · pp. 45–58 · Publication #91"
+  },
+  {
+    "objectID": "publications/articles/behera-gunasekera-2023/index.html#abstract",
+    "href": "publications/articles/behera-gunasekera-2023/index.html#abstract",
+    "title": "Electrochemical Hydrogen Isotope Exchange of Amines Controlled by Alternating Current Frequency",
+    "section": "Abstract",
+    "text": "Abstract\nHere, we report an electrochemical protocol for hydrogen isotope exchange (HIE) at α-C(sp3)–H amine sites. Tetrahydroisoquinoline and pyrrolidine are selected as two model substrates because of their different proton transfer (PT) and hydrogen atom transfer (HAT) kinetics at the α-C(sp3)–H amine sites, which are utilized to control the HIE reaction outcome at different applied alternating current (AC) frequencies. We found the highest deuterium incorporation for tetrahydroisoquinolines at 0 Hz (i.e., under direct current (DC) electrolysis conditions) and pyrrolidines at 0.5 Hz. Analysis of the product distribution and D isotope incorporation at different frequencies reveals that the HIE of tetrahydroisoquinolines is limited by its slow HAT, whereas the HIE of pyrrolidines is limited by the overoxidation of its α-amino radical intermediates. The AC-frequency-dependent HIE of amines can be potentially used to achieve selective labeling of α-amine sites in one drug molecule, which will significantly impact the pharmaceutical industry."
+  },
+  {
+    "objectID": "publications/articles/behera-gunasekera-2023/index.html#resources",
+    "href": "publications/articles/behera-gunasekera-2023/index.html#resources",
+    "title": "Electrochemical Hydrogen Isotope Exchange of Amines Controlled by Alternating Current Frequency",
+    "section": "Resources",
+    "text": "Resources\n\nJournal article"
+  },
+  {
+    "objectID": "publications/articles/behera-gunasekera-2023/index.html#citation",
+    "href": "publications/articles/behera-gunasekera-2023/index.html#citation",
+    "title": "Electrochemical Hydrogen Isotope Exchange of Amines Controlled by Alternating Current Frequency",
+    "section": "Citation",
+    "text": "Citation\n\n\nCopy BibTeX\n\n@article{D3FD00044C,\nauthor =\"Behera, Nibedita and Gunasekera, Disni and Mahajan, Jyoti P. and Frimpong, Joseph and Liu, Zhen-Fei and Luo, Long\",\ntitle  =\"Electrochemical hydrogen isotope exchange of amines controlled by alternating current frequency\",\njournal  =\"Faraday Discuss.\",\nyear  =\"2023\",\nvolume  =\"247\",\nissue  =\"0\",\npages  =\"45-58\",\npublisher  =\"The Royal Society of Chemistry\",\ndoi  =\"10.1039/D3FD00044C\",\nurl  =\"http://dx.doi.org/10.1039/D3FD00044C\",\nabstract  =\"Here{,} we report an electrochemical protocol for hydrogen isotope exchange (HIE) at α-C(sp3)–H amine sites. Tetrahydroisoquinoline and pyrrolidine are selected as two model substrates because of their different proton transfer (PT) and hydrogen atom transfer (HAT) kinetics at the α-C(sp3)–H amine sites{,} which are utilized to control the HIE reaction outcome at different applied alternating current (AC) frequencies. We found the highest deuterium incorporation for tetrahydroisoquinolines at 0 Hz (i.e.{,} under direct current (DC) electrolysis conditions) and pyrrolidines at 0.5 Hz. Analysis of the product distribution and D isotope incorporation at different frequencies reveals that the HIE of tetrahydroisoquinolines is limited by its slow HAT{,} whereas the HIE of pyrrolidines is limited by the overoxidation of its α-amino radical intermediates. The AC-frequency-dependent HIE of amines can be potentially used to achieve selective labeling of α-amine sites in one drug molecule{,} which will significantly impact the pharmaceutical industry.\"\n}"
+  },
+  {
+    "objectID": "publications/articles/frimpong-liu-2021/index.html",
+    "href": "publications/articles/frimpong-liu-2021/index.html",
+    "title": "Quasiparticle Electronic Structure of Two-Dimensional Heterotriangulene-Based Covalent Organic Frameworks Adsorbed on Au(111)",
+    "section": "",
+    "text": "Joseph Frimpong, Zhen-Fei Liu\nJournal: J. Phys.: Condens. Matter (2021) · 33, 25 · pp. 254004 · Publication #93"
+  },
+  {
+    "objectID": "publications/articles/frimpong-liu-2021/index.html#abstract",
+    "href": "publications/articles/frimpong-liu-2021/index.html#abstract",
+    "title": "Quasiparticle Electronic Structure of Two-Dimensional Heterotriangulene-Based Covalent Organic Frameworks Adsorbed on Au(111)",
+    "section": "Abstract",
+    "text": "Abstract\nThe modular nature and unique electronic properties of two-dimensional (2D) covalent organic frameworks (COFs) make them an attractive option for applications in catalysis, optoelectronics, and spintronics. The fabrications of such devices often involve interfaces formed between COFs and substrates. In this work, we employ the first-principles GW approach to accurately determine the quasiparticle electronic structure of three 2D carbonyl bridged heterotriangulene-based COFs featuring honeycomb–kagome lattice, with their properties ranging from a semi-metal to a wide-gap semiconductor. Moreover, we study the adsorption of these COFs on Au(111) surface and characterize the quasiparticle electronic structure at the heterogeneous COF/Au(111) interfaces. To reduce the computational cost, we apply the recently developed dielectric embedding GW approach and show that our results agree with existing experimental measurement on the interfacial energy level alignment. Our calculations illustrate how the many-body dielectric screening at the interface modulates the energies and shapes of the Dirac bands, the effective masses of semiconducting COFs, as well as the Fermi velocity of the semi-metallic COF."
+  },
+  {
+    "objectID": "publications/articles/frimpong-liu-2021/index.html#resources",
+    "href": "publications/articles/frimpong-liu-2021/index.html#resources",
+    "title": "Quasiparticle Electronic Structure of Two-Dimensional Heterotriangulene-Based Covalent Organic Frameworks Adsorbed on Au(111)",
+    "section": "Resources",
+    "text": "Resources\n\nJournal article\nPreprint (PDF)"
+  },
+  {
+    "objectID": "publications/articles/frimpong-liu-2021/index.html#citation",
+    "href": "publications/articles/frimpong-liu-2021/index.html#citation",
+    "title": "Quasiparticle Electronic Structure of Two-Dimensional Heterotriangulene-Based Covalent Organic Frameworks Adsorbed on Au(111)",
+    "section": "Citation",
+    "text": "Citation\n\n\nCopy BibTeX\n\n@article{FL21d,\n  title = {Quasiparticle Electronic Structure of Two-Dimensional Heterotriangulene-Based Covalent Organic Frameworks Adsorbed on {{Au}}(111)},\n  author = {Frimpong, Joseph and Liu, Zhen-Fei},\n  year = {2021},\n  month = may,\n  journal = {J. Phys.: Condens. Matter},\n  volume = {33},\n  number = {25},\n  pages = {254004},\n  publisher = {IOP Publishing},\n  issn = {0953-8984},\n  doi = {10.1088/1361-648X/abf7a0},\n  urldate = {2023-12-06},\n  abstract = {The modular nature and unique electronic properties of two-dimensional (2D) covalent organic frameworks (COFs) make them an attractive option for applications in catalysis, optoelectronics, and spintronics. The fabrications of such devices often involve interfaces formed between COFs and substrates. In this work, we employ the first-principles GW approach to accurately determine the quasiparticle electronic structure of three 2D carbonyl bridged heterotriangulene-based COFs featuring honeycomb--kagome lattice, with their properties ranging from a semi-metal to a wide-gap semiconductor. Moreover, we study the adsorption of these COFs on Au(111) surface and characterize the quasiparticle electronic structure at the heterogeneous COF/Au(111) interfaces. To reduce the computational cost, we apply the recently developed dielectric embedding GW approach and show that our results agree with existing experimental measurement on the interfacial energy level alignment. Our calculations illustrate how the many-body dielectric screening at the interface modulates the energies and shapes of the Dirac bands, the effective masses of semiconducting COFs, as well as the Fermi velocity of the semi-metallic COF.},\n  langid = {english},\n  file = {/home/frimpsjoe/Zotero/FL21d.pdf}\n}"
+  },
+  {
+    "objectID": "publications/articles/maity-dungan-2024/index.html",
+    "href": "publications/articles/maity-dungan-2024/index.html",
+    "title": "Hydrogen Isotope Labeling of Pharmaceuticals Via Dual Hydrogen Isotope Exchange Pathways Using CdS Quantum Dot Photocatalyst",
+    "section": "",
+    "text": "Rajendra Maity, Otto Dungan, Frédéric A. Perras, Jingwei Li, Daohua Liu, Sumei Ren, Dan Lehnherr, Zheng Huang, Eric M. Phillips, Moses Adeyemo, Joseph Frimpong, Timothy Quainoo, Zhen-Fei Liu, Long Luo\nJournal: Journal of the American Chemical Society (2024) · 146, 49 · pp. 34141–34151 · Publication #90"
+  },
+  {
+    "objectID": "publications/articles/maity-dungan-2024/index.html#abstract",
+    "href": "publications/articles/maity-dungan-2024/index.html#abstract",
+    "title": "Hydrogen Isotope Labeling of Pharmaceuticals Via Dual Hydrogen Isotope Exchange Pathways Using CdS Quantum Dot Photocatalyst",
+    "section": "Abstract",
+    "text": "Abstract\nPharmaceutical synthesis often requires hydrogen isotope labeling for drug development and mechanistic studies. Traditional methods suffer from limitations in scope and selectivity. Here, we present a photocatalytic hydrogen isotope exchange (HIE) method using CdS quantum dots that operates via dual pathways: direct HAT from the CdS quantum dot surface and photogenerated hole-mediated oxidation. This dual mechanism enables broad applicability to various pharmaceutical compounds, including complex drug molecules like celecoxib, roflumilast, and mavoglurant. The method shows excellent deuterium incorporation with high precision and minimal byproduct formation. Our work demonstrates the potential of quantum dot photocatalysis for pharmaceutical isotope labeling applications."
+  },
+  {
+    "objectID": "publications/articles/maity-dungan-2024/index.html#resources",
+    "href": "publications/articles/maity-dungan-2024/index.html#resources",
+    "title": "Hydrogen Isotope Labeling of Pharmaceuticals Via Dual Hydrogen Isotope Exchange Pathways Using CdS Quantum Dot Photocatalyst",
+    "section": "Resources",
+    "text": "Resources\n\nJournal article"
+  },
+  {
+    "objectID": "publications/articles/maity-dungan-2024/index.html#citation",
+    "href": "publications/articles/maity-dungan-2024/index.html#citation",
+    "title": "Hydrogen Isotope Labeling of Pharmaceuticals Via Dual Hydrogen Isotope Exchange Pathways Using CdS Quantum Dot Photocatalyst",
+    "section": "Citation",
+    "text": "Citation\n\n\nCopy BibTeX\n\n@article{JACS-Rajendra,\nauthor = {Maity, Rajendra and Dungan, Otto and Perras, Frédéric A. and Li, Jingwei and Liu, Daohua and Ren, Sumei and Lehnherr, Dan and Huang, Zheng and Phillips, Eric M. and Adeyemo, Moses and Frimpong, Joseph and Quainoo, Timothy and Liu, Zhen-Fei and Luo, Long},\ntitle = {Hydrogen Isotope Labeling of Pharmaceuticals Via Dual Hydrogen Isotope Exchange Pathways Using CdS Quantum Dot Photocatalyst},\njournal = {Journal of the American Chemical Society},\nvolume = {146},\nnumber = {49},\npages = {34141-34151},\nyear = {2024},\ndoi = {10.1021/jacs.4c13857},\n    note ={PMID: 39579128},\nURL = { https://doi.org/10.1021/jacs.4c13857},\neprint = { https://doi.org/10.1021/jacs.4c13857} }"
   }
 ]
