@@ -73,7 +73,9 @@ format:
       margin-width: 260px
       gutter-width: 1.5rem
     html-math-method: mathjax
-    include-in-header: _includes/theme-init.html
+    include-in-header:
+      - _includes/theme-init.html
+      - _includes/google-verification.html
     include-after-body: _includes/after-body.html
 
 execute:
