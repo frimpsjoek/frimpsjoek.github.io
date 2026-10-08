@@ -1,0 +1,1 @@
+Quarto website (frimpsjoek.github.io). Quarto 1.6 installed (bundles pandoc). Blog posts in blog/posts/<date-slug>/index.{qmd,md}; blog/posts is also an Obsidian vault. Test filters with `quarto pandoc` or render single files with `quarto render <file>`.

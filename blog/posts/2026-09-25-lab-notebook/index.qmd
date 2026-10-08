@@ -1,0 +1,391 @@
+---
+title: "A Lab Notebook for Computational Science"
+subtitle: "Notes, saved agent conversations, run records, and provenance with AiiDA"
+description: "How we moved five scattered note collections into one Markdown notebook in git without breaking links, made entries take seconds, saved every coding-agent conversation automatically, let the agent write entries, and connected results to run records and an AiiDA provenance graph. Includes a case study that validates an AiiDA plugin against the WEST test suite."
+abstract: |
+  A lab notebook records why a calculation was run, which the files on disk cannot. This post shows one
+  Markdown notebook in git that fills itself: a command for new entries, hooks that save every
+  coding-agent conversation, and an agent skill that writes entries at milestones. It then links results
+  to run records and AiiDA provenance, with a case study that validates an AiiDA plugin.
+author: "Joseph Frimpong"
+date: "2026-09-25"
+categories: [tutorial, research, computational-science, reproducibility]
+# image: "thumbnail.png"   # TODO: use Image 8 (the whole loop) as the thumbnail
+draft: true
+---
+
+## Why a computational scientist needs a notebook
+
+A wet lab keeps a notebook because nobody remembers what went into flask 3. Computational work has the same problem, but it hides it better. The input files, the job ID, and the output are all on disk. What is not on disk is the *why*: the question you asked, the hypothesis that you rejected, the line in the log that changed the plan.
+
+Our notes were in five places: a notebook folder inside one code repository, a research-notes folder, a 2025 research journal, an Obsidian vault, and loose files in `~/Documents`. The 2025 journal kept our questions to the coding assistant, but not its answers. Each coding-agent session disappeared after 30 days.
+
+This post describes how we moved everything into one notebook in one day, without breaking links, and how the notebook now fills itself. It is part 3 of a series. [Part 1](../2026-09-25-agentic-terminal-setup/index.qmd) covers the local terminal tools. [Part 2](../2026-09-25-hpc-setup/index.qmd) covers the HPC side. This part covers notes, saved agent conversations, run records, and provenance with AiiDA.
+
+The notebook now gives four results:
+
+1. **One place.** All projects, one folder, one git history, one search.
+2. **Entries in seconds.** One command makes a dated, numbered entry for a project.
+3. **Every agent conversation saved.** Each Claude Code session is saved as Markdown when it ends, and its entry links to it.
+4. **Results that trace back.** Entries link to run records, job IDs, code commits, and, for large campaigns, an AiiDA provenance graph.
+
+## The design: one Markdown notebook in git
+
+We chose plain Markdown files in a git repository. Any editor opens them, git records every change, and coding agents read and write them without a plugin. We open the same folder as an Obsidian vault for search, backlinks, and a graph view, but nothing depends on Obsidian.
+
+### Split notes by kind, not by project
+
+The most important decision was what does *not* go in the notebook.
+
+| Kind of note | Where it lives | Why |
+| --- | --- | --- |
+| Specs, design notes, results summaries, theory | In the code repository, next to the code | They change with the code and belong in the same commits |
+| Daily entries: what we did, saw, decided | The notebook, one file per day | One view across all projects |
+| Literature reviews, how-to guides, cheat sheets | `reviews/` and `reference/` in the notebook | Not tied to a date |
+| Saved agent conversations | `chats/` in the notebook | Linked from entries, excluded from search |
+| Old journals and notes | `archive/` | Kept, readable, out of the way |
+| Tasks and to-dos | A task app (for us, Notion) | A notebook is a record, not a to-do list |
+
+We rejected two other layouts. A notebook inside one code repository gives no view across projects. One notebook per project splits a day that touched three projects into three places.
+
+### Folder layout
+
+```text
+lab-notebook/
+├── index.md                  # all entries, by date and by project (generated)
+├── PROJECTS.md               # all projects with folders and last-touched dates (generated)
+├── 2026/09-September/
+│   ├── 2026-09-24.md         # one file per day, "# Entry N" per task
+│   └── data/2026-09-24/      # attachments: figures, small scripts, CSVs
+├── chats/2026/09-September/  # every Claude Code session as Markdown
+├── projects/                 # links to docs that live with the code
+├── reviews/  reference/  templates/
+└── archive/                  # 2025 journal, Copilot chats, old notes
+```
+
+### The entry format
+
+Each entry follows an electronic lab notebook (ELN) format. The header lines are short and the same for every entry, so scripts and agents can parse them.
+
+```markdown
+# Entry 4: hpcjobs: one read-only view of Perlmutter + Carbon jobs
+
+**ID:** 2026-09-24-004
+**Project:** notes
+**Status:** complete
+**Tags:** [CODE] [SETUP] [INSIGHT]
+**Data:** `data/2026-09-24/`
+**Chat:** [saved conversation](../../chats/2026/09-September/2026-09-24_...md)
+
+## Objective
+## Methods
+## Results
+## Analysis
+## Next Steps
+```
+
+The `**Project:**` line uses the same project names as the terminal workspaces in part 1 and the cluster folders in part 2. One name for each project, in all places.
+
+::: {.callout-warning title="Image 1 placeholder: a day file"}
+One day file open in Obsidian: three entries for two projects, a results table, an embedded figure from `data/`, and the chat link. *Caption: one file per day, one entry per task.*
+:::
+
+## Writing entries fast: `nn`
+
+If making an entry takes more than a few seconds, you will skip it. `nn` is a small Python script that does the filing for you.
+
+```bash
+nn pdep "PDEP basis convergence for Si64"   # add Entry N to today's file, open it in $EDITOR
+nn -n pdep "title"                          # same, but no editor (for agents and scripts)
+nn --data                                    # make and print today's attachment folder
+nn -l pdep                                   # list entries for one project, newest first
+nn --index                                   # rebuild index.md, by date and by project
+```
+
+What `nn` does for you:
+
+- It finds or makes today's file (`2026/09-September/2026-09-25.md`) and the next entry number.
+- It fills the header: ID, project, status, date, and the attachment folder.
+- It checks the project name against the master project list and warns you if the name is new, so a typo does not quietly make a new project.
+- `--index` makes one page with every entry, grouped by date and by project. This page is the table of contents for the whole notebook.
+
+**Attachments stay small.** The day's `data/` folder holds figures, short scripts, and small CSV files. Large outputs stay on the cluster or in project storage, and the entry links to them with the full path. A notebook that grows to gigabytes becomes slow to search and to clone.
+
+**Daily notes in Obsidian use the same path.** We set Obsidian's daily-note folder and template to the ELN path, so clicking "today" in Obsidian and running `nn` open the same file.
+
+::: {.callout-warning title="Image 2 placeholder: nn in the terminal"}
+`nn pdep "..."` in a terminal, then the new entry open in the editor with its header filled in. *Caption: an entry in five seconds.*
+:::
+
+## Save every agent conversation
+
+Much of our work now happens in conversation with a coding agent. The conversation holds the reasoning: the wrong hypotheses, the checks that ruled them out, the command that finally worked. Claude Code keeps its own session logs for only 30 days by default, as raw JSON. So we save each session as readable Markdown, in the notebook, automatically.
+
+### `chat2md` and two hooks
+
+`chat2md` is a small converter. It turns a session log into Markdown with one heading per turn, the question, the answer, code in fenced blocks, and each tool action as one short line. It also masks secrets such as API keys.
+
+Two Claude Code hooks call it:
+
+```json
+{
+  "hooks": {
+    "SessionStart": [{ "hooks": [{ "type": "command",
+      "command": "~/.local/bin/chat2md session-start-hook 2>/dev/null || true" }] }],
+    "SessionEnd":   [{ "hooks": [{ "type": "command",
+      "command": "~/.local/bin/chat2md claude-hook 2>/dev/null || true" }] }]
+  }
+}
+```
+
+1. **SessionStart** gives the agent its own session ID. An entry that the agent writes can then include `**Chat:** claude:<session-id>`.
+2. **SessionEnd** saves the session to `chats/YYYY/MM-Month/` and replaces each `claude:<session-id>` placeholder with a real link to the saved file.
+
+The `|| true` is important. A hook that fails must never block the agent from starting or stopping.
+
+### Bring back old answers
+
+Our 2025 journal kept only the questions to the coding assistant (GitHub Copilot in VS Code), not its answers. The full sessions were still on disk in the VS Code workspace storage. `chat2md copilot` converted them: 159 sessions and 2,213 turns. A second script then linked each old journal entry to the matching turn, by the first characters of the question and the nearest time. It linked 788 of 841 entries (94 %). It left the other 53 unlinked and listed them, instead of guessing.
+
+::: {.callout-warning title="Image 3 placeholder: saved chat"}
+A saved Claude session in the notebook: turn headings, a question, the answer with a code block, and one-line tool actions. *Caption: the reasoning, not only the result.*
+:::
+
+**Keep chats out of search.** Saved chats are large and repetitive. We exclude `chats/` and `archive/copilot-chats/` from Obsidian search and the graph view. Entries link to them, so they are one click away when you need them.
+
+## Let the agent keep the notebook
+
+The hooks save every conversation. But a conversation is not an entry. An entry is a short, structured summary that you can read in a minute, six months later. We give that job to the agent through a skill: a short instruction file that Claude Code loads when it applies.
+
+### The `lab-journal` skill
+
+The skill tells the agent when to write, what to write, and where.
+
+| Trigger | Example |
+| --- | --- |
+| You ask | "log this", "note that", "@journal" |
+| You mark a line | `TODO:`, `IMPORTANT:`, `DECISION:`, `Research note:` |
+| Real work finished | More than 10 lines of code, a fixed bug, a run or an analysis, a design decision, a milestone |
+
+For each entry, the agent:
+
+1. Runs `nn -n PROJECT "title"` to make the entry with a correct header.
+2. Fills Objective, Methods, Results, Analysis, and Next Steps with numbers, file paths, job IDs, and commit hashes.
+3. Saves any code that it wrote into the day's `data/` folder and links it.
+4. Adds `**Chat:** claude:<session-id>`. The SessionEnd hook turns this into a link.
+
+The skill is a port of our older research-journal skill to the ELN format. The rules are the same: record what happened, including the wrong turns, with evidence.
+
+**How reliable is it?** Chat saving is guaranteed, because a hook does it. Entries depend on the agent following the skill. When you ask ("log this"), it is reliable. Without a request, it is best effort. So look at the day's file at the end of the day, and ask for any entry that is missing.
+
+### What does not go in the notebook: decisions for you
+
+Some agent output is not a record but a request: "review this plan", "approve this job campaign", "this disk is over quota". These go to one task inbox (for us, a Notion database) as `Review:` or `Do:` items, not into the notebook. A second skill, `agent-inbox`, sets the rules: at most three items per session, no duplicates, and tell the user each time. The notebook entry then links to the decision when it is made.
+
+::: {.callout-warning title="Image 4 placeholder: agent entry"}
+A notebook entry that the agent wrote after a debugging session: Results table, two insight lines, next-step checkboxes, and the chat link. *Caption: the agent writes the entry, you read it.*
+:::
+
+## Provenance: from run records to AiiDA
+
+The notebook records *why*. Provenance records *exactly what*: for each output, the inputs, the code, the machine, and the calculation that made each input. We use two levels, and we choose by the size of the work.
+
+| Work | Tool | Cost to set up |
+| --- | --- | --- |
+| A few runs, a new method, one-off checks | Run records and manifests | Minutes |
+| A campaign of many related calculations | AiiDA | Days, the first time |
+
+### Level 1: run records with a life cycle
+
+Part 2 showed a simple run record. In our spec-driven projects, each run gets a folder with a `manifest.json`, and its status moves through fixed states:
+
+```text
+planned ──► submitted (job ID) ──► completed | failed | cancelled
+```
+
+- **Planned:** the command, the git commit, the machine, and the expected cost. The agent can write a planned record, but it does not submit on its own.
+- **Submitted:** the job ID is added when the job goes into the queue.
+- **Completed:** the output files are added with *fingerprints* (hashes), so a later reader can confirm that the files did not change.
+
+One rule makes this useful: **only a completed run with fingerprints counts as evidence.** A small checker script finds any claim in a results document that cites a planned or missing run.
+
+### Level 2: AiiDA for campaigns
+
+[AiiDA](https://www.aiida.net) is a workflow engine for computational science. It stores every calculation as a node in a provenance graph, submits jobs through Slurm or PBS, and restarts failed calculations with rules that you write. Later, you can ask the database questions such as "every G0W0 run on this structure with more than 512 PDEPs".
+
+We run AiiDA in a Docker container on the laptop, with the AiiDA daemon supervised inside the container. The container restarts on its own after a reboot, so the daemon keeps watching submitted jobs even if a Claude session ends.
+
+```{mermaid}
+flowchart LR
+  S[Structure] --> PW[pw.x<br/>ground state]
+  PW --> WS[wstat.x<br/>PDEPs]
+  WS --> WF[wfreq.x<br/>G0W0]
+  PW --> WF
+  WF --> QP[Quasiparticle<br/>energies]
+```
+
+::: {.callout-warning title="Image 5 placeholder: provenance graph"}
+The AiiDA provenance graph for one G0W0 workflow, with the input structure, the three calculations, and the output data nodes. *Caption: every number knows where it came from.*
+:::
+
+### Let the agent query provenance
+
+An AiiDA MCP server gives Claude Code direct, read-mostly access to the database. The agent can list recent processes, read the report of a failed calculation, diagnose the failure, and draft the inputs for a restart. It does not need a shell on the cluster to do this. Submitting the restart still follows the rules from part 2: approved work only.
+
+## Case study: can we trust our AiiDA plugin?
+
+Provenance is only as good as the plugin that records it. If the plugin launches the code wrong or parses the output wrong, AiiDA stores a clean graph of wrong numbers. So before we used our AiiDA plugin for [WEST](https://west-code.org) (a many-body perturbation theory code) in real work, we tested it against WEST's own test suite.
+
+### The method: three independent checks per case
+
+We took one small test case for each WEST feature: spin-polarized GW, k-points, QDET, FCIDUMP output, TDDFT and BSE Lanczos spectra, excited-state forces and nonadiabatic couplings, spin-flip TDDFT, and three kinds of post-processing. For each case, we ran the same inputs twice, through AiiDA and directly with `mpirun`, and made three comparisons:
+
+1. **Reference:** each output against WEST's shipped reference values, at the test suite's tolerances.
+2. **AiiDA vs native:** every numeric output field, AiiDA run against direct run.
+3. **Parser:** each AiiDA output node against the raw JSON file that it came from.
+
+### What we found
+
+| Check | Result |
+| --- | --- |
+| AiiDA vs native, all cases that ran | Equal to 5e-8 or better, usually 1e-10 to 1e-12 |
+| Parser vs raw JSON | Every parsed array exact |
+| Cases that failed through AiiDA | 2 of 12: a parser crash with more than one q-point (all k-point GW runs), and a file-staging error in post-processing after BSE |
+| Missing features | QDET results not parsed, FCIDUMP not retrieved, LUMO not reported when only empty bands are computed |
+| A problem in the code itself | WEST writes FCIDUMP integrals in Rydberg. Programs that read FCIDUMP expect Hartree, so they see energies 2 times too large. |
+| Shipped references on this build | Not usable as a gate: AiiDA and native runs missed them identically, and one case changed between 4 and 8 MPI ranks |
+
+So AiiDA launched WEST correctly every time. The problems were in the plugin's plumbing and in missing parsers. We fixed the plugin with tests first: real outputs as fixtures, a failing test, then the fix. The unit tests went from 80 to 92. After the fixes, the k-point GW case passes WEST's reference, and the FCIDUMP-based QDET result matches the JSON-based result to 8.8e-12 eV.
+
+::: {.callout-warning title="Image 6 placeholder: validation table"}
+The notebook entry with the AiiDA-vs-native table for all 12 cases, two rows highlighted as failures before the fix. *Caption: test the tool before you trust the graph.*
+:::
+
+### Three lessons from the case study
+
+- **Compare against a second path, not only against references.** The shipped reference values failed for reasons unrelated to AiiDA. The direct `mpirun` run was the control that separated "AiiDA is wrong" from "this build differs from the reference".
+- **Compare gauge-invariant quantities.** Some outputs, such as the signs of Wannier rotation matrices, change from run to run. Compare absolute values, as the code's own tests do.
+- **Unit conventions hide in file formats.** A file can be internally consistent and still use units that other programs do not expect. Check every exchange format against its specification.
+
+The notebook made this case study possible. Each step, each wrong turn, and each number above is in two dated entries, with the scripts in `data/` and the full agent conversation linked.
+
+## Moving old notes without breaking them
+
+Most people do not start with an empty notebook. You have years of notes with links between them, figures, and attachments. A careless move breaks the links, and you find out months later. We moved five note collections into one notebook in one afternoon, with no new broken links. This is the procedure.
+
+1. **Count broken links before you start.** Run a link checker on the old folders and save the result. Old notes always have some broken links. You need the number so that you know which ones are yours.
+2. **Copy, do not move.** Copy each collection into the new layout. The originals stay where they are until the end.
+3. **Rewrite only the links that the copy broke.** Relative links between files that moved together still work. We had to rewrite only 48 links.
+4. **Count again and compare.** We had 105 broken links before and 96 after. We checked each of the 9 "fixed" links by hand. Links followed through the old and the new paths gave the same counts.
+5. **Move the originals aside and leave symlinks.** The originals went to one backup folder, and a symlink now stands at each old path. Old bookmarks, scripts, and links from code repositories still work.
+6. **Keep the backup for two weeks.** Delete it only when nothing is missing.
+
+**Watch for editor differences.** Obsidian and VS Code render Markdown differently. Our 2025 journal used HTML `<details>` blocks, and Obsidian does not render Markdown inside HTML blocks. We turned them into normal headings. Python tracebacks that contained `<frozen ...>` looked like HTML tags to Obsidian, so we escaped them.
+
+::: {.callout-warning title="Image 7 placeholder: before and after"}
+Two folder trees: five scattered note folders before, and the single `lab-notebook/` after, with symlinks at the old paths. *Caption: one notebook, no broken links.*
+:::
+
+## Lessons learned
+
+**Hooks are guaranteed. Instructions are best effort.** Everything that must happen every time (saving chats, blocking job submission) is a hook. Everything that needs judgment (what to write in an entry) is a skill, and you check it.
+
+**Record the wrong turns.** Our most useful entries describe hypotheses that failed. One debugging day went through two wrong explanations before the real cause. Six months later, that is what saves you a day.
+
+**Do not guess links between old records.** When we linked old journal entries to old chats, we left 53 entries unlinked instead of matching them by force. An empty link is honest. A wrong link is worse than no link.
+
+**Mask secrets, and test the mask.** Our first secret filter also masked harmless code such as `api_key=os.getenv(...)`. Test the filter on real conversations before you trust it.
+
+**Watch for time zones.** Our journal times were about 2 hours behind the chat times, in every entry. Use one time zone for everything, or record the offset.
+
+**Desktop apps do not see your shell `PATH`.** Obsidian's Quarto plugin failed with `spawn quarto ENOENT` in one vault, while `quarto` worked in the terminal. A desktop app starts without your shell profile, so it cannot find `/usr/local/bin`. Set the full path (`/usr/local/bin/quarto`) in the plugin settings of each vault.
+
+**Review the notebook's own value.** We plan to check in a few weeks whether anyone opens the saved chats. If nobody does, we remove the hook. A record that nobody reads is only cost.
+
+### What we would do differently
+
+- Decide what goes *with the code* before you move anything into the notebook.
+- Set up chat saving on day one. Coding-agent logs expire.
+- Use the same project names in the notebook, the terminal, and the clusters from the start.
+
+## Template, checklist, and references
+
+### Entry template
+
+```markdown
+# Entry N: <one line: what and the outcome>
+
+**ID:** YYYY-MM-DD-00N
+**Project:** <name from the project list>
+**Status:** in_progress | complete | blocked
+**Tags:** [CODE] [DEBUG] [EXPERIMENT] [ANALYSIS] [DECISION] [SETUP]
+**Data:** `data/YYYY-MM-DD/`
+**Chat:** claude:<session-id>
+
+## Objective
+The question, and the pass or fail criterion if there is one.
+
+## Methods
+Commands, inputs, commits, job IDs, run records.
+
+## Results
+Numbers with units, tables, figures from data/.
+
+## Analysis
+What it means. Include the hypotheses that failed.
+
+## Next Steps
+- [ ] ...
+```
+
+### Setup checklist
+
+- [ ] Make one notebook folder and put it in git.
+- [ ] Decide what stays with the code (specs, design notes, results summaries).
+- [ ] Write the folder layout and the entry format in the notebook's README.
+- [ ] Install an entry command (`nn` or your own) that files entries by date and project.
+- [ ] Use one master project list for the notebook, the terminal, and the clusters.
+- [ ] Add SessionStart and SessionEnd hooks that save each agent conversation as Markdown.
+- [ ] Add a journal skill so the agent writes entries at milestones.
+- [ ] Send decisions to a task inbox, not to the notebook.
+- [ ] Add run records with a planned, submitted, completed life cycle.
+- [ ] For campaigns, set up AiiDA, and validate each plugin against the code's own tests first.
+- [ ] If you open the notebook in Obsidian, set full paths for any external tool (for example, Quarto).
+
+::: {.callout-warning title="Image 8 placeholder: the whole loop"}
+One diagram: the agent session, the saved chat, the notebook entry, the run record, the cluster job, and the AiiDA graph, with arrows for each link. *Caption: every result traces back to a question.*
+:::
+
+### References
+
+All links checked on 2026-09-25.
+
+**This series**
+
+1. [A terminal workspace for agentic coding: Ghostty, herdr, and yazi](../2026-09-25-agentic-terminal-setup/index.qmd). Part 1.
+2. [Setting up your computer for HPC work](../2026-09-25-hpc-setup/index.qmd). Part 2.
+3. This post. Part 3.
+
+**Notebook tools**
+
+4. [Git](https://git-scm.com). Version history for the notebook.
+5. [Obsidian](https://obsidian.md). Markdown editor with search, backlinks, and a graph view. See also [daily notes](https://help.obsidian.md/Plugins/Daily+notes).
+6. [Quarto](https://quarto.org). Renders `.qmd` and `.md` notes to HTML and PDF.
+
+**Agents**
+
+7. [Claude Code hooks](https://code.claude.com/docs/en/hooks). `SessionStart` and `SessionEnd` hooks for saving conversations.
+8. [Claude Code skills](https://code.claude.com/docs/en/skills). Instruction files such as `lab-journal` and `agent-inbox`.
+9. [Model Context Protocol](https://modelcontextprotocol.io). The standard behind the AiiDA MCP server.
+
+**Provenance**
+
+10. [AiiDA](https://www.aiida.net). Workflow engine with full provenance.
+11. [AiiDA: provenance concepts](https://aiida.readthedocs.io/projects/aiida-core/en/latest/topics/provenance/index.html). How AiiDA links data and calculations.
+12. [WEST](https://west-code.org). The many-body perturbation theory code in the case study.
+
+::: {.callout-important title="Draft notes (remove before publishing)"}
+- Capture the eight images marked as placeholders above (no usernames or private paths visible).
+- Publish `nn` and `chat2md` as a small repo, or keep them as descriptions only?
+- The WEST FCIDUMP unit issue: report it upstream before this post goes live?
+:::

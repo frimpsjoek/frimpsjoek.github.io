@@ -1,0 +1,11 @@
+{
+  "useMarkdownLinks": true,
+  "newLinkFormat": "relative",
+  "attachmentFolderPath": "./",
+  "alwaysUpdateLinks": true,
+  "userIgnoreFilters": [
+    "_freeze/",
+    "site-backup-2025-11-10/",
+    "node_modules/"
+  ]
+}

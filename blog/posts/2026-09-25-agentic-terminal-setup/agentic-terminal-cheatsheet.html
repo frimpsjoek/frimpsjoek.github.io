@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agentic Terminal Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --ground:#FAFAF9; --ink:#1C2126; --muted:#6B737A; --rule:#E3E5E6; --flag:#6A4FA3; --mod:#7C868D;
+  --shell:#0F6B6E; --yazi:#A45F00; --herdr:#4B53B8; --ghost:#A63D62;
+  --shell-bg:#E4F1F0; --yazi-bg:#F7EBDA; --herdr-bg:#E7E8F7; --ghost-bg:#F6E4EA;
+  --agent:#2E7D32; --claude:#B0502A; --agent-bg:#E3F1E4; --claude-bg:#F8E7DE;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#14181B; --ink:#E3E7EA; --muted:#8E979E; --rule:#2A3035; --flag:#B9A2EC; --mod:#8E979E;
+    --shell:#6CC7C2; --yazi:#E7A954; --herdr:#9FA6F2; --ghost:#EC8FB0;
+    --shell-bg:#16302F; --yazi-bg:#352812; --herdr-bg:#23264A; --ghost-bg:#3A1F2A;
+    --agent:#7FCB84; --claude:#EE9A74; --agent-bg:#1B3320; --claude-bg:#3A2418;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#14181B; --ink:#E3E7EA; --muted:#8E979E; --rule:#2A3035; --flag:#B9A2EC; --mod:#8E979E;
+  --shell:#6CC7C2; --yazi:#E7A954; --herdr:#9FA6F2; --ghost:#EC8FB0;
+  --shell-bg:#16302F; --yazi-bg:#352812; --herdr-bg:#23264A; --ghost-bg:#3A1F2A;
+  --agent:#7FCB84; --claude:#EE9A74; --agent-bg:#1B3320; --claude-bg:#3A2418;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font:15px/1.5 var(--sans);padding-inline:16px;padding-block:36px 56px}
+main{max-width:1180px;margin-inline:auto}
+h1{font-weight:600;font-size:1.6rem;margin:0}
+.sub{color:var(--muted);margin:2px 0 8px}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:28px 48px}
+.tool{--c:var(--shell);--cb:var(--shell-bg)}
+.tool.yazi{--c:var(--yazi);--cb:var(--yazi-bg)}
+.tool.herdr{--c:var(--herdr);--cb:var(--herdr-bg)}
+.tool.ghost{--c:var(--ghost);--cb:var(--ghost-bg)}
+.tool.agents{--c:var(--agent);--cb:var(--agent-bg)}
+.tool.claude{--c:var(--claude);--cb:var(--claude-bg)}
+.claude dt{font:500 .84rem/1.6 var(--sans)}
+.claude dt code{font:500 .8rem var(--mono);color:var(--c)}
+h2{display:flex;align-items:center;gap:10px;font-weight:600;font-size:1.2rem;margin:24px 0 0;padding-bottom:8px;border-bottom:2px solid var(--c)}
+.badge{display:grid;place-items:center;width:1.9em;height:1.9em;border-radius:6px;background:var(--cb);color:var(--c)}
+.badge svg{width:1.15em;height:1.15em}
+.lede{color:var(--muted);margin:8px 0 0;font-size:.9rem}
+.lede b{color:var(--ink)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+h3{display:flex;align-items:center;gap:6px;font-size:.76rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--c);margin:20px 0 4px}
+h3 svg{width:1.25em;height:1.25em;flex:none}
+svg.i{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+dl{display:grid;grid-template-columns:auto 1fr;margin:0}
+dt,dd{margin:0;padding:5px 0;border-top:1px solid var(--rule)}
+dt{font:500 .84rem/1.6 var(--mono);color:var(--c);white-space:nowrap;padding-right:14px}
+.ghost dt{font:600 .9rem/1.55 var(--sans);letter-spacing:.02em}
+dd{font-size:.9rem}
+dt .p,.note .p{color:var(--ink);font-weight:600}
+dt .f,.note .f{color:var(--flag)}
+dt .a,.note .a{color:var(--c)}
+dt .m{color:var(--mod)}
+dt .k{color:var(--c);font-weight:700}
+dt .s{color:var(--muted);font-weight:400}
+
+.note{color:var(--muted);font-size:.8rem;margin:6px 0 0}
+.note code{font:500 .78rem var(--mono);color:var(--ink);white-space:nowrap}
+@media (max-width:560px){.cols{grid-template-columns:1fr}}
+@media print{
+  @page{size:letter landscape;margin:8mm}
+  html{font-size:11px}
+  :root{--ground:#fff;--ink:#000;--muted:#555;--rule:#d0d0d0;--flag:#5A3E96;--mod:#666;color-scheme:light;
+    --shell:#0B5A5D;--yazi:#8A4F00;--herdr:#3A42A0;--ghost:#8E2F52;
+    --shell-bg:#E4F1F0;--yazi-bg:#F7EBDA;--herdr-bg:#E7E8F7;--ghost-bg:#F6E4EA;
+    --agent:#1F6A24;--claude:#94401E;--agent-bg:#E3F1E4;--claude-bg:#F8E7DE}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{font-size:1rem;line-height:1.28;padding:0}
+  main{max-width:none}
+  h1{font-size:1.45rem;display:inline}
+  .sub{display:inline;margin-left:10px}
+  .tools{grid-template-columns:1fr 1fr;gap:0 26px}
+  h2{margin-top:8px;padding-bottom:4px;font-size:1.15rem}
+  .lede{margin-top:3px}
+  h3{margin:7px 0 1px}
+  dt,dd{padding-block:2px}
+  .cols{gap:0 18px}
+  .tool,dl{break-inside:avoid}
+  .tool.agents{break-before:page}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-term" viewBox="0 0 24 24"><path d="M4 17l6-6-6-6"/><path d="M12 19h8"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3 2 8l10 5 10-5z"/><path d="m2 13 10 5 10-5"/></symbol>
+  <symbol id="i-ghost" viewBox="0 0 24 24"><path d="M5 21V11a7 7 0 0 1 14 0v10l-2.4-2-2.3 2-2.3-2-2.3 2-2.3-2z"/><path d="M9.5 11h.01M14.5 11h.01"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4"/><path d="m10.5 12.5 9-9M16 7l3 3M14 9l2 2"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-5-5"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></symbol>
+  <symbol id="i-move" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M9 6l3-3 3 3M9 18l3 3 3-3M6 9l-3 3 3 3M18 9l3 3-3 3"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0z"/><path d="M12 18v4"/></symbol>
+  <symbol id="i-scroll" viewBox="0 0 24 24"><path d="M12 4v16M8 8l4-4 4 4M8 16l4 4 4-4"/></symbol>
+  <symbol id="i-split" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16"/></symbol>
+  <symbol id="i-tabs" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M3 8V6a2 2 0 0 1 2-2h5l2 4"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></symbol>
+  <symbol id="i-git" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="9" r="2.5"/><path d="M6 8.5v7M18 11.5c0 3-4 3.5-10 5"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><path d="M4 12h12M12 6l6 6-6 6"/><path d="M20 5v14"/></symbol>
+  <symbol id="i-bot" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="11" rx="2"/><path d="M12 4v4M9 13h.01M15 13h.01"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7"/></symbol>
+  <symbol id="i-kbd" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></symbol>
+</svg>
+
+<main>
+  <h1>Agentic Terminal Card</h1>
+  <p class="sub">shell · micro · yazi · herdr · Ghostty · agents · companion to the blog post</p>
+
+  <div class="tools">
+    <section class="tool shell">
+      <h2><span class="badge"><svg class="i"><use href="#i-term"/></svg></span>Shell</h2>
+      <div class="cols">
+        <div>
+          <h3><svg class="i"><use href="#i-key"/></svg>Log in</h3>
+          <dl>
+            <dt>ssh cluster</dt><dd>Log in (alias in ~/.ssh/config)</dd>
+            <dt>scp f cluster:~/</dt><dd>Send file</dd>
+            <dt>scp cluster:~/f .</dt><dd>Get file</dd>
+            <dt>exit</dt><dd>Log out</dd>
+          </dl>
+          <h3><svg class="i"><use href="#i-search"/></svg>Search</h3>
+          <dl>
+            <dt>find . -iname "*word*"</dt><dd>By name</dd>
+            <dt>grep -rn "text" .</dt><dd>Inside files</dd>
+            <dt>grep -ril "text" .</dt><dd>File names only</dd>
+            <dt>Ctrl-R</dt><dd>Past commands</dd>
+          </dl>
+        </div>
+        <div>
+          <h3><svg class="i"><use href="#i-home"/></svg>Everyday</h3>
+          <dl>
+            <dt>ls -lhtr</dt><dd>List, newest last</dd>
+            <dt>cd dir · cd · cd -</dt><dd>In · home · back</dd>
+            <dt>less f</dt><dd>Read (q quits)</dd>
+            <dt>tail -f out.log</dt><dd>Watch log</dd>
+            <dt>du -sh dir</dt><dd>Folder size</dd>
+          </dl>
+          <h3><svg class="i"><use href="#i-cpu"/></svg>Jobs — Slurm</h3>
+          <dl>
+            <dt>sbatch job.sh</dt><dd>Submit</dd>
+            <dt>squeue --me</dt><dd>My jobs</dd>
+            <dt>scancel ID</dt><dd>Cancel</dd>
+          </dl>
+          <h3><svg class="i"><use href="#i-pen"/></svg>Edit — micro</h3>
+          <dl class="keys">
+            <dt>Ctrl-S · Ctrl-Q</dt><dd>Save · quit</dd>
+            <dt>Ctrl-Z · Ctrl-Y</dt><dd>Undo · redo</dd>
+            <dt>Ctrl-F · Ctrl-N</dt><dd>Find · next</dd>
+            <dt>Ctrl-C · Ctrl-V</dt><dd>Copy · paste</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="tool yazi">
+      <h2><span class="badge"><svg class="i"><use href="#i-folder"/></svg></span>yazi</h2>
+      <p class="lede">File browser. Open with <b>y</b> · every key: <b>~</b></p>
+      <div class="cols">
+        <div>
+          <h3><svg class="i"><use href="#i-move"/></svg>Move</h3>
+          <dl>
+            <dt>j · k</dt><dd>Down · up</dd>
+            <dt>l · h</dt><dd>Into folder · out</dd>
+            <dt>gg · G</dt><dd>Top · bottom</dd>
+            <dt>gh</dt><dd>Home</dd>
+            <dt>g Space</dt><dd>Type a path</dd>
+            <dt>.</dt><dd>Hidden files</dd>
+            <dt>q</dt><dd>Quit, shell lands here</dd>
+          </dl>
+          <h3><svg class="i"><use href="#i-search"/></svg>Find</h3>
+          <dl>
+            <dt>f</dt><dd>Filter this folder</dd>
+            <dt>/ · n</dt><dd>Jump to name · next</dd>
+            <dt>s · S</dt><dd>Search names · text*</dd>
+            <dt>z</dt><dd>Fuzzy jump anywhere</dd>
+            <dt>Esc</dt><dd>Clear filter/search</dd>
+          </dl>
+        </div>
+        <div>
+          <h3><svg class="i"><use href="#i-file"/></svg>Files</h3>
+          <dl>
+            <dt>Enter</dt><dd>Open</dd>
+            <dt>Space</dt><dd>Select</dd>
+            <dt>y · x · p</dt><dd>Copy · cut · paste</dd>
+            <dt>r</dt><dd>Rename</dd>
+            <dt>a</dt><dd>New file (dir/ = folder)</dd>
+            <dt>d</dt><dd>Trash</dd>
+            <dt>cc</dt><dd>Copy path</dd>
+          </dl>
+          <h3><svg class="i"><use href="#i-eye"/></svg>View</h3>
+          <dl>
+            <dt>,m · ,S</dt><dd>Newest · biggest first</dd>
+            <dt>ms</dt><dd>Show sizes</dd>
+            <dt>tt · 1–9</dt><dd>New tab · switch</dd>
+          </dl>
+          <h3><svg class="i"><use href="#i-pen"/></svg>Edit &amp; build</h3>
+          <dl>
+            <dt>e</dt><dd>Edit in micro</dd>
+            <dt>b</dt><dd>.tex / .qmd → PDF</dd>
+            <dt>O</dt><dd>All options (HTML, clean)</dd>
+            <dt>T</dt><dd>Preview full-screen</dd>
+            <dt>Ctrl-T</dt><dd>Hide / show preview</dd>
+          </dl>
+          <p class="note">* needs fd / rg installed</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tool herdr">
+      <h2><span class="badge"><svg class="i"><use href="#i-layers"/></svg></span>herdr</h2>
+      <p class="lede">Run on the <b>Mac</b>; clusters sit in its sidebar and keep running. <b>Ctrl-B</b>, let go, then the key.</p>
+      <div class="cols">
+        <div>
+          <h3><svg class="i"><use href="#i-plug"/></svg>Session</h3>
+          <dl>
+            <dt>herdr</dt><dd>Start or return (Mac)</dd>
+            <dt>Ctrl-B q</dt><dd>Detach, keeps running</dd>
+            <dt>Ctrl-B ?</dt><dd>Every key</dd>
+            <dt>Ctrl-B g</dt><dd>Go to pane, / search</dd>
+            <dt>Ctrl-B w</dt><dd>Pick workspace</dd>
+            <dt>Ctrl-B R</dt><dd>Reload config</dd>
+          </dl>
+          <h3><svg class="i"><use href="#i-scroll"/></svg>Scroll &amp; search</h3>
+          <dl>
+            <dt>Ctrl-B [</dt><dd>Scroll mode</dd>
+            <dt>? · n</dt><dd>Search up · next</dd>
+            <dt>v · y · q</dt><dd>Select · copy · leave</dd>
+          </dl>
+        </div>
+        <div>
+          <h3><svg class="i"><use href="#i-split"/></svg>Panes &amp; tabs</h3>
+          <dl>
+            <dt>Ctrl-B v · -</dt><dd>Split right · down</dd>
+            <dt>Ctrl-B h j k l</dt><dd>Move between panes</dd>
+            <dt>Ctrl-B z · x</dt><dd>Zoom · close pane</dd>
+            <dt>Ctrl-B c</dt><dd>New tab</dd>
+            <dt>Ctrl-B n · p</dt><dd>Next · prev tab</dd>
+          </dl>
+          <h3><svg class="i"><use href="#i-eye"/></svg>Popups</h3>
+          <dl>
+            <dt>Ctrl-B y</dt><dd>yazi here</dd>
+            <dt>Ctrl-B i</dt><dd>lazygit (git)</dd>
+            <dt>Ctrl-B d</dt><dd>Diff review sidebar</dd>
+            <dt>Ctrl-B a</dt><dd>Hand off to another agent</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="tool ghost">
+      <h2><span class="badge"><svg class="i"><use href="#i-ghost"/></svg></span>Ghostty</h2>
+      <p class="lede">Your Mac terminal. <b>⌘</b> = Cmd · <b>⌥</b> = Option · <b>⇧</b> = Shift</p>
+      <div class="cols">
+        <div>
+          <h3><svg class="i"><use href="#i-tabs"/></svg>Tabs</h3>
+          <dl>
+            <dt>⌘T</dt><dd>New tab</dd>
+            <dt>⌘1–8</dt><dd>Go to tab</dd>
+            <dt>⌘⇧[ · ⌘⇧]</dt><dd>Prev · next tab</dd>
+            <dt>⌘W</dt><dd>Close pane/tab</dd>
+          </dl>
+          <h3><svg class="i"><use href="#i-split"/></svg>Splits</h3>
+          <dl>
+            <dt>⌘D · ⌘⇧D</dt><dd>Split right · down</dd>
+            <dt>⌘⌥ arrows</dt><dd>Move between splits</dd>
+            <dt>⌘⌃ arrows</dt><dd>Resize split</dd>
+            <dt>⌘⇧Enter</dt><dd>Zoom split</dd>
+          </dl>
+        </div>
+        <div>
+          <h3><svg class="i"><use href="#i-scroll"/></svg>Scroll &amp; search</h3>
+          <dl>
+            <dt>⌘F</dt><dd>Search output</dd>
+            <dt>⌘G · ⌘⇧G</dt><dd>Next · prev match</dd>
+            <dt>⌘↑ · ⌘↓</dt><dd>Prev · next prompt</dd>
+            <dt>⌘Home · ⌘End</dt><dd>Top · bottom</dd>
+            <dt>⌘K</dt><dd>Clear screen</dd>
+          </dl>
+          <h3><svg class="i"><use href="#i-kbd"/></svg>Everyday</h3>
+          <dl>
+            <dt>⌘C · ⌘V</dt><dd>Copy · paste</dd>
+            <dt>⌘+ · ⌘-</dt><dd>Text size</dd>
+            <dt>⌘⇧P</dt><dd>Command palette</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="tool agents">
+      <h2><span class="badge"><svg class="i"><use href="#i-bot"/></svg></span>Agents &amp; git</h2>
+      <p class="lede">Claude, Gemini, Codex in herdr panes. The sidebar shows each one as <b>working</b>, <b>blocked</b> (needs you) or <b>done</b>; a Mac notification tells you.</p>
+      <div class="cols">
+        <div>
+          <h3><svg class="i"><use href="#i-bot"/></svg>Agents</h3>
+          <dl>
+            <dt>Ctrl-B , · .</dt><dd>Prev · next agent</dd>
+            <dt>claude · gemini</dt><dd>Start one in a pane</dd>
+            <dt>claude --resume</dt><dd>Pick an old session</dd>
+          </dl>
+          <h3><svg class="i"><use href="#i-folder"/></svg>Projects</h3>
+          <dl>
+            <dt>hp NAME</dt><dd>Go to a project (hp -l lists)</dd>
+            <dt>hp ~/folder</dt><dd>New workspace for any folder</dd>
+            <dt>hp</dt><dd>Reopen all active projects</dd>
+            <dt>hp --index</dt><dd>Write PROJECTS.md index</dd>
+            <dt>Ctrl-B W · T · P</dt><dd>Rename workspace · tab · pane</dd>
+          </dl>
+          <p class="note">Master list: <code>~/.config/herdr/projects.tsv</code> (status, folder, what). ⌘-click paths from <code>ls</code>, <code>fd</code>, <code>rg</code>, <code>hp -l</code>.</p>
+          <h3><svg class="i"><use href="#i-hand"/></svg>Hand off</h3>
+          <dl>
+            <dt>"hand off to gemini"</dt><dd>Tell Claude: it writes a note, opens Gemini beside it</dd>
+            <dt>Ctrl-B a</dt><dd>Picker: from which pane, to which agent</dd>
+            <dt>hh claude</dt><dd>From a shell: fresh Claude + note</dd>
+            <dt>hh gemini --note f.md</dt><dd>Use your own note</dd>
+          </dl>
+          <p class="note">Notes go in <code>.handoff/</code> (git ignores it). New agent summarises, then waits for your go.</p>
+        </div>
+        <div>
+          <h3><svg class="i"><use href="#i-git"/></svg>Git — lazygit (Ctrl-B i)</h3>
+          <dl>
+            <dt>Space</dt><dd>Stage / unstage file</dd>
+            <dt>c</dt><dd>Commit</dd>
+            <dt>p · P</dt><dd>Pull · push</dd>
+            <dt>Enter</dt><dd>Open file / commit diff</dd>
+            <dt>[ · ]</dt><dd>Switch panel tab (log, branches)</dd>
+            <dt>? · q</dt><dd>Every key · quit</dd>
+          </dl>
+          <h3><svg class="i"><use href="#i-eye"/></svg>Diff review (Ctrl-B d)</h3>
+          <dl>
+            <dt>u · b · t</dt><dd>Uncommitted · branch · last turn</dd>
+            <dt>c · v</dt><dd>Comment line · select lines</dd>
+            <dt>s</dt><dd>Send comments to the agent</dd>
+            <dt>Ctrl-B G</dt><dd>New git worktree (side branch)</dd>
+          </dl>
+          <p class="note">Diff review works on local folders; on remote machines use lazygit.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tool claude">
+      <h2><span class="badge"><svg class="i"><use href="#i-snow"/></svg></span>Claude sessions</h2>
+      <p class="lede">Statusline: context bar (yellow 70%, red 90%), <b>⏳ Nm idle</b>, <b>❄️ cache cold</b> after 60 min. Cold = next message costs more, nothing is lost.</p>
+      <div class="cols">
+        <div>
+          <h3><svg class="i"><use href="#i-moon"/></svg>Closing the laptop</h3>
+          <dl>
+            <dt>Remote panes</dt><dd>Keep running</dd>
+            <dt>Mac panes</dt><dd>Pause until you open it</dd>
+            <dt>Long work</dt><dd>Put it in a remote workspace</dd>
+          </dl>
+          <p class="note">Login-node reboots stop running work. Real compute goes in <code>sbatch</code>.</p>
+        </div>
+        <div>
+          <h3><svg class="i"><use href="#i-cpu"/></svg>Sessions &amp; notes</h3>
+          <dl>
+            <dt><code>claude --resume</code></dt><dd>Open an old session</dd>
+            <dt><code>nn NAME "title"</code></dt><dd>New lab-notebook entry</dd>
+          </dl>
+          <h3><svg class="i"><use href="#i-snow"/></svg>Cache &amp; compact</h3>
+          <dl>
+            <dt>Short break</dt><dd>Nothing to do</dd>
+            <dt>Away 1 h+, bar &gt; 50%</dt><dd>Save a summary, then <code>/clear</code></dd>
+            <dt>Task step done</dt><dd><code>/compact keep: …</code></dd>
+            <dt>Mid-debugging</dt><dd>Do not compact</dd>
+            <dt>Bar yellow</dt><dd>Compact at next step</dd>
+            <dt>Bar red</dt><dd>Compact now, or hand off</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+<script>
+(function(){
+  var esc=function(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')};
+  var span=function(c,t){return '<span class="'+c+'">'+esc(t)+'</span>'};
+  document.querySelectorAll('dt:not(.claude dt), .shell .note code').forEach(function(dt){
+    var shell=!!dt.closest('.shell')&&!dt.closest('.keys'), out='', first=true;
+    dt.textContent.split(/(\s+|·)/).forEach(function(t){
+      if(!t) return;
+      if(/^\s+$/.test(t)){out+=t;return}
+      if(t==='·'){out+=span('s',t);first=true;return}
+      if(shell){
+        if(first){out+=span('p',t);first=false}
+        else if(/^-./.test(t)){out+=span('f',t)}
+        else{out+=span('a',t)}
+        return;
+      }
+      if(t==='Ctrl-B'&&dt.closest('.herdr,.agents')){out+=span('m',t);return}
+      var c=t.match(/^(Ctrl-)(.+)$/);
+      if(c){out+=span('m',c[1])+span('k',c[2]);return}
+      var m=t.match(/^([⌘⌥⇧⌃]+)(.*)$/);
+      if(m){out+=span('m',m[1])+(m[2]?span('k',m[2]):'');return}
+      out+=span('k',t);
+    });
+    dt.innerHTML=out;
+  });
+})();
+</script>
+</body>
+</html>

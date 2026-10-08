@@ -15,6 +15,9 @@ on:
       - "**/*.js"
       - "**/*.png"
       - "**/*.jpg"
+      - "**/*.jpeg"
+      - "**/*.gif"
+      - "**/*.webp"
       - "**/*.svg"
       - "**/*.py"
   workflow_dispatch:

@@ -1,0 +1,466 @@
+---
+title: "Setting Up Your Computer for HPC Work"
+subtitle: "A guide for computational scientists: SSH, sessions, cluster tools, job monitoring, and coding agents"
+description: "How we set up a laptop and two very different clusters (NERSC Perlmutter with Slurm, and a group cluster behind a gateway with PBS) for daily computational work: one login per day, sessions that survive, tools without root, one job monitor that flags runs that exited 0 but failed, run records, and rules for coding agents."
+abstract: |
+  Small problems cost computational scientists hours each week: repeated logins, lost sessions, jobs
+  that finish unseen, and runs that exit 0 but fail. This post shows one setup for two different
+  clusters (Slurm and PBS): one SSH login per day, sessions that survive, tools without root, one job
+  monitor that scans logs, run records, rules for coding agents, and the tracking tools that we tried.
+author: "Joseph Frimpong"
+date: "2026-09-25"
+categories: [tutorial, hpc, productivity, computational-science]
+# image: "thumbnail.png"   # TODO: use Image 1 (the hub) as the thumbnail
+draft: true
+---
+
+## Why set this up at all
+
+Most computational scientists lose time to the same small problems. You type a password and a one-time code five times a day. An SSH session drops and takes your editor with it. A job finishes at 3 a.m., and you find out two days later. A job exits with code 0, but the log says the calculation did not converge. Six months later, you cannot say which input made Figure 3.
+
+This post describes the setup that we use for daily work on two very different clusters. One is a national supercomputer (NERSC Perlmutter, Slurm). The other is a group cluster behind a gateway host (Carbon at Argonne, Torque/PBS). The setup does not need root access on either machine.
+
+The setup gives five results:
+
+1. **One login per day.** After the first login, each new SSH connection opens immediately.
+2. **Sessions that survive.** Work on the cluster continues when the laptop sleeps or the Wi-Fi drops.
+3. **One view of all jobs.** One command shows running, queued, and finished jobs on all clusters. It also flags runs that exited 0 but failed.
+4. **Records you can trust.** Each result links to its inputs, code version, and job ID.
+5. **Safe help from coding agents.** Agents can read logs and draft inputs, but they follow clear rules about jobs and allocation hours.
+
+This is part 2 of a series. [Part 1](../2026-09-25-agentic-terminal-setup/index.qmd) covers the local tools (Ghostty, herdr, yazi). This post covers the cluster side.
+
+## The picture: the laptop is the hub, the clusters do the work
+
+The laptop holds your editor, notes, and one view of everything. The clusters hold the data and do the compute. Each path from the laptop to a cluster goes through SSH, sometimes through a gateway host first.
+
+```{mermaid}
+flowchart LR
+  L[Laptop<br/>terminal, notes, job monitor] -->|daily key| P[Perlmutter<br/>login node]
+  L -->|gateway| G[Gateway host]
+  G --> C[Carbon<br/>login node]
+  P --> S1[Slurm<br/>compute nodes]
+  C --> S2[PBS/Torque<br/>compute nodes]
+  S1 --> D1[Scratch<br/>purged]
+  S2 --> D2[Group disk<br/>quota]
+```
+
+::: {.callout-warning title="Image 1 placeholder: the hub"}
+The laptop terminal with the herdr sidebar showing local panes and two cluster machines. *Caption: one window for the laptop and both clusters.*
+:::
+
+Four rules follow from this picture:
+
+| Where | Put this there | Do not put this there |
+| --- | --- | --- |
+| Laptop | Editor, notes, job monitor, SSH connections | Long runs (they stop when the lid closes) |
+| Login node | Long-lived terminal sessions, small builds, file browsing | Real compute (login nodes are shared and can reboot) |
+| Compute nodes | All real calculations, through the scheduler | Interactive editing |
+| Scratch or group disk | Run outputs | The only copy of anything (scratch is purged) |
+
+## Step 1: SSH that does not fight you
+
+All the other steps depend on SSH. If each connection asks for a password and a one-time code, every tool that uses SSH becomes slow. The goal is one login per day for each cluster.
+
+### Get a daily key (NERSC)
+
+NERSC requires multi-factor authentication. Its `sshproxy` client asks for your password and one-time code once, then writes a key that is valid for 24 hours by default.
+
+```bash
+sshproxy.sh -u YOUR_NERSC_USER        # writes ~/.ssh/nersc and ~/.ssh/nersc-cert.pub
+ssh-keygen -L -f ~/.ssh/nersc-cert.pub | grep Valid   # shows when the key expires
+```
+
+Other centers have similar tools. Look for "SSH certificate" or "MFA with SSH" in their documentation.
+
+### Reuse one connection: ControlMaster
+
+`ControlMaster` keeps the first connection open in the background. Each later `ssh`, `scp`, `rsync`, or tool that uses SSH goes through it with no new login. It also makes each connection open in a fraction of a second.
+
+```bash
+mkdir -p ~/.ssh/sockets && chmod 700 ~/.ssh/sockets
+```
+
+```text
+# ~/.ssh/config
+Host perlmutter
+  HostName perlmutter.nersc.gov
+  User YOUR_NERSC_USER
+  IdentityFile ~/.ssh/nersc
+  IdentitiesOnly yes
+  ControlMaster auto
+  ControlPath ~/.ssh/sockets/%r@%h:%p
+  ControlPersist 12h
+```
+
+### Go through a gateway: ProxyJump
+
+Many group clusters are not on the public internet. You first log in to a gateway host, then to the cluster. `ProxyJump` does both hops in one command, and `ControlMaster` on the gateway means you type the gateway password only once.
+
+```text
+Host gateway
+  HostName gateway.example.org
+  User YOUR_USER
+  ControlMaster auto
+  ControlPath ~/.ssh/sockets/%r@%h:%p
+  ControlPersist 10h
+
+Host cluster
+  HostName cluster-login
+  User YOUR_USER
+  ProxyJump gateway
+  ControlMaster auto
+  ControlPath ~/.ssh/sockets/%r@%h:%p
+  ControlPersist 10h
+```
+
+Now `ssh cluster`, `scp file cluster:~/`, and `rsync -av runs/ cluster:runs/` all work without extra steps.
+
+### Pin one login node for long sessions
+
+A name such as `perlmutter.nersc.gov` sends you to a different login node each time. A terminal session that you left on login node 20 is not visible from login node 7. For sessions that must survive, make an alias for one fixed login node:
+
+```text
+Host perlmutter-pinned
+  HostName login20
+  HostKeyAlias perlmutter.nersc.gov
+  ProxyJump perlmutter
+  User YOUR_NERSC_USER
+  IdentityFile ~/.ssh/nersc
+  ControlMaster auto
+  ControlPath ~/.ssh/sockets/%r@%h-pinned:%p
+  ControlPersist 12h
+```
+
+`HostKeyAlias` tells SSH to check the host key against the key that you already trust for the public name. Before you add the alias, confirm that the two keys are the same. We did this with `ssh-keyscan` on both names.
+
+::: {.callout-warning title="Image 2 placeholder: fast connections"}
+Two terminal windows: the first `ssh perlmutter` asks for nothing because the daily key is loaded; a second connection opens instantly through the control socket. *Caption: one login per day.*
+:::
+
+**Gotcha: stale sockets.** If the network changes (for example, a laptop that sleeps), an old control socket can hang. Run `ssh -O exit cluster` to close it, then connect again.
+
+**Gotcha: keys at the gateway.** Some gateways allow only password or Kerberos login and reject you after too many offered keys. Add `PubkeyAuthentication no` to that host entry.
+
+## Step 2: sessions that survive
+
+An SSH session is fragile. If the Wi-Fi drops or the laptop sleeps, the shell on the cluster stops, and so does the editor or the build in it. A terminal multiplexer on the login node keeps the shell alive. You detach, and later you attach again to the same state.
+
+### Option A: tmux on the login node
+
+`tmux` is on almost every cluster. Use one named session per project.
+
+```bash
+ssh perlmutter-pinned
+tmux new -A -s pdep        # attach to session "pdep", or make it if it does not exist
+# ... work ...
+# Ctrl-B d                 # detach. The session continues on the login node.
+```
+
+The `-A` flag makes the same command work each time. This is important for the pinned login node: `tmux` sessions exist only on the node that started them.
+
+### Option B: herdr remote machines
+
+If you use [herdr](https://herdr.dev) on the laptop (see [part 1](../2026-09-25-agentic-terminal-setup/index.qmd)), add each cluster as a machine. herdr runs its server on the login node and shows the remote panes in the same sidebar as local panes.
+
+```bash
+herdr machine add --label perlmutter --remote-session agents perlmutter-pinned
+herdr machine add --label carbon --remote-session agents cluster
+herdr machine list
+```
+
+We use the same `Ctrl-B` prefix in tmux and herdr, so the keys are the same on all machines.
+
+::: {.callout-warning title="Image 3 placeholder: remote panes"}
+The herdr sidebar with a local workspace and two cluster workspaces, one pane tailing a job log on the cluster. *Caption: cluster sessions next to local ones.*
+:::
+
+### What survives what
+
+| Event | Laptop panes | Login-node session (tmux or herdr) | Batch job on compute nodes |
+| --- | --- | --- | --- |
+| Wi-Fi drops | Continue | Continue | Continue |
+| Laptop lid closed | Stop | Continue | Continue |
+| SSH key expires (24 h) | Continue | Continue (you cannot attach until you get a new key) | Continue |
+| Login node reboots | Continue | **Lost** | Continue |
+| Job reaches its wall-clock limit | Continue | Continue | **Killed** |
+
+The table gives one rule: **only the scheduler protects real work.** Use login-node sessions for editing, monitoring, and small builds. Put anything that must finish into a batch job.
+
+**Gotcha: watcher loops.** A shell loop that polls `squeue` stops with the session that runs it. For monitoring that must survive, run it from the laptop with a scheduled task (Step 4), or start it with `nohup` on the login node.
+
+## Step 3: good tools on the cluster, without root
+
+You cannot use `sudo` on a cluster. But most modern command-line tools are single static binaries. Put them in `~/.local/bin` and add that folder to your `PATH`.
+
+```bash
+mkdir -p ~/.local/bin
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+```
+
+| Tool | What it gives you on the cluster | How to install without root |
+| --- | --- | --- |
+| [micro](https://micro-editor.github.io) | An editor with normal keys (Ctrl-S, Ctrl-Q) for users who do not use vim | `cd ~/.local/bin && curl https://getmic.ro \| bash` |
+| [yazi](https://yazi-rs.github.io) | Browse run folders, preview images and PDFs, sort by newest | Download the Linux `musl` release zip from GitHub, copy `yazi` and `ya` to `~/.local/bin` |
+| [fd](https://github.com/sharkdp/fd), [ripgrep](https://github.com/BurntSushi/ripgrep) | Fast search for file names and text in large run trees | Linux `musl` release binaries |
+| [tmux](https://github.com/tmux/tmux/wiki) | Sessions that survive (Step 2) | Usually already installed. Check `module avail tmux`. |
+| Conda or `uv` environment | Python for analysis and plotting | Install into your home or project folder, not the system |
+
+**Terminal type.** If your laptop terminal is Ghostty, kitty, or WezTerm, the cluster may not know its terminal type. Full-screen tools then show wrong colors or fail with an "unknown terminal" error. Ghostty can copy its terminfo for you (`shell-integration-features = ssh-env,ssh-terminfo`). As a fallback, add `SetEnv TERM=xterm-256color` to the cluster entries in `~/.ssh/config`.
+
+**Build documents where the data is.** We use a small `ybuild` script from yazi: `b` on a `.tex` file runs `latexmk`, and `b` on a `.qmd` file runs Quarto. On Perlmutter, the script adds the NERSC TeX Live folder to `PATH` first. The PDF appears next to the source, and yazi shows it at once. You do not need to copy large outputs to the laptop to write about them.
+
+```bash
+tl=/global/common/software/nersc9/texlive/2024/bin/x86_64-linux   # Perlmutter TeX Live
+[ -d "$tl" ] && PATH="$tl:$PATH"
+```
+
+::: {.callout-warning title="Image 4 placeholder: yazi on the cluster"}
+yazi in a run folder on the cluster, sorted newest first, with a band-structure plot in the preview pane. *Caption: look at results where they live.*
+:::
+
+## Step 4: know what your jobs are doing
+
+Each scheduler has its own commands, and each cluster forgets finished jobs at a different speed. On our group cluster, the scheduler removes a finished job after 10 minutes. If you did not look in those 10 minutes, `qstat` shows nothing.
+
+We wrote a small read-only script, `hpcjobs`, that runs on the laptop. It connects through the SSH aliases from Step 1 and gives one table for all clusters.
+
+```text
+$ hpcjobs
+MACHINE     JOBID     NAME        STATE      ELAPSED   NOTE
+perlmutter  51234567  pdep-si64   RUNNING    02:14:09
+carbon      3846617   m1gw        QUEUED     -         Priority
+carbon      3846613   xas-m1g1b   COMPLETED  00:41:30  log: "G1": "FAIL"
+```
+
+::: {.callout-warning title="Image 5 placeholder: hpcjobs"}
+Output of `hpcjobs` in a terminal, with one row flagged in red for a log problem. *Caption: one view of both clusters.*
+:::
+
+### What it runs
+
+| Scheduler | Command | Why |
+| --- | --- | --- |
+| Slurm | `sacct -X -S <since> --format=JobID,JobName,State,ExitCode,Elapsed,WorkDir,StdOut -P -n` | Finished and running jobs with their folders and log paths |
+| Slurm | `squeue --me -h -o '%i\|%r'` | The reason a job waits (Priority, Resources, QOS limit) |
+| Torque/PBS | `qstat -f -x` | Full job records as XML, easy to parse |
+| Both | `tail -n 400` on each finished job's log | The log scan (below) |
+
+The script never runs `sbatch`, `qsub`, `scancel`, or `qdel`. It uses `ssh -o BatchMode=yes`, so it fails immediately instead of asking for a password when a key expired.
+
+### Exit code 0 is not success
+
+One of our runs exited with code 0, but its log said `"G1": "FAIL"`. Scientific codes often finish cleanly after a failed convergence or a failed validation check. So `hpcjobs` reads the end of each finished log and flags these patterns:
+
+```python
+FLAG_RE = (r"\bFAIL(ED)?\b|Traceback|\bError\b|ERROR|\bNaN\b|\bnan\b|not converged|"
+           r"convergence NOT achieved|Out Of Memory|oom-kill|Segmentation fault|"
+           r"CANCELLED|DUE TO TIME LIMIT")
+```
+
+Add the patterns that your codes print. `hpcjobs --problems` shows only failed, timed-out, cancelled, non-zero, or flagged jobs.
+
+### Keep a history and get a notification
+
+Because the group cluster forgets jobs quickly, the script saves each job it sees to `~/.local/state/hpcjobs/history.json`. A macOS launchd agent runs `hpcjobs --record` every 5 minutes. When a job finishes, it sends a notification with `osascript`.
+
+```xml
+<!-- ~/Library/LaunchAgents/com.you.hpcjobs.plist -->
+<plist version="1.0"><dict>
+  <key>Label</key><string>com.you.hpcjobs</string>
+  <key>ProgramArguments</key>
+  <array><string>/usr/bin/python3</string><string>/Users/you/.local/bin/hpcjobs</string><string>--record</string></array>
+  <key>StartInterval</key><integer>300</integer>
+  <key>RunAtLoad</key><true/>
+  <key>Nice</key><integer>10</integer>
+</dict></plist>
+```
+
+```bash
+launchctl load ~/Library/LaunchAgents/com.you.hpcjobs.plist
+```
+
+On Linux, use a `systemd --user` timer or `cron` with `notify-send`.
+
+**Gotcha: the poller needs live logins.** The launchd agent uses the same control sockets as you. If the daily key expired or the gateway connection closed, the poller reports "ssh failed" for that cluster. It does not ask for a password.
+
+## Step 5: a run record for each job
+
+A result is only as good as your ability to say how you got it. For each number in a paper, you should be able to answer four questions: which inputs, which code version, which job, and where the output is now. The smallest step that answers them is a run record.
+
+Before we submit, we write a short record next to the job script. After the job, we add the result. A plain Markdown or YAML file is enough.
+
+```yaml
+# runs/2026-09-24-m1gw.yaml
+purpose: h-BN G0W0@PBE, 128 atoms, QP gap convergence check
+status: submitted            # planned -> submitted -> completed / failed
+machine: carbon
+job_id: 3846617
+script: jobs/m1gw.pbs
+script_sha256: 5adef924...
+code: WEST @ 61e3768, QE 7.6
+inputs: [pw.in, wstat.in, wfreq.in]
+output_dir: /sandbox/you/xas-m0/m1gw/
+result: <fill in after the job>
+```
+
+The hash of the job script is important. It proves which script ran, even if you edit the file later.
+
+::: {.callout-note title="Coming next: the lab notebook and provenance"}
+A run record tells you *what* ran. [Our third post](../2026-09-25-lab-notebook/index.qmd) covers the rest. It shows a lab notebook for computational work: one Markdown notebook in git, one entry per task in ELN format, a command (`nn`) that makes entries from the terminal, and hooks that save each coding-agent conversation and link it to its entry. It also covers automatic provenance with AiiDA for large campaigns, and how we validated our AiiDA plugin against the code's own test suite before we trusted it.
+:::
+
+## Step 6: coding agents on HPC, with rules
+
+Coding agents such as Claude Code are useful on HPC work. They read long logs quickly, compare inputs, write job scripts, and find the one line that explains a failure. But a cluster has costs that a laptop does not: allocation hours, shared file systems, and jobs that other people wait behind. So the agent needs clear rules.
+
+### Where agents help most
+
+| Task | What the agent does | What you check |
+| --- | --- | --- |
+| Diagnose a failed run | Reads the log and the input, names the cause, proposes a fix | That the cause matches the log |
+| Write or change a job script | Sets nodes, tasks, wall time, and modules for the machine | Resource request and account |
+| Monitor a campaign | Runs `hpcjobs --problems`, reads flagged logs, reports | The report, not every log |
+| Build or port code | Runs `cmake`, reads compiler errors, patches build files | The diff |
+| Keep records | Writes the run record and the notebook entry | Nothing extra |
+
+### Rules we enforce
+
+1. **Read-only by default.** Monitoring tools (`hpcjobs`, `sacct`, `qstat`, `tail`) never change anything.
+2. **Submit only approved work.** The agent submits jobs only for a plan that you approved. A hook in Claude Code blocks `sbatch` and `qsub` otherwise.
+3. **Always ask before cancel or delete.** `scancel`, `qdel`, and `rm` on cluster data always need your approval.
+4. **Ask before large spends.** Campaigns that use many allocation hours outside the approved plan need approval.
+5. **No interactive logins.** The agent cannot type a password or a one-time code. When a key expires, it tells you and waits.
+6. **Send you only what needs you.** Items that need your decision go to one inbox (for us, a Notion task list), not into a long chat.
+
+In Claude Code, rules 2 and 3 are a `PreToolUse` hook: a small script that reads each shell command before it runs and blocks the ones that match. Rules in a prompt are advice. A hook is enforcement.
+
+### Give the agent good tools
+
+- **A skill for your job monitor.** A short instruction file tells the agent how to run `hpcjobs`, what the flags mean, and when to tell you.
+- **Your run-record template.** The agent fills it before and after each job.
+- **One inbox for decisions.** The agent sends items that need you to one place and does not repeat them in chat.
+
+::: {.callout-warning title="Image 6 placeholder: agent diagnosis"}
+A Claude Code pane that reads a flagged log from `hpcjobs --problems` and explains the failure, next to the log itself. *Caption: the agent reads the log, you make the decision.*
+:::
+
+## Other tools we evaluated
+
+We also looked at larger tools for tracking and automation. Some are in daily use. Others are blocked by network or account rules that you will likely meet too. The status is from September 2026.
+
+| Tool | What it does | Our status | What we learned |
+| --- | --- | --- | --- |
+| [ClearML](https://clear.ml/docs/latest/docs/) | Experiment tracking: parameters, metrics, logs, and artifacts in a web dashboard | **Waiting for access** | The public hosted server was blocked by our lab's DNS. The lab's own ClearML server was reachable from the laptop and the group cluster, but not from Perlmutter. The setup wizard suggested a wrong internal address, so we wrote `clearml.conf` by hand. We now wait for project permissions on that server. |
+| [NERSC IRI API](https://api.iri.nersc.gov) | Programmatic access to NERSC resources (status, jobs, files) through a REST API | **Parked** | Login goes through Globus. Our token was rejected because the primary Globus identity was the university account, not the NERSC account. We opened a ticket with NERSC. |
+| [NERSC Superfacility API](https://docs.nersc.gov/services/sfapi/) | REST API for NERSC jobs, files, and system status | **Not tried yet** | On our list as a possible backend for `hpcjobs` that needs no SSH. |
+| [HPSS archive](https://docs.nersc.gov/filesystems/archive/) | NERSC tape archive for long-term storage | **In use, needs cleanup** | Old thesis data lives there. We are writing a keep, delete, and move plan before we change anything. |
+| herdr plugins | Extra features for the terminal multiplexer | **One kept, two rejected** | We read each plugin's source first. One handoff plugin always turned off the agent's permission checks, so we wrote our own script. See [part 1](../2026-09-25-agentic-terminal-setup/index.qmd). |
+
+AiiDA, the workflow and provenance engine that we use for large campaigns, gets its own section in the third post.
+
+**Test network reachability from each machine.** A tracking server that the laptop can reach may be invisible from a compute node or from another center. Before you add logging calls to a job, run a short `curl` to the server from a compute node on each cluster.
+
+**Give each tool a small first goal.** For ClearML, our first goal is only to record parameters and final numbers for each run. We will add artifacts and dashboards after that works on every cluster.
+
+## Lessons learned
+
+**Exit codes do not tell you if the science worked.** A run that exits 0 can contain a failed validation, a NaN, or an unconverged loop. Scan the logs, and make the scan part of your normal job view.
+
+**Each scheduler forgets at its own speed.** Slurm `sacct` keeps a long history. Our Torque/Moab cluster removes a finished job after 10 minutes and writes the job log only when the job ends. Keep your own history on the laptop.
+
+**Pin the login node when a session matters.** A load-balanced hostname sends you to a random node. Your `tmux` session is on one node only. Check the host key before you pin.
+
+**Scratch is not storage.** On Perlmutter scratch, NERSC can purge any file that nobody has read for 8 weeks. Copy what matters to project storage or the archive, and keep the run record somewhere that is not scratch.
+
+**Watch quotas before a campaign.** Our group disk went over its hard quota in the middle of a set of runs. New jobs then fail in strange ways. Add a quota check (`quota`, `lfs quota`, or your center's tool) to your start-of-day routine.
+
+**Kerberos and gateway sessions expire without warning.** When a gateway ticket expires, every tool that uses it fails at once. If many tools fail together, check the login first.
+
+### What we would do differently
+
+- Write `~/.ssh/config` first. Every other tool depends on it.
+- Keep run records from the first job, not from the first paper.
+- Test each tracking server from each compute node before you depend on it.
+
+## Checklist and cheat sheet
+
+### One-time setup checklist
+
+- [ ] Get your center's daily SSH key tool working (NERSC: `sshproxy`).
+- [ ] Make `~/.ssh/sockets` and add `ControlMaster` entries for each cluster.
+- [ ] Add `ProxyJump` entries for clusters behind a gateway.
+- [ ] Add a pinned login-node alias for long sessions. Check its host key first.
+- [ ] Install `micro`, `yazi`, `fd`, and `rg` into `~/.local/bin` on each cluster.
+- [ ] Fix the terminal type (Ghostty `ssh-terminfo`, or `SetEnv TERM=xterm-256color`).
+- [ ] Set up one `tmux` or herdr session for each project on the pinned node.
+- [ ] Install a job monitor with a log scan and a 5-minute notification task.
+- [ ] Make a run-record template and keep it next to your job scripts.
+- [ ] Write the agent rules, and enforce the submit and cancel rules with a hook.
+- [ ] Test reachability of any tracking server from each compute node.
+
+### Daily cheat sheet
+
+| When | Command | Does |
+| --- | --- | --- |
+| Start of day | `sshproxy.sh -u USER` | Get the 24-hour NERSC key |
+| Start of day | `ssh gateway` | Open the gateway connection that other hops reuse |
+| Start of day | `hpcjobs` | All jobs, last 24 hours, all clusters |
+| Any time | `ssh perlmutter-pinned` then `tmux new -A -s NAME` | Go back to your session |
+| Any time | `hpcjobs --problems` | Only failed or flagged jobs |
+| Any time | `hpcjobs log JOBID` | End of one job's log |
+| Any time | `ssh -O exit HOST` | Close a hung control socket |
+| Any time | `ssh-keygen -L -f ~/.ssh/nersc-cert.pub \| grep Valid` | When does the key expire? |
+| Slurm | `squeue --me` · `sacct -X -S today` · `scancel ID` | My jobs · today's jobs · cancel |
+| PBS/Torque | `qstat -u $USER` · `qstat -f -x ID` · `qdel ID` | My jobs · full record · cancel |
+| End of day | Notebook entry | What ran, what changed, what is next |
+
+::: {.callout-warning title="Image 7 placeholder: printable card"}
+A one-page printable version of this cheat sheet. *Caption: tape it next to the screen.*
+:::
+
+## References
+
+All links checked on 2026-09-25.
+
+**This series**
+
+1. [A terminal workspace for agentic coding: Ghostty, herdr, and yazi](../2026-09-25-agentic-terminal-setup/index.qmd). Part 1: the local tools.
+2. This post. Part 2: the cluster side.
+3. [A lab notebook for computational science](../2026-09-25-lab-notebook/index.qmd). Part 3: the lab notebook and provenance with AiiDA.
+
+**SSH and sessions**
+
+4. [NERSC: multi-factor authentication and sshproxy](https://docs.nersc.gov/connect/mfa/). Daily 24-hour SSH keys and the matching `~/.ssh/config` entries.
+5. [ssh_config(5)](https://man.openbsd.org/ssh_config.5). Reference for `ControlMaster`, `ControlPersist`, `ProxyJump`, and `HostKeyAlias`.
+6. [tmux wiki](https://github.com/tmux/tmux/wiki). Terminal sessions that survive a lost connection.
+7. [herdr](https://herdr.dev). Agent-aware terminal multiplexer with remote SSH machines.
+8. [Ghostty: terminfo](https://ghostty.org/docs/help/terminfo). Why remote tools fail with "unknown terminal", and the fixes.
+
+**Tools on the cluster**
+
+9. [micro](https://micro-editor.github.io). Terminal editor. The install script is at [getmic.ro](https://getmic.ro).
+10. [yazi](https://yazi-rs.github.io). Terminal file manager with previews.
+11. [fd](https://github.com/sharkdp/fd) and [ripgrep](https://github.com/BurntSushi/ripgrep). Fast search for names and text.
+
+**Jobs and storage**
+
+12. [Slurm sacct](https://slurm.schedmd.com/sacct.html) and [squeue](https://slurm.schedmd.com/squeue.html). The commands behind the Slurm side of `hpcjobs`.
+13. [NERSC: Perlmutter scratch](https://docs.nersc.gov/filesystems/perlmutter-scratch/). Quotas and the 8-week purge rule.
+14. [NERSC: HPSS archive](https://docs.nersc.gov/filesystems/archive/). Long-term tape storage.
+
+**Tracking and APIs**
+
+15. [ClearML documentation](https://clear.ml/docs/latest/docs/). Experiment tracking server and client.
+16. [NERSC IRI API](https://api.iri.nersc.gov). REST access to NERSC resources through Globus login.
+17. [NERSC Superfacility API](https://docs.nersc.gov/services/sfapi/). REST API for NERSC jobs, files, and status.
+
+**Agents**
+
+18. [Claude Code hooks](https://code.claude.com/docs/en/hooks). `PreToolUse` hooks that can block commands such as `sbatch` or `scancel`.
+
+::: {.callout-important title="Draft notes (remove before publishing)"}
+- Capture the seven images marked as placeholders above (no usernames, hostnames of private machines, or project paths visible).
+- Publish `hpcjobs` as a small repo, or keep it as a description only?
+- Make a printable card for this post, like the one in part 1?
+:::

@@ -1624,3 +1624,57 @@ h3.news-title {
     scroll-behavior: auto !important;
   }
 }
+
+/* Mermaid diagrams: use the site palette so they read well in light and dark mode.
+   Mermaid writes its own <style> with id selectors inside each SVG, so these
+   rules need !important to win. */
+svg.mermaid-js {
+  max-width: 100%;
+  font-family: var(--font-body) !important;
+}
+svg.mermaid-js .node rect,
+svg.mermaid-js .node circle,
+svg.mermaid-js .node polygon,
+svg.mermaid-js .node path,
+svg.mermaid-js rect.actor,
+svg.mermaid-js .cluster rect {
+  fill: var(--surface) !important;
+  stroke: var(--muted) !important;
+  stroke-width: 1px !important;
+}
+svg.mermaid-js .nodeLabel,
+svg.mermaid-js .node .label,
+svg.mermaid-js .cluster-label,
+svg.mermaid-js text.actor,
+svg.mermaid-js text.actor tspan {
+  color: var(--ink) !important;
+  fill: var(--ink) !important;
+  font-family: var(--font-body) !important;
+}
+svg.mermaid-js .flowchart-link,
+svg.mermaid-js .edgePath .path,
+svg.mermaid-js .messageLine0,
+svg.mermaid-js .messageLine1 {
+  stroke: var(--muted) !important;
+}
+svg.mermaid-js marker path,
+svg.mermaid-js .arrowheadPath,
+svg.mermaid-js #arrowhead path {
+  fill: var(--muted) !important;
+  stroke: var(--muted) !important;
+}
+svg.mermaid-js .edgeLabel,
+svg.mermaid-js .edgeLabel p,
+svg.mermaid-js .edgeLabel rect,
+svg.mermaid-js .labelBkg {
+  background-color: var(--bg) !important;
+  fill: var(--bg) !important;
+  color: var(--text) !important;
+}
+svg.mermaid-js .messageText {
+  fill: var(--text) !important;
+  stroke: none !important;
+}
+svg.mermaid-js .actor-line {
+  stroke: var(--faint) !important;
+}

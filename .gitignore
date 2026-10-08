@@ -4,3 +4,13 @@ _site
 site-backup-*
 *.quarto_ipynb
 _quarto_internal_scss_error.scss
+
+# Obsidian vault (blog/): keep shared settings, ignore per-machine state and plugin code
+**/.obsidian/workspace*.json
+**/.obsidian/appearance.json
+**/.obsidian/plugins/*/main.js
+**/.obsidian/plugins/*/manifest.json
+**/.obsidian/plugins/*/styles.css
+**/.trash/
+
+**/*.quarto_ipynb

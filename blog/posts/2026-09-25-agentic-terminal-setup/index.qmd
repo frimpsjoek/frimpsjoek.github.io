@@ -1,0 +1,581 @@
+---
+title: "A Terminal Workspace for Agentic Coding"
+subtitle: "Ghostty, herdr, yazi, and a Claude Code statusline"
+description: "How we set up a Mac terminal to run several coding agents at once: Ghostty as the terminal, herdr as the agent multiplexer, yazi as the file browser, and a statusline that shows context, cost, and prompt-cache state. Includes configs, a daily workflow, lessons learned, and a printable cheat sheet."
+abstract: |
+  Running several coding agents at once turns the terminal into a control room. This post describes
+  a three-layer setup on a Mac: Ghostty as the terminal, herdr as an agent-aware multiplexer with
+  notifications and remote machines, and yazi as a file browser in a popup. It also shows a Claude Code
+  statusline for context, cost, and prompt-cache state, a daily workflow, and a printable cheat sheet.
+author: "Joseph Frimpong"
+date: "2026-09-25"
+categories: [tutorial, productivity, terminal, ai-agents]
+# image: "thumbnail.png"   # TODO: use Image 1 (full setup) as the thumbnail
+draft: true
+resources:
+  - agentic-terminal-cheatsheet.html
+  - agentic-terminal-cheatsheet.pdf
+---
+
+## Why your terminal matters again
+
+When you run more than one coding agent at a time, the terminal becomes a control room. We learned this the slow way. We had three Claude sessions, a Gemini pane, and two SSH sessions to HPC clusters. We did not know which agent was done, which agent waited for a permission answer, and which agent had changed a file that we cared about.
+
+This post describes the setup that we made after one full day of rebuilding. The setup has three layers. **Ghostty** is the terminal. **herdr** is the agent-aware multiplexer. **yazi** is the file browser, and one key opens it. None of these tools is new. The value is in how we connect them.
+
+Three questions controlled each decision:
+
+1. **Where is each agent, and does it need me?** You must not have to look through each tab to find out.
+2. **What did the agent change?** You must see diffs and output files without leaving the pane.
+3. **What continues when I close the laptop?** Long work must continue to run. Short work must start again from where it stopped.
+
+## The stack at a glance
+
+Each layer does one job. A layer does not need information about the layers below it.
+
+| Layer | Tool | Job |
+| --- | --- | --- |
+| Terminal | [Ghostty](https://ghostty.org) | Fast GPU rendering, a native Mac app, clickable links, shell integration over SSH |
+| Multiplexer | [herdr](https://herdr.dev) | One workspace for each project, one pane for each agent, an agent-status sidebar, notifications, remote machines |
+| Files | [yazi](https://yazi-rs.github.io) | Browse and preview the files that agents make (PDFs, images, logs) in a popup |
+| Scripts | `hp`, `hh`, `nn`, `ybuild` | Open projects, hand work to a new agent, write notes, build documents |
+
+```{mermaid}
+flowchart TD
+  G[Ghostty window] --> H[herdr session]
+  H --> W1[Workspace: project A]
+  H --> W2[Workspace: project B]
+  H --> R[Remote machine:<br/>HPC login node]
+  W1 --> P1[Pane: Claude]
+  W1 --> P2[Pane: Gemini]
+  W1 --> Y[Popup: yazi]
+  W1 --> L[Popup: lazygit]
+```
+
+One Ghostty window holds one herdr session. herdr holds one workspace for each project. Each workspace holds agent panes and popups. You open a popup when you need it and close it when you are done.
+
+::: {.callout-warning title="Image 1 placeholder: full setup"}
+One Ghostty window running herdr: the agent sidebar on the left, two agent panes side by side, a workspace list. *Caption: the whole stack in one window.*
+:::
+
+We used these versions: Ghostty 1.3.1, herdr 0.9.1, and yazi 26.9.1. We installed herdr and yazi with Homebrew on an Apple Silicon Mac. Ghostty came from its own installer.
+
+## Layer 1: Ghostty, the terminal
+
+Ghostty is the easy layer. It is fast, it looks like a native Mac app, and its defaults are good. We changed only a small number of settings:
+
+```ini
+# ~/Library/Application Support/com.mitchellh.ghostty/config.ghostty
+theme = Catppuccin Latte
+font-family = "SF Mono"
+font-size = 13.0
+font-thicken = true
+
+background-opacity = 0.88
+background-blur = true
+window-padding-x = 12
+window-padding-y = 12
+
+cursor-style = block
+clipboard-read = allow
+clipboard-write = allow
+
+shell-integration-features = ssh-env,ssh-terminfo
+```
+
+Three settings are important for agent work:
+
+- **`shell-integration-features = ssh-env,ssh-terminfo`.** Ghostty has its own terminfo. Without this line, TUI tools on a remote cluster can show incorrect output or fail to start. This applies to yazi, lazygit, and herdr. The line copies the terminfo to the remote machine for you.
+- **`clipboard-read` / `clipboard-write = allow`.** Agents and TUIs copy paths and code through OSC 52. This setting removes a prompt that you would otherwise see many times each day.
+- **One theme for all tools.** herdr uses the same Catppuccin Latte theme as Ghostty. Thus, panes, popups, and the sidebar look like one app.
+
+We did *not* use the Ghostty splits and tabs for agents. Ghostty splits are good, but they close with the window. They also have no information about agents. The next layer does that job.
+
+**Gotcha: clickable paths.** We wanted to Cmd-click each file path that an agent prints. In Ghostty 1.3, you cannot configure how it finds plain paths. So we changed the other side: the tools print OSC 8 hyperlinks. GNU `ls`, `fd`, and `rg` do this with a flag. Our scripts also print them, and herdr sends them through without changes.
+
+::: {.callout-warning title="Image 2 placeholder: clickable paths"}
+`hp -l` or `fd --hyperlink` output with the Cmd-hover underline on a path. *Caption: OSC 8 links make agent output clickable.*
+:::
+
+## Layer 2: herdr, the agent multiplexer
+
+herdr is the most important layer. It looks like tmux, with a prefix key, splits, tabs, and detach. But herdr also knows which panes are agents and the state of each agent. A sidebar shows each agent in each workspace with a status symbol: working, idle, or waiting for you. When an agent finishes or needs a permission answer, herdr sends a macOS notification. The notification comes even when Ghostty is in the background.
+
+::: {.callout-warning title="Image 3 placeholder: herdr sidebar"}
+Close-up of the sidebar showing several agents across workspaces, each with a working, blocked or done symbol. *Caption: which agent needs you, at a glance.*
+:::
+
+### The config, and why
+
+```toml
+# ~/.config/herdr/config.toml
+[theme]
+name = "catppuccin-latte"          # match Ghostty
+
+[terminal]
+new_cwd = "follow"                  # new panes open in the focused pane's folder
+
+[keys]
+prefix = "ctrl+b"                   # same muscle memory as tmux on the clusters
+previous_agent = "prefix+comma"
+next_agent = "prefix+period"
+
+[ui.toast]
+delivery = "system"                 # real macOS notifications
+delay_seconds = 1
+
+[session]
+resume_agents_on_restore = true     # after a server restart, Claude panes reopen their own conversations
+
+[experimental]
+pane_history = true                 # keep scrollback across restarts
+```
+
+We kept the default `Ctrl-B` keys on purpose. The HPC clusters that we use run tmux with the same keys. Thus, our hands do not need to know which machine they are on.
+
+### Popups instead of panes
+
+The best idea in the config is this: use popups, not permanent panes, for tools that you look at quickly. A popup opens over the current pane at 90% size, in the folder of that pane. It closes when you quit the tool.
+
+```toml
+[[keys.command]]
+key = "prefix+y"
+type = "popup"
+command = "yazi"
+width = "90%"
+height = "90%"
+
+[[keys.command]]
+key = "prefix+i"
+type = "popup"
+command = "lazygit"
+width = "90%"
+height = "90%"
+```
+
+| Key | Opens | Use it to |
+| --- | --- | --- |
+| `Ctrl-B y` | yazi | See the files that the agent made. Preview a PDF or plot. |
+| `Ctrl-B i` | lazygit | Stage, diff, and commit the changes of the agent |
+| `Ctrl-B d` | reviewr sidebar | Add comments to diff lines. `s` sends the comments to the input of the agent. |
+| `Ctrl-B a` | handoff picker | Give the current task to a new agent |
+| `Ctrl-B ,` / `.` | previous / next agent | Go directly to the agent that needs you |
+
+::: {.callout-warning title="Image 4 placeholder: popup"}
+yazi or lazygit open as a 90% popup over an agent pane, the agent still visible at the edges. *Caption: popups come and go without disturbing the layout.*
+:::
+
+### One workspace per project: `hp`
+
+We keep a plain TSV file as the master list of projects. Each row has a name, status, folder, extra tabs, and description. A small Python script, `hp`, makes herdr workspaces from this list.
+
+```bash
+hp              # create workspaces for every active project that is missing
+hp pdep         # jump to (or create) the pdep workspace
+hp ~/new-proj   # ad-hoc workspace for any folder
+hp -l           # list projects, folders as clickable links
+hp --index      # write PROJECTS.md into the lab notebook
+```
+
+We use the same project names in all places: agent memory, the lab notebook, and cluster folders. One name for each project removes many "which folder was that" questions, for us and for the agents.
+
+### Handing work between agents: `hh`
+
+Context windows get full. Also, a different model is sometimes better for the next step. `hh` opens a new agent (Claude, Gemini, or Codex) in a new split and gives it a handoff note. If you do not write the note, `hh` makes one from `git status` and the last 300 lines of the source pane. The notes go in `./.handoff/` in the repo, so sandboxed agents can read them. A global gitignore keeps them out of commits.
+
+An `agent-handoff` skill lets Claude write the note and run `hh`. The new agent starts with **normal permission prompts**. This is why we wrote our own script (see [Lessons learned](#lessons-learned)).
+
+::: {.callout-warning title="Image 5 placeholder: handoff"}
+The `Ctrl-B a` picker, then the new agent in a split summarising its handoff note. *Caption: a fresh agent picks up where the old one stopped.*
+:::
+
+### Remote machines
+
+herdr can add SSH machines to the sidebar with `herdr machine add`. We added one fixed Perlmutter login node and one Carbon login node. Panes on those machines continue to run when the laptop sleeps. They show in the same sidebar as the local agents.
+
+The cluster side needs its own setup: daily SSH keys, gateway hosts, pinned login nodes, and a job monitor. That is the subject of [part 2 of this series](../2026-09-25-hpc-setup/index.qmd).
+
+## Layer 3: yazi, the file browser
+
+Agents make files: plots, PDFs, logs, and LaTeX builds. It is slow to read these with `cat` or to ask the agent to describe them. yazi is a fast terminal file manager with real previews. Images and PDFs show inline in Ghostty. In this setup, `Ctrl-B y` opens yazi.
+
+We changed three things.
+
+**Sharper, larger previews.** The default preview size is correct for small panes. In a 90% popup, we want a clear PDF page.
+
+```toml
+# ~/.config/yazi/yazi.toml
+[preview]
+max_width  = 1600
+max_height = 2000
+```
+
+**A maximize key.** Install the `toggle-pane` plugin with `ya pkg add yazi-rs/plugins:toggle-pane`. Then `T` makes the preview fill the window, and `Ctrl-T` hides it. To look at a figure that an agent made again, press `Ctrl-B y`, move to the file, and press `T`.
+
+```toml
+# ~/.config/yazi/keymap.toml
+[[mgr.prepend_keymap]]
+on   = "T"
+run  = "plugin toggle-pane max-preview"
+
+[[mgr.prepend_keymap]]
+on   = "<C-t>"
+run  = "plugin toggle-pane min-preview"
+```
+
+::: {.callout-warning title="Image 6 placeholder: yazi preview"}
+A PDF figure or manuscript page maximized with `T`. *Caption: checking an agent's output without leaving the terminal.*
+:::
+
+**Edit and build from the browser.** `e` opens the selected file in `micro`, a simple editor with Ctrl-S and Ctrl-Q keys. `b` runs a small `ybuild` script. This script compiles `.tex` with `latexmk` or renders `.qmd` and `.md` with Quarto. It writes the PDF next to the source, so the preview shows it immediately.
+
+```toml
+[[mgr.prepend_keymap]]
+on   = "e"
+run  = "shell --block -- micro %h"
+
+[[mgr.prepend_keymap]]
+on   = "b"
+run  = 'shell --block -- "$HOME/.local/bin/ybuild" %h pdf'
+```
+
+Before, this loop needed three windows. Now the agent edits a manuscript, and you press `b` to build it. Then press `T` to read the page and `q` to go back to the agent.
+
+## Layer 4: the Claude Code statusline
+
+The herdr sidebar tells you which agent needs you. The statusline tells you the state of one Claude session. Claude Code runs a script of your choice and shows its output under the input box. Our script shows two lines:
+
+```text
+[Opus] 📁 my-project | 🌿 main
+████░░░░░░ 42% | $1.87 | ⏱️ 34m 10s | ⏳ 12m idle
+```
+
+::: {.callout-warning title="Image 9 placeholder: statusline"}
+The two statusline lines under the Claude Code input box, with a yellow context bar and the idle marker. *Caption: the state of one session at a glance.*
+:::
+
+| Part | Source in the JSON input | Why it is there |
+| --- | --- | --- |
+| `[Opus]` | `model.display_name` | Shows which model the session uses |
+| `📁 my-project` | `workspace.current_dir` | Shows which project the pane is in |
+| `🌿 main` | `git branch` in that folder | The branch name is an OSC 8 link to the GitHub repo |
+| Context bar and % | `context_window.used_percentage` | Green below 70%, yellow from 70%, red from 90% |
+| `$1.87` | `cost.total_cost_usd` | Estimated session cost at list price |
+| `⏱️ 34m 10s` | `cost.total_duration_ms` | Time the session has run |
+| `⏳ 12m idle` / `❄️ cache cold` | Age of the file at `transcript_path` | Minutes since the last turn. Cold means the next message rereads the full context at full price. |
+
+### Set it up
+
+1. Install `jq`. On a Mac, run `brew install jq`.
+2. Save the script below as `~/.claude/statusline.sh`.
+3. Make the script executable: `chmod +x ~/.claude/statusline.sh`.
+4. Add the `statusLine` block below to `~/.claude/settings.json`.
+5. Start a new Claude Code session. The two lines appear under the input box.
+6. If your prompt cache lifetime is not 60 minutes, set `CLAUDE_CACHE_TTL_MIN` to match it.
+
+```json
+{
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "refreshInterval": 60
+  }
+}
+```
+
+Claude Code normally runs the script only after events, such as a new message. The idle marker must change while nothing happens, so `refreshInterval: 60` runs the script again each minute.
+
+```bash
+#!/bin/bash
+input=$(cat)
+
+MODEL=$(echo "$input" | jq -r '.model.display_name')
+DIR=$(echo "$input" | jq -r '.workspace.current_dir')
+COST=$(echo "$input" | jq -r '.cost.total_cost_usd // 0')
+PCT=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
+DURATION_MS=$(echo "$input" | jq -r '.cost.total_duration_ms // 0')
+
+CYAN='\033[36m'; GREEN='\033[32m'; YELLOW='\033[33m'; RED='\033[31m'; RESET='\033[0m'
+
+# Pick bar color based on context usage
+if [ "$PCT" -ge 90 ]; then BAR_COLOR="$RED"
+elif [ "$PCT" -ge 70 ]; then BAR_COLOR="$YELLOW"
+else BAR_COLOR="$GREEN"; fi
+
+FILLED=$((PCT / 10)); EMPTY=$((10 - FILLED))
+printf -v FILL "%${FILLED}s"; printf -v PAD "%${EMPTY}s"
+BAR="${FILL// /█}${PAD// /░}"
+
+MINS=$((DURATION_MS / 60000)); SECS=$(((DURATION_MS % 60000) / 1000))
+
+# Prompt-cache warmth: minutes since the transcript last changed (last turn).
+# Past CACHE_TTL_MIN the next message re-reads the whole context uncached.
+CACHE_TTL_MIN=${CLAUDE_CACHE_TTL_MIN:-60}
+CACHE_SEG=""
+TRANSCRIPT=$(echo "$input" | jq -r '.transcript_path // empty')
+if [ -n "$TRANSCRIPT" ] && [ -f "$TRANSCRIPT" ]; then
+    MTIME=$(stat -f %m "$TRANSCRIPT" 2>/dev/null || stat -c %Y "$TRANSCRIPT" 2>/dev/null || echo 0)
+    IDLE_MIN=$(( ($(date +%s) - MTIME) / 60 ))
+    if [ "$MTIME" -gt 0 ] && [ "$IDLE_MIN" -ge "$CACHE_TTL_MIN" ]; then
+        CACHE_SEG=" | ${CYAN}❄️ cache cold (${IDLE_MIN}m idle)${RESET}"
+    elif [ "$MTIME" -gt 0 ] && [ "$IDLE_MIN" -ge 5 ]; then
+        CACHE_SEG=" | ⏳ ${IDLE_MIN}m idle"
+    fi
+fi
+
+# Repo info: hyperlink the branch name to the GitHub URL when available.
+BRANCH_SEG=""
+if git -C "$DIR" rev-parse --git-dir > /dev/null 2>&1; then
+    BRANCH=$(git -C "$DIR" branch --show-current 2>/dev/null)
+    REMOTE=$(git -C "$DIR" remote get-url origin 2>/dev/null \
+        | sed 's/git@github.com:/https:\/\/github.com\//' \
+        | sed 's/\.git$//')
+    if [ -n "$BRANCH" ] && [ -n "$REMOTE" ]; then
+        # OSC 8 hyperlink: \e]8;;URL\a TEXT \e]8;;\a
+        BRANCH_SEG=$(printf ' | 🌿 \e]8;;%s\a%s\e]8;;\a' "$REMOTE" "$BRANCH")
+    elif [ -n "$BRANCH" ]; then
+        BRANCH_SEG=" | 🌿 $BRANCH"
+    fi
+fi
+
+printf '%b' "${CYAN}[$MODEL]${RESET} 📁 ${DIR##*/}${BRANCH_SEG}\n"
+COST_FMT=$(printf '$%.2f' "$COST")
+printf '%b\n' "${BAR_COLOR}${BAR}${RESET} ${PCT}% | ${YELLOW}${COST_FMT}${RESET} | ⏱️ ${MINS}m ${SECS}s${CACHE_SEG}"
+```
+
+**Gotcha: the cache lifetime.** The Anthropic API keeps a prompt cache for 5 minutes by default, with an optional 1-hour lifetime. Our Claude Code sessions use the 1-hour lifetime, so the script uses 60 minutes. If your sessions use 5 minutes, set `CLAUDE_CACHE_TTL_MIN=5` in your shell profile.
+
+**Gotcha: the cost figure.** Claude Code calculates `cost.total_cost_usd` on your machine at list price. It can be different from your real bill, and it starts again at \$0 after `/clear`.
+
+## How the layers work together: a working day
+
+This is the shape of a real day, with the keys for each step.
+
+1. **Open the terminal and attach.** Start Ghostty and type `herdr`. The workspaces from yesterday are there. Because of `resume_agents_on_restore`, Claude panes open their own conversations again.
+2. **Go to a project.** Type `hp pdep`. herdr goes to that workspace, in the correct folder, with its extra tabs.
+3. **Start agents side by side.** Press `Ctrl-B v` to split right. Start Claude in one pane and a second agent in the other pane. New panes use the current folder, so you do not need `cd`.
+4. **Do other work.** Go to a different workspace or app. When an agent finishes or shows a permission prompt, macOS shows a notification. The sidebar symbol shows which agent it is.
+5. **Go to the agent that needs you.** Press `Ctrl-B .` to go to the next agent. Answer it, then continue.
+6. **Look at the output.** Press `Ctrl-B y` to open yazi in the folder of that pane. Move to the new plot and press `T` to see it at full size. Press `q` to go back to the agent.
+7. **Review the diff.** Press `Ctrl-B d` to open the reviewr sidebar. Add comments to the lines that you do not agree with, then press `s`. The comments go into the input box of the agent as a review. To stage and commit instead, press `Ctrl-B i` for lazygit.
+8. **If the context is almost full, hand off.** Press `Ctrl-B a` to select a new agent. `hh` writes a note from the git state and recent output. It starts the new agent in a new split with normal permissions.
+9. **Send long runs to the cluster.** Submit compute through the scheduler with `sbatch`. Keep the agent that monitors the job in a cluster workspace, so it continues when the laptop is closed.
+10. **Record the work.** Type `nn pdep "what we did"` to add a dated lab-notebook entry. Agents run `nn -n` themselves at milestones.
+
+```{mermaid}
+sequenceDiagram
+  participant You
+  participant herdr
+  participant Agent
+  participant yazi
+  You->>Agent: task
+  Agent-->>herdr: done / needs permission
+  herdr-->>You: macOS notification
+  You->>herdr: Ctrl-B .
+  You->>yazi: Ctrl-B y, T
+  You->>Agent: review comments (Ctrl-B d, s)
+```
+
+The notification and the sidebar make it possible to manage three or four agents. Without them, you must check each pane again and again. The agents were supposed to remove that type of work.
+
+::: {.callout-warning title="Image 7 placeholder: diff review"}
+The reviewr sidebar beside an agent, with two line comments ready to send. *Caption: reviewing an agent's diff like a pull request.*
+:::
+
+## Lessons learned
+
+**Read the source of a plugin before you install it.** herdr has plugins, and we checked each candidate first. The `reviewr` diff plugin passed: it is a checksummed binary with no network access at run time. A popular agent-handoff plugin failed. It always starts the new agent with permission checks off (`--dangerously-skip-permissions` or `--yolo`), and you cannot change this. Another plugin worked only on Linux and changed the Claude settings file. Our own 150-line `hh` script was less work than trusting either plugin.
+
+**The machine that runs a pane controls what continues.** Panes on the Mac stop when you close the lid. Panes on a cluster login node continue to run. Thus, put long agent work in a cluster workspace. Always send real compute through the scheduler, not an interactive shell.
+
+**A cold prompt cache costs money, not correctness.** If a Claude session is idle for longer than the cache lifetime, it loses its prompt cache. In our sessions, that lifetime is one hour. The next message then reads the full context again at full price. We added two markers to the Claude statusline: `⏳ Nm idle` after 5 minutes and `❄️ cache cold` after 60 minutes. Our rule: if you are away for more than one hour with a large context, save a summary and run `/clear`. Compact at task boundaries, not during debugging.
+
+**Resume is not the same as attach.** Sometimes a session must move to a different API endpoint, for example after you reach a quota. If you attach to the running process again, its environment does not change. In our test, a respawn lost the conversation. The correct procedure is to stop the process and start the new client with `--resume <session-id>` from the same folder. Use only one writer for each session transcript.
+
+**Use the same cluster keys.** We use the default `Ctrl-B` prefix on all machines. We lost some custom keys. But we no longer press the wrong keys when we change between the Mac and SSH sessions.
+
+**Use one name for each project, in all places.** The project list controls workspaces, notebook entries, agent memory, and cluster folders. When the name is the path, agents do not guess paths.
+
+**Interactive prompts need a real terminal.** An agent shell cannot run a command that asks for a password or a browser login. Open a Ghostty window or a small dialog for these commands. Then give the result to the agent.
+
+### What we would do differently
+
+- Make the project list first. All other parts use it, and we added it too late.
+- Add the remote machines on the first day. Cluster access needed a daily key and a jump host. This blocked half of the setup until we fixed it.
+- Write the cheat sheet while you work. In the first week, a two-page card of all keys saved more time than any config change.
+
+::: {.callout-note title="Coming next: the HPC side"}
+This post covers the laptop. [Part 2](../2026-09-25-hpc-setup/index.qmd) covers the clusters. It shows one login per day with SSH keys and `ControlMaster`, sessions that survive a closed laptop, cluster tools without root, and one job monitor for Slurm and PBS that flags runs that exited 0 but failed. It also covers ClearML and other tracking tools that we tried, and the rules that coding agents follow on a cluster. Part 3 covers the lab notebook and provenance with AiiDA.
+:::
+
+## Cheat sheet
+
+This page has all the keys from this post. For herdr keys, press `Ctrl-B`, release it, then press the key. Our printed version fits on two landscape pages.
+
+::: {.callout-tip title="Download the cheat sheet"}
+- [agentic-terminal-cheatsheet.pdf](agentic-terminal-cheatsheet.pdf){download="agentic-terminal-cheatsheet.pdf"}: two pages, landscape, ready to print.
+- [agentic-terminal-cheatsheet.html](agentic-terminal-cheatsheet.html): the same card as a web page. It follows your light or dark theme.
+
+The card also has a few general shell, Slurm, and micro keys that are not in the tables below.
+:::
+
+::: {.callout-warning title="Image 8 placeholder: printed cheat sheet"}
+The two-page PDF card, pages side by side. *Caption: print it, tape it next to the screen for week one.*
+:::
+
+### Ghostty
+
+| Key | Does |
+| --- | --- |
+| `⌘T` · `⌘1–8` | New tab · go to tab |
+| `⌘D` · `⌘⇧D` | Split right · down |
+| `⌘⌥` arrows · `⌘⌃` arrows | Move between · resize splits |
+| `⌘⇧Enter` | Zoom split |
+| `⌘F` · `⌘G` · `⌘⇧G` | Search output · next · previous |
+| `⌘↑` · `⌘↓` | Previous · next prompt |
+| `⌘K` | Clear screen |
+| `⌘⇧P` | Command palette |
+
+### herdr: session, panes, scrolling
+
+| Key | Does |
+| --- | --- |
+| `herdr` | Start or return to the session |
+| `Ctrl-B q` | Detach (keeps running) |
+| `Ctrl-B ?` | Show every key |
+| `Ctrl-B w` · `g` | Pick workspace · go to pane (`/` searches) |
+| `Ctrl-B v` · `-` | Split right · down |
+| `Ctrl-B h j k l` | Move between panes |
+| `Ctrl-B z` · `x` | Zoom · close pane |
+| `Ctrl-B c` · `n` · `p` | New · next · previous tab |
+| `Ctrl-B W` · `T` · `P` | Rename workspace · tab · pane |
+| `Ctrl-B [` | Scroll mode: `?` search, `n` next, `v` select, `y` copy, `q` leave |
+| `Ctrl-B R` | Reload config |
+
+### herdr: agents and popups
+
+| Key | Does |
+| --- | --- |
+| `Ctrl-B ,` · `.` | Previous · next agent |
+| `Ctrl-B y` | yazi popup in this folder |
+| `Ctrl-B i` | lazygit popup |
+| `Ctrl-B d` | Diff review sidebar (reviewr) |
+| `Ctrl-B a` | Hand off to another agent |
+| `Ctrl-B G` | New git worktree (side branch) |
+
+### Projects and handoff (our scripts)
+
+| Command | Does |
+| --- | --- |
+| `hp NAME` · `hp -l` | Go to a project · list projects |
+| `hp ~/folder` | New workspace for any folder |
+| `hp` | Reopen all active projects |
+| `hh claude` · `hh gemini` | Fresh agent in a split, with an auto-written note |
+| `hh gemini --note f.md` | Hand off with your own note |
+| "hand off to gemini" | Ask Claude: it writes the note and calls `hh` |
+| `nn PROJECT "title"` | New lab-notebook entry |
+
+### yazi
+
+| Key | Does |
+| --- | --- |
+| `j` · `k` · `l` · `h` | Down · up · into folder · out |
+| `gg` · `G` · `gh` | Top · bottom · home |
+| `.` | Show hidden files |
+| `f` · `/` · `n` | Filter · jump to name · next |
+| `s` · `S` · `z` | Search names · search text · fuzzy jump |
+| `Space` · `y` · `x` · `p` | Select · copy · cut · paste |
+| `r` · `a` · `d` · `cc` | Rename · new file (`dir/` = folder) · trash · copy path |
+| `,m` · `,S` | Sort newest · biggest first |
+| `e` · `b` · `O` | Edit in micro · build PDF · all openers |
+| `T` · `Ctrl-T` | Maximize · hide preview |
+| `q` | Quit |
+
+### lazygit and diff review
+
+| Key | Does |
+| --- | --- |
+| `Space` · `c` | Stage / unstage · commit |
+| `p` · `P` | Pull · push |
+| `Enter` · `[` `]` | Open diff · switch panel tab |
+| reviewr `u` · `b` · `t` | Uncommitted · whole branch · last agent turn |
+| reviewr `c` · `v` · `s` | Comment line · select lines · send comments to agent |
+
+### Claude Code sessions
+
+| Situation | Do |
+| --- | --- |
+| Short break | Do nothing |
+| Away 1 h or more, context over half full | Save a summary, then run `/clear` |
+| Task step finished | `/compact keep: ...` |
+| During debugging | Do not compact |
+| Context bar yellow (70%) | Compact at the next step |
+| Context bar red (90%) | Compact now, or hand off |
+| Open an old session | `claude --resume` |
+
+When you close the laptop, Mac panes stop and remote-machine panes continue to run. Put long agent work in a remote workspace. Put real compute in the job scheduler.
+
+## Appendix: get started in 15 minutes
+
+```bash
+# 1. Terminal: install Ghostty from https://ghostty.org, then add the config above
+
+# 2. Multiplexer, file browser, git UI, editor, JSON tool
+brew install herdr yazi lazygit micro jq
+
+# 3. yazi preview plugin
+ya pkg add yazi-rs/plugins:toggle-pane
+
+# 4. herdr: print the fully commented defaults, then copy what you need
+herdr --default-config > ~/.config/herdr/config.toml
+
+# 5. Reload herdr after edits (or Ctrl-B R)
+herdr server reload-config
+```
+
+### Files in this setup
+
+| File | What it holds |
+| --- | --- |
+| `~/Library/Application Support/com.mitchellh.ghostty/config.ghostty` | Ghostty theme, font, SSH terminfo, clipboard |
+| `~/.config/herdr/config.toml` | Prefix, theme, popups, notifications, session restore |
+| `~/.config/herdr/projects.tsv` | Master project list read by `hp` and `nn` |
+| `~/.config/yazi/yazi.toml` | Preview size, openers (edit, build) |
+| `~/.config/yazi/keymap.toml` | `T`, `Ctrl-T`, `e`, `b` |
+| `~/.local/bin/hp` | Projects to herdr workspaces (223 lines, Python) |
+| `~/.local/bin/hh` | Agent handoff with a note (151 lines, Bash) |
+| `~/.local/bin/ybuild` | Build `.tex` / `.qmd` next to the source (21 lines, Bash) |
+| `~/.claude/statusline.sh` | Context, cost, idle, and cache-cold markers for Claude Code |
+| `~/.claude/settings.json` | The `statusLine` block that runs the script |
+
+## References
+
+All links checked on 2026-09-25.
+
+**Tools**
+
+1. [Ghostty](https://ghostty.org). Terminal emulator. See the [configuration reference](https://ghostty.org/docs/config) and the [terminfo and SSH page](https://ghostty.org/docs/help/terminfo).
+2. [herdr](https://herdr.dev). Agent multiplexer for the terminal.
+3. [herdr-reviewr](https://github.com/persiyanov/herdr-reviewr). herdr plugin to review agent diffs and send line comments to the agent.
+4. [yazi](https://yazi-rs.github.io). Terminal file manager.
+5. [toggle-pane.yazi](https://github.com/yazi-rs/plugins/tree/main/toggle-pane.yazi). yazi plugin for the `T` and `Ctrl-T` preview keys.
+6. [lazygit](https://github.com/jesseduffield/lazygit). Terminal UI for git.
+7. [micro](https://micro-editor.github.io). Terminal text editor with common keys.
+8. [jq](https://jqlang.org). Command-line JSON processor. The statusline script uses it.
+9. [Quarto](https://quarto.org). Publishing system that `ybuild` uses for `.qmd` and `.md` files.
+10. [Catppuccin](https://github.com/catppuccin/catppuccin). The color theme for Ghostty and herdr.
+
+**Claude Code and the API**
+
+11. [Customize your status line](https://code.claude.com/docs/en/statusline). Claude Code documentation: `statusLine` settings, `refreshInterval`, and the JSON input fields.
+12. [Prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching). Anthropic API documentation: cache lifetimes (5 minutes by default, 1 hour as an option) and prices.
+
+**Standards**
+
+13. [Hyperlinks (a.k.a. HTML-like anchors) in terminal emulators](https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda). The informal OSC 8 specification.
+
+::: {.callout-important title="Draft notes (remove before publishing)"}
+- Should we publish `hp`, `hh`, and `ybuild` as a small repo so readers can copy them?
+- Capture the nine images marked as placeholders above (same theme, same window size, no personal paths or usernames visible).
+- Mention cost numbers for the cache-cold rule, or keep it qualitative?
+:::

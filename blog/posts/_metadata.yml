@@ -4,6 +4,9 @@ citation: true
 appendix-style: default
 reference-location: margin
 citation-location: margin
+# Obsidian callouts (> [!note]) become Quarto callouts.
+filters:
+  - ../../_filters/obsidian-callouts.lua
 format:
   html:
     body-classes: blog-post

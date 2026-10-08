@@ -1,0 +1,6 @@
+{
+  "templates_folder": "blog/posts/_templates",
+  "enabled_templates_hotkeys": [
+    "posts/_templates/new-post.md"
+  ]
+}
