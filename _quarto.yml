@@ -3,6 +3,9 @@ project:
   output-dir: _site
   pre-render:
     - python3 _data/generate_home_sections.py
+  render:
+    - "*.qmd"
+    - "!site-backup-*/**"
 
 website:
   title: "Joseph Frimpong"
@@ -13,7 +16,7 @@ website:
   twitter-card:
     creator: "@frimpsjoek"
     card-style: summary_large_image
-  
+
   navbar:
     pinned: true
     title: '<span class="brand-first">Joseph</span> <span class="brand-last">Frimpong</span>'
